@@ -39,6 +39,10 @@ namespace Ballet
                 delete this;
             }
 
+            long HashCode() const
+            {
+                return (long)(this);
+            }
         public:
             BalOwnerShip<T>* ownerShip_;
         };

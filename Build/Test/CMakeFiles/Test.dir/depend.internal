@@ -3,7 +3,9 @@
 
 Test/CMakeFiles/Test.dir/Test.o
  ../Test/../Ballet/Common/BalBase.h
+ ../Test/../Ballet/Common/BalCoable.h
  ../Test/../Ballet/Common/BalInct.h
  ../Test/../Ballet/Common/BalNull.h
  ../Test/../Ballet/Common/BalOwnerShip.h
+ ../Test/../Ballet/Common/BalSharePtr.h
  /mnt/shared/Ballet-Net-Github/Test/Test.cpp

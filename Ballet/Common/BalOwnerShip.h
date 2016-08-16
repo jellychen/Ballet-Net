@@ -3,20 +3,21 @@
 #include "BalInct.h"
 #include "BalBase.h"
 #include "BalNull.h"
+#include "BalCoable.h"
 
 namespace Ballet
 {
     namespace Common
     {
         template<typename T> class BalBaseImplement;
-        template<typename T> class BalOwnerShip
+        template<typename T> class BalOwnerShip :public BalNoCoable
         {
         public:
             long ref_, objectRef_;
             BalBaseImplement<T>* object_;
 
         public:
-            BalOwnerShip(BalBaseImplement<T>* obj):ref_(1), objectRef_(1), object_(obj)
+            BalOwnerShip(BalBaseImplement<T>* obj):ref_(0), objectRef_(0), object_(obj)
             {
                 if (__nullptr() == object_)
                 {
@@ -59,6 +60,15 @@ namespace Ballet
                 {
                     delete this;
                 }
+            }
+
+            void ReleaseMemory()
+            {
+                if (__nullptr() != object_)
+                {
+                    object_->ReleaseMemory();
+                }
+                delete this;
             }
         };
     }
