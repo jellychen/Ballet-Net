@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/shared/Ballet-net
+CMAKE_SOURCE_DIR = /mnt/shared/Ballet-Net-Github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/shared/Ballet-net/Build
+CMAKE_BINARY_DIR = /mnt/shared/Ballet-Net-Github/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,14 +66,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /mnt/shared/Ballet-net/Build && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-net/Build/CMakeFiles /mnt/shared/Ballet-net/Build/Ballet/CMakeFiles/progress.marks
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-net/Build/CMakeFiles 0
+	cd /mnt/shared/Ballet-Net-Github/Build && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles /mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/progress.marks
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/clean
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/clean
 .PHONY : clean
 
 # The main clean target
@@ -82,22 +82,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/preinstall
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/preinstall
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /mnt/shared/Ballet-net/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/shared/Ballet-Net-Github/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Ballet/CMakeFiles/Ballet.dir/rule:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/CMakeFiles/Ballet.dir/rule
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Ballet/CMakeFiles/Ballet.dir/rule
 .PHONY : Ballet/CMakeFiles/Ballet.dir/rule
 
 # Convenience name for target.
@@ -106,67 +106,67 @@ Ballet: Ballet/CMakeFiles/Ballet.dir/rule
 
 # fast build rule for target.
 Ballet/fast:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/build
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/build
 .PHONY : Ballet/fast
 
 # target to build an object file
 BootUtil/BalTimer.o:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o
 .PHONY : BootUtil/BalTimer.o
 
 # target to preprocess a source file
 BootUtil/BalTimer.i:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.i
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.i
 .PHONY : BootUtil/BalTimer.i
 
 # target to generate assembly for a file
 BootUtil/BalTimer.s:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.s
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.s
 .PHONY : BootUtil/BalTimer.s
 
 # target to build an object file
 BootUtil/BalTimerHeap.o:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o
 .PHONY : BootUtil/BalTimerHeap.o
 
 # target to preprocess a source file
 BootUtil/BalTimerHeap.i:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.i
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.i
 .PHONY : BootUtil/BalTimerHeap.i
 
 # target to generate assembly for a file
 BootUtil/BalTimerHeap.s:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.s
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.s
 .PHONY : BootUtil/BalTimerHeap.s
 
 # target to build an object file
 BootUtil/BalTimerWheel.o:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.o
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.o
 .PHONY : BootUtil/BalTimerWheel.o
 
 # target to preprocess a source file
 BootUtil/BalTimerWheel.i:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.i
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.i
 .PHONY : BootUtil/BalTimerWheel.i
 
 # target to generate assembly for a file
 BootUtil/BalTimerWheel.s:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.s
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.s
 .PHONY : BootUtil/BalTimerWheel.s
 
 # target to build an object file
 Network/BalInetAddress.o:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o
 .PHONY : Network/BalInetAddress.o
 
 # target to preprocess a source file
 Network/BalInetAddress.i:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.i
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.i
 .PHONY : Network/BalInetAddress.i
 
 # target to generate assembly for a file
 Network/BalInetAddress.s:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.s
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.s
 .PHONY : Network/BalInetAddress.s
 
 # Help Target
@@ -201,6 +201,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /mnt/shared/Ballet-net/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/shared/Ballet-Net-Github/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

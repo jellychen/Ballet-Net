@@ -1,2 +1,2 @@
-/mnt/shared/Ballet-net/Build/Ballet/CMakeFiles/Ballet.dir
-/mnt/shared/Ballet-net/Build/Test/CMakeFiles/Test.dir
+/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir
+/mnt/shared/Ballet-Net-Github/Build/Test/CMakeFiles/Test.dir

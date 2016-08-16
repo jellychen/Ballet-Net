@@ -1,6 +1,5 @@
 #ifndef Ballet_Common_BalAtomic_H
 #define Ballet_Common_BalAtomic_H
-#include <stdint.h>
 
 namespace Ballet
 {

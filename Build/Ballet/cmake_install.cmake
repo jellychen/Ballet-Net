@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/shared/Ballet-net/Ballet
+# Install script for directory: /mnt/shared/Ballet-Net-Github/Ballet
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

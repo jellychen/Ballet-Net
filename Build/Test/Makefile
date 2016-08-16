@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/shared/Ballet-net
+CMAKE_SOURCE_DIR = /mnt/shared/Ballet-Net-Github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/shared/Ballet-net/Build
+CMAKE_BINARY_DIR = /mnt/shared/Ballet-Net-Github/Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,14 +66,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /mnt/shared/Ballet-net/Build && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-net/Build/CMakeFiles /mnt/shared/Ballet-net/Build/Test/CMakeFiles/progress.marks
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-net/Build/CMakeFiles 0
+	cd /mnt/shared/Ballet-Net-Github/Build && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles /mnt/shared/Ballet-Net-Github/Build/Test/CMakeFiles/progress.marks
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/clean
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/clean
 .PHONY : clean
 
 # The main clean target
@@ -82,22 +82,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/preinstall
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/preinstall
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /mnt/shared/Ballet-net/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/shared/Ballet-Net-Github/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Test/CMakeFiles/Test.dir/rule:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/CMakeFiles/Test.dir/rule
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Test/CMakeFiles/Test.dir/rule
 .PHONY : Test/CMakeFiles/Test.dir/rule
 
 # Convenience name for target.
@@ -106,22 +106,22 @@ Test: Test/CMakeFiles/Test.dir/rule
 
 # fast build rule for target.
 Test/fast:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/build
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/build
 .PHONY : Test/fast
 
 # target to build an object file
 Test.o:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/Test.o
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/Test.o
 .PHONY : Test.o
 
 # target to preprocess a source file
 Test.i:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/Test.i
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/Test.i
 .PHONY : Test.i
 
 # target to generate assembly for a file
 Test.s:
-	cd /mnt/shared/Ballet-net/Build && $(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/Test.s
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/Test.s
 .PHONY : Test.s
 
 # Help Target
@@ -147,6 +147,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /mnt/shared/Ballet-net/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/shared/Ballet-Net-Github/Build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

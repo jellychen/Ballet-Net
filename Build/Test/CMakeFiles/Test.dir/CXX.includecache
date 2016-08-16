@@ -6,11 +6,39 @@
 
 #IncludeRegexTransform: 
 
+../Test/../Ballet/Common/BalBase.h
+BalInct.h
 ../Test/../Ballet/Common/BalInct.h
+BalNull.h
+../Test/../Ballet/Common/BalNull.h
+BalOwnerShip.h
+../Test/../Ballet/Common/BalOwnerShip.h
 
-/mnt/shared/Ballet-net/Test/Test.cpp
+../Test/../Ballet/Common/BalInct.h
+stdlib.h
+-
+stdint.h
+-
+iostream
+-
+stdexcept
+-
+
+../Test/../Ballet/Common/BalNull.h
+
+../Test/../Ballet/Common/BalOwnerShip.h
+BalInct.h
+../Test/../Ballet/Common/BalInct.h
+BalBase.h
+../Test/../Ballet/Common/BalBase.h
+BalNull.h
+../Test/../Ballet/Common/BalNull.h
+
+/mnt/shared/Ballet-Net-Github/Test/Test.cpp
 iostream
 -
 Ballet/Common/BalInct.h
+-
+Ballet/Common/BalBase.h
 -
 

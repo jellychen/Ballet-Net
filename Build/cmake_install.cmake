@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/shared/Ballet-net
+# Install script for directory: /mnt/shared/Ballet-Net-Github
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,8 +34,8 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/mnt/shared/Ballet-net/Build/Ballet/cmake_install.cmake")
-  INCLUDE("/mnt/shared/Ballet-net/Build/Test/cmake_install.cmake")
+  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Ballet/cmake_install.cmake")
+  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Test/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -45,7 +45,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/mnt/shared/Ballet-net/Build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/mnt/shared/Ballet-Net-Github/Build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/mnt/shared/Ballet-net/Build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/mnt/shared/Ballet-Net-Github/Build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

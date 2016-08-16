@@ -4,11 +4,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/shared/Ballet-net/Test/Test.cpp" "/mnt/shared/Ballet-net/Build/Test/CMakeFiles/Test.dir/Test.o"
+  "/mnt/shared/Ballet-Net-Github/Test/Test.cpp" "/mnt/shared/Ballet-Net-Github/Build/Test/CMakeFiles/Test.dir/Test.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/mnt/shared/Ballet-net/Build/Ballet/CMakeFiles/Ballet.dir/DependInfo.cmake"
+  "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/DependInfo.cmake"
   )

@@ -44,10 +44,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/shared/Ballet-net
+CMAKE_SOURCE_DIR = /mnt/shared/Ballet-Net-Github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/shared/Ballet-net/Build
+CMAKE_BINARY_DIR = /mnt/shared/Ballet-Net-Github/Build
 
 #=============================================================================
 # Directory level rules for directory Ballet
@@ -71,7 +71,7 @@ Ballet/preinstall:
 Ballet/CMakeFiles/Ballet.dir/all:
 	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/depend
 	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-net/Build/CMakeFiles  1 2 3 4
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  1 2 3 4
 	@echo "Built target Ballet"
 .PHONY : Ballet/CMakeFiles/Ballet.dir/all
 
@@ -81,9 +81,9 @@ all: Ballet/CMakeFiles/Ballet.dir/all
 
 # Build rule for subdir invocation for target.
 Ballet/CMakeFiles/Ballet.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-net/Build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 Ballet/CMakeFiles/Ballet.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-net/Build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : Ballet/CMakeFiles/Ballet.dir/rule
 
 # Convenience name for target.
@@ -121,7 +121,7 @@ Test/preinstall:
 Test/CMakeFiles/Test.dir/all: Ballet/CMakeFiles/Ballet.dir/all
 	$(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/depend
 	$(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-net/Build/CMakeFiles  5
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  5
 	@echo "Built target Test"
 .PHONY : Test/CMakeFiles/Test.dir/all
 
@@ -131,9 +131,9 @@ all: Test/CMakeFiles/Test.dir/all
 
 # Build rule for subdir invocation for target.
 Test/CMakeFiles/Test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-net/Build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 Test/CMakeFiles/Test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-net/Build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : Test/CMakeFiles/Test.dir/rule
 
 # Convenience name for target.

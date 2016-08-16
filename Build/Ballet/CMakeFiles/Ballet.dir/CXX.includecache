@@ -7,18 +7,16 @@
 #IncludeRegexTransform: 
 
 ../Ballet/Common/BalInct.h
+stdlib.h
+-
+stdint.h
+-
+iostream
+-
+stdexcept
+-
 
-/mnt/shared/Ballet-net/Ballet/BootUtil/BalTimer.cc
+/mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalTimer.cc
 Common/BalInct.h
-/mnt/shared/Ballet-net/Ballet/BootUtil/Common/BalInct.h
-
-/mnt/shared/Ballet-net/Ballet/BootUtil/BalTimerHeap.cc
-
-/mnt/shared/Ballet-net/Ballet/BootUtil/BalTimerWheel.cc
-
-/mnt/shared/Ballet-net/Ballet/Network/BalInetAddress.cc
-BalInetAddress.h
-/mnt/shared/Ballet-net/Ballet/Network/BalInetAddress.h
-
-/mnt/shared/Ballet-net/Ballet/Network/BalInetAddress.h
+/mnt/shared/Ballet-Net-Github/Ballet/BootUtil/Common/BalInct.h
 
