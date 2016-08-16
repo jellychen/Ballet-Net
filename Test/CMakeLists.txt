@@ -8,4 +8,5 @@ LINK_DIRECTORIES (
 	"${PROJECT_SOURCE_DIR}/../Build/Ballet/Network"
 )
 ADD_EXECUTABLE(Test ${srcs})
+set (CMAKE_CXX_FLAGS "-fpermissive ${CMAKE_CXX_FLAGS}")
 TARGET_LINK_LIBRARIES(Test Ballet)

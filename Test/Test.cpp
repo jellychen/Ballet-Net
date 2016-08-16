@@ -1,9 +1,13 @@
 #include <iostream>
 using namespace std;
 #include <Ballet/Common/BalInct.h>
+#include <Ballet/Common/BalNull.h>
 #include <Ballet/Common/BalBase.h>
 #include <Ballet/Common/BalSharePtr.h>
+#include <Ballet/Common/BalWeakPtr.h>
 
+using namespace Ballet;
+using namespace Common;
 class A
 {
 public:
@@ -23,13 +27,26 @@ public:
     }
 };
 
+int get(BalSharePtr<A>& data)
+{
+    data->set();
+    return 0;
+}
+
+BalSharePtr<A> set()
+{
+    BalSharePtr<A> ptr; ptr.NewInstance();
+    return ptr;
+}
+
 int main(int argc, char const *argv[])
 {
     //Ballet::Common::BalBaseImplement<A>* object = NULL;
     //object = Ballet::Common::BalBaseImplement<A>::CreateInstance();
     //object->ownerShip_->ReleaseMemory();
-    Ballet::Common::BalSharePtr<A> ptr;
-    ptr = Ballet::Common::BalBaseImplement<A>::CreateInstance();
-    ptr->set();
+
+    set();
+
+
     return 0;
 }

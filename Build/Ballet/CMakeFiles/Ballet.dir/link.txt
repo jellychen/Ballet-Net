@@ -1,1 +1,1 @@
-/usr/bin/c++  -fPIC    -shared -Wl,-soname,libBallet.so -o libBallet.so CMakeFiles/Ballet.dir/BootUtil/BalTimer.o CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.o CMakeFiles/Ballet.dir/Network/BalInetAddress.o 
+/usr/bin/c++  -fPIC -fpermissive    -shared -Wl,-soname,libBallet.so -o libBallet.so CMakeFiles/Ballet.dir/BootUtil/BalTimer.o CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.o CMakeFiles/Ballet.dir/Network/BalInetAddress.o 

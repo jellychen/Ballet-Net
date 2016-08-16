@@ -14,6 +14,10 @@ BalNull.h
 BalOwnerShip.h
 ../Test/../Ballet/Common/BalOwnerShip.h
 
+../Test/../Ballet/Common/BalBasePtr.h
+BalBase.h
+../Test/../Ballet/Common/BalBase.h
+
 ../Test/../Ballet/Common/BalCoable.h
 
 ../Test/../Ballet/Common/BalInct.h
@@ -39,16 +43,26 @@ BalCoable.h
 ../Test/../Ballet/Common/BalCoable.h
 
 ../Test/../Ballet/Common/BalSharePtr.h
+BalBasePtr.h
+../Test/../Ballet/Common/BalBasePtr.h
+
+../Test/../Ballet/Common/BalWeakPtr.h
 BalBase.h
 ../Test/../Ballet/Common/BalBase.h
+BalSharePtr.h
+../Test/../Ballet/Common/BalSharePtr.h
 
 /mnt/shared/Ballet-Net-Github/Test/Test.cpp
 iostream
 -
 Ballet/Common/BalInct.h
 -
+Ballet/Common/BalNull.h
+-
 Ballet/Common/BalBase.h
 -
 Ballet/Common/BalSharePtr.h
+-
+Ballet/Common/BalWeakPtr.h
 -
 

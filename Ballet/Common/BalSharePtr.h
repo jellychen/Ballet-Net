@@ -1,53 +1,82 @@
 #ifndef Ballet_Common_BalSharePtr_H
 #define Ballet_Common_BalSharePtr_H
-#include "BalBase.h"
+#include "BalBasePtr.h"
 
 namespace Ballet
 {
     namespace Common
     {
-        template<typename T> class BalSharePtr
+        template<typename T> class BalWeakPtr;
+        template<typename T> class BalSharePtr :public BalBasePtr<T>
         {
         public:
-            BalSharePtr() throw():ownerShip_(__nullptr()){}
-
-            BalSharePtr(const BalSharePtr& ptr) throw()
+            BalSharePtr() throw()
             {
-                ownerShip_ = ptr.ownerShip_;
-                if (__nullptr() != ownerShip_)
+            }
+
+            BalSharePtr(const BalSharePtr<T>& ptr) throw()
+            {
+                this->ownerShip_ = ptr.ownerShip_;
+                if (__nullptr() != this->ownerShip_)
                 {
-                    ownerShip_->Retain();
+                    this->ownerShip_->Retain();
                 }
             }
 
-            BalSharePtr(const BalBaseImplement<T>* basePtr)
+            BalSharePtr(const BalWeakPtr<T> ptr) throw()
+            {
+                this->ownerShip_ = ptr.ownerShip_;
+                if (__nullptr() != this->ownerShip_)
+                {
+                    this->ownerShip_->Retain();
+                }
+            }
+
+            BalSharePtr(const BalBaseImplement<T>* basePtr) throw()
             {
                 if (__nullptr() == basePtr)
                 {
-                    ownerShip_ = __nullptr();
+                    this->ownerShip_ = __nullptr();
                 }
                 else
                 {
-                    ownerShip_ = basePtr->ownerShip_;
-                    if (__nullptr() != ownerShip_)
+                    this->ownerShip_ = basePtr->ownerShip_;
+                    if (__nullptr() != this->ownerShip_)
                     {
-                        ownerShip_->Retain();
+                        this->ownerShip_->Retain();
                     }
                 }
             }
 
-            ~BalSharePtr()
+            virtual ~BalSharePtr()
             {
                 ReleaseMemory();
             }
 
         public:
+            bool NewInstance()
+            {
+                ReleaseMemory();
+
+                BalBaseImplement<T>* instance = new(std::nothrow)BalBaseImplement<T>();
+                if (__nullptr() == instance)
+                {
+                    return false;
+                }
+
+                this->ownerShip_ = instance->ownerShip_;
+                if (__nullptr() != this->ownerShip_)
+                {
+                    this->ownerShip_->Retain();
+                }
+            }
+
             void ReleaseMemory()
             {
-                if (__nullptr() != ownerShip_)
+                if (__nullptr() != this->ownerShip_)
                 {
-                    ownerShip_->Release();
-                    ownerShip_ = __nullptr();
+                    this->ownerShip_->Release();
+                    this->ownerShip_ = __nullptr();
                 }
             }
 
@@ -58,45 +87,56 @@ namespace Ballet
 
             void operator= (const BalBaseImplement<T>* basePtr)
             {
-                ReleaseMemory();
-                if (__nullptr() != basePtr)
+                if (__nullptr() != basePtr && this->HashCode() == basePtr->HashCode())
                 {
-                    ownerShip_ = basePtr->ownerShip_;
+                    return;
                 }
 
-                if (__nullptr() != ownerShip_)
+                ReleaseMemory();
+
+                if (__nullptr() != basePtr)
                 {
-                    ownerShip_->Retain();
+                    this->ownerShip_ = basePtr->ownerShip_;
+                }
+
+                if (__nullptr() != this->ownerShip_)
+                {
+                    this->ownerShip_->Retain();
                 }
             }
 
             void operator= (const BalSharePtr<T>& ptr)
             {
-                ReleaseMemory();
-                ownerShip_ = ptr.ownerShip_;
-                if (__nullptr() != ownerShip_)
+                if (ptr.HashCode() == this->HashCode())
                 {
-                    ownerShip_->Retain();
+                    return;
+                }
+
+                ReleaseMemory();
+                this->ownerShip_ = ptr.ownerShip_;
+                if (__nullptr() != this->ownerShip_)
+                {
+                    this->ownerShip_->Retain();
                 }
             }
 
-            operator bool() const
+            void operator= (const BalWeakPtr<T>& ptr)
             {
-                return ownerShip_ && ownerShip_->object_;
-            }
+                if (ptr.HashCode() == this->HashCode())
+                {
+                    return;
+                }
 
-            bool operator!() const throw()
-            {
-                return !ownerShip_ || !ownerShip_->object_;
-            }
-
-            T* operator->() const throw()
-            {
-                return ownerShip_->object_;
+                ReleaseMemory();
+                this->ownerShip_ = ptr.ownerShip_;
+                if (__nullptr() != this->ownerShip_)
+                {
+                    this->ownerShip_->Retain();
+                }
             }
 
         private:
-            BalOwnerShip<T>* ownerShip_;
+            friend class BalWeakPtr<T>;
         };
     }
 }

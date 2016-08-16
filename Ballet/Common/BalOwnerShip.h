@@ -70,6 +70,15 @@ namespace Ballet
                 }
                 delete this;
             }
+
+            long ObjectHashCode()
+            {
+                if (__nullptr() == object_)
+                {
+                    return 0;
+                }
+                object_->HashCode();
+            }
         };
     }
 }
