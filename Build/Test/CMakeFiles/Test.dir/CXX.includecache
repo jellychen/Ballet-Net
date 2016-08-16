@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Test/../Ballet/Common/BalInct.h
+
+/mnt/shared/Ballet-net/Test/Test.cpp
+iostream
+-
+Ballet/Common/BalInct.h
+-
+

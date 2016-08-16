@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/Test.dir/Test.o  -o Test -rdynamic -L/mnt/shared/Ballet-net/Test/../Build/Ballet ../Ballet/libBallet.so -Wl,-rpath,/mnt/shared/Ballet-net/Test/../Build/Ballet:/mnt/shared/Ballet-net/Build/Ballet 

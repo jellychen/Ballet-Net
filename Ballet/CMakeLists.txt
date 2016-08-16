@@ -1,0 +1,7 @@
+PROJECT(Ballet)
+include_directories("${PROJECT_SOURCE_DIR}/..")
+include_directories("${PROJECT_SOURCE_DIR}")
+AUX_SOURCE_DIRECTORY(./Common dir_srcs)
+AUX_SOURCE_DIRECTORY(./BootUtil dir_srcs)
+AUX_SOURCE_DIRECTORY(./Network dir_srcs)
+ADD_LIBRARY(Ballet SHARED ${dir_srcs})

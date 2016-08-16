@@ -1,0 +1,3 @@
+PROJECT(Ballet_Build)
+ADD_SUBDIRECTORY(Ballet Ballet)
+ADD_SUBDIRECTORY(Test Test)
