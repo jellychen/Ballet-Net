@@ -13,28 +13,30 @@ namespace Ballet
         template<typename T> class BalOwnerShip :public BalNoCoable
         {
         public:
-            long ref_, objectRef_;
-            BalBaseImplement<T>* object_;
+            long ref_, objectRef_; T* object_;
 
         public:
-            BalOwnerShip(BalBaseImplement<T>* obj):ref_(0), objectRef_(0), object_(obj)
+            BalOwnerShip(T* object):ref_(0), objectRef_(0), object_(object)
             {
                 if (__nullptr() == object_)
                 {
-                    throw std::runtime_error("BalOwnerShip Construct Arguments == nullptr");
+                    throw std::runtime_error("BalOwnerShip Construct Failed");
                 }
             }
 
         public:
-            static BalOwnerShip<T>* CreateInstance(BalBaseImplement<T>* obj)
+            static BalOwnerShip<T>* CreateInstance(T* object)
             {
-                if (__nullptr() == obj) return __nullptr();
-                return new(std::nothrow)BalOwnerShip<T>(obj);
+                if (__nullptr() == object)
+                {
+                    return __nullptr();
+                }
+                return new(std::nothrow)BalOwnerShip<T>(object);
             }
 
         public:
             void Retain() { ++ref_; ++objectRef_;}
-            void WeakRetain() { ++ref_; }
+            void WeakRetain() { ++ref_;}
 
             void Release()
             {

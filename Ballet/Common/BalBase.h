@@ -8,6 +8,13 @@ namespace Ballet
 {
     namespace Common
     {
+        class BalBase
+        {
+        public:
+            virtual long HashCode() = 0;
+            virtual void ReleaseMemory() = 0;
+        };
+
         template<typename T> class BalBaseImplement :public T
         {
         public:
@@ -39,7 +46,7 @@ namespace Ballet
                 delete this;
             }
 
-            long HashCode() const
+            long HashCode()
             {
                 return (long)(this);
             }

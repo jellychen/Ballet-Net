@@ -9,5 +9,7 @@ Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Common/BalNull.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Common/BalOwnerShip.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Common/BalSharePtr.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Common/BalWeakPtr.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/../Common/BalCoable.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalBuffer.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/Test.cpp
 

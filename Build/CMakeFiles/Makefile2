@@ -71,7 +71,7 @@ Ballet/preinstall:
 Ballet/CMakeFiles/Ballet.dir/all:
 	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/depend
 	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  1 2 3 4
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
 	@echo "Built target Ballet"
 .PHONY : Ballet/CMakeFiles/Ballet.dir/all
 
@@ -81,7 +81,7 @@ all: Ballet/CMakeFiles/Ballet.dir/all
 
 # Build rule for subdir invocation for target.
 Ballet/CMakeFiles/Ballet.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 Ballet/CMakeFiles/Ballet.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : Ballet/CMakeFiles/Ballet.dir/rule
@@ -121,7 +121,7 @@ Test/preinstall:
 Test/CMakeFiles/Test.dir/all: Ballet/CMakeFiles/Ballet.dir/all
 	$(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/depend
 	$(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  5
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  16
 	@echo "Built target Test"
 .PHONY : Test/CMakeFiles/Test.dir/all
 
@@ -131,7 +131,7 @@ all: Test/CMakeFiles/Test.dir/all
 
 # Build rule for subdir invocation for target.
 Test/CMakeFiles/Test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 Test/CMakeFiles/Test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : Test/CMakeFiles/Test.dir/rule

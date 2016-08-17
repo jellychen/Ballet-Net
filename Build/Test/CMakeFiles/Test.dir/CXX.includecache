@@ -52,8 +52,18 @@ BalBase.h
 BalSharePtr.h
 ../Test/../Ballet/Common/BalSharePtr.h
 
+../Test/../Ballet/Network/../Common/BalCoable.h
+
+../Test/../Ballet/Network/BalBuffer.h
+../Common/BalCoable.h
+../Test/../Ballet/Network/../Common/BalCoable.h
+
 /mnt/shared/Ballet-Net-Github/Test/Test.cpp
 iostream
+-
+memory
+-
+vector
 -
 Ballet/Common/BalInct.h
 -
@@ -64,5 +74,7 @@ Ballet/Common/BalBase.h
 Ballet/Common/BalSharePtr.h
 -
 Ballet/Common/BalWeakPtr.h
+-
+Ballet/Network/BalBuffer.h
 -
 

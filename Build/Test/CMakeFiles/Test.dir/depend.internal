@@ -10,4 +10,6 @@ Test/CMakeFiles/Test.dir/Test.o
  ../Test/../Ballet/Common/BalOwnerShip.h
  ../Test/../Ballet/Common/BalSharePtr.h
  ../Test/../Ballet/Common/BalWeakPtr.h
+ ../Test/../Ballet/Network/../Common/BalCoable.h
+ ../Test/../Ballet/Network/BalBuffer.h
  /mnt/shared/Ballet-Net-Github/Test/Test.cpp
