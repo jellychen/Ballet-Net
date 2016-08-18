@@ -75,6 +75,8 @@ t_BufferArray.h
 /mnt/shared/Ballet-Net-Github/Test/t_BufferArray.h
 t_Callback.h
 /mnt/shared/Ballet-Net-Github/Test/t_Callback.h
+t_HandleCast.h
+/mnt/shared/Ballet-Net-Github/Test/t_HandleCast.h
 
 /mnt/shared/Ballet-Net-Github/Test/t_BufferArray.h
 Ballet/Common/BalInct.h
@@ -99,6 +101,20 @@ vector
 -
 
 /mnt/shared/Ballet-Net-Github/Test/t_Handle.h
+Ballet/Common/BalInct.h
+-
+Ballet/Common/BalNull.h
+-
+Ballet/Common/BalHandle.h
+-
+iostream
+-
+memory
+-
+vector
+-
+
+/mnt/shared/Ballet-Net-Github/Test/t_HandleCast.h
 Ballet/Common/BalInct.h
 -
 Ballet/Common/BalNull.h

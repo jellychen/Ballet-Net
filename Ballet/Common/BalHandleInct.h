@@ -56,13 +56,25 @@ namespace Ballet
     template<class T, class U>
     BalHandle<T> static_cast_(const BalHandle<U>& ptr)
     {
-        return BalHandle<T>(ptr, static_cast_<T>(ptr.GetBasePtr()));
+        return BalHandle<T>(ptr, static_cast_<T*>(ptr.GetBasePtr()));
     }
 
     template<class T, class U>
     BalHandle<T> dynamic_cast_(const BalHandle<U>& ptr)
     {
-        return BalHandle<T>(ptr, dynamic_cast<T>(ptr.GetBasePtr()));
+        return BalHandle<T>(ptr, dynamic_cast<T*>(ptr.GetBasePtr()));
+    }
+
+    template<class T, class U>
+    BalWeakHandle<T> static_cast_(const BalWeakHandle<U>& ptr)
+    {
+        return BalWeakHandle<T>(ptr, static_cast_<T*>(ptr.GetBasePtr()));
+    }
+
+    template<class T, class U>
+    BalWeakHandle<T> dynamic_cast_(const BalWeakHandle<U>& ptr)
+    {
+        return BalWeakHandle<T>(ptr, dynamic_cast<T*>(ptr.GetBasePtr()));
     }
 }
 #endif

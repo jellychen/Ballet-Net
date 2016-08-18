@@ -15,4 +15,5 @@ Test/CMakeFiles/Test.dir/Test.o: ../Test/Test.cpp
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_BufferArray.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Callback.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Handle.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/t_HandleCast.h
 
