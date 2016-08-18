@@ -77,6 +77,8 @@ t_Callback.h
 /mnt/shared/Ballet-Net-Github/Test/t_Callback.h
 t_HandleCast.h
 /mnt/shared/Ballet-Net-Github/Test/t_HandleCast.h
+BalEventLoop.h
+/mnt/shared/Ballet-Net-Github/Test/BalEventLoop.h
 
 /mnt/shared/Ballet-Net-Github/Test/t_BufferArray.h
 Ballet/Common/BalInct.h

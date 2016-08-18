@@ -17,11 +17,18 @@ namespace Ballet
             virtual void ShouldWrite(int id, BalEventLoop* el);
         };
 
+        typedef BalHandle<IBalEventCallback> BalEventCallback;
         BalCallbackSinkBegin(CBalEventCallback)
         BalCallbackSink(void, ShouldRead,  (int id, BalEventLoop* el), (id, el))
         BalCallbackSink(void, ShouldWrite, (int id, BalEventLoop* el), (id, el))
         BalCallbackSinkComplete()
         BalCallbackSinkPtrDefine(CBalEventCallback, IBalEventCallback)
+
+        struct BalEventCallbackWrapper
+        {
+            BalEventCallback callback;
+            int index_; unsigned int status_;
+        };
     }
 }
 #endif

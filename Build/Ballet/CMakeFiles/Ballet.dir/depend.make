@@ -55,6 +55,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalElemen
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventLoop.cc
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventLoop.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalNetworkInct.h
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalInetAddress.cc
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalInetAddress.h
