@@ -15,16 +15,16 @@ namespace Ballet
 
         BalWeakHandle(const BalWeakHandle& handle) throw()
         {
-            object_ = handle.object_;
-            useCount_ = handle.useCount_;
-            useCount_?useCount_->AddUseCount(false):(void)0;
+            BaseT::object_ = handle.object_;
+            BaseT::useCount_ = handle.useCount_;
+            BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
         }
 
         BalWeakHandle(const BalHandle<T>& handle) throw()
         {
-            object_ = handle.object_;
-            useCount_ = handle.useCount_;
-            useCount_?useCount_->AddUseCount(false):(void)0;
+            BaseT::object_ = handle.object_;
+            BaseT::useCount_ = handle.useCount_;
+            BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
         }
 
         inline ~BalWeakHandle()
