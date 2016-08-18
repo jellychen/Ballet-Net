@@ -3,21 +3,18 @@
 
 namespace Ballet
 {
-    namespace Common
+    struct BalNull
     {
-        struct BalNull
+        template<typename T> operator T*() const
         {
-            template<typename t> operator t*() const
-            {
-                return 0;
-            }
-        };
-
-        inline BalNull __nullptr()
-        {
-            static BalNull nil = {};
-            return nil;
+            return 0;
         }
+    };
+
+    inline BalNull& nullptr_()
+    {
+        static BalNull nil = {};
+        return nil;
     }
 }
 #endif

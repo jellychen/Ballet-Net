@@ -6,8 +6,7 @@ namespace Ballet
 {
     namespace Network
     {
-        class s{};
-        class BalBuffer :public Common::BalNoCoable, public s
+        class BalBuffer :public BalNoCoable
         {
         public:
             BalBuffer();

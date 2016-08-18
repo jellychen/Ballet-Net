@@ -3,23 +3,24 @@
 
 namespace Ballet
 {
-    namespace Common
+    class BalCoable
     {
-        class BalCoable
+    };
+
+    class BalNoCoable
+    {
+    protected:
+        BalNoCoable()
         {
+        }
 
-        };
-
-        class BalNoCoable
+        ~BalNoCoable()
         {
-        protected:
-            BalNoCoable() {}
-            ~BalNoCoable() {}
+        }
 
-        private:
-            BalNoCoable(const BalNoCoable&);
-            const BalNoCoable& operator=(const BalNoCoable&);
-        };
-    }
+    private:
+        BalNoCoable(const BalNoCoable&);
+        const BalNoCoable& operator=(const BalNoCoable&);
+    };
 }
 #endif
