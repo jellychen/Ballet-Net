@@ -42,7 +42,19 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalBufferArray.o: ../Ballet/Common/BalWeakH
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferArray.o: ../Ballet/Network/BalBufferArray.cc
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferArray.o: ../Ballet/Network/BalBufferArray.h
 
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalCoable.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalHandle.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalHandleBase.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalHandleInct.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalInct.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalNull.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalUseCount.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Common/BalWeakHandle.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalElement.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventLoop.cc
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventLoop.h
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalInetAddress.cc
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalInetAddress.h

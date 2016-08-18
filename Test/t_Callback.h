@@ -9,12 +9,12 @@ using namespace std;
 class ICallback :public BalCallback
 {
 public:
-    virtual void Get() = 0;
+    virtual void Get(int i) = 0;
 };
 
 
 BalCallbackSinkBegin(CCallback)
-BalCallbackSink(void, Get, (), ())
+BalCallbackSink(void, Get, (int i), (i))
 BalCallbackSinkComplete()
 BalCallbackSinkPtrDefine(CCallback, ICallback)
 
@@ -33,7 +33,7 @@ public:
         std::cout << "/* message */" << std::endl;
     }
 
-    void GetCallback()
+    void GetCallback(int i)
     {
         std::cout << "GetCallback" << std::endl;
     }
@@ -53,6 +53,6 @@ void t_Callback_main()
 
     if (callback->IsCallable())
     {
-        callback->Get();
+        callback->Get(10);
     }
 }

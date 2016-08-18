@@ -51,7 +51,7 @@ public:                                                                         
         {                                                                       \
             return (Ret)(0);                                                    \
         }                                                                       \
-        return (this->host_->*(__pf##Name##_function.data_)) Param;             \
+        return (this->host_->*(__pf##Name##_function.data_)) Args;              \
     }
 
 #define BalCallbackSinkPtrDefine(SinkName, Sink)                                \
