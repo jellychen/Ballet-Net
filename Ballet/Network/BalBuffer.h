@@ -1,6 +1,6 @@
 #ifndef Ballet_Common_BalBuffer_H
 #define Ballet_Common_BalBuffer_H
-#include "Common/BalCoable.h"
+#include "Common/BalInct.h"
 
 namespace Ballet
 {

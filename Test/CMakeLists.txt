@@ -1,5 +1,6 @@
 PROJECT(Test)
 include_directories( "${PROJECT_SOURCE_DIR}/..")
+include_directories( "${PROJECT_SOURCE_DIR}/../Ballet")
 AUX_SOURCE_DIRECTORY(. srcs)
 LINK_DIRECTORIES (
 	"${PROJECT_SOURCE_DIR}/../Build/Ballet"

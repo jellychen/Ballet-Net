@@ -3,6 +3,7 @@
 
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o: ../Ballet/BootUtil/BalTimeStamp.cc
 
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o: ../Ballet/Common/BalCallback.h
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o: ../Ballet/Common/BalCoable.h
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o: ../Ballet/Common/BalHandle.h
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o: ../Ballet/Common/BalHandleBase.h
@@ -17,10 +18,19 @@ Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o: ../Ballet/BootUtil/BalTime
 
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerWheel.o: ../Ballet/BootUtil/BalTimerWheel.cc
 
+Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalCoable.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalHandle.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalHandleBase.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalHandleInct.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalInct.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalNull.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalUseCount.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Common/BalWeakHandle.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Network/BalBuffer.cc
 Ballet/CMakeFiles/Ballet.dir/Network/BalBuffer.o: ../Ballet/Network/BalBuffer.h
 
+Ballet/CMakeFiles/Ballet.dir/Network/BalBufferArray.o: ../Ballet/Common/BalCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferArray.o: ../Ballet/Common/BalCoable.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferArray.o: ../Ballet/Common/BalHandle.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferArray.o: ../Ballet/Common/BalHandleBase.h

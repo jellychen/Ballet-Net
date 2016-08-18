@@ -10,4 +10,5 @@
 #include "BalNull.h"
 #include "BalCoable.h"
 #include "BalHandleInct.h"
+#include "BalCallback.h"
 #endif

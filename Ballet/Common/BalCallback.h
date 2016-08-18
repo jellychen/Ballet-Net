@@ -1,25 +1,23 @@
 #ifndef Ballet_Common_BalCallback_H
 #define Ballet_Common_BalCallback_H
-#include "BalSharePtr.h"
+#include "BalCoable.h"
+#include "BalHandleInct.h"
 
 namespace Ballet
 {
-    namespace Common
+    class BalCallback :public BalNoCoable
     {
-        class BalCallback
-        {
-        public:
-            virtual bool IsCallable() = 0;
-        };
-    }
+    public:
+        virtual bool IsCallable() const = 0;
+    };
 }
 
 #define BalCallbackSinkBegin(SinkName)                                          \
 template <typename Host, typename Sink> class SinkName: public Sink             \
 {                                                                               \
 public:                                                                         \
-    Host* host_;                                                                \
-#define BalCallbackSinkComplete                                                 \
+    Host* host_;
+#define BalCallbackSinkComplete()                                               \
 public:                                                                         \
     bool IsCallable() const                                                     \
     {                                                                           \
@@ -61,13 +59,34 @@ template<typename Host> class SinkName##Ptr                                     
 {                                                                               \
     typedef SinkName<Host, Sink> CallbackSinkT;                                 \
 public:                                                                         \
-    SinkName##Ptr(const Host* host)                                             \
-    {                                                                           \                                                                        \
+    SinkName##Ptr(const Host* host):sinkObject_(new CallbackSinkT())            \
+    {                                                                           \
+        if (!host)                                                              \
+        {                                                                       \
+            throw std::runtime_error("SinkPtr Construct Arguments!");           \
+        }                                                                       \
+        CallbackSinkT* sink = sinkObject_.GetBasePtr();                         \
+        if (sink) sink->host_ = (Host*)host;                                    \
     }                                                                           \
     virtual ~SinkName##Ptr()                                                    \
     {                                                                           \
+        CallbackSinkT* sink = sinkObject_.GetBasePtr();                         \
+        if (sink) sink->host_ = nullptr_();                                     \
+    }                                                                           \
+    operator bool() const throw()                                               \
+    {                                                                           \
+        return sinkObject_.GetBasePtr();                                        \
+    }                                                                           \
+    inline CallbackSinkT* operator-> () const                                   \
+    {                                                                           \
+        return sinkObject_.GetBasePtr();                                        \
+    }                                                                           \
+    BalHandle<Sink> GetHandle() const                                           \
+    {                                                                           \
+        Sink* object = dynamic_cast<Sink*>(sinkObject_.GetBasePtr());           \
+        return BalHandle<Sink>(sinkObject_, object);                            \
     }                                                                           \
 private:                                                                        \
-    
-}
+    BalHandle<CallbackSinkT> sinkObject_;                                       \
+};
 #endif

@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../Test/../Ballet/Common/BalCallback.h
+BalCoable.h
+../Test/../Ballet/Common/BalCoable.h
+BalHandleInct.h
+../Test/../Ballet/Common/BalHandleInct.h
+
 ../Test/../Ballet/Common/BalCoable.h
 
 ../Test/../Ballet/Common/BalHandle.h
@@ -39,6 +45,8 @@ BalCoable.h
 ../Test/../Ballet/Common/BalCoable.h
 BalHandleInct.h
 ../Test/../Ballet/Common/BalHandleInct.h
+BalCallback.h
+../Test/../Ballet/Common/BalCallback.h
 
 ../Test/../Ballet/Common/BalNull.h
 
@@ -54,11 +62,41 @@ BalCoable.h
 BalHandle.h
 ../Test/../Ballet/Common/BalHandle.h
 
+../Test/../Ballet/Network/BalBufferArray.h
+Common/BalInct.h
+../Test/../Ballet/Network/Common/BalInct.h
+
 /mnt/shared/Ballet-Net-Github/Test/Test.cpp
 iostream
 -
 t_Handle.h
 /mnt/shared/Ballet-Net-Github/Test/t_Handle.h
+t_BufferArray.h
+/mnt/shared/Ballet-Net-Github/Test/t_BufferArray.h
+t_Callback.h
+/mnt/shared/Ballet-Net-Github/Test/t_Callback.h
+
+/mnt/shared/Ballet-Net-Github/Test/t_BufferArray.h
+Ballet/Common/BalInct.h
+-
+Ballet/Network/BalBufferArray.h
+-
+iostream
+-
+memory
+-
+vector
+-
+
+/mnt/shared/Ballet-Net-Github/Test/t_Callback.h
+Ballet/Common/BalInct.h
+-
+iostream
+-
+memory
+-
+vector
+-
 
 /mnt/shared/Ballet-Net-Github/Test/t_Handle.h
 Ballet/Common/BalInct.h

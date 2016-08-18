@@ -7,14 +7,16 @@ namespace Ballet
     template<typename T> class BalWeakHandle;
     template<typename T> class BalHandle :public BalHandleBase<T>
     {
+        template<typename U>
+        friend class BalHandle;
         friend class BalWeakHandle<T>;
         typedef BalHandleBase<T> BaseT;
     public:
-        BalHandle() throw():BalHandleBase<T>()
+        BalHandle() throw()
         {
         }
 
-        explicit BalHandle(T* object):BalHandleBase<T>()
+        explicit BalHandle(T* object)
         {
             if (nullptr_() == object) return;
             typedef BalUseCountWrapper<T> U;
@@ -27,7 +29,15 @@ namespace Ballet
         }
 
         template<typename U>
-        explicit BalHandle(T* object):BalHandleBase<T>()
+        explicit BalHandle(const BalHandle<U>& handle, T* object)
+        {
+            if (nullptr_() == object) return;
+            BaseT::object_ = object;
+            BaseT::useCount_ = handle.useCount_;
+            BaseT::useCount_?BaseT::useCount_->AddUseCount(true):(void)0;
+        }
+
+        template<typename U>explicit BalHandle(T* object)
         {
             if (nullptr_() == object) return;
             BaseT::useCount_ = new(std::nothrow)U(object);
