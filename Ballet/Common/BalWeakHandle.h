@@ -6,10 +6,12 @@ namespace Ballet
 {
     template<typename T> class BalWeakHandle :public BalHandleBase<T>
     {
+        template<typename U>
+        friend class BalWeakHandle;
         friend class BalHandle<T>;
         typedef BalHandleBase<T> BaseT;
     public:
-        BalWeakHandle() throw():BalHandleBase<T>()
+        BalWeakHandle() throw()
         {
         }
 
@@ -20,7 +22,8 @@ namespace Ballet
             BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
         }
 
-        BalWeakHandle(const BalWeakHandle& handle, T* object) throw()
+        template<typename U>
+        BalWeakHandle(const BalWeakHandle<U>& handle, T* object) throw()
         {
             if (nullptr_() == object) return;
             BaseT::object_ = object;

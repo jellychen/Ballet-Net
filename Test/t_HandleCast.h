@@ -49,11 +49,17 @@ public:
 
 void t_HandleCast_main()
 {
-    BalHandle<t_HandleClass_class_inhreit> objectInhert(new t_HandleClass_class_inhreit);
-    BalHandle<t_HandleClass_class_base> objectBase
-    = dynamic_cast_<t_HandleClass_class_base, t_HandleClass_class_inhreit>(objectInhert);
-    if (objectBase)
+    BalWeakHandle<t_HandleClass_class_inhreit> weak;
     {
-        objectBase->test();
+        BalHandle<t_HandleClass_class_inhreit> objectInhert(new t_HandleClass_class_inhreit);
+        BalHandle<t_HandleClass_class_base> objectBase
+        = dynamic_cast_<t_HandleClass_class_base, t_HandleClass_class_inhreit>(objectInhert);
+        if (objectBase)
+        {
+            objectBase->test();
+        }
+        weak = objectInhert;
+        if (weak) weak->test();
     }
+    if (weak) weak->test();
 }
