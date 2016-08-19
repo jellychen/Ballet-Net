@@ -1,6 +1,5 @@
 #include "BalEventLoop.h"
-using namespace Ballet;
-using namespace Network;
+using namespace Ballet::Network;
 
 BalEventLoop::BalEventLoop():efd_(0),created_(false)
 {

@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <iostream>
+#include <assert.h>
 #include <stdexcept>
 
 #include "BalNull.h"
