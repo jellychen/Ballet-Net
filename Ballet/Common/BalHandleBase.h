@@ -1,6 +1,7 @@
 #ifndef Ballet_Common_BalHandleBase_H
 #define Ballet_Common_BalHandleBase_H
 #include "BalUseCount.h"
+#include "BalShareThis.h"
 
 namespace Ballet
 {

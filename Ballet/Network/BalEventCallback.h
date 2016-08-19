@@ -11,24 +11,25 @@ namespace Ballet
         struct IBalEventCallback :public BalCallback
         {
             // note: call when fd can read
-            virtual void ShouldRead(int id, BalEventLoop* el);
+            virtual void ShouldRead(int id, BalHandle<BalEventLoop> el);
 
             // note: call when fd can write
-            virtual void ShouldWrite(int id, BalEventLoop* el);
+            virtual void ShouldWrite(int id, BalHandle<BalEventLoop> el);
         };
 
         typedef BalHandle<IBalEventCallback> BalEventCallback;
-        BalCallbackSinkBegin(CBalEventCallback)
-        BalCallbackSink(void, ShouldRead,  (int id, BalEventLoop* el), (id, el))
-        BalCallbackSink(void, ShouldWrite, (int id, BalEventLoop* el), (id, el))
-        BalCallbackSinkComplete()
-        BalCallbackSinkPtrDefine(CBalEventCallback, IBalEventCallback)
 
         struct BalEventCallbackWrapper
         {
             BalEventCallback callback;
             int index_; unsigned int status_;
         };
+
+        BalCallbackSinkBegin(CBalEventCallback)
+        BalCallbackSink(void, ShouldRead,  (int id, BalHandle<BalEventLoop> el), (id, el))
+        BalCallbackSink(void, ShouldWrite, (int id, BalHandle<BalEventLoop> el), (id, el))
+        BalCallbackSinkComplete()
+        BalCallbackSinkPtrDefine(CBalEventCallback, IBalEventCallback)
     }
 }
 #endif

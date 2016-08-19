@@ -1,5 +1,5 @@
-#ifndef Ballet_Common_BalOwnerShip_H
-#define Ballet_Common_BalOwnerShip_H
+#ifndef Ballet_Common_BalUseCount_H
+#define Ballet_Common_BalUseCount_H
 #include "BalInct.h"
 #include "BalNull.h"
 #include "BalCoable.h"

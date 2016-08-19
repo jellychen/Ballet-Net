@@ -6,7 +6,11 @@
 #include <string.h>
 #include <iostream>
 #include <assert.h>
+#include <limits.h>
 #include <stdexcept>
+#include <vector>
+#include <map>
+#include <list>
 
 #include "BalNull.h"
 #include "BalCoable.h"
