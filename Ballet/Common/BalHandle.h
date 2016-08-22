@@ -24,7 +24,7 @@ namespace Ballet
             if (nullptr_() != BaseT::useCount_)
             {
                 BaseT::object_ = object;
-                BalHandle::__InternalUseCount(BaseT::useCount_);
+                BalHandle::__InternalUseCount(object, BaseT::useCount_);
                 return;
             }
             throw std::runtime_error("BalHandle Construct Failed");
@@ -37,6 +37,7 @@ namespace Ballet
             {
                 BaseT::object_ = object;
                 BaseT::useCount_ = count;
+                BaseT::useCount_?BaseT::useCount_->AddUseCount(true):(void)0;
                 return;
             }
             throw std::runtime_error("BalHandle Construct Failed");
@@ -83,7 +84,7 @@ namespace Ballet
 
     private:
         inline void __InternalUseCount(...) {}
-        inline void __InternalUseCount(const BalShareThis* shareThis, BalUseCount* count)
+        inline void __InternalUseCount(BalShareThis* shareThis, BalUseCount* count)
         {
             if (0 != shareThis && 0 != count)
             {

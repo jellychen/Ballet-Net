@@ -4,6 +4,7 @@ using namespace std;
 #include "t_BufferArray.h"
 #include "t_Callback.h"
 #include "t_HandleCast.h"
+#include "t_ShareThis.h"
 #include "Ballet/Network/BalInetAddress.h"
 #include "Ballet/Network/BalEventLoop.h"
 #include "Ballet/Network/BalSocket.h"
@@ -17,6 +18,6 @@ int main(int argc, char const *argv[])
     //t_HandleCast_main();
 
     //cout<<sizeof(Ballet::Network::BalEventCallback)<<endl;
-    new BalInetAddress(10, false, false);
+    t_ShareThis_main();
     return 0;
 }
