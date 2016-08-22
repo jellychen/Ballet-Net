@@ -30,6 +30,18 @@ namespace Ballet
             throw std::runtime_error("BalHandle Construct Failed");
         }
 
+        explicit BalHandle(T* object, BalUseCount* count)
+        {
+            if (nullptr_() == object) return;
+            if (nullptr_() != count)
+            {
+                BaseT::object_ = object;
+                BaseT::useCount_ = count;
+                return;
+            }
+            throw std::runtime_error("BalHandle Construct Failed");
+        }
+
         template<typename U>
         explicit BalHandle(const BalHandle<U>& handle, T* object)
         {

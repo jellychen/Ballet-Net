@@ -8,6 +8,7 @@ namespace Ballet
 {
     namespace BootUtil
     {
+        class BalTimer;
         class BalTimeHeap :public BalNoCoable
         {
         public:
@@ -15,7 +16,7 @@ namespace Ballet
             virtual ~BalTimeHeap();
 
         public:
-            bool TickTimer();
+            bool Tick(BalHandle<BalTimer>&);
             bool SetTimerOut(int id, BalTimerCallback&, uint32_t time);
             bool SetTimerLoop(int id, BalTimerCallback&, uint32_t time);
             bool RemoveTimer(int id, BalTimerCallback&);
