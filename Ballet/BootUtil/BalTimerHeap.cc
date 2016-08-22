@@ -45,14 +45,7 @@ bool BalTimeHeap::Tick(BalHandle<BalTimer>& timer)
                 node.info_->callback_->OnTime(node.info_->id_, timer);
             }
 
-            if (infoPool_.size() >= (size_t)(cacheInfo_))
-            {
-                delete(node.info_);
-            }
-            else
-            {
-                infoPool_.push_back(node.info_);
-            }
+            ReleaseInformation(node.info_);
             node.info_ = nullptr_();
         }
         else
@@ -60,16 +53,19 @@ bool BalTimeHeap::Tick(BalHandle<BalTimer>& timer)
             if (node.info_->callback_ && node.info_->callback_->IsCallable())
             {
                 node.info_->callback_->OnTime(node.info_->id_, timer);
-                if (node.info_->id_ == heapArray_[1].info_->id_
-                    && node.info_->callback_ == heapArray_[1].info_->callback_)
+                if (heapArray_.size() > 1 && node.info_->id_ == heapArray_[1].info_->id_
+                        && node.info_->callback_ == heapArray_[1].info_->callback_)
                 {
                     this->RemoveTimerNode(1);
+                    node.tickTime_ = current;
+                    node.timeout_ = node.timeout_ + node.info_->timeSpec_;
                     this->AddTimerNode(node);
                 }
             }
             else
             {
                 this->RemoveTimerNode(1);
+                ReleaseInformation(node.info_);
             }
         }
     }
@@ -98,25 +94,20 @@ bool BalTimeHeap::RemoveTimer(int id, BalTimerCallback& callback)
     if (indexPool_.end() == iter) return false;
 
     uint32_t index = iter->second->index_; indexPool_.erase(iter);
-    if (cacheInfo_ <= infoPool_.size())
-    {
-        delete(heapArray_[index].info_);
-    }
-    else
-    {
-        infoPool_.push_back(heapArray_[index].info_);
-    }
+    ReleaseInformation(heapArray_[index].info_);
     heapArray_[index].info_ = nullptr_();
     return RemoveTimerNode(index);
 }
 
-int64_t BalTimeHeap::LastestTimeout() const
+int BalTimeHeap::LastestTimeout() const
 {
     if (1 >= heapArray_.size())
     {
         return INT_MAX;
     }
+
     int64_t time = heapArray_[1].timeout_ - timestamp_.Current();
+    if (time > INT_MAX) return INT_MAX;
     return time > 0 ?time :0;
 }
 
@@ -198,10 +189,23 @@ bool BalTimeHeap::SetTimerNode(int id, BalTimerCallback& callback, uint32_t time
         info = infoPool_.front(); infoPool_.pop_front();
     }
     if (nullptr_() == info) return false;
-    
+
     info->timeSpec_ = time; info->callback_ = callback;
     info->id_ = id; info->index_ = -1; info->loop_ = loop;
     indexPool_[timerIndex] = info;
     BalTimerNode node = {info, timestamp_.Current() +time, 0};
     return AddTimerNode(node);
+}
+
+bool BalTimeHeap::ReleaseInformation(BalTimerInformation* info)
+{
+    if (!info) return false;
+    if (cacheInfo_ <= infoPool_.size())
+    {
+        delete(info);
+    }
+    else
+    {
+        infoPool_.push_back(info);
+    }
 }

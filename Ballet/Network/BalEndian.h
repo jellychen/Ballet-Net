@@ -7,7 +7,6 @@ namespace Ballet
 {
     namespace Network
     {
-
         inline uint64_t HostToNetwork64(uint64_t host64)
         {
           return htobe64(host64);

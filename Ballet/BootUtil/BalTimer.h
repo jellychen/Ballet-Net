@@ -11,10 +11,10 @@ namespace Ballet
         {
         public:
             bool Tick();
-            bool SetTimerOut(int, BalTimerCallback&, uint32_t);
-            bool SetTimerLoop(int, BalTimerCallback&, uint32_t);
-            bool RemoveTimer(int, BalTimerCallback&);
-            int64_t LastestTimeout() const;
+            bool SetTimerOut(int, BalTimerCallback, uint32_t);
+            bool SetTimerLoop(int, BalTimerCallback, uint32_t);
+            bool RemoveTimer(int, BalTimerCallback);
+            int LastestTimeout() const;
 
         private:
             BalTimeHeap timerImplement_;

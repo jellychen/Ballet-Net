@@ -20,12 +20,13 @@ namespace Ballet
             bool SetTimerOut(int id, BalTimerCallback&, uint32_t time);
             bool SetTimerLoop(int id, BalTimerCallback&, uint32_t time);
             bool RemoveTimer(int id, BalTimerCallback&);
-            int64_t LastestTimeout() const;
+            int LastestTimeout() const;
 
         private:
             bool AddTimerNode(BalTimerNode& node);
             bool RemoveTimerNode(uint32_t index);
             bool SetTimerNode(int, BalTimerCallback&, uint32_t, bool);
+            bool ReleaseInformation(BalTimerInformation* info);
 
         private:
             size_t cacheInfo_;

@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include <endian.h>
 #include <dirent.h>
 #include <fcntl.h>
 #include <utime.h>

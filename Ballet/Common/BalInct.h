@@ -7,6 +7,8 @@
 #include <iostream>
 #include <assert.h>
 #include <limits.h>
+#include <endian.h>
+#include <arpa/inet.h>
 #include <stdexcept>
 #include <vector>
 #include <map>

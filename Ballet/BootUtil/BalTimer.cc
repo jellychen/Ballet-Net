@@ -7,22 +7,22 @@ bool BalTimer::Tick()
     return timerImplement_.Tick(timerPtr);
 }
 
-bool BalTimer::SetTimerOut(int id, BalTimerCallback& callback, uint32_t time)
+bool BalTimer::SetTimerOut(int id, BalTimerCallback callback, uint32_t time)
 {
     return timerImplement_.SetTimerOut(id, callback, time);
 }
 
-bool BalTimer::SetTimerLoop(int id, BalTimerCallback& callback, uint32_t time)
+bool BalTimer::SetTimerLoop(int id, BalTimerCallback callback, uint32_t time)
 {
     return timerImplement_.SetTimerLoop(id, callback, time);
 }
 
-bool BalTimer::RemoveTimer(int id, BalTimerCallback& callback)
+bool BalTimer::RemoveTimer(int id, BalTimerCallback callback)
 {
     return timerImplement_.RemoveTimer(id, callback);
 }
 
-int64_t BalTimer::LastestTimeout() const
+int BalTimer::LastestTimeout() const
 {
     return timerImplement_.LastestTimeout();
 }

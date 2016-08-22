@@ -1,7 +1,8 @@
 #include "BalEventLoop.h"
+using namespace Ballet::BootUtil;
 using namespace Ballet::Network;
 
-BalEventLoop::BalEventLoop():efd_(0),created_(false)
+BalEventLoop::BalEventLoop():efd_(0),created_(false),timer_(new BalTimer)
 {
 }
 
@@ -101,5 +102,54 @@ bool BalEventLoop::DeleteEventListener(int id, BalEventEnum event)
         if (0 != ::epoll_ctl(efd_, EPOLL_CTL_MOD, id, &ev)) return false;
         iter->second.status_ = ev.events;
     }
+    return true;
+}
+
+bool BalEventLoop::SetTimerOut(int id, BalTimerCallback callback, uint32_t time)
+{
+    return timer_->SetTimerOut(id, callback, time);
+}
+
+bool BalEventLoop::SetTimerLoop(int id, BalTimerCallback callback, uint32_t time)
+{
+    return timer_->SetTimerLoop(id, callback, time);
+}
+
+bool BalEventLoop::RemoveTimer(int id, BalTimerCallback callback)
+{
+    return timer_->RemoveTimer(id, callback);
+}
+
+bool BalEventLoop::DoEventSelect(int time)
+{
+    releaseList_.clear();
+    if (efd_ <= 0) return false;
+    const static int MAX_READ_FD = 10240;
+    struct epoll_event events[MAX_READ_FD];
+    int nfds = ::epoll_wait(efd_, events, MAX_READ_FD, time);
+
+    timer_->Tick();
+
+    if (nfds > 0)
+    {
+
+    }
+    return true;
+}
+
+bool BalEventLoop::DoEventLoop()
+{
+    shouldExit_ = false;
+    while (true)
+    {
+        DoEventSelect((int)timer_->LastestTimeout());
+        if (shouldExit_) break;
+    }
+    return true;
+}
+
+bool BalEventLoop::DoExitEventLoop()
+{
+    shouldExit_ = true;
     return true;
 }

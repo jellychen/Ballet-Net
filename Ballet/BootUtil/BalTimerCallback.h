@@ -10,7 +10,7 @@ namespace Ballet
 
         struct IBalTimerCallback :public BalCallback
         {
-            virtual void OnTime(uint32_t, BalHandle<BalTimer>);
+            virtual void OnTime(uint32_t, BalHandle<BalTimer>) =0;
         };
 
         typedef BalHandle<IBalTimerCallback> BalTimerCallback;
