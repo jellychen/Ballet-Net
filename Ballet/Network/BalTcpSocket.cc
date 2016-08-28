@@ -1,5 +1,6 @@
 #include "BalTcpSocket.h"
-using namespace Ballet::Network;
+using namespace Ballet;
+using namespace Network;
 
 BalTcpSocket::BalTcpSocket(bool v6):BalSocket(0)
 {
@@ -13,10 +14,26 @@ BalTcpSocket::BalTcpSocket(bool v6):BalSocket(0)
     }
 }
 
+bool BalTcpSocket::Close() throw()
+{
+    if (0 == fd_) return false;
+    ::close(fd_); fd_ = 0;
+    return true;
+}
+
 bool BalTcpSocket::Listen() throw()
 {
     if (0 == fd_) return false;
     return 0 == ::listen(fd_, SOMAXCONN);
+}
+
+bool BalTcpSocket::Accpet(int& id) throw()
+{
+    if (0 == fd_) return false;
+    struct sockaddr_in6 clientAddr;
+    socklen_t socketLen = sizeof(clientAddr);
+    id = ::accept(fd_, (sockaddr*)&clientAddr, &socketLen);
+    return id > 0;
 }
 
 bool BalTcpSocket::SetNoBlock() throw()
@@ -49,8 +66,9 @@ bool BalTcpSocket::SetKeepAlive(bool set) throw()
     SOL_SOCKET, SO_KEEPALIVE, &val, (socklen_t)(sizeof(int)));
 }
 
-bool BalTcpSocket::BindAddress(const BalInetAddress* addr) throw()
+bool BalTcpSocket::BindAddress(BalHandle<BalInetAddress> addr) throw()
 {
-    if (0 == fd_ || nullptr_() == addr) return false;
-    return ::bind(fd_, addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6))) >= 0;
+    if (0 == fd_ || !addr) return false;
+    return 0 == ::bind(fd_,\
+    addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6))) >= 0;
 }

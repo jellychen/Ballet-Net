@@ -14,12 +14,14 @@ namespace Ballet
             explicit BalTcpSocket(bool v6);
 
         public:
+            bool Close() throw();
             bool Listen() throw();
+            bool Accpet(int& id) throw();
             bool SetNoBlock() throw();
             bool ShutdownWrite() throw();
             bool SetNoDelay(bool set) throw();
             bool SetKeepAlive(bool set) throw();
-            bool BindAddress(const BalInetAddress* addr) throw();
+            bool BindAddress(BalHandle<BalInetAddress> addr) throw();
         };
     }
 }

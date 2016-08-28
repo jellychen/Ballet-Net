@@ -66,6 +66,7 @@ bool BalTimeHeap::Tick(BalHandle<BalTimer>& timer)
             {
                 this->RemoveTimerNode(1);
                 ReleaseInformation(node.info_);
+                node.info_ = nullptr_();
             }
         }
     }

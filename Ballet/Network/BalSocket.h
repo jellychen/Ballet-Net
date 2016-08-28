@@ -16,9 +16,10 @@ namespace Ballet
 
         public:
             int  GetFd() const {return fd_;}
+            bool IsV6Socket() const;
             bool SetReuseAddr(bool set) throw();
             bool SetReusePort(bool set) throw();
-            
+
         protected:
             int fd_;
         };

@@ -54,6 +54,11 @@ namespace Ballet
             }
         }
 
+        inline BalWeakHandle& operator=(int Null) throw()
+        {
+            this->Clear(); return *this;
+        }
+
         inline BalWeakHandle& operator=(const BalWeakHandle& handle) throw()
         {
             if (BaseT::HashCode() == handle.HashCode())

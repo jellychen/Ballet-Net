@@ -5,8 +5,6 @@
 #include "BalNetworkInct.h"
 #include "BalElement.h"
 #include "BalEventCallback.h"
-#include <list>
-#include <map>
 
 namespace Ballet
 {
@@ -16,7 +14,7 @@ namespace Ballet
 
         enum BalEventEnum
         {
-            EventNone = 0, EventRead = 1, EventWrite = 2,
+            EventNone = 0, EventRead = 1, EventWrite = 2, EventReadWrite =3,
         };
 
         class BalEventLoop
@@ -29,7 +27,7 @@ namespace Ballet
         public:
             bool Create() throw();
             bool AddDelayReleaseElement(BalHandle<BalElement>&);
-            bool SetEventListener(int, BalEventEnum, BalEventCallback&);
+            bool SetEventListener(int, BalEventEnum, BalEventCallback);
             bool DeleteEventListener(int id, BalEventEnum event);
             bool SetTimerOut(int, BalTimerCallback, uint32_t);
             bool SetTimerLoop(int, BalTimerCallback, uint32_t);
@@ -38,13 +36,18 @@ namespace Ballet
             bool DoEventLoop();
             bool DoExitEventLoop();
 
+        protected:
+            bool DoReadyPool(BalHandle<BalEventLoop> eventLoop);
+            int  AddReadyItem(int, int, int, BalEventCallback&, mapEventPoolT::iterator);
+            bool RemoveReadyItem(int, int, int);
+
         private:
             BalHandle<BalTimer> timer_;
-            int efd_; bool created_; bool shouldExit_;
-            typedef std::list<BalHandle<BalElement> > vecReleaseListT;
-            vecReleaseListT releaseList_;
-            typedef std::map<int, BalEventCallbackWrapper> mapEventPoolT;
+            vecReadyPoolT readyPool_;
             mapEventPoolT eventPool_;
+            vecReleaseListT releaseList_;
+            bool doReadyPoolProtected_;
+            int efd_; bool created_; bool shouldExit_;
         };
     }
 }

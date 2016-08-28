@@ -15,8 +15,9 @@ namespace Ballet
             BalTcpClient(BalHandle<BalEventLoop> eventLoop);
 
         public:
-            bool BindAddress(const BalInetAddress* addr) throw();
-            
+            bool Connect(BalHandle<BalInetAddress> addr) throw();
+            bool BindAddress(BalHandle<BalInetAddress> addr) throw();
+
         protected:
             BalWeakHandle<BalEventLoop> eventLoop_;
         };

@@ -8,7 +8,11 @@
 #include <assert.h>
 #include <limits.h>
 #include <endian.h>
+#include <signal.h>
+#include <dlfcn.h>
 #include <arpa/inet.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <stdexcept>
 #include <vector>
 #include <map>
@@ -18,4 +22,6 @@
 #include "BalCoable.h"
 #include "BalHandleInct.h"
 #include "BalCallback.h"
+#include "BalVariable.h"
+#include "BalSingleton.h"
 #endif

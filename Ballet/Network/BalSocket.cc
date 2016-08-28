@@ -13,6 +13,15 @@ BalSocket::~BalSocket()
     }
 }
 
+bool BalSocket::IsV6Socket() const
+{
+    struct sockaddr addr;
+    memset((void*)&addr, 0, sizeof(sockaddr));
+    socklen_t len = (socklen_t)sizeof(sockaddr);
+    ::getsockname(fd_, &addr, &len);
+    return AF_INET6 == addr.sa_family;
+}
+
 bool BalSocket::SetReuseAddr(bool set) throw()
 {
     if (0 == fd_) return false;

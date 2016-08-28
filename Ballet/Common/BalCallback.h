@@ -86,6 +86,10 @@ public:                                                                         
         Sink* object = dynamic_cast<Sink*>(sinkObject_.GetBasePtr());           \
         return BalHandle<Sink>(sinkObject_, object);                            \
     }                                                                           \
+    operator BalHandle<Sink>() const                                            \
+    {                                                                           \
+        return SinkName##Ptr::GetHandle();                                      \
+    }                                                                           \
 private:                                                                        \
     BalHandle<CallbackSinkT> sinkObject_;                                       \
 };
