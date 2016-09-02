@@ -27,13 +27,13 @@ bool BalTcpSocket::Listen() throw()
     return 0 == ::listen(fd_, SOMAXCONN);
 }
 
-bool BalTcpSocket::Accpet(int& id) throw()
+bool BalTcpSocket::Accpet(int* id) throw()
 {
-    if (0 == fd_) return false;
+    if (0 == fd_ || nullptr_() == id) return false;
     struct sockaddr_in6 clientAddr;
     socklen_t socketLen = sizeof(clientAddr);
-    id = ::accept(fd_, (sockaddr*)&clientAddr, &socketLen);
-    return id > 0;
+    *id = ::accept(fd_, (sockaddr*)&clientAddr, &socketLen);
+    return *id > 0;
 }
 
 bool BalTcpSocket::SetNoBlock() throw()

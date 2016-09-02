@@ -1,16 +1,16 @@
-#ifndef Ballet_Common_BalBufferArray_H
-#define Ballet_Common_BalBufferArray_H
+#ifndef Ballet_Common_BalBufferStream_H
+#define Ballet_Common_BalBufferStream_H
 #include "Common/BalInct.h"
 
 namespace Ballet
 {
     namespace Network
     {
-        class BalBufferArray :public BalNoCoable
+        class BalBufferStream :public BalNoCoable
         {
         public:
-            BalBufferArray();
-            virtual ~BalBufferArray();
+            BalBufferStream();
+            virtual ~BalBufferStream();
 
         public:
             size_t GetSize();

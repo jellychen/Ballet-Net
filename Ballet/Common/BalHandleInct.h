@@ -53,25 +53,25 @@ namespace Ballet
         return (l.HashCode() != r.HashCode());
     }
 
-    template<class T, class U>
+    template<class U, class T>
     BalHandle<T> static_cast_(const BalHandle<U>& ptr)
     {
         return BalHandle<T>(ptr, static_cast_<T*>(ptr.GetBasePtr()));
     }
 
-    template<class T, class U>
+    template<class U, class T>
     BalHandle<T> dynamic_cast_(const BalHandle<U>& ptr)
     {
         return BalHandle<T>(ptr, dynamic_cast<T*>(ptr.GetBasePtr()));
     }
 
-    template<class T, class U>
+    template<class U, class T>
     BalWeakHandle<T> static_cast_(const BalWeakHandle<U>& ptr)
     {
         return BalWeakHandle<T>(ptr, static_cast_<T*>(ptr.GetBasePtr()));
     }
 
-    template<class T, class U>
+    template<class U, class T>
     BalWeakHandle<T> dynamic_cast_(const BalWeakHandle<U>& ptr)
     {
         return BalWeakHandle<T>(ptr, dynamic_cast<T*>(ptr.GetBasePtr()));

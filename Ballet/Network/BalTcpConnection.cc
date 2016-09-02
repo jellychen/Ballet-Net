@@ -1,17 +1,17 @@
 #include "BalNetDefine.h"
+#include "BalTcpServer.h"
 #include "BalTcpConnection.h"
 using namespace Ballet;
 using namespace Network;
 
 BalTcpConnection::BalTcpConnection(int id,
     BalHandle<BalTcpServer> server,
-    BalHandle<BalEventLoop> eventLoop,
-    uint32_t maxReadBufferSize, uint32_t maxWriteBufferSize)
+    BalHandle<BalEventLoop> eventLoop)
     :BalTcpSocket(id), eventCallbackPtr_(this)
 {
-    maxReadBufferSize_ = maxReadBufferSize;
-    maxWriteBufferSize_ = maxWriteBufferSize;
-    status_ = StatusNone; eventLoop_ = eventLoop;
+    tcpServer_ = server;
+    eventLoop_ = eventLoop; status_ = StatusEstablish;
+
     if (!eventLoop_ || !eventCallbackPtr_)
     {
         throw std::runtime_error("BalTcpConnection Construct Failed!");
@@ -46,8 +46,11 @@ bool BalTcpConnection::ShutdownWrite()
 
 bool BalTcpConnection::WriteBuffer(const char* buffer, uint32_t len)
 {
-    if (nullptr_() == buffer || 0 == len) return false;
-    return true;
+    if (nullptr_() == buffer || 0 == len || !tcpServer_) return false;
+    BalHandle<BalTcpConnection> conn(this, shareUserCount_);
+    BalHandle<IBalTcpProtocol> protocol = tcpServer_->GetProtocol();
+    if (!protocol) return false;
+    return protocol->Encode(buffer, len, conn);
 }
 
 bool BalTcpConnection::WriteRawBuffer(const char* buffer, uint32_t len)
@@ -56,14 +59,22 @@ bool BalTcpConnection::WriteRawBuffer(const char* buffer, uint32_t len)
     return true;
 }
 
+uint32_t BalTcpConnection::TimeoutTime() const
+{
+    if (!tcpServer_) return 0;
+    return tcpServer_->GetTimeout();
+}
+
 uint32_t BalTcpConnection::MaxReadBufferSize() const
 {
-    return maxReadBufferSize_;
+    if (!tcpServer_) return 0;
+    return tcpServer_->GetMaxReadBufferSize();
 }
 
 uint32_t BalTcpConnection::MaxWriteBufferSize() const
 {
-    return maxWriteBufferSize_;
+    if (!tcpServer_) return 0;
+    return tcpServer_->GetMaxWriteBufferSize();
 }
 
 BalConnStatusEnum BalTcpConnection::GetStatus() const

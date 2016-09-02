@@ -31,6 +31,22 @@ bool BalEventLoop::AddDelayReleaseElement(BalHandle<BalElement>& element)
     return true;
 }
 
+bool BalEventLoop::AddHoldSomeElement(int id, BalHandle<BalElement>& element)
+{
+    if (!element) return false;
+    mapHoldPoolT::iterator iter = holdElementPool_.find(id);
+    if (iter != holdElementPool_.end()) return false;
+    holdElementPool_[id] = element;
+}
+
+bool BalEventLoop::RemoveHoldElement(int id)
+{
+    mapHoldPoolT::iterator iter = holdElementPool_.find(id);
+    if (iter == holdElementPool_.end()) return false;
+    holdElementPool_.erase(iter);
+    return true;
+}
+
 bool BalEventLoop::SetEventListener(int id, BalEventEnum event, BalEventCallback callback)
 {
     if (efd_ <= 0 || id <= 0 || !callback) return false;

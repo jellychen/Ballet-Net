@@ -1,5 +1,4 @@
 #include <Ballet/Common/BalInct.h>
-#include <Ballet/Network/BalBufferArray.h>
 #include <Ballet/ServiceWorker/BalServiceManage.h>
 using namespace Ballet;
 using namespace Network;
@@ -42,11 +41,12 @@ void t_Service_main()
 {
     std::cout << BALSINGLETON_EXIT << std::endl;
 
+
     t_Service_class service_callback;
     BalHandle<IBalServiceCallback> callback; callback = service_callback.ptr.GetHandle();
 
     BalHandle<BalService> service(new BalService(callback, 4));
-
+    BalHandle<BalService> service1; service1->ServiceAvailable();
     BalHandle<BalServiceManage> manage(new BalServiceManage());
     manage->AttachService(service);
     manage->Start(true);

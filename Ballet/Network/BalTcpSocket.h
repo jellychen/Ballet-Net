@@ -16,7 +16,7 @@ namespace Ballet
         public:
             bool Close() throw();
             bool Listen() throw();
-            bool Accpet(int& id) throw();
+            bool Accpet(int* id) throw();
             bool SetNoBlock() throw();
             bool ShutdownWrite() throw();
             bool SetNoDelay(bool set) throw();

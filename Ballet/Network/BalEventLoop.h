@@ -20,6 +20,7 @@ namespace Ballet
         class BalEventLoop
             :public BalElement ,public BalShareThis ,public BalNoCoable
         {
+            typedef std::map<int, BalHandle<BalElement> > mapHoldPoolT;
         public:
             BalEventLoop();
             virtual ~BalEventLoop();
@@ -27,6 +28,8 @@ namespace Ballet
         public:
             bool Create() throw();
             bool AddDelayReleaseElement(BalHandle<BalElement>&);
+            bool AddHoldSomeElement(int, BalHandle<BalElement>&);
+            bool RemoveHoldElement(int);
             bool SetEventListener(int, BalEventEnum, BalEventCallback);
             bool DeleteEventListener(int id, BalEventEnum event);
             bool SetTimerOut(int, BalTimerCallback, uint32_t);
@@ -46,6 +49,7 @@ namespace Ballet
             vecReadyPoolT readyPool_;
             mapEventPoolT eventPool_;
             vecReleaseListT releaseList_;
+            mapHoldPoolT holdElementPool_;
             bool doReadyPoolProtected_;
             int efd_; bool created_; bool shouldExit_;
         };

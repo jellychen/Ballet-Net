@@ -1,8 +1,8 @@
-#include "BalBufferArray.h"
+#include "BalBufferStream.h"
 using namespace Ballet;
 using namespace Network;
 
-BalBufferArray::BalBufferArray():start_(0),end_(0),capacity_(32)
+BalBufferStream::BalBufferStream():start_(0),end_(0),capacity_(32)
 {
     buffer_ = (uint8_t*)malloc(capacity_);
     if (nullptr_() == buffer_)
@@ -11,7 +11,7 @@ BalBufferArray::BalBufferArray():start_(0),end_(0),capacity_(32)
     }
 }
 
-BalBufferArray::~BalBufferArray()
+BalBufferStream::~BalBufferStream()
 {
     if (nullptr_() != buffer_)
     {
@@ -19,7 +19,7 @@ BalBufferArray::~BalBufferArray()
     }
 }
 
-bool BalBufferArray::Clear()
+bool BalBufferStream::Clear()
 {
     if (nullptr_() != buffer_)
     {
@@ -30,17 +30,17 @@ bool BalBufferArray::Clear()
     return buffer_;
 }
 
-size_t BalBufferArray::GetSize()
+size_t BalBufferStream::GetSize()
 {
     return end_ - start_;
 }
 
-size_t BalBufferArray::Capacity() const
+size_t BalBufferStream::Capacity() const
 {
     return capacity_;
 }
 
-bool BalBufferArray::AppendBuffer(const uint8_t* buffer, size_t len)
+bool BalBufferStream::AppendBuffer(const uint8_t* buffer, size_t len)
 {
     if (nullptr_() == buffer || 0 == len) return false;
     if (capacity_ - end_ > len)
@@ -75,13 +75,13 @@ bool BalBufferArray::AppendBuffer(const uint8_t* buffer, size_t len)
     return true;
 }
 
-void BalBufferArray::ConsumeBuffer(size_t len)
+void BalBufferStream::ConsumeBuffer(size_t len)
 {
     start_ += len;
     if (start_ > end_) start_ = end_;
 }
 
-uint8_t* BalBufferArray::RawBuffer() const
+uint8_t* BalBufferStream::RawBuffer() const
 {
-    return buffer_;
+    return buffer_ + start_;
 }

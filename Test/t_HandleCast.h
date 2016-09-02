@@ -53,7 +53,7 @@ void t_HandleCast_main()
     {
         BalHandle<t_HandleClass_class_inhreit> objectInhert(new t_HandleClass_class_inhreit);
         BalHandle<t_HandleClass_class_base> objectBase
-        = dynamic_cast_<t_HandleClass_class_base, t_HandleClass_class_inhreit>(objectInhert);
+        = dynamic_cast_<t_HandleClass_class_inhreit, t_HandleClass_class_base>(objectInhert);
         if (objectBase)
         {
             objectBase->test();
