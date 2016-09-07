@@ -4,8 +4,10 @@
 #include "BalNetworkInct.h"
 #include "BalTcpSocket.h"
 #include "BalTcpCallback.h"
+#include "BalInetAddress.h"
 #include "BalEventLoop.h"
-#include "BalTcpProtocol.h"
+#include "BalProtocol.h"
+#include "BalChannel.h"
 #include "BalBufferStream.h"
 
 namespace Ballet
@@ -14,16 +16,16 @@ namespace Ballet
     {
         enum BalConnStatusEnum
         {
-            StatusNone = 0,
-            StatusConnecting = 1,
-            StatusEstablish = 2,
-            StatusClosing = 3,
-            StatusClosed = 4,
+            StatusNone          = 0,
+            StatusConnecting    = 1,
+            StatusEstablish     = 2,
+            StatusClosing       = 3,
+            StatusClosed        = 4,
         };
 
         class BalTcpServer;
-        class BalTcpConnection
-            :public BalElement, public BalTcpSocket, public BalShareThis
+        class BalTcpConnection :public BalElement,
+            public BalTcpSocket, public BalChannel, public BalShareThis
         {
         public:
             BalTcpConnection(int id,
@@ -43,6 +45,10 @@ namespace Ballet
             BalHandle<BalInetAddress> GetPeer() const;
             BalHandle<BalInetAddress> GetLocal() const;
 
+        private:
+            bool DoCloseProcedure(bool accord);
+            bool OnReceiveBuffer(const char* buffer, uint32_t len);
+
         public:
             virtual BalEventCallbackEnum ShouldRead(int id, BalHandle<BalEventLoop> el);
             virtual BalEventCallbackEnum ShouldWrite(int id, BalHandle<BalEventLoop> el);
@@ -53,7 +59,8 @@ namespace Ballet
             BalHandle<IBalTcpCallback> tcpCallback_;
             BalWeakHandle<BalTcpServer> tcpServer_;
             CBalEventCallbackPtr<BalTcpConnection> eventCallbackPtr_;
-
+            int32_t protocolWantSize_;
+            BalBufferStream readBuffer_, writeBuffer_;
         };
     }
 }

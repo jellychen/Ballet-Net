@@ -11,7 +11,6 @@ namespace Ballet
         public:
             virtual ~BalElement()
             {
-
             }
         };
     }

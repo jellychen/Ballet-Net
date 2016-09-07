@@ -1,6 +1,16 @@
 #include "BalInetAddress.h"
 using namespace Ballet::Network;
 
+BalInetAddress::BalInetAddress(struct sockaddr_in& addr):addr_(addr)
+{
+    v6_ = false; addr_ = addr;
+}
+
+BalInetAddress::BalInetAddress(struct sockaddr_in6& addrV6):addrV6_(addrV6)
+{
+    v6_ = true; addrV6_ = addrV6;
+}
+
 BalInetAddress::BalInetAddress(uint16_t port, bool lookback, bool v6)
 {
     if (true == v6)
@@ -40,16 +50,6 @@ BalInetAddress::BalInetAddress(const char* ip, uint16_t port, bool v6)
         addr_.sin_port = HostToNetwork16(port);
         ::inet_pton(AF_INET, ip, &addr_.sin_addr);
     }
-}
-
-BalInetAddress::BalInetAddress(const struct sockaddr_in& addr):addr_(addr)
-{
-    v6_ = false;
-}
-
-BalInetAddress::BalInetAddress(const struct sockaddr_in6& addrV6):addrV6_(addrV6)
-{
-    v6_ = true;
 }
 
 bool BalInetAddress::IsV6() const

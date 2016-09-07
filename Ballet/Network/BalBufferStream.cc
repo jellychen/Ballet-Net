@@ -4,7 +4,7 @@ using namespace Network;
 
 BalBufferStream::BalBufferStream():start_(0),end_(0),capacity_(32)
 {
-    buffer_ = (uint8_t*)malloc(capacity_);
+    buffer_ = (char*)malloc(capacity_);
     if (nullptr_() == buffer_)
     {
         throw std::runtime_error("BalBufferArray Construct Failed");
@@ -26,7 +26,7 @@ bool BalBufferStream::Clear()
         free(buffer_);
     }
     start_ = 0; end_ = 0; capacity_ = 32;
-    buffer_ = (uint8_t*)malloc(capacity_);
+    buffer_ = (char*)malloc(capacity_);
     return buffer_;
 }
 
@@ -40,7 +40,7 @@ size_t BalBufferStream::Capacity() const
     return capacity_;
 }
 
-bool BalBufferStream::AppendBuffer(const uint8_t* buffer, size_t len)
+bool BalBufferStream::AppendBuffer(const char* buffer, size_t len)
 {
     if (nullptr_() == buffer || 0 == len) return false;
     if (capacity_ - end_ > len)
@@ -66,7 +66,7 @@ bool BalBufferStream::AppendBuffer(const uint8_t* buffer, size_t len)
             mallocSize *= 1.5;
         }
 
-        uint8_t* newBuffer = (uint8_t*)malloc(mallocSize);
+        char* newBuffer = (char*)malloc(mallocSize);
         if (nullptr_() == newBuffer) return false;
         memcpy(newBuffer, buffer_+start_, dataLen);
         memcpy(newBuffer, buffer, len); free(buffer_);
@@ -81,7 +81,7 @@ void BalBufferStream::ConsumeBuffer(size_t len)
     if (start_ > end_) start_ = end_;
 }
 
-uint8_t* BalBufferStream::RawBuffer() const
+char* BalBufferStream::RawBuffer() const
 {
     return buffer_ + start_;
 }

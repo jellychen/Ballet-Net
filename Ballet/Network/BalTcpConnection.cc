@@ -5,14 +5,13 @@ using namespace Ballet;
 using namespace Network;
 
 BalTcpConnection::BalTcpConnection(int id,
-    BalHandle<BalTcpServer> server,
-    BalHandle<BalEventLoop> eventLoop)
-    :BalTcpSocket(id), eventCallbackPtr_(this)
+    BalHandle<BalTcpServer> server, BalHandle<BalEventLoop> eventLoop)
+    :BalTcpSocket(id), eventCallbackPtr_(this), protocolWantSize_(-1)
 {
     tcpServer_ = server;
     eventLoop_ = eventLoop; status_ = StatusEstablish;
 
-    if (!eventLoop_ || !eventCallbackPtr_)
+    if (!eventLoop_ || !eventCallbackPtr_ || !tcpServer_)
     {
         throw std::runtime_error("BalTcpConnection Construct Failed!");
     }
@@ -36,6 +35,14 @@ bool BalTcpConnection::Close(bool now)
         return false;
     }
 
+    if (true == now || 0 == writeBuffer_.GetSize())
+    {
+        DoCloseProcedure(true);
+    }
+    else
+    {
+        status_ = StatusClosing;
+    }
     return true;
 }
 
@@ -46,16 +53,64 @@ bool BalTcpConnection::ShutdownWrite()
 
 bool BalTcpConnection::WriteBuffer(const char* buffer, uint32_t len)
 {
+    if (StatusEstablish != status_) return false;
     if (nullptr_() == buffer || 0 == len || !tcpServer_) return false;
+
     BalHandle<BalTcpConnection> conn(this, shareUserCount_);
-    BalHandle<IBalTcpProtocol> protocol = tcpServer_->GetProtocol();
+    BalHandle<BalChannel> channel =
+        dynamic_cast_<BalTcpConnection, BalChannel>(conn);
+    BalHandle<IBalProtocol> protocol = tcpServer_->GetProtocol();
     if (!protocol) return false;
-    return protocol->Encode(buffer, len, conn);
+    return protocol->Encode(buffer, len, channel);
 }
 
 bool BalTcpConnection::WriteRawBuffer(const char* buffer, uint32_t len)
 {
-    if (nullptr_() == buffer || 0 == len) return false;
+    if (StatusEstablish != status_) return false;
+    if (nullptr_() == buffer || 0 == len || !tcpServer_) return false;
+
+    if (writeBuffer_.GetSize() <= 0)
+    {
+        uint32_t writeSize = WriteBuffer(buffer, len);
+        if (0 == writeSize || (writeSize == -1 && errno != EAGAIN))
+        {
+            DoCloseProcedure(false); return false;
+        }
+        else
+        {
+            if (-1 == writeSize)
+            {
+                writeBuffer_.AppendBuffer(buffer, (size_t)(len));
+            }
+            else if (writeSize < len)
+            {
+                writeBuffer_.AppendBuffer(buffer + writeSize, (size_t)(len - writeSize));
+            }
+        }
+    }
+    else
+    {
+        writeBuffer_.AppendBuffer(buffer, (size_t)(len));
+    }
+
+    if (tcpServer_->GetMaxWriteBufferSize() <= writeBuffer_.GetSize())
+    {
+        BalHandle<BalTcpConnection> conn(this, shareUserCount_);
+        BalHandle<IBalTcpCallback> callback = tcpServer_->GetCallback();
+        if (callback && callback->IsCallable())
+        {
+            callback->OnWriteBufferFull(conn);
+        }
+    }
+    else if (0 == writeBuffer_.GetSize())
+    {
+        BalHandle<BalTcpConnection> conn(this, shareUserCount_);
+        BalHandle<IBalTcpCallback> callback = tcpServer_->GetCallback();
+        if (callback && callback->IsCallable())
+        {
+            callback->OnWriteBufferDrain(conn);
+        }
+    }
     return true;
 }
 
@@ -84,20 +139,172 @@ BalConnStatusEnum BalTcpConnection::GetStatus() const
 
 BalHandle<BalInetAddress> BalTcpConnection::GetLocal() const
 {
-    return BalHandle<BalInetAddress>(new BalInetAddress(10, true, true));
+    struct sockaddr_in6 addr;
+    memset((void*)&addr, 0, sizeof(struct sockaddr_in6));
+    socklen_t len = (socklen_t)sizeof(struct sockaddr_in6);
+    ::getsockname(GetFd(), (struct sockaddr*)&addr, &len);
+    if (AF_INET6 == (*(struct sockaddr*)&addr).sa_family)
+    {
+        sockaddr_in6& addr6 = (*(struct sockaddr_in6*)&addr);
+        return BalHandle<BalInetAddress>(new BalInetAddress(addr6));
+    }
+    else
+    {
+        sockaddr_in& addr4 = (*(struct sockaddr_in*)&addr);
+        return BalHandle<BalInetAddress>(new BalInetAddress(addr4));
+    }
 }
 
 BalHandle<BalInetAddress> BalTcpConnection::GetPeer() const
 {
-    return BalHandle<BalInetAddress>(new BalInetAddress(10, true, true));
+    struct sockaddr addr;
+    memset((void*)&addr, 0, sizeof(struct sockaddr));
+    socklen_t len = (socklen_t)sizeof(struct sockaddr);
+    ::getpeername(GetFd(), (struct sockaddr*)&addr, &len);
+    if (AF_INET6 == (*(struct sockaddr*)&addr).sa_family)
+    {
+        sockaddr_in6& addr6 = (*(struct sockaddr_in6*)&addr);
+        return BalHandle<BalInetAddress>(new BalInetAddress(addr6));
+    }
+    else
+    {
+        sockaddr_in& addr4 = (*(struct sockaddr_in*)&addr);
+        return BalHandle<BalInetAddress>(new BalInetAddress(addr4));
+    }
+}
+
+bool BalTcpConnection::DoCloseProcedure(bool accord)
+{
+    if (eventLoop_)
+    {
+        eventLoop_->DeleteEventListener(GetFd(), EventReadWrite);
+    }
+
+    if (tcpServer_)
+    {
+        tcpServer_->EraseTcpConnection(GetFd());
+    }
+
+    status_ = StatusClosed;
+    BalHandle<BalTcpConnection> conn(this, shareUserCount_);
+    BalHandle<IBalTcpCallback> callback = tcpServer_->GetCallback();
+    if (callback && callback->IsCallable())
+    {
+        callback->OnClose(conn, accord);
+    }
+
+    BalHandle<BalElement> element
+        = dynamic_cast_<BalTcpConnection, BalElement>(conn);
+    if (element && eventLoop_)
+    {
+        eventLoop_->AddDelayReleaseElement(element);
+    }
+    return true;
+}
+
+bool BalTcpConnection::OnReceiveBuffer(const char* buffer, uint32_t len)
+{
+    BalHandle<BalTcpConnection> conn(this, shareUserCount_);
+    BalHandle<IBalTcpCallback> callback = tcpServer_->GetCallback();
+    if (callback && callback->IsCallable())
+    {
+        callback->OnReceive(conn, buffer, len);
+    }
+    return true;
 }
 
 BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop> el)
 {
+    if (StatusEstablish != status_ || !tcpServer_)
+    {
+         return EventRetNone;
+    }
+
+    char buffer[10240] = {0};
+
+    while (true)
+    {
+        uint32_t readSize = ReadBuffer(buffer, 10240);
+        if (0 == readSize || (-1 == readSize && EAGAIN != errno))
+        {
+            DoCloseProcedure(false);
+            return EventRetNone;
+        }
+        readBuffer_.AppendBuffer(buffer, readSize);
+
+        if (readSize < 10240) break;
+    }
+
+    while (readBuffer_.GetSize() > 0)
+    {
+        char* rawBuffer = readBuffer_.RawBuffer();
+        size_t rawBufferSize = readBuffer_.GetSize();
+        if (-1 == protocolWantSize_)
+        {
+            uint32_t wantSize = -1;
+            BalProtocolStatus ret = tcpServer_->GetProtocol()
+                ->CalSize(rawBuffer, (uint32_t)rawBufferSize, &wantSize);
+
+            if (StatusFail == ret)
+            {
+                DoCloseProcedure(true);
+                break;
+            }
+            else if (StatusSuccess == ret)
+            {
+                protocolWantSize_ = wantSize;
+            }
+        }
+
+        if (-1 != protocolWantSize_)
+        {
+            if ((uint32_t)rawBufferSize >= protocolWantSize_)
+            {
+                BalHandle<BalTcpConnection> conn(this, shareUserCount_);
+                BalHandle<BalChannel> channel =
+                    dynamic_cast_<BalTcpConnection, BalChannel>(conn);
+                bool ret = tcpServer_->GetProtocol()
+                    ->Decode(rawBuffer, (uint32_t)rawBufferSize, channel);
+
+                if (false == ret)
+                {
+                    DoCloseProcedure(true);
+                    break;
+                }
+                else
+                {
+                    readBuffer_.ConsumeBuffer((size_t)protocolWantSize_);
+                    protocolWantSize_ = -1;
+                }
+            }
+        }
+    }
     return EventRetNone;
 }
 
 BalEventCallbackEnum BalTcpConnection::ShouldWrite(int id, BalHandle<BalEventLoop> el)
 {
+    if (StatusEstablish != status_) return EventRetNone;
+    if (0 == writeBuffer_.GetSize()) return EventRetNone;
+
+    char* buffer = (char*)writeBuffer_.RawBuffer();
+    uint32_t size = (uint32_t)writeBuffer_.GetSize();
+    uint32_t writeSize = WriteBuffer(buffer, size);
+    if (size == writeSize)
+    {
+        if (StatusClosing == status_)
+        {
+            DoCloseProcedure(true);
+        }
+        else
+        {
+            BalHandle<BalTcpConnection> conn(this, shareUserCount_);
+            BalHandle<IBalTcpCallback> callback = tcpServer_->GetCallback();
+            if (callback && callback->IsCallable())
+            {
+                callback->OnWriteBufferDrain(conn);
+            }
+        }
+    }
     return EventRetNone;
 }

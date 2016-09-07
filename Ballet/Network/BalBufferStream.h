@@ -16,12 +16,12 @@ namespace Ballet
             size_t GetSize();
             size_t Capacity() const;
             bool Clear();
-            bool AppendBuffer(const uint8_t*, size_t);
+            bool AppendBuffer(const char*, size_t);
             void ConsumeBuffer(size_t);
-            uint8_t* RawBuffer() const;
+            char* RawBuffer() const;
 
         private:
-            uint8_t* buffer_;
+            char* buffer_;
             size_t start_, end_, capacity_;
         };
     }

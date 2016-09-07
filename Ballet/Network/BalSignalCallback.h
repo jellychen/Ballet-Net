@@ -7,7 +7,6 @@ namespace Ballet
     namespace Network
     {
         class BalEventLoop;
-
         struct IBalSignalCallback :public BalCallback
         {
             virtual void OnReceiveSignal(int id, BalHandle<BalEventLoop> el) =0;

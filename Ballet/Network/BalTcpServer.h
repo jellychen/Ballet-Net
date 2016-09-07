@@ -4,7 +4,7 @@
 #include "BalNetworkInct.h"
 #include "BalTcpSocket.h"
 #include "BalEventLoop.h"
-#include "BalTcpProtocol.h"
+#include "BalProtocol.h"
 #include "BalTcpConnection.h"
 #include "BalTcpCallback.h"
 
@@ -19,7 +19,7 @@ namespace Ballet
             typedef std::map<int, BalHandle<BalTcpConnection> > mapConnPoolT;
         public:
             BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
-                BalHandle<IBalTcpProtocol> protocol, uint32_t maxPackage,
+                BalHandle<IBalProtocol> protocol, uint32_t maxPackage,
                 BalHandle<IBalTcpCallback> callback, uint32_t timeout,
                 uint32_t maxReadBufferSize, uint32_t maxWriteBufferSize);
 
@@ -30,8 +30,9 @@ namespace Ballet
             uint32_t GetMaxPackageSize() const;
             uint32_t GetMaxReadBufferSize() const;
             uint32_t GetMaxWriteBufferSize() const;
-            BalHandle<IBalTcpProtocol> GetProtocol() const;
-            
+            BalHandle<IBalProtocol> GetProtocol() const;
+            BalHandle<IBalTcpCallback> GetCallback() const;
+
         public:
             virtual BalEventCallbackEnum ShoudAccept(int id, BalHandle<BalEventLoop> el);
 
@@ -45,7 +46,7 @@ namespace Ballet
             uint32_t maxWriteBufferSize_;
             mapConnPoolT mapConnPool_;
             BalWeakHandle<BalEventLoop> eventLoop_;
-            BalHandle<IBalTcpProtocol> protocol_;
+            BalHandle<IBalProtocol> protocol_;
             BalHandle<IBalTcpCallback> tcpCallback_;
             CBalEventCallbackPtr<BalTcpServer> eventCallbackPtr_;
         };

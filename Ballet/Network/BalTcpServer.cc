@@ -4,17 +4,18 @@ using namespace Ballet;
 using namespace Network;
 
 BalTcpServer::BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
-    BalHandle<IBalTcpProtocol> protocol, uint32_t maxPackage,
+    BalHandle<IBalProtocol> protocol, uint32_t maxPackage,
     BalHandle<IBalTcpCallback> callback, uint32_t timeout,
     uint32_t maxReadBufferSize, uint32_t maxWriteBufferSize)
     :BalTcpSocket(v6),eventCallbackPtr_(this)
 {
+    protocol_ = protocol;
     eventLoop_ = eventLoop;
     maxPackageSize_ = maxPackage;
     maxReadBufferSize_ = maxReadBufferSize;
     maxWriteBufferSize_ = maxWriteBufferSize;
 
-    if (!callback || !callback->IsCallable())
+    if (!callback || !callback->IsCallable() || !timeout || !protocol_)
     {
         throw std::runtime_error("BalTcpServer Construct Failed");
     }
@@ -63,9 +64,14 @@ uint32_t BalTcpServer::GetMaxWriteBufferSize() const
     return maxWriteBufferSize_;
 }
 
-BalHandle<IBalTcpProtocol> BalTcpServer::GetProtocol() const
+BalHandle<IBalProtocol> BalTcpServer::GetProtocol() const
 {
     return protocol_;
+}
+
+BalHandle<IBalTcpCallback> BalTcpServer::GetCallback() const
+{
+    return tcpCallback_;
 }
 
 bool BalTcpServer::EraseTcpConnection(int id)

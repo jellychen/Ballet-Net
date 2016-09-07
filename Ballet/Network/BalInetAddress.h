@@ -11,17 +11,17 @@ namespace Ballet
         class BalInetAddress
         {
         public:
+            BalInetAddress(struct sockaddr_in& addr);
+            BalInetAddress(struct sockaddr_in6& addrV6);
             explicit BalInetAddress(uint16_t port, bool lookback, bool v6);
             explicit BalInetAddress(const char* ip, uint16_t port, bool v6);
-            explicit BalInetAddress(const struct sockaddr_in& addr);
-            explicit BalInetAddress(const struct sockaddr_in6& addrV6);
 
         public:
             bool IsV6() const;
             std::string GetIp() const;
             uint16_t GetPort() const;
             struct sockaddr* GetSocketAddr() const;
-            
+
         private:
             bool v6_;
             union
