@@ -30,6 +30,7 @@ namespace Ballet
             uint32_t GetMaxPackageSize() const;
             uint32_t GetMaxReadBufferSize() const;
             uint32_t GetMaxWriteBufferSize() const;
+            BalHandle<BalEventLoop> GetEventLoop() const;
             BalHandle<IBalProtocol> GetProtocol() const;
             BalHandle<IBalTcpCallback> GetCallback() const;
 

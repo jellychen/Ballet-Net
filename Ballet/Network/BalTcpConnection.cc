@@ -4,22 +4,36 @@
 using namespace Ballet;
 using namespace Network;
 
-BalTcpConnection::BalTcpConnection(int id,
-    BalHandle<BalTcpServer> server, BalHandle<BalEventLoop> eventLoop)
-    :BalTcpSocket(id), eventCallbackPtr_(this), protocolWantSize_(-1)
+BalTcpConnection::BalTcpConnection(int id, BalHandle<BalTcpServer> server)
+    :BalTcpSocket(id), eventCallbackPtr_(this),timerCallbackPtr_(this), protocolWantSize_(-1)
 {
     tcpServer_ = server;
-    eventLoop_ = eventLoop; status_ = StatusEstablish;
+    status_ = StatusEstablish;
 
-    if (!eventLoop_ || !eventCallbackPtr_ || !tcpServer_)
+    if (!eventCallbackPtr_ || !tcpServer_)
     {
-        throw std::runtime_error("BalTcpConnection Construct Failed!");
+        throw std::runtime_error("BalTcpConnection Construct Failed! @1");
+        return;
     }
     else
     {
+        timerCallbackPtr_->HookOnTime(&BalTcpConnection::OnTime);
         eventCallbackPtr_->HookShouldRead(&BalTcpConnection::ShouldRead);
         eventCallbackPtr_->HookShouldWrite(&BalTcpConnection::ShouldWrite);
-        eventLoop_->SetEventListener(GetFd(), EventReadWrite, eventCallbackPtr_);
+    }
+
+    lastReadTime_ = BootUtil::BalTimeStamp::GetCurrent();
+    BalHandle<BalEventLoop> eventLoop = tcpServer_->GetEventLoop();
+    if (!eventLoop)
+    {
+        throw std::runtime_error("BalTcpConnection Construct Failed! @2");
+        return;
+    }
+    else
+    {
+        uint32_t timeout = (uint32_t)(tcpServer_->GetTimeout());
+        eventLoop->SetTimerOut(0, timerCallbackPtr_.GetHandle(), timeout);
+        eventLoop->SetEventListener(GetFd(), EventReadWrite, eventCallbackPtr_);
     }
 }
 
@@ -175,30 +189,33 @@ BalHandle<BalInetAddress> BalTcpConnection::GetPeer() const
 
 bool BalTcpConnection::DoCloseProcedure(bool accord)
 {
-    if (eventLoop_)
-    {
-        eventLoop_->DeleteEventListener(GetFd(), EventReadWrite);
-    }
+    BalHandle<BalTcpConnection> conn(this, shareUserCount_);
 
     if (tcpServer_)
     {
+        BalHandle<BalEventLoop> eventLoop = tcpServer_->GetEventLoop();
+        if (eventLoop)
+        {
+            eventLoop->DeleteEventListener(GetFd(), EventReadWrite);
+            eventLoop->RemoveTimer(0, timerCallbackPtr_.GetHandle());
+        }
+        BalHandle<BalElement> element
+            = dynamic_cast_<BalTcpConnection, BalElement>(conn);
+        if (element && eventLoop)
+        {
+            eventLoop->AddDelayReleaseElement(element);
+        }
         tcpServer_->EraseTcpConnection(GetFd());
     }
 
     status_ = StatusClosed;
-    BalHandle<BalTcpConnection> conn(this, shareUserCount_);
     BalHandle<IBalTcpCallback> callback = tcpServer_->GetCallback();
     if (callback && callback->IsCallable())
     {
         callback->OnClose(conn, accord);
     }
 
-    BalHandle<BalElement> element
-        = dynamic_cast_<BalTcpConnection, BalElement>(conn);
-    if (element && eventLoop_)
-    {
-        eventLoop_->AddDelayReleaseElement(element);
-    }
+
     return true;
 }
 
@@ -211,6 +228,25 @@ bool BalTcpConnection::OnReceiveBuffer(const char* buffer, uint32_t len)
         callback->OnReceive(conn, buffer, len);
     }
     return true;
+}
+
+void BalTcpConnection::OnTime(uint32_t id, BalHandle<BalTimer> timer)
+{
+    int64_t current = BootUtil::BalTimeStamp::GetCurrent();
+    int64_t timeout = (int64_t)tcpServer_->GetTimeout();
+    if (current - lastReadTime_ > timeout)
+    {
+        DoCloseProcedure(true);
+    }
+    else
+    {
+        uint32_t outTime = (uint32_t)(timeout - current + lastReadTime_);
+        BalHandle<BalEventLoop> eventLoop = tcpServer_->GetEventLoop();
+        if (eventLoop)
+        {
+            eventLoop->SetTimerOut(0, timerCallbackPtr_.GetHandle(), outTime);
+        }
+    }
 }
 
 BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop> el)
@@ -279,6 +315,8 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
             }
         }
     }
+
+    lastReadTime_ = BootUtil::BalTimeStamp::GetCurrent();
     return EventRetNone;
 }
 

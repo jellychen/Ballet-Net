@@ -64,6 +64,11 @@ uint32_t BalTcpServer::GetMaxWriteBufferSize() const
     return maxWriteBufferSize_;
 }
 
+BalHandle<BalEventLoop> BalTcpServer::GetEventLoop() const
+{
+    return eventLoop_;
+}
+
 BalHandle<IBalProtocol> BalTcpServer::GetProtocol() const
 {
     return protocol_;
@@ -93,7 +98,7 @@ BalEventCallbackEnum BalTcpServer::ShoudAccept(int id, BalHandle<BalEventLoop> e
     }
 
     BalHandle<BalTcpServer> server(this, shareUserCount_);
-    BalHandle<BalTcpConnection> conn(new BalTcpConnection(accpetId, server, el));
+    BalHandle<BalTcpConnection> conn(new BalTcpConnection(accpetId, server));
     if (conn)
     {
         mapConnPool_[accpetId] = conn;

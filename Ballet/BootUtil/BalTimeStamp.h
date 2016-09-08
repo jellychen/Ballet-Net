@@ -10,6 +10,9 @@ namespace Ballet
         {
         public:
             int64_t Current() const;
+
+        public:
+            static int64_t GetCurrent();
         };
     }
 }

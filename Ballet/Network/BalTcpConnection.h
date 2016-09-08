@@ -1,6 +1,7 @@
 #ifndef Ballet_Network_BalTcpConnection_H
 #define Ballet_Network_BalTcpConnection_H
 #include "Common/BalInct.h"
+#include "BootUtil/BalTimeStamp.h"
 #include "BalNetworkInct.h"
 #include "BalTcpSocket.h"
 #include "BalTcpCallback.h"
@@ -28,9 +29,7 @@ namespace Ballet
             public BalTcpSocket, public BalChannel, public BalShareThis
         {
         public:
-            BalTcpConnection(int id,
-                BalHandle<BalTcpServer> server,
-                BalHandle<BalEventLoop> eventLoop);
+            BalTcpConnection(int id, BalHandle<BalTcpServer> server);
 
         public:
             bool IsV6();
@@ -48,7 +47,8 @@ namespace Ballet
         private:
             bool DoCloseProcedure(bool accord);
             bool OnReceiveBuffer(const char* buffer, uint32_t len);
-
+            void OnTime(uint32_t id, BalHandle<BalTimer> timer);
+            
         public:
             virtual BalEventCallbackEnum ShouldRead(int id, BalHandle<BalEventLoop> el);
             virtual BalEventCallbackEnum ShouldWrite(int id, BalHandle<BalEventLoop> el);
@@ -58,8 +58,9 @@ namespace Ballet
             BalWeakHandle<BalEventLoop> eventLoop_;
             BalHandle<IBalTcpCallback> tcpCallback_;
             BalWeakHandle<BalTcpServer> tcpServer_;
+            CBalTimerCallbackPtr<BalTcpConnection> timerCallbackPtr_;
             CBalEventCallbackPtr<BalTcpConnection> eventCallbackPtr_;
-            int32_t protocolWantSize_;
+            int32_t protocolWantSize_; int64_t lastReadTime_;
             BalBufferStream readBuffer_, writeBuffer_;
         };
     }
