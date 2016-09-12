@@ -48,7 +48,7 @@ uint32_t BalSocket::ReadBuffer(char* buffer, uint32_t size) const
     {
         return 0;
     }
-    return (uint32_t)::write(fd_, buffer, size);
+    return (uint32_t)::read(fd_, buffer, size);
 }
 
 uint32_t BalSocket::WriteBuffer(char* buffer, uint32_t size) const
@@ -57,5 +57,5 @@ uint32_t BalSocket::WriteBuffer(char* buffer, uint32_t size) const
     {
         return 0;
     }
-    return (uint32_t)::read(fd_, buffer, size);
+    return (uint32_t)::write(fd_, buffer, size);
 }

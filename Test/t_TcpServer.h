@@ -50,7 +50,7 @@ public:
         BalHandle<BalInetAddress> addr(new BalInetAddress(9410, false, false));
         BalHandle<BalTcpServer> server
         (
-            new BalTcpServer(false, eventLoop, protocol, 10240, callback, 10000, 10000, 10000)
+            new BalTcpServer(false, eventLoop, protocol, 10240, callback, 5000, 10000, 10000)
         );
 
 
@@ -63,7 +63,8 @@ public:
 
     void OnConnect(BalHandle<BalTcpConnection> conn, bool success)
     {
-
+        conn->SetNoDelay(true);
+        conn->SetReuseAddr(true);
         std::cout<<"OnConnect"<<std::endl;
     }
 

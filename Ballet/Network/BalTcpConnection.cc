@@ -262,25 +262,27 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
 {
     if (StatusEstablish != status_ || !tcpServer_)
     {
-         return EventRetNone;
+         return EventRetClose;
     }
 
     char buffer[10240] = {0};
-
-    while (true)
+    BalEventCallbackEnum ret = EventRetContinue;
+    uint32_t readSize = ReadBuffer(buffer, 10240);
+    if (0 == readSize || (-1 == readSize && EAGAIN != errno))
     {
-        uint32_t readSize = ReadBuffer(buffer, 10240);
-        if (0 == readSize || (-1 == readSize && EAGAIN != errno))
-        {
-            DoCloseProcedure(false, false);
-            return EventRetClose;
-        }
+        DoCloseProcedure(false, false);
+        return EventRetClose;
+    }
+    lastReadTime_ = BootUtil::BalTimeStamp::GetCurrent();
 
-        if (0 < readSize)
-        {
-            readBuffer_.AppendBuffer(buffer, readSize);
-        }
-        if (readSize < 10240) break;
+    if (0 < readSize)
+    {
+        readBuffer_.AppendBuffer(buffer, readSize);
+    }
+
+    if (readSize < 10240)
+    {
+        ret = EventRetComplete;
     }
 
     while (readBuffer_.GetSize() > 0)
@@ -325,11 +327,17 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
                     protocolWantSize_ = -1;
                 }
             }
+            else
+            {
+                break;
+            }
+        }
+        else
+        {
+            break;
         }
     }
-
-    lastReadTime_ = BootUtil::BalTimeStamp::GetCurrent();
-    return EventRetNone;
+    return ret;
 }
 
 BalEventCallbackEnum BalTcpConnection::ShouldWrite(int id, BalHandle<BalEventLoop> el)
