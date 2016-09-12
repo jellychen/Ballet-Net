@@ -26,6 +26,7 @@ namespace Ballet
         public:
             bool IsV6();
             bool Close();
+            bool Start(BalHandle<BalInetAddress> addr);
             uint32_t GetTimeout() const;
             uint32_t GetMaxPackageSize() const;
             uint32_t GetMaxReadBufferSize() const;

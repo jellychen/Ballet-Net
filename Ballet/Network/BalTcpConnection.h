@@ -30,7 +30,8 @@ namespace Ballet
         {
         public:
             BalTcpConnection(int id, BalHandle<BalTcpServer> server);
-
+            virtual ~BalTcpConnection();
+            
         public:
             bool IsV6();
             bool Close(bool now);
@@ -45,10 +46,10 @@ namespace Ballet
             BalHandle<BalInetAddress> GetLocal() const;
 
         private:
-            bool DoCloseProcedure(bool accord);
+            bool DoCloseProcedure(bool accord, bool delEvent);
             bool OnReceiveBuffer(const char* buffer, uint32_t len);
             void OnTime(uint32_t id, BalHandle<BalTimer> timer);
-            
+
         public:
             virtual BalEventCallbackEnum ShouldRead(int id, BalHandle<BalEventLoop> el);
             virtual BalEventCallbackEnum ShouldWrite(int id, BalHandle<BalEventLoop> el);

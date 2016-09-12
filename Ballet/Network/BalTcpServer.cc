@@ -11,6 +11,7 @@ BalTcpServer::BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
 {
     protocol_ = protocol;
     eventLoop_ = eventLoop;
+    maxTimeout_ = timeout;
     maxPackageSize_ = maxPackage;
     maxReadBufferSize_ = maxReadBufferSize;
     maxWriteBufferSize_ = maxWriteBufferSize;
@@ -24,14 +25,14 @@ BalTcpServer::BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
         tcpCallback_ = callback;
     }
 
-    if (!eventLoop_ || !eventCallbackPtr_ || !Listen() || !SetNoBlock())
+    if (!eventLoop_ || !eventCallbackPtr_ || !SetNoBlock())
     {
         throw std::runtime_error("BalTcpServer Construct Failed");
     }
     else
     {
         eventCallbackPtr_->HookShouldRead(&BalTcpServer::ShoudAccept);
-        eventLoop_->SetEventListener(GetFd(), EventRead, eventCallbackPtr_.GetHandle());
+        eventLoop_->SetEventListener(GetFd(), EventRead, eventCallbackPtr_);
     }
 }
 
@@ -47,6 +48,13 @@ bool BalTcpServer::Close()
         eventLoop_->DeleteEventListener(GetFd(), EventRead);
     }
     return BalTcpSocket::Close();
+}
+
+bool BalTcpServer::Start(BalHandle<BalInetAddress> addr)
+{
+    if (false == BindAddress(addr)) return false;
+    if (false == Listen()) return false;
+    return true;
 }
 
 uint32_t BalTcpServer::GetTimeout() const
@@ -81,6 +89,7 @@ BalHandle<IBalTcpCallback> BalTcpServer::GetCallback() const
 
 bool BalTcpServer::EraseTcpConnection(int id)
 {
+    std::cout<<"BalTcpServer::EraseTcpConnection "<<id<<std::endl;
     mapConnPoolT::iterator iter = mapConnPool_.find(id);
     if (mapConnPool_.end() != iter)
     {
@@ -91,21 +100,34 @@ bool BalTcpServer::EraseTcpConnection(int id)
 
 BalEventCallbackEnum BalTcpServer::ShoudAccept(int id, BalHandle<BalEventLoop> el)
 {
+    std::cout<<"BalTcpServer::ShoudAccept"<<std::endl;
+
     int accpetId = 0;
     if (!BalTcpSocket::Accpet(&accpetId))
     {
+        std::cout<<"BalTcpServer::ShoudAccept EventRetComplete"<<std::endl;
         return EventRetComplete;
     }
 
-    BalHandle<BalTcpServer> server(this, shareUserCount_);
-    BalHandle<BalTcpConnection> conn(new BalTcpConnection(accpetId, server));
-    if (conn)
+    try
     {
-        mapConnPool_[accpetId] = conn;
-        if (tcpCallback_ && tcpCallback_->IsCallable())
+        BalHandle<BalTcpServer> server(this, shareUserCount_);
+        BalHandle<BalTcpConnection> conn(new BalTcpConnection(accpetId, server));
+        if (conn)
         {
-            tcpCallback_->OnConnect(conn, true);
+            mapConnPool_[accpetId] = conn;
+            conn->SetNoDelay(true); conn->SetReuseAddr(true);
+            if (tcpCallback_ && tcpCallback_->IsCallable())
+            {
+                tcpCallback_->OnConnect(conn, true);
+            }
         }
     }
+    catch (std::exception&)
+    {
+        std::cout<<"BalTcpServer::ShoudAccept exception"<<std::endl;
+    }
+
+    std::cout<<"BalTcpServer::ShoudAccept end "<< accpetId <<std::endl;
     return EventRetContinue;
 }

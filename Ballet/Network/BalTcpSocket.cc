@@ -17,6 +17,7 @@ BalTcpSocket::BalTcpSocket(bool v6):BalSocket(0)
 bool BalTcpSocket::Close() throw()
 {
     if (0 == fd_) return false;
+    std::cout<<"BalTcpSocket::Close"<<fd_<<std::endl;
     ::close(fd_); fd_ = 0;
     return true;
 }
@@ -32,16 +33,17 @@ bool BalTcpSocket::Accpet(int* id) throw()
     if (0 == fd_ || nullptr_() == id) return false;
     struct sockaddr_in6 clientAddr;
     socklen_t socketLen = sizeof(clientAddr);
+    std::cout<<"BalTcpSocket::Accpet start "<<fd_<<std::endl;
     *id = ::accept(fd_, (sockaddr*)&clientAddr, &socketLen);
+    std::cout<<"BalTcpSocket::Accpet end"<<std::endl;
     return *id > 0;
 }
 
 bool BalTcpSocket::SetNoBlock() throw()
 {
     if (0 == fd_) return false;
-    int status = ::fcntl(fd_, F_GETFL, 0);
-    status |= O_NONBLOCK |FD_CLOEXEC;
-    return 0 == ::fcntl(fd_, F_SETFD, status);
+    std::cout<<"BalTcpSocket::SetNoBlock "<< fd_ <<std::endl;
+    return 0 == ::fcntl(fd_, F_SETFL, fcntl(fd_, F_GETFL)|O_NONBLOCK|FD_CLOEXEC);
 }
 
 bool BalTcpSocket::ShutdownWrite() throw()
@@ -54,8 +56,27 @@ bool BalTcpSocket::SetNoDelay(bool set) throw()
 {
     if (0 == fd_) return false;
     int val = set? 1: 0;
-    return 0 == ::setsockopt(fd_,\
-    IPPROTO_TCP, TCP_NODELAY, &val, (socklen_t)(sizeof(int)));
+    std::cout<<"BalTcpSocket::SetNoDelay "<<val<<std::endl;
+    return 0 == ::setsockopt(fd_, IPPROTO_TCP, TCP_NODELAY, &val, sizeof(int));
+}
+
+bool BalTcpSocket::SetReuseAddr(bool set) throw()
+{
+    if (0 == fd_) return false;
+    int val = set? 1: 0;
+    std::cout<<"BalTcpSocket::SetReuseAddr "<<val<<std::endl;
+    return 0 == ::setsockopt(fd_, IPPROTO_TCP, SO_REUSEADDR, &val, sizeof(int));
+}
+
+bool BalTcpSocket::SetReusePort(bool set) throw()
+{
+#ifdef SO_REUSEPORT
+    if (0 == fd_) return false;
+    int val = set? 1: 0;
+    return 0 == ::setsockopt(fd_, IPPROTO_TCP, SO_REUSEPORT, &val, sizeof(int));
+#else
+    return false;
+#endif
 }
 
 bool BalTcpSocket::SetKeepAlive(bool set) throw()
@@ -70,5 +91,5 @@ bool BalTcpSocket::BindAddress(BalHandle<BalInetAddress> addr) throw()
 {
     if (0 == fd_ || !addr) return false;
     return 0 == ::bind(fd_,\
-    addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6))) >= 0;
+    addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6)));
 }

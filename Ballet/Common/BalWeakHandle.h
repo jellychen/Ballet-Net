@@ -15,14 +15,7 @@ namespace Ballet
         {
         }
 
-        BalWeakHandle(const BalWeakHandle& handle) throw()
-        {
-            BaseT::object_ = handle.object_;
-            BaseT::useCount_ = handle.useCount_;
-            BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
-        }
-
-        template<typename U>
+        template <typename U>
         BalWeakHandle(const BalWeakHandle<U>& handle, T* object) throw()
         {
             if (nullptr_() == object) return;
@@ -31,11 +24,42 @@ namespace Ballet
             BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
         }
 
+        BalWeakHandle(const BalWeakHandle& handle) throw()
+        {
+            BaseT::object_ = handle.object_;
+            BaseT::useCount_ = handle.useCount_;
+            BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
+        }
+
+        template <typename U>
+        BalWeakHandle(const BalWeakHandle<U>& handle) throw()
+        {
+            if (!handle) return;
+            BaseT::object_ = dynamic_cast<T*>(handle.GetBasePtr());
+            if (nullptr_() != BaseT::object_)
+            {
+                BaseT::useCount_ = handle.useCount_;
+                BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
+            }
+        }
+
         BalWeakHandle(const BalHandle<T>& handle) throw()
         {
             BaseT::object_ = handle.object_;
             BaseT::useCount_ = handle.useCount_;
             BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
+        }
+
+        template <typename U>
+        BalWeakHandle(const BalHandle<U>& handle) throw()
+        {
+            if (!handle) return;
+            BaseT::object_ = dynamic_cast<T*>(handle.GetBasePtr());
+            if (nullptr_() != BaseT::object_)
+            {
+                BaseT::useCount_ = handle.useCount_;
+                BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
+            }
         }
 
         inline ~BalWeakHandle()
@@ -61,15 +85,28 @@ namespace Ballet
 
         inline BalWeakHandle& operator=(const BalWeakHandle& handle) throw()
         {
+            T* object = handle.object_;
+            BalUseCount* count = handle.useCount_;
+            count? count->AddUseCount(false) :(void)0; this->Clear();
+            BaseT::object_ = object; BaseT::useCount_ = count;
+            return *this;
+        }
+
+        template <typename U>
+        inline BalWeakHandle& operator=(const BalWeakHandle<U>& handle) throw()
+        {
             if (BaseT::HashCode() == handle.HashCode())
             {
                 return *this;
             }
 
             this->Clear();
-            BaseT::object_ = handle.object_;
-            BaseT::useCount_ = handle.useCount_;
-            BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
+            BaseT::object_ = dynamic_cast<T*>(handle.GetBasePtr());
+            if (nullptr_() != BaseT::object_)
+            {
+                BaseT::useCount_ = handle.useCount_;
+                BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
+            }
             return *this;
         }
 
@@ -84,6 +121,24 @@ namespace Ballet
             BaseT::object_ = handle.object_;
             BaseT::useCount_ = handle.useCount_;
             BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
+            return *this;
+        }
+
+        template <typename U>
+        inline BalWeakHandle& operator=(const BalHandle<T>& handle) throw()
+        {
+            if (BaseT::HashCode() == handle.HashCode())
+            {
+                return *this;
+            }
+
+            this->Clear();
+            BaseT::object_ = dynamic_cast<T*>(handle.GetBasePtr());
+            if (nullptr_() != BaseT::object_)
+            {
+                BaseT::useCount_ = handle.useCount_;
+                BaseT::useCount_?BaseT::useCount_->AddUseCount(false):(void)0;
+            }
             return *this;
         }
     };

@@ -46,6 +46,15 @@ namespace Ballet
             return 0;
         }
 
+        inline long UseHoldCount() const throw()
+        {
+            if (useCount_)
+            {
+                return useCount_->useCount_;
+            }
+            return 0;
+        }
+
         inline T* GetBasePtr() const throw()
         {
             return object_;

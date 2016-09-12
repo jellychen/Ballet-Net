@@ -37,6 +37,7 @@ bool BalEventLoop::AddHoldSomeElement(int id, BalHandle<BalElement>& element)
     mapHoldPoolT::iterator iter = holdElementPool_.find(id);
     if (iter != holdElementPool_.end()) return false;
     holdElementPool_[id] = element;
+    return true;
 }
 
 bool BalEventLoop::RemoveHoldElement(int id)
@@ -95,6 +96,7 @@ bool BalEventLoop::DeleteEventListener(int id, BalEventEnum event)
 
     mapEventPoolT::iterator iter = eventPool_.find(id);
     if (eventPool_.end() == iter) false;
+
     struct epoll_event ev;
     memset(&ev, 0, sizeof(epoll_event));
     ev.data.fd = id; ev.events = iter->second.status_;
@@ -148,7 +150,6 @@ bool BalEventLoop::DoEventSelect(int time)
     const static int MAX_READ_FD = 10240;
     struct epoll_event events[MAX_READ_FD];
     int nfds = ::epoll_wait(efd_, events, MAX_READ_FD, time);
-
     timer_->Tick();
 
     for (int i = 0; i < nfds; ++i)
@@ -191,17 +192,17 @@ bool BalEventLoop::DoExitEventLoop()
 
 bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
 {
-    if (!eventLoop) return false;
+    if (!eventLoop || 0 == readyPool_.size()) return false;
 
     doReadyPoolProtected_ = true;
-    size_t len = readyPool_.size() -1;
-    for (size_t i = 0; i <= len;)
+    bool resize = false;
+    int32_t len = (uint32_t)readyPool_.size();
+    for (int32_t i = 0; i < len;)
     {
         bool closed = false;
         BalEventReadyItem& item = readyPool_[i];
-        if (!item.callback_ || !item.callback_->IsCallable()) continue;
+        if (!item.callback_ || !(item.callback_->IsCallable())) continue;
         BalEventCallbackEnum ret = EventRetNone;
-
         if (0 != item.read_)
         {
             ret = item.callback_->ShouldRead(item.fd_, eventLoop);
@@ -215,7 +216,7 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
             }
         }
 
-        if (false == close && 0 != item.write_)
+        if (false == closed && 0 != item.write_)
         {
             ret = item.callback_->ShouldWrite(item.fd_, eventLoop);
             if (EventRetClose == ret)
@@ -228,25 +229,31 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
             }
         }
 
-        if (close || (0 == item.write_ && 0 == item.read_))
+        if (closed || (0 == item.write_ && 0 == item.read_))
         {
-            if (i < len)
+            int lastItemIndex = len -1;
+            if (i < lastItemIndex)
             {
                 readyPool_[i].iter_->second.index_ = -1;
-                readyPool_[i] = readyPool_[len];
+                readyPool_[i] = readyPool_[lastItemIndex];
                 readyPool_[i].iter_->second.index_ = i;
             }
             else
             {
-                readyPool_[len].iter_->second.index_ = -1;
+                readyPool_[i].iter_->second.index_ = -1;
             }
-            readyPool_[len].callback_.Clear();
-            readyPool_.resize(len); --len;
+            readyPool_[lastItemIndex].callback_.Clear();
+            --len; resize = true;
         }
         else
         {
             ++i;
         }
+    }
+
+    if (true == resize)
+    {
+        readyPool_.resize(len);
     }
     doReadyPoolProtected_ = false;
     return true;

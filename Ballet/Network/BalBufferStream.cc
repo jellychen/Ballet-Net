@@ -42,7 +42,7 @@ size_t BalBufferStream::Capacity() const
 
 bool BalBufferStream::AppendBuffer(const char* buffer, size_t len)
 {
-    if (nullptr_() == buffer || 0 == len) return false;
+    if (nullptr_() == buffer || 0 >= len) return false;
     if (capacity_ - end_ > len)
     {
         memcpy(buffer_ + end_, buffer, len);
@@ -77,6 +77,7 @@ bool BalBufferStream::AppendBuffer(const char* buffer, size_t len)
 
 void BalBufferStream::ConsumeBuffer(size_t len)
 {
+    if (0 >= len) return;
     start_ += len;
     if (start_ > end_) start_ = end_;
 }

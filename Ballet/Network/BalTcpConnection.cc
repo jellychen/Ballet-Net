@@ -24,6 +24,7 @@ BalTcpConnection::BalTcpConnection(int id, BalHandle<BalTcpServer> server)
 
     lastReadTime_ = BootUtil::BalTimeStamp::GetCurrent();
     BalHandle<BalEventLoop> eventLoop = tcpServer_->GetEventLoop();
+
     if (!eventLoop)
     {
         throw std::runtime_error("BalTcpConnection Construct Failed! @2");
@@ -32,9 +33,15 @@ BalTcpConnection::BalTcpConnection(int id, BalHandle<BalTcpServer> server)
     else
     {
         uint32_t timeout = (uint32_t)(tcpServer_->GetTimeout());
-        eventLoop->SetTimerOut(0, timerCallbackPtr_.GetHandle(), timeout);
+        std::cout<<"BalTcpConnection::BalTcpConnection timeout "<< timeout <<std::endl;
+        eventLoop->SetTimerOut(0, timerCallbackPtr_, timeout);
         eventLoop->SetEventListener(GetFd(), EventReadWrite, eventCallbackPtr_);
     }
+}
+
+BalTcpConnection::~BalTcpConnection()
+{
+    std::cout<<"@@@@@ ~BalTcpConnection"<<std::endl;
 }
 
 bool BalTcpConnection::IsV6()
@@ -51,7 +58,7 @@ bool BalTcpConnection::Close(bool now)
 
     if (true == now || 0 == writeBuffer_.GetSize())
     {
-        DoCloseProcedure(true);
+        DoCloseProcedure(true, true);
     }
     else
     {
@@ -88,7 +95,8 @@ bool BalTcpConnection::WriteRawBuffer(const char* buffer, uint32_t len)
         uint32_t writeSize = WriteBuffer(buffer, len);
         if (0 == writeSize || (writeSize == -1 && errno != EAGAIN))
         {
-            DoCloseProcedure(false); return false;
+            DoCloseProcedure(false, true);
+            return false;
         }
         else
         {
@@ -171,9 +179,9 @@ BalHandle<BalInetAddress> BalTcpConnection::GetLocal() const
 
 BalHandle<BalInetAddress> BalTcpConnection::GetPeer() const
 {
-    struct sockaddr addr;
-    memset((void*)&addr, 0, sizeof(struct sockaddr));
-    socklen_t len = (socklen_t)sizeof(struct sockaddr);
+    struct sockaddr_in6 addr;
+    memset((void*)&addr, 0, sizeof(struct sockaddr_in6));
+    socklen_t len = (socklen_t)sizeof(struct sockaddr_in6);
     ::getpeername(GetFd(), (struct sockaddr*)&addr, &len);
     if (AF_INET6 == (*(struct sockaddr*)&addr).sa_family)
     {
@@ -187,8 +195,9 @@ BalHandle<BalInetAddress> BalTcpConnection::GetPeer() const
     }
 }
 
-bool BalTcpConnection::DoCloseProcedure(bool accord)
+bool BalTcpConnection::DoCloseProcedure(bool accord, bool delEvent)
 {
+    std::cout<<"BalTcpConnection::DoCloseProcedure start"<<std::endl;
     BalHandle<BalTcpConnection> conn(this, shareUserCount_);
 
     if (tcpServer_)
@@ -196,9 +205,13 @@ bool BalTcpConnection::DoCloseProcedure(bool accord)
         BalHandle<BalEventLoop> eventLoop = tcpServer_->GetEventLoop();
         if (eventLoop)
         {
-            eventLoop->DeleteEventListener(GetFd(), EventReadWrite);
+            if (true == delEvent)
+            {
+                eventLoop->DeleteEventListener(GetFd(), EventReadWrite);
+            }
             eventLoop->RemoveTimer(0, timerCallbackPtr_.GetHandle());
         }
+
         BalHandle<BalElement> element
             = dynamic_cast_<BalTcpConnection, BalElement>(conn);
         if (element && eventLoop)
@@ -208,14 +221,13 @@ bool BalTcpConnection::DoCloseProcedure(bool accord)
         tcpServer_->EraseTcpConnection(GetFd());
     }
 
-    status_ = StatusClosed;
+    BalTcpSocket::Close(); status_ = StatusClosed;
     BalHandle<IBalTcpCallback> callback = tcpServer_->GetCallback();
     if (callback && callback->IsCallable())
     {
         callback->OnClose(conn, accord);
     }
-
-
+    std::cout<<"BalTcpConnection::DoCloseProcedure end"<<std::endl;
     return true;
 }
 
@@ -232,11 +244,12 @@ bool BalTcpConnection::OnReceiveBuffer(const char* buffer, uint32_t len)
 
 void BalTcpConnection::OnTime(uint32_t id, BalHandle<BalTimer> timer)
 {
+    std::cout<<"BalTcpConnection::OnTime"<<std::endl;
     int64_t current = BootUtil::BalTimeStamp::GetCurrent();
     int64_t timeout = (int64_t)tcpServer_->GetTimeout();
-    if (current - lastReadTime_ > timeout)
+    if (current - lastReadTime_ >= timeout)
     {
-        DoCloseProcedure(true);
+        DoCloseProcedure(true, true);
     }
     else
     {
@@ -251,6 +264,7 @@ void BalTcpConnection::OnTime(uint32_t id, BalHandle<BalTimer> timer)
 
 BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop> el)
 {
+    std::cout<<"BalTcpConnection::ShouldRead"<<std::endl;
     if (StatusEstablish != status_ || !tcpServer_)
     {
          return EventRetNone;
@@ -263,11 +277,14 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
         uint32_t readSize = ReadBuffer(buffer, 10240);
         if (0 == readSize || (-1 == readSize && EAGAIN != errno))
         {
-            DoCloseProcedure(false);
-            return EventRetNone;
+            DoCloseProcedure(false, false);
+            return EventRetClose;
         }
-        readBuffer_.AppendBuffer(buffer, readSize);
 
+        if (0 < readSize)
+        {
+            readBuffer_.AppendBuffer(buffer, readSize);
+        }
         if (readSize < 10240) break;
     }
 
@@ -283,8 +300,8 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
 
             if (StatusFail == ret)
             {
-                DoCloseProcedure(true);
-                break;
+                DoCloseProcedure(true, false);
+                return EventRetClose;
             }
             else if (StatusSuccess == ret)
             {
@@ -304,8 +321,8 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
 
                 if (false == ret)
                 {
-                    DoCloseProcedure(true);
-                    break;
+                    DoCloseProcedure(true, false);
+                    return EventRetClose;
                 }
                 else
                 {
@@ -322,17 +339,25 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
 
 BalEventCallbackEnum BalTcpConnection::ShouldWrite(int id, BalHandle<BalEventLoop> el)
 {
-    if (StatusEstablish != status_) return EventRetNone;
-    if (0 == writeBuffer_.GetSize()) return EventRetNone;
-
+    if (StatusEstablish != status_) return EventRetAgain;
+    if (0 == writeBuffer_.GetSize()) return EventRetAgain;
     char* buffer = (char*)writeBuffer_.RawBuffer();
     uint32_t size = (uint32_t)writeBuffer_.GetSize();
     uint32_t writeSize = WriteBuffer(buffer, size);
-    if (size == writeSize)
+
+    if (0 == writeSize)
+    {
+        DoCloseProcedure(false, false);
+    }
+    else if (size > writeSize)
+    {
+        writeBuffer_.ConsumeBuffer((size_t)writeSize);
+    }
+    else if (size == writeSize)
     {
         if (StatusClosing == status_)
         {
-            DoCloseProcedure(true);
+            DoCloseProcedure(true, false);
         }
         else
         {

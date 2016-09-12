@@ -4,6 +4,7 @@ using namespace Ballet;
 #include <iostream>
 #include <memory>
 #include <vector>
+#include <map>
 using namespace std;
 
 class ICallback :public BalCallback
@@ -52,19 +53,34 @@ public:
 
 };
 
+struct wrraper
+{
+    BalHandle<ICallback> callback;
+};
 
 void t_Callback_main()
 {
-    std::cout << "t_Callback_main" << std::endl;
-    BalHandle<ICallback> callback;
-    {
-        t_Callback_class_2 instance;
-        callback = instance.callbackPtr.GetHandle();
-        callback->Get(10);
-    }
+    typedef std::map<int, wrraper > t_map;
+    t_map _map;
 
-    if (callback->IsCallable())
     {
-        callback->Get(10);
+        std::cout << "t_Callback_main" << std::endl;
+        BalHandle<ICallback> callback;
+        {
+            t_Callback_class_2 instance;
+            callback = instance.callbackPtr.GetHandle();
+            callback->Get(10);
+        }
+
+        if (callback->IsCallable())
+        {
+            callback->Get(10);
+        }
+
+        wrraper ss = {callback};
+        _map[0] = ss;
     }
+    cout<<__LINE__<<endl;
+    t_map::iterator iter = _map.find(0);
+    _map.erase(iter);
 }
