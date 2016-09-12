@@ -37,7 +37,7 @@ namespace Ballet
         struct BalEventCallbackWrapper
         {
             BalEventCallback callback_;
-            int index_; unsigned int status_;
+            int index_; uint32_t status_;
         };
         typedef std::list<BalHandle<BalElement> > vecReleaseListT;
         typedef std::map<int, BalEventCallbackWrapper> mapEventPoolT;

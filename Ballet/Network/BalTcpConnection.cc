@@ -33,7 +33,6 @@ BalTcpConnection::BalTcpConnection(int id, BalHandle<BalTcpServer> server)
     else
     {
         uint32_t timeout = (uint32_t)(tcpServer_->GetTimeout());
-        std::cout<<"BalTcpConnection::BalTcpConnection timeout "<< timeout <<std::endl;
         eventLoop->SetTimerOut(0, timerCallbackPtr_, timeout);
         eventLoop->SetEventListener(GetFd(), EventReadWrite, eventCallbackPtr_);
     }
@@ -197,7 +196,6 @@ BalHandle<BalInetAddress> BalTcpConnection::GetPeer() const
 
 bool BalTcpConnection::DoCloseProcedure(bool accord, bool delEvent)
 {
-    std::cout<<"BalTcpConnection::DoCloseProcedure start"<<std::endl;
     BalHandle<BalTcpConnection> conn(this, shareUserCount_);
 
     if (tcpServer_)
@@ -227,7 +225,6 @@ bool BalTcpConnection::DoCloseProcedure(bool accord, bool delEvent)
     {
         callback->OnClose(conn, accord);
     }
-    std::cout<<"BalTcpConnection::DoCloseProcedure end"<<std::endl;
     return true;
 }
 
@@ -244,7 +241,6 @@ bool BalTcpConnection::OnReceiveBuffer(const char* buffer, uint32_t len)
 
 void BalTcpConnection::OnTime(uint32_t id, BalHandle<BalTimer> timer)
 {
-    std::cout<<"BalTcpConnection::OnTime"<<std::endl;
     int64_t current = BootUtil::BalTimeStamp::GetCurrent();
     int64_t timeout = (int64_t)tcpServer_->GetTimeout();
     if (current - lastReadTime_ >= timeout)
@@ -264,7 +260,6 @@ void BalTcpConnection::OnTime(uint32_t id, BalHandle<BalTimer> timer)
 
 BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop> el)
 {
-    std::cout<<"BalTcpConnection::ShouldRead"<<std::endl;
     if (StatusEstablish != status_ || !tcpServer_)
     {
          return EventRetNone;

@@ -11,6 +11,7 @@ namespace Ballet
         class BalTcpSocket :public BalSocket
         {
         public:
+            explicit BalTcpSocket(int fd);
             explicit BalTcpSocket(bool v6);
 
         public:

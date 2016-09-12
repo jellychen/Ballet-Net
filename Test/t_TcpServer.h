@@ -25,11 +25,13 @@ public:
 
     virtual bool Encode(const char*, uint32_t, BalHandle<BalChannel>)
     {
+        std::cout<<"Encode"<<std::endl;
         return true;
     }
 
     virtual bool Decode(const char*, uint32_t, BalHandle<BalChannel>)
     {
+        std::cout<<"Decode"<<std::endl;
         return true;
     }
 };
@@ -45,7 +47,7 @@ public:
         eventLoop->Create();
 
         BalHandle<IBalProtocol> protocol(new Tprotocol());
-        BalHandle<BalInetAddress> addr(new BalInetAddress(9492, false, false));
+        BalHandle<BalInetAddress> addr(new BalInetAddress(9410, false, false));
         BalHandle<BalTcpServer> server
         (
             new BalTcpServer(false, eventLoop, protocol, 10240, callback, 10000, 10000, 10000)

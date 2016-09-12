@@ -89,7 +89,6 @@ BalHandle<IBalTcpCallback> BalTcpServer::GetCallback() const
 
 bool BalTcpServer::EraseTcpConnection(int id)
 {
-    std::cout<<"BalTcpServer::EraseTcpConnection "<<id<<std::endl;
     mapConnPoolT::iterator iter = mapConnPool_.find(id);
     if (mapConnPool_.end() != iter)
     {
@@ -100,12 +99,9 @@ bool BalTcpServer::EraseTcpConnection(int id)
 
 BalEventCallbackEnum BalTcpServer::ShoudAccept(int id, BalHandle<BalEventLoop> el)
 {
-    std::cout<<"BalTcpServer::ShoudAccept"<<std::endl;
-
     int accpetId = 0;
     if (!BalTcpSocket::Accpet(&accpetId))
     {
-        std::cout<<"BalTcpServer::ShoudAccept EventRetComplete"<<std::endl;
         return EventRetComplete;
     }
 
@@ -125,9 +121,7 @@ BalEventCallbackEnum BalTcpServer::ShoudAccept(int id, BalHandle<BalEventLoop> e
     }
     catch (std::exception&)
     {
-        std::cout<<"BalTcpServer::ShoudAccept exception"<<std::endl;
     }
 
-    std::cout<<"BalTcpServer::ShoudAccept end "<< accpetId <<std::endl;
     return EventRetContinue;
 }

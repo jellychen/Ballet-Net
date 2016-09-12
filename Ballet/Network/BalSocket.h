@@ -15,7 +15,7 @@ namespace Ballet
             virtual ~BalSocket();
 
         public:
-            int  GetFd() const {return fd_;}
+            int  GetFd() const{return fd_;}
             bool IsV6Socket() const;
             virtual bool SetReuseAddr(bool set) throw();
             virtual bool SetReusePort(bool set) throw();

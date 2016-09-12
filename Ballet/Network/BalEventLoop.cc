@@ -57,8 +57,8 @@ bool BalEventLoop::SetEventListener(int id, BalEventEnum event, BalEventCallback
     if (eventPool_.end() == iter)
     {
         BalEventCallbackWrapper cb = {callback, -1, EPOLLET};
-        cb.status_ |= (event &EventRead)? EPOLLIN: 0;
-        cb.status_ |= (event &EventWrite)? EPOLLOUT: 0;
+        cb.status_ |= ((event &EventRead)? EPOLLIN: 0);
+        cb.status_ |= ((event &EventWrite)? EPOLLOUT: 0);
         if (EPOLLET == cb.status_) return false;
 
         struct epoll_event ev;

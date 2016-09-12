@@ -20,6 +20,8 @@ using namespace Ballet::Network;
 
 int main(int argc, char const *argv[])
 {
+    ::signal(SIGPIPE, SIG_IGN);
+
     //t_Handle_main();
     //t_Callback_main();
     //t_BufferArray_main();
