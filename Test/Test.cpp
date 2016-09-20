@@ -31,9 +31,9 @@ int main(int argc, char const *argv[])
     //cout<<sizeof(Ballet::Network::BalEventCallback)<<endl;
     //t_ShareThis_main();
     //t_Timer_main();
-    //t_Callback_main();
+    t_Callback_main();
     //t_Singleton_main();
     //t_Service_main();
-    t_TcpServer_main();
+    //t_TcpServer_main();
     return 0;
 }

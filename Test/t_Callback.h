@@ -34,7 +34,7 @@ public:
         std::cout << "/* message */" << std::endl;
     }
 
-     void GetCallback(int i)
+    virtual void GetCallback(int i)
     {
         std::cout << "GetCallback" << std::endl;
     }
@@ -46,7 +46,7 @@ class t_Callback_class_2 :public t_Callback_class
 {
 public:
     int sadata;
-     void GetCallback(int i)
+    virtual void GetCallback(int i)
     {
         std::cout << "GetCallback3" << std::endl;
     }

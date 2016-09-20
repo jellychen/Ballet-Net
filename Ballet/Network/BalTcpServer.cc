@@ -16,7 +16,7 @@ BalTcpServer::BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
     maxReadBufferSize_ = maxReadBufferSize;
     maxWriteBufferSize_ = maxWriteBufferSize;
 
-    if (!callback || !callback->IsCallable() || !timeout || !protocol_)
+    if (!callback || !callback->IsCallable()  || !protocol_)
     {
         throw std::runtime_error("BalTcpServer Construct Failed");
     }

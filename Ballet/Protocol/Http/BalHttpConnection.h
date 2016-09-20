@@ -1,36 +1,20 @@
-#ifndef Ballet_Network_BalTcpConnection_H
-#define Ballet_Network_BalTcpConnection_H
+#ifndef Ballet_Protocol_Http_BalHttpConnection_H
+#define Ballet_Protocol_Http_BalHttpConnection_H
 #include "Common/BalInct.h"
-#include "BootUtil/BalTimeStamp.h"
-#include "BalNetworkInct.h"
-#include "BalTcpSocket.h"
-#include "BalTcpCallback.h"
-#include "BalInetAddress.h"
-#include "BalEventLoop.h"
-#include "BalProtocol.h"
-#include "BalChannel.h"
-#include "BalBufferStream.h"
+#include "Network/BalTcpConnection.h"
 
 namespace Ballet
 {
-    namespace Network
+    using namespace Network;
+    namespace Protocol
     {
-        enum BalConnStatusEnum
-        {
-            StatusNone          = 0,
-            StatusConnecting    = 1,
-            StatusEstablish     = 2,
-            StatusClosing       = 3,
-            StatusClosed        = 4,
-        };
-
-        class BalTcpServer;
-        class BalTcpConnection :public BalElement,
+        class BalHttpServer;
+        class BalHttpConnection :public BalElement,
             public BalTcpSocket, public BalChannel, public BalShareThis
         {
         public:
-            BalTcpConnection(int id, BalHandle<BalTcpServer> server);
-            virtual ~BalTcpConnection();
+            BalHttpConnection(int id, BalHandle<BalHttpServer> server);
+            virtual ~BalHttpConnection();
 
         public:
             bool IsV6();
@@ -56,12 +40,12 @@ namespace Ballet
 
         protected:
             BalConnStatusEnum status_;
-            BalWeakHandle<BalTcpServer> tcpServer_;
-            CBalTimerCallbackPtr<BalTcpConnection> timerCallbackPtr_;
-            CBalEventCallbackPtr<BalTcpConnection> eventCallbackPtr_;
+            BalWeakHandle<BalHttpServer> httpServer_;
+            CBalTimerCallbackPtr<BalHttpConnection> timerCallbackPtr_;
+            CBalEventCallbackPtr<BalHttpConnection> eventCallbackPtr_;
             int32_t protocolWantSize_; int64_t lastReadTime_;
             BalBufferStream readBuffer_, writeBuffer_;
         };
     }
 }
-#endif
+#endif//Ballet_Protocol_Http_BalHttpServer_H

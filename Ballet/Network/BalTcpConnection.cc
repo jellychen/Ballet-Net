@@ -33,7 +33,10 @@ BalTcpConnection::BalTcpConnection(int id, BalHandle<BalTcpServer> server)
     else
     {
         uint32_t timeout = (uint32_t)(tcpServer_->GetTimeout());
-        eventLoop->SetTimerOut(0, timerCallbackPtr_, timeout);
+        if (timeout > 0)
+        {
+            eventLoop->SetTimerOut(0, timerCallbackPtr_, timeout);
+        }
         eventLoop->SetEventListener(GetFd(), EventReadWrite, eventCallbackPtr_);
     }
 }
