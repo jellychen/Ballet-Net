@@ -3,8 +3,14 @@ using namespace Ballet::BootUtil;
 using namespace Ballet::Network;
 
 BalEventLoop::BalEventLoop()
-    :efd_(0),created_(false),timer_(new BalTimer),doReadyPoolProtected_(false)
+    :eventDataManager_(MAX_EVENTDATA_CACHE)
+    ,timer_(new BalTimer),doReadyPoolProtected_(false)
 {
+    efd_ = ::epoll_create1(EPOLL_CLOEXEC);
+    if (0 == efd_)
+    {
+        throw std::runtime_error("BalEventLoop Construct Failed! @1");
+    }
 }
 
 BalEventLoop::~BalEventLoop()
@@ -13,16 +19,6 @@ BalEventLoop::~BalEventLoop()
     {
         ::close(efd_);
     }
-}
-
-bool BalEventLoop::Create() throw()
-{
-    if (false == created_)
-    {
-        efd_ = ::epoll_create(256);
-        created_ = true;
-    }
-    return 0 != efd_;
 }
 
 bool BalEventLoop::AddDelayReleaseElement(BalHandle<BalElement>& element)
@@ -63,7 +59,7 @@ bool BalEventLoop::SetEventListener(int id, BalEventEnum event, BalEventCallback
 
         struct epoll_event ev;
         memset(&ev, 0, sizeof(epoll_event));
-        ev.data.fd = id; ev.events = cb.status_;
+        ev.data.fd = id; ev.events = cb.status_; ev.data.ptr = 0;
         if (0 != ::epoll_ctl(efd_, EPOLL_CTL_ADD, id, &ev)) return false;
         eventPool_[id] = cb;
     }

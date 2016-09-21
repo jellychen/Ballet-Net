@@ -3,6 +3,8 @@
 #include "Common/BalInct.h"
 #include "BootUtil/BalTimer.h"
 #include "BalNetworkInct.h"
+#include "BalEventHandle.h"
+#include "BalEventData.h"
 #include "BalElement.h"
 #include "BalEventCallback.h"
 
@@ -11,12 +13,6 @@ namespace Ballet
     namespace Network
     {
         using namespace ::Ballet::BootUtil;
-
-        enum BalEventEnum
-        {
-            EventNone = 0, EventRead = 1, EventWrite = 2, EventReadWrite =3,
-        };
-
         class BalEventLoop
             :public BalElement ,public BalShareThis ,public BalNoCoable
         {
@@ -26,11 +22,10 @@ namespace Ballet
             virtual ~BalEventLoop();
 
         public:
-            bool Create() throw();
             bool AddDelayReleaseElement(BalHandle<BalElement>&);
             bool AddHoldSomeElement(int, BalHandle<BalElement>&);
             bool RemoveHoldElement(int);
-            bool SetEventListener(int, BalEventEnum, BalEventCallback);
+            bool SetEventListener(int id, BalEventEnum, BalEventCallback);
             bool DeleteEventListener(int id, BalEventEnum event);
             bool SetTimerOut(int, BalTimerCallback, uint32_t);
             bool SetTimerLoop(int, BalTimerCallback, uint32_t);
@@ -51,7 +46,8 @@ namespace Ballet
             vecReleaseListT releaseList_;
             mapHoldPoolT holdElementPool_;
             bool doReadyPoolProtected_;
-            int efd_; bool created_; bool shouldExit_;
+            int efd_; bool shouldExit_;
+            BalEventDataManager eventDataManager_;
         };
     }
 }

@@ -21,8 +21,8 @@ namespace Ballet
             virtual bool SetReusePort(bool set) throw();
 
         protected:
-            uint32_t ReadBuffer(char* buffer, uint32_t) const;
-            uint32_t WriteBuffer(char* buffer, uint32_t) const;
+            uint32_t ReadBuffer(const char* buffer, uint32_t) const;
+            uint32_t WriteBuffer(const char* buffer, uint32_t) const;
 
         protected:
             int fd_;

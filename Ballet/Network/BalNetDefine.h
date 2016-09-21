@@ -6,8 +6,9 @@ namespace Ballet
 {
     namespace Network
     {
-        static const uint32_t MAX_READ_BUFFER_SIZE       =102400;
-        static const uint32_t MAX_WRITE_BUFFER_SIZE      =102400;
+        static const uint32_t MAX_READ_BUFFER_SIZE      =102400;
+        static const uint32_t MAX_WRITE_BUFFER_SIZE     =102400;
+        static const uint32_t MAX_EVENTDATA_CACHE       =100000;
     }
 }
 #endif
