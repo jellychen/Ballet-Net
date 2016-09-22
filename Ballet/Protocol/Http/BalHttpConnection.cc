@@ -5,7 +5,8 @@ using namespace Network;
 using namespace Protocol;
 
 BalHttpConnection::BalHttpConnection(int id, BalHandle<BalHttpServer> server)
-    :BalTcpSocket(id), eventCallbackPtr_(this),timerCallbackPtr_(this)
+    :BalTcpSocket(id), eventCallbackPtr_(this)
+    ,timerCallbackPtr_(this), eventHandle_(GetFd())
 {
     httpServer_ = server;
     status_ = StatusEstablish;
@@ -37,7 +38,7 @@ BalHttpConnection::BalHttpConnection(int id, BalHandle<BalHttpServer> server)
         {
             eventLoop->SetTimerOut(0, timerCallbackPtr_, timeout);
         }
-        eventLoop->SetEventListener(GetFd(), EventReadWrite, eventCallbackPtr_);
+        eventLoop->SetEventListener(eventHandle_, EventReadWrite, eventCallbackPtr_);
     }
 }
 

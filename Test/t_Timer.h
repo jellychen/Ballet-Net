@@ -36,7 +36,6 @@ public:
 
     void timerTest()
     {
-        eventLoop->Create();
         eventLoop->SetTimerOut(0, Ptr.GetHandle(), 1000);
         eventLoop->DoEventLoop();
     }

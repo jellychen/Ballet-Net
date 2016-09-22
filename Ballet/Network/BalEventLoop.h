@@ -25,8 +25,8 @@ namespace Ballet
             bool AddDelayReleaseElement(BalHandle<BalElement>&);
             bool AddHoldSomeElement(int, BalHandle<BalElement>&);
             bool RemoveHoldElement(int);
-            bool SetEventListener(int id, BalEventEnum, BalEventCallback);
-            bool DeleteEventListener(int id, BalEventEnum event);
+            bool SetEventListener(BalEventHandle&, BalEventEnum, BalEventCallback);
+            bool DeleteEventListener(BalEventHandle&, BalEventEnum event);
             bool SetTimerOut(int, BalTimerCallback, uint32_t);
             bool SetTimerLoop(int, BalTimerCallback, uint32_t);
             bool RemoveTimer(int, BalTimerCallback);
@@ -36,13 +36,13 @@ namespace Ballet
 
         protected:
             bool DoReadyPool(BalHandle<BalEventLoop> eventLoop);
-            int  AddReadyItem(int, int, int, BalEventCallback&, mapEventPoolT::iterator);
-            bool RemoveReadyItem(int, int, int);
+            int  AddReadyItem(int index, int fd,
+                    BalEventEnum ready, BalEventCallback& callback, BalEventData* data);
+            bool RemoveReadyItem(int index, int fd, BalEventEnum ready);
 
         private:
             BalHandle<BalTimer> timer_;
             vecReadyPoolT readyPool_;
-            mapEventPoolT eventPool_;
             vecReleaseListT releaseList_;
             mapHoldPoolT holdElementPool_;
             bool doReadyPoolProtected_;

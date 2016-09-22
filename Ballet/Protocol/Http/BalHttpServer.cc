@@ -7,7 +7,7 @@ BalHttpServer::BalHttpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
     uint32_t maxPackage, BalHandle<IBalHttpCallback> callback,
     uint32_t timeout, uint32_t maxReadBufferSize,
     uint32_t maxWriteBufferSize)
-    :BalTcpSocket(v6), eventCallbackPtr_(this)
+    :BalTcpSocket(v6), eventCallbackPtr_(this), eventHandle_(GetFd())
 {
     eventLoop_ = eventLoop;
     maxTimeout_ = timeout;
@@ -31,7 +31,7 @@ BalHttpServer::BalHttpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
     else
     {
         eventCallbackPtr_->HookShouldRead(&BalHttpServer::ShoudAccept);
-        eventLoop_->SetEventListener(GetFd(), EventRead, eventCallbackPtr_);
+        eventLoop_->SetEventListener(eventHandle_, EventRead, eventCallbackPtr_);
     }
 }
 

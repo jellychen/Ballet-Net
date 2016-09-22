@@ -6,6 +6,7 @@ namespace Ballet
 {
     namespace Network
     {
+        class BalEventData;
         class BalEventLoop;
 
         enum BalEventCallbackEnum
@@ -47,8 +48,8 @@ namespace Ballet
             int fd_;
             unsigned int read_:1;
             unsigned int write_:1;
+            BalEventData* eventData_;
             BalEventCallback callback_;
-            mapEventPoolT::iterator iter_;
         };
         typedef std::vector<BalEventReadyItem> vecReadyPoolT;
     }

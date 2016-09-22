@@ -16,7 +16,7 @@ int BalEventHandle::GetFd() const
 
 bool BalEventHandle::IsWaitEvent() const
 {
-    return 0 != fd_ && EventNone == eventStatus_;
+    return 0 != fd_ && EventNone != eventStatus_;
 }
 
 void BalEventHandle::SetEventWaitStatus(BalEventEnum event)

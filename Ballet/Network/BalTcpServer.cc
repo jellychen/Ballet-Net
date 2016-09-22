@@ -7,7 +7,7 @@ BalTcpServer::BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
     BalHandle<IBalProtocol> protocol, uint32_t maxPackage,
     BalHandle<IBalTcpCallback> callback, uint32_t timeout,
     uint32_t maxReadBufferSize, uint32_t maxWriteBufferSize)
-    :BalTcpSocket(v6),eventCallbackPtr_(this)
+    :BalTcpSocket(v6),eventCallbackPtr_(this),eventHandle_(GetFd())
 {
     protocol_ = protocol;
     eventLoop_ = eventLoop;
@@ -32,7 +32,7 @@ BalTcpServer::BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
     else
     {
         eventCallbackPtr_->HookShouldRead(&BalTcpServer::ShoudAccept);
-        eventLoop_->SetEventListener(GetFd(), EventRead, eventCallbackPtr_);
+        eventLoop_->SetEventListener(eventHandle_, EventRead, eventCallbackPtr_);
     }
 }
 
@@ -45,7 +45,7 @@ bool BalTcpServer::Close()
 {
     if (eventLoop_)
     {
-        eventLoop_->DeleteEventListener(GetFd(), EventRead);
+        eventLoop_->DeleteEventListener(eventHandle_, EventRead);
     }
     return BalTcpSocket::Close();
 }

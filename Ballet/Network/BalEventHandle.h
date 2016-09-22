@@ -12,8 +12,10 @@ namespace Ballet
             EventNone = 0, EventRead = 1, EventWrite = 2, EventReadWrite =3,
         };
 
+        class BalEventLoop;
         class BalEventHandle
         {
+            friend class BalEventLoop;
         public:
             explicit BalEventHandle(int fd);
 
@@ -23,7 +25,7 @@ namespace Ballet
             void SetEventWaitStatus(BalEventEnum event);
             BalEventEnum GetEventWaitStatus() const;
 
-        public:
+        private:
             BalEventData* eventData_;
 
         private:

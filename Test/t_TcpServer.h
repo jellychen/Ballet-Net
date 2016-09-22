@@ -44,7 +44,6 @@ public:
         callback->HookOnConnect(&t_TcpServer_class::OnConnect);
 
         BalHandle<BalEventLoop> eventLoop(new BalEventLoop());
-        eventLoop->Create();
 
         BalHandle<IBalProtocol> protocol(new Tprotocol());
         BalHandle<BalInetAddress> addr(new BalInetAddress(9410, false, false));

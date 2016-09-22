@@ -29,7 +29,7 @@ namespace Ballet
             public BalTcpSocket, public BalChannel, public BalShareThis
         {
         public:
-            BalTcpConnection(int id, BalHandle<BalTcpServer> server);
+            BalTcpConnection(int fd, BalHandle<BalTcpServer> server);
             virtual ~BalTcpConnection();
 
         public:
@@ -56,6 +56,7 @@ namespace Ballet
 
         protected:
             BalConnStatusEnum status_;
+            BalEventHandle eventHandle_;
             BalWeakHandle<BalTcpServer> tcpServer_;
             CBalTimerCallbackPtr<BalTcpConnection> timerCallbackPtr_;
             CBalEventCallbackPtr<BalTcpConnection> eventCallbackPtr_;

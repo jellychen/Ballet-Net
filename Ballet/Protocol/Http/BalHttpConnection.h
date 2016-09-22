@@ -40,6 +40,7 @@ namespace Ballet
 
         protected:
             BalConnStatusEnum status_;
+            BalEventHandle eventHandle_;
             BalWeakHandle<BalHttpServer> httpServer_;
             CBalTimerCallbackPtr<BalHttpConnection> timerCallbackPtr_;
             CBalEventCallbackPtr<BalHttpConnection> eventCallbackPtr_;

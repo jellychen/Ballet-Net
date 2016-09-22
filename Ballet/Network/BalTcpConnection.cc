@@ -4,8 +4,9 @@
 using namespace Ballet;
 using namespace Network;
 
-BalTcpConnection::BalTcpConnection(int id, BalHandle<BalTcpServer> server)
-    :BalTcpSocket(id), eventCallbackPtr_(this),timerCallbackPtr_(this), protocolWantSize_(-1)
+BalTcpConnection::BalTcpConnection(int fd, BalHandle<BalTcpServer> server)
+    :BalTcpSocket(fd), eventCallbackPtr_(this)
+    ,timerCallbackPtr_(this), protocolWantSize_(-1) ,eventHandle_(fd)
 {
     tcpServer_ = server;
     status_ = StatusEstablish;
@@ -37,7 +38,7 @@ BalTcpConnection::BalTcpConnection(int id, BalHandle<BalTcpServer> server)
         {
             eventLoop->SetTimerOut(0, timerCallbackPtr_, timeout);
         }
-        eventLoop->SetEventListener(GetFd(), EventReadWrite, eventCallbackPtr_);
+        eventLoop->SetEventListener(eventHandle_, EventReadWrite, eventCallbackPtr_);
     }
 }
 
@@ -208,7 +209,7 @@ bool BalTcpConnection::DoCloseProcedure(bool accord, bool delEvent)
         {
             if (true == delEvent)
             {
-                eventLoop->DeleteEventListener(GetFd(), EventReadWrite);
+                eventLoop->DeleteEventListener(eventHandle_, EventReadWrite);
             }
             eventLoop->RemoveTimer(0, timerCallbackPtr_.GetHandle());
         }

@@ -46,6 +46,7 @@ namespace Ballet
             uint32_t maxPackageSize_;
             uint32_t maxReadBufferSize_;
             uint32_t maxWriteBufferSize_;
+            BalEventHandle eventHandle_;
             mapConnPoolT mapConnPool_;
             BalWeakHandle<BalEventLoop> eventLoop_;
             BalHandle<IBalProtocol> protocol_;
