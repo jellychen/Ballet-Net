@@ -22,7 +22,8 @@ namespace Ballet
                 BalHandle<IBalProtocol> protocol, uint32_t maxPackage,
                 BalHandle<IBalTcpCallback> callback, uint32_t timeout,
                 uint32_t maxReadBufferSize, uint32_t maxWriteBufferSize);
-
+            virtual ~BalTcpServer();
+            
         public:
             bool IsV6();
             bool Close();

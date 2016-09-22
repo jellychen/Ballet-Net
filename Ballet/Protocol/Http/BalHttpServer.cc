@@ -35,6 +35,14 @@ BalHttpServer::BalHttpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
     }
 }
 
+BalHttpServer::~BalHttpServer()
+{
+    if (eventLoop_)
+    {
+        eventLoop_->DeleteEventListener(eventHandle_, EventRead);
+    }
+}
+
 bool BalHttpServer::IsV6()
 {
     return BalTcpSocket::IsV6Socket();

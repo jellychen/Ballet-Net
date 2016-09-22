@@ -20,6 +20,7 @@ namespace Ballet
                 uint32_t maxPackage, BalHandle<IBalHttpCallback> callback,
                 uint32_t timeout, uint32_t maxReadBufferSize,
                 uint32_t maxWriteBufferSize);
+            virtual ~BalHttpServer();
 
         public:
             bool IsV6();
