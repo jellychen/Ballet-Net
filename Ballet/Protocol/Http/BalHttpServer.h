@@ -18,8 +18,7 @@ namespace Ballet
         public:
             BalHttpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
                 uint32_t maxPackage, BalHandle<IBalHttpCallback> callback,
-                uint32_t timeout, uint32_t maxReadBufferSize,
-                uint32_t maxWriteBufferSize);
+                uint32_t timeout, uint32_t maxWriteBufferSize);
             virtual ~BalHttpServer();
 
         public:
@@ -28,7 +27,6 @@ namespace Ballet
             bool Start(BalHandle<BalInetAddress> addr);
             uint32_t GetTimeout() const;
             uint32_t GetMaxPackageSize() const;
-            uint32_t GetMaxReadBufferSize() const;
             uint32_t GetMaxWriteBufferSize() const;
             BalHandle<BalEventLoop> GetEventLoop() const;
             BalHandle<IBalHttpCallback> GetCallback() const;
@@ -42,7 +40,6 @@ namespace Ballet
         protected:
             uint32_t maxTimeout_;
             uint32_t maxPackageSize_;
-            uint32_t maxReadBufferSize_;
             uint32_t maxWriteBufferSize_;
             BalEventHandle eventHandle_;
             mapConnPoolT mapConnPool_;

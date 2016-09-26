@@ -5,14 +5,12 @@ using namespace Protocol;
 
 BalHttpServer::BalHttpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
     uint32_t maxPackage, BalHandle<IBalHttpCallback> callback,
-    uint32_t timeout, uint32_t maxReadBufferSize,
-    uint32_t maxWriteBufferSize)
+    uint32_t timeout, uint32_t maxWriteBufferSize)
     :BalTcpSocket(v6), eventCallbackPtr_(this), eventHandle_(GetFd())
 {
     eventLoop_ = eventLoop;
     maxTimeout_ = timeout;
     maxPackageSize_ = maxPackage;
-    maxReadBufferSize_ = maxReadBufferSize;
     maxWriteBufferSize_ = maxWriteBufferSize;
 
     if (!callback || !callback->IsCallable())
@@ -52,7 +50,7 @@ bool BalHttpServer::Close()
 {
     if (eventLoop_)
     {
-        eventLoop_->DeleteEventListener(GetFd(), EventRead);
+        eventLoop_->DeleteEventListener(eventHandle_, EventRead);
     }
     return BalTcpSocket::Close();
 }
@@ -72,11 +70,6 @@ uint32_t BalHttpServer::GetTimeout() const
 uint32_t BalHttpServer::GetMaxPackageSize() const
 {
     return maxPackageSize_;
-}
-
-uint32_t BalHttpServer::GetMaxReadBufferSize() const
-{
-    return maxReadBufferSize_;
 }
 
 uint32_t BalHttpServer::GetMaxWriteBufferSize() const

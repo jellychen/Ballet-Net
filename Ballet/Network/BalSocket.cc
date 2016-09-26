@@ -42,7 +42,7 @@ bool BalSocket::SetReusePort(bool set) throw()
 #endif
 }
 
-uint32_t BalSocket::ReadBuffer(const char* buffer, uint32_t size) const
+uint32_t BalSocket::ReadBuffer(char* buffer, uint32_t size) const
 {
     if (0 == fd_ || nullptr_() == buffer || 0 == size)
     {

@@ -1,6 +1,7 @@
 #ifndef Ballet_Common_BalInct_H
 #define Ballet_Common_BalInct_H
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>

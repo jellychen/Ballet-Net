@@ -44,7 +44,7 @@ BalTcpConnection::BalTcpConnection(int fd, BalHandle<BalTcpServer> server)
 
 BalTcpConnection::~BalTcpConnection()
 {
-    std::cout<<"@@@@@ ~BalTcpConnection"<<std::endl;
+
 }
 
 bool BalTcpConnection::IsV6()
@@ -269,12 +269,12 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
          return EventRetClose;
     }
 
-    char buffer[10240] = {0};
+    char buffer[MAX_READFD_SIZE] = {0};
     BalEventCallbackEnum ret = EventRetContinue;
-    uint32_t readSize = ReadBuffer(buffer, 10240);
+    uint32_t readSize = ReadBuffer(buffer, MAX_READFD_SIZE);
     if (0 == readSize || (-1 == readSize && EAGAIN != errno))
     {
-        DoCloseProcedure(false, false);
+        DoCloseProcedure(false, true);
         return EventRetClose;
     }
     lastReadTime_ = BootUtil::BalTimeStamp::GetCurrent();
@@ -301,7 +301,7 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
 
             if (StatusFail == ret)
             {
-                DoCloseProcedure(true, false);
+                DoCloseProcedure(true, true);
                 return EventRetClose;
             }
             else if (StatusSuccess == ret)
@@ -322,7 +322,7 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
 
                 if (false == ret)
                 {
-                    DoCloseProcedure(true, false);
+                    DoCloseProcedure(true, true);
                     return EventRetClose;
                 }
                 else
@@ -354,17 +354,20 @@ BalEventCallbackEnum BalTcpConnection::ShouldWrite(int id, BalHandle<BalEventLoo
 
     if (0 == writeSize)
     {
-        DoCloseProcedure(false, false);
+        DoCloseProcedure(false, true);
+        return EventRetClose;
     }
     else if (size > writeSize)
     {
         writeBuffer_.ConsumeBuffer((size_t)writeSize);
+        return EventRetComplete;
     }
     else if (size == writeSize)
     {
         if (StatusClosing == status_)
         {
-            DoCloseProcedure(true, false);
+            DoCloseProcedure(true, true);
+            return EventRetClose;
         }
         else
         {
@@ -375,6 +378,7 @@ BalEventCallbackEnum BalTcpConnection::ShouldWrite(int id, BalHandle<BalEventLoo
                 callback->OnWriteBufferDrain(conn);
             }
         }
+        return EventRetComplete;
     }
     return EventRetNone;
 }

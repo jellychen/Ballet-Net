@@ -9,9 +9,8 @@ namespace Ballet
         enum BalHttpCallbackErrorEnum
         {
             HttpErrorNone       = 0,
-            HttpErrorDecode     = 1,
-            HttpErrorEncode     = 2,
-            HttpErrorExceed     = 3,
+            HttpErrorExceed     = 1,
+            HttpErrorParser     = 2,
         };
 
         class BalHttpConnection;
@@ -21,6 +20,7 @@ namespace Ballet
             virtual bool OnConnect(BalHttpConnectionPtr conn, bool success) =0;
             virtual bool OnHttpBegin(BalHttpConnectionPtr conn) =0;
             virtual bool OnHttpHeader(BalHttpConnectionPtr conn) =0;
+            virtual bool OnHttpHeaderComplete(BalHttpConnectionPtr conn) =0;
             virtual bool OnHttpBody(BalHttpConnectionPtr conn, const char* buffer, uint32_t) =0;
             virtual bool OnHttpComplete(BalHttpConnectionPtr conn) =0;
             virtual bool OnHttpError(BalHttpConnectionPtr conn, BalHttpCallbackErrorEnum error) =0;
@@ -33,6 +33,7 @@ namespace Ballet
         BalCallbackSink(void, OnConnect, (BalHttpConnectionPtr conn, bool success), (conn, success))
         BalCallbackSink(void, OnHttpBegin, (BalHttpConnectionPtr conn), (conn))
         BalCallbackSink(void, OnHttpHeader, (BalHttpConnectionPtr conn), (conn))
+        BalCallbackSink(void, OnHttpHeaderComplete, (BalHttpConnectionPtr conn), (conn))
         BalCallbackSink(void, OnHttpBody, (BalHttpConnectionPtr conn, const char* buffer, uint32_t len), (conn, buffer, len))
         BalCallbackSink(void, OnHttpComplete, (BalHttpConnectionPtr conn), (conn))
         BalCallbackSink(void, OnHttpError, (BalHttpConnectionPtr conn, BalHttpCallbackErrorEnum error), (conn, error))
