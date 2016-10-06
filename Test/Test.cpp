@@ -11,6 +11,7 @@ using namespace std;
 #include "t_Singleton.h"
 #include "t_Service.h"
 #include "t_TcpServer.h"
+#include "t_ArpTest.h"
 #include "Ballet/Network/BalInetAddress.h"
 #include "Ballet/Network/BalEventLoop.h"
 #include "Ballet/Network/BalSocket.h"
@@ -34,6 +35,7 @@ int main(int argc, char const *argv[])
     //t_Callback_main();
     //t_Singleton_main();
     //t_Service_main();
-    t_TcpServer_main();
+    //t_TcpServer_main();
+    t_Art_main();
     return 0;
 }

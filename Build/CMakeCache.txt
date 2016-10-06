@@ -23,8 +23,8 @@ Ballet_Build_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build
 //Value Computed by CMake
 Ballet_Build_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github
 
-//Dependencies for target
-Ballet_LIB_DEPENDS:STATIC=
+//Dependencies for the target
+Ballet_LIB_DEPENDS:STATIC=general;pthread;
 
 //Value Computed by CMake
 Ballet_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Ballet

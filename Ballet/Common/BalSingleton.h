@@ -9,28 +9,18 @@ namespace Ballet
     public:
         static BalHandle<T>& GetInstance()
         {
-            if (false == BalSingleton<T>::init_)
-            {
-                BalSingleton<T>::init_ = true;
-                BalHandle<T> instance(new T());
-                BalSingleton<T>::instance_ = instance;
-            }
+            pthread_once(&once_, &BalSingleton::__init);
             return BalSingleton<T>::instance_;
         }
 
     private:
-        BalSingleton()
+        static void __init()
         {
-
+            BalHandle<T> instance(new T());
+            BalSingleton<T>::instance_ = instance;
         }
 
-        ~BalSingleton()
-        {
-
-        }
-
-    private:
-        static bool volatile init_;
+        static pthread_once_t once_;
         static BalHandle<T> instance_;
     };
 
@@ -38,6 +28,6 @@ namespace Ballet
     BalHandle<T> BalSingleton<T>::instance_;
 
     template <typename T>
-    bool volatile BalSingleton<T>::init_ = false;
+    pthread_once_t BalSingleton<T>::once_ = PTHREAD_ONCE_INIT;
 }
 #endif

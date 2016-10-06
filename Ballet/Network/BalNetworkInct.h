@@ -8,6 +8,7 @@
 #include <utime.h>
 #include <pthread.h>
 #include <sys/socket.h>
+#include <sys/ioctl.h> 
 #include <sys/epoll.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -17,6 +18,9 @@
 #include <sys/eventfd.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
+#include <net/ethernet.h>
+#include <netpacket/packet.h>
+#include <net/if.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <errno.h>
