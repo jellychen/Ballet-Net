@@ -95,24 +95,27 @@ BalEventCallbackEnum BalHttpServer::ShoudAccept(int id, BalHandle<BalEventLoop> 
         return EventRetComplete;
     }
 
-    try
+    if (accpetId > 0)
     {
-        BalHandle<BalHttpServer> server(this, shareUserCount_);
-        BalHandle<BalHttpConnection> conn(new BalHttpConnection(accpetId, server));
-        if (conn)
+        try
         {
-            mapConnPool_[accpetId] = conn;
-            conn->SetNoDelay(true); conn->SetReuseAddr(true);
-            if (httpCallback_ && httpCallback_->IsCallable())
+            BalHandle<BalHttpServer> server(this, shareUserCount_);
+            BalHandle<BalHttpConnection> conn(new BalHttpConnection(accpetId, server));
+            if (conn)
             {
-                httpCallback_->OnConnect(conn, true);
+                mapConnPool_[accpetId] = conn;
+                conn->SetNoDelay(true); conn->SetReuseAddr(true);
+                if (httpCallback_ && httpCallback_->IsCallable())
+                {
+                    httpCallback_->OnConnect(conn, true);
+                }
             }
         }
+        catch (std::exception&)
+        {
+        }
     }
-    catch (std::exception&)
-    {
-    }
-    return EventRetNone;
+    return EventRetContinue;
 }
 
 bool BalHttpServer::EraseTcpConnection(int id)

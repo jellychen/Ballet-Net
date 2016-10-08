@@ -54,12 +54,12 @@ bool BalTcpConnection::IsV6()
 
 bool BalTcpConnection::Close(bool now)
 {
-    if (StatusConnecting != status_ || StatusEstablish != status_)
+    if (StatusConnecting != status_ && StatusEstablish != status_)
     {
         return false;
     }
 
-    if (true == now || 0 == writeBuffer_.GetSize())
+    if (false == now || 0 == writeBuffer_.GetSize())
     {
         DoCloseProcedure(true, true);
     }
@@ -95,7 +95,7 @@ bool BalTcpConnection::WriteRawBuffer(const char* buffer, uint32_t len)
 
     if (writeBuffer_.GetSize() <= 0)
     {
-        uint32_t writeSize = WriteBuffer(buffer, len);
+        uint32_t writeSize = BalTcpSocket::WriteBuffer(buffer, len);
         if (0 == writeSize || (writeSize == -1 && errno != EAGAIN))
         {
             DoCloseProcedure(false, true);

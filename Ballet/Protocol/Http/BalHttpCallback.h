@@ -22,7 +22,8 @@ namespace Ballet
             virtual bool OnHttpHeader(BalHttpConnectionPtr conn) =0;
             virtual bool OnHttpHeaderComplete(BalHttpConnectionPtr conn) =0;
             virtual bool OnHttpBody(BalHttpConnectionPtr conn, const char* buffer, uint32_t) =0;
-            virtual bool OnHttpComplete(BalHttpConnectionPtr conn) =0;
+            virtual bool OnHttpChunkBuffer(BalHttpConnectionPtr conn, const char* buffer, uint32_t) =0;
+            virtual bool OnHttpComplete(BalHttpConnectionPtr conn, const char* buffer, uint32_t) =0;
             virtual bool OnHttpError(BalHttpConnectionPtr conn, BalHttpCallbackErrorEnum error) =0;
             virtual bool OnHttpClose(BalHttpConnectionPtr conn, bool accord) =0;
             virtual void OnWriteBufferFull(BalHttpConnectionPtr conn) =0;
@@ -30,14 +31,15 @@ namespace Ballet
         };
 
         BalCallbackSinkBegin(CBalHttpCallback)
-        BalCallbackSink(void, OnConnect, (BalHttpConnectionPtr conn, bool success), (conn, success))
-        BalCallbackSink(void, OnHttpBegin, (BalHttpConnectionPtr conn), (conn))
-        BalCallbackSink(void, OnHttpHeader, (BalHttpConnectionPtr conn), (conn))
-        BalCallbackSink(void, OnHttpHeaderComplete, (BalHttpConnectionPtr conn), (conn))
-        BalCallbackSink(void, OnHttpBody, (BalHttpConnectionPtr conn, const char* buffer, uint32_t len), (conn, buffer, len))
-        BalCallbackSink(void, OnHttpComplete, (BalHttpConnectionPtr conn), (conn))
-        BalCallbackSink(void, OnHttpError, (BalHttpConnectionPtr conn, BalHttpCallbackErrorEnum error), (conn, error))
-        BalCallbackSink(void, OnHttpClose, (BalHttpConnectionPtr conn, bool accord), (conn, accord))
+        BalCallbackSink(bool, OnConnect, (BalHttpConnectionPtr conn, bool success), (conn, success))
+        BalCallbackSink(bool, OnHttpBegin, (BalHttpConnectionPtr conn), (conn))
+        BalCallbackSink(bool, OnHttpHeader, (BalHttpConnectionPtr conn), (conn))
+        BalCallbackSink(bool, OnHttpHeaderComplete, (BalHttpConnectionPtr conn), (conn))
+        BalCallbackSink(bool, OnHttpBody, (BalHttpConnectionPtr conn, const char* buffer, uint32_t len), (conn, buffer, len))
+        BalCallbackSink(bool, OnHttpChunkBuffer, (BalHttpConnectionPtr conn, const char* buffer, uint32_t len), (conn, buffer, len))
+        BalCallbackSink(bool, OnHttpComplete, (BalHttpConnectionPtr conn, const char* buffer, uint32_t len), (conn, buffer, len))
+        BalCallbackSink(bool, OnHttpError, (BalHttpConnectionPtr conn, BalHttpCallbackErrorEnum error), (conn, error))
+        BalCallbackSink(bool, OnHttpClose, (BalHttpConnectionPtr conn, bool accord), (conn, accord))
         BalCallbackSink(void, OnWriteBufferFull, (BalHttpConnectionPtr conn), (conn))
         BalCallbackSink(void, OnWriteBufferDrain, (BalHttpConnectionPtr conn), (conn))
         BalCallbackSinkComplete()

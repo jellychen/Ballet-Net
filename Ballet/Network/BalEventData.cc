@@ -38,7 +38,11 @@ BalEventData* BalEventDataManager::GetOne()
         data = new(std::nothrow)BalEventData();
     }
 
-    if (data) data->index_ = -1;
+    if (data)
+    {
+        data->fd_ = 0;
+        data->index_ = -1;
+    }
     return data;
 }
 

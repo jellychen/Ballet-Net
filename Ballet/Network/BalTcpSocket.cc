@@ -37,8 +37,14 @@ bool BalTcpSocket::Accpet(int* id) throw()
     if (0 == fd_ || nullptr_() == id) return false;
     struct sockaddr_in6 clientAddr;
     socklen_t socketLen = sizeof(clientAddr);
-    *id = ::accept(fd_, (sockaddr*)&clientAddr, &socketLen);
-    return *id > 0;
+    int clientFd = ::accept(fd_, (sockaddr*)&clientAddr, &socketLen);
+    if (clientFd == -1 && errno != EAGAIN
+        && errno != ECONNABORTED && errno != EPROTO && errno != EINTR)
+    {
+        // error
+    }
+    *id = clientFd;
+    return !(-1 == clientFd && EAGAIN == errno);
 }
 
 bool BalTcpSocket::SetNoBlock() throw()

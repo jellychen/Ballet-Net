@@ -57,6 +57,7 @@ BalHttpConnection::BalHttpConnection(int id, BalHandle<BalHttpServer> server)
     requestSetting_.on_chunk_complete = __gOnChunkComplete;
 
     requestBodySize_ = 0;
+    currentChunkedSize_ = 0;
     requestKeepAlive_ = false;
     respondKeepAlive_ = false;
     respondChunked_ = false;
@@ -74,12 +75,12 @@ bool BalHttpConnection::IsV6()
 
 bool BalHttpConnection::Close(bool now)
 {
-    if (StatusConnecting != status_ || StatusEstablish != status_)
+    if (StatusConnecting != status_ && StatusEstablish != status_)
     {
         return false;
     }
 
-    if (true == now || 0 == writeBuffer_.GetSize())
+    if (false == now || 0 == writeBuffer_.GetSize())
     {
         DoCloseProcedure(true, true);
     }
@@ -150,22 +151,56 @@ BalHandle<BalInetAddress> BalHttpConnection::GetLocal() const
 
 BalHttpMethod BalHttpConnection::GetHttpMethod() const
 {
+    switch (request_parser_.method)
+    {
+        case 0:
+            return HttpDelete;
+        case 1:
+            return HttpGet;
+        case 2:
+            return HttpHead;
+        case 3:
+            return HttpPost;
+        case 4:
+            return HttpPut;
+        default:
+            return HttpUnknown;
+    }
     return HttpUnknown;
 }
 
-void BalHttpConnection::GetHttpUrl(std::string*) const
+void BalHttpConnection::GetHttpUrl(std::string* url) const
 {
-
+    if (url)
+    {
+        *url = requestUrl_;
+    }
 }
 
-void BalHttpConnection::GetHttpVersion(int*, int*) const
+void BalHttpConnection::GetHttpVersion(int* major, int* minor) const
 {
+    if (!major)
+    {
+        *major = request_parser_.http_major;
+    }
 
+    if (!minor)
+    {
+        *minor = request_parser_.http_minor;
+    }
 }
 
-void BalHttpConnection::GetHttpHeaderField(const char*, std::string*) const
+void BalHttpConnection::GetHttpHeaderField(const char* key, std::string* value) const
 {
+    if (!value) return;
+    *value = ""; if (!key) return;
 
+    std::string fieldKey(key);
+    mapPoolT::const_iterator iter = requestHeaderField_.find(fieldKey);
+    if (requestHeaderField_.end() != iter)
+    {
+        *value = iter->second;
+    }
 }
 
 bool BalHttpConnection::GetKeepAlive() const
@@ -199,17 +234,16 @@ void BalHttpConnection::RespondChunked()
 
 void BalHttpConnection::RespondStatus(int status, const char* info)
 {
-    char statusStr[20] = {0};
-    sprintf(statusStr, "%d ", status);
+    char statusStr[128] = {0};
+    sprintf(statusStr, "%d %s\r\n", status, info);
     respondHttpHeadBuffer_ += statusStr;
-    respondHttpHeadBuffer_ += "\r\n";
 }
 
 void BalHttpConnection::RespondContentType(const char* type)
 {
     if (type)
     {
-        respondHttpHeadBuffer_ += "Content-type: ";
+        respondHttpHeadBuffer_ += "Content-Type: ";
         respondHttpHeadBuffer_ += type;
         respondHttpHeadBuffer_ += "\r\n";
     }
@@ -217,9 +251,9 @@ void BalHttpConnection::RespondContentType(const char* type)
 
 void BalHttpConnection::RespondContentLength(int length)
 {
-    char lengthStr[20] = {0};
-    sprintf(lengthStr, "%d\r\n", length);
     respondHttpHeadBuffer_ += "Content-Length: ";
+    char lengthStr[10] = {0};
+    sprintf(lengthStr, "%d\r\n", length);
     respondHttpHeadBuffer_ += lengthStr;
 }
 
@@ -228,49 +262,171 @@ void BalHttpConnection::RespondHeader(const char* field, const char* value)
     if (field && value)
     {
         respondHttpHeadBuffer_ += field;
-        respondHttpHeadBuffer_ += ": ";
+        respondHttpHeadBuffer_ += ":";
         respondHttpHeadBuffer_ += value;
         respondHttpHeadBuffer_ += "\r\n";
     }
 }
 
-void BalHttpConnection::RespondHeaderComplete()
+void BalHttpConnection::RespondHeaderComplete(bool keepalive)
 {
+    if (false == respondKeepAlive_)
+    {
+        RespondKeepAlive();
+    }
+
     respondHttpHeadBuffer_ += "\r\n";
+    std::string& buffer = respondHttpHeadBuffer_;
+    WriteRawBuffer(buffer.c_str(), (uint32_t)buffer.length());
+    respondHttpHeadBuffer_.clear();
 }
 
 void BalHttpConnection::RespondBody(const char* content, int size)
 {
-
+    WriteRawBuffer(content, (uint32_t)size);
 }
 
 void BalHttpConnection::RespondChunk(const char* content, int size)
 {
-
+    if (!content || 0 >= size) return;
+    char chunkLengthStr[20] = {0};
+    sprintf(chunkLengthStr, "\r\n%d\r\n", size);
+    WriteRawBuffer(chunkLengthStr, (uint32_t)strlen(chunkLengthStr));
+    WriteRawBuffer(content, size);
 }
 
 void BalHttpConnection::RespondChunkComplete()
 {
-
+    WriteRawBuffer("\r\n0\r\n", 5);
 }
 
-void BalHttpConnection::RespondComplete()
+void BalHttpConnection::RespondComplete(bool close)
 {
+    if (false == requestKeepAlive_)
+    {
+        Close(false);
+    }
+    else if (true == close)
+    {
+        Close(false);
+    }
+}
 
+void BalHttpConnection::RespondData(const char* buffer, int size, bool keepalive, bool close)
+{
+    if (!buffer || 0 == size) return;
+
+    RespondBegin();
+    RespondVersion(1, 0);
+    RespondStatus(200, "ok");
+    RespondContentLength(size);
+    RespondHeaderComplete(keepalive);
+    RespondBody(buffer, size);
+    RespondComplete(close);
 }
 
 bool BalHttpConnection::WriteRawBuffer(const char* buffer, uint32_t size)
 {
+    if (StatusEstablish != status_) return false;
+    if (nullptr_() == buffer || 0 == size || !httpServer_) return false;
+
+    if (respondBuffer_.GetSize() <= 0)
+    {
+        uint32_t writeSize = BalTcpSocket::WriteBuffer(buffer, size);
+        if (0 == writeSize || (writeSize == -1 && errno != EAGAIN))
+        {
+            DoCloseProcedure(false, true);
+            return false;
+        }
+        else
+        {
+            if (-1 == writeSize)
+            {
+                respondBuffer_.AppendBuffer(buffer, (size_t)(size));
+            }
+            else if (writeSize < size)
+            {
+                respondBuffer_.AppendBuffer(buffer + writeSize, (size_t)(size - writeSize));
+            }
+        }
+    }
+    else
+    {
+        respondBuffer_.AppendBuffer(buffer, (size_t)(size));
+    }
+
+    if (httpServer_->GetMaxWriteBufferSize() <= respondBuffer_.GetSize())
+    {
+        BalHandle<BalHttpConnection> conn(this, shareUserCount_);
+        BalHandle<IBalHttpCallback> callback = httpServer_->GetCallback();
+        if (callback && callback->IsCallable())
+        {
+            callback->OnWriteBufferFull(conn);
+        }
+    }
+    else if (0 == respondBuffer_.GetSize())
+    {
+        BalHandle<BalHttpConnection> conn(this, shareUserCount_);
+        BalHandle<IBalHttpCallback> callback = httpServer_->GetCallback();
+        if (callback && callback->IsCallable())
+        {
+            callback->OnWriteBufferDrain(conn);
+        }
+    }
     return true;
 }
 
 bool BalHttpConnection::DoCloseProcedure(bool accord, bool delEvent)
 {
+    BalHandle<BalHttpConnection> conn(this, shareUserCount_);
+
+    if (httpServer_)
+    {
+        BalHandle<BalEventLoop> eventLoop = httpServer_->GetEventLoop();
+        if (eventLoop)
+        {
+            if (true == delEvent)
+            {
+                eventLoop->DeleteEventListener(eventHandle_, EventReadWrite);
+            }
+            eventLoop->RemoveTimer(0, timerCallbackPtr_.GetHandle());
+        }
+
+        BalHandle<BalElement> element
+            = dynamic_cast_<BalHttpConnection, BalElement>(conn);
+        if (element && eventLoop)
+        {
+            eventLoop->AddDelayReleaseElement(element);
+        }
+        httpServer_->EraseTcpConnection(GetFd());
+    }
+
+    BalTcpSocket::Close(); status_ = StatusClosed;
+    BalHandle<IBalHttpCallback> callback = httpServer_->GetCallback();
+    if (callback && callback->IsCallable())
+    {
+        callback->OnHttpClose(conn, accord);
+    }
     return true;
 }
 
 void BalHttpConnection::OnTime(uint32_t id, BalHandle<BalTimer> timer)
 {
+    int64_t current = BootUtil::BalTimeStamp::GetCurrent();
+    int64_t timeout = (int64_t)httpServer_->GetTimeout();
+    if (current - lastReadTime_ >= timeout)
+    {
+        DoCloseProcedure(true, true);
+    }
+    else
+    {
+        uint32_t outTime = (uint32_t)(timeout - current + lastReadTime_);
+        BalHandle<BalEventLoop> eventLoop = httpServer_->GetEventLoop();
+        if (eventLoop)
+        {
+            eventLoop->SetTimerOut(0, timerCallbackPtr_.GetHandle(), outTime);
+        }
+    }
 }
 
 uint32_t BalHttpConnection::DoHttpParser(const char* buffer, uint32_t len)
@@ -337,7 +493,7 @@ BalEventCallbackEnum BalHttpConnection::ShouldRead(int id, BalHandle<BalEventLoo
 BalEventCallbackEnum BalHttpConnection::ShouldWrite(int id, BalHandle<BalEventLoop> el)
 {
     if (StatusEstablish != status_) return EventRetAgain;
-    if (0 == writeBuffer_.GetSize()) return EventRetAgain;
+    if (0 == writeBuffer_.GetSize()) return EventRetComplete;
     char* buffer = (char*)writeBuffer_.RawBuffer();
     uint32_t size = (uint32_t)writeBuffer_.GetSize();
     uint32_t writeSize = WriteBuffer(buffer, size);
@@ -457,6 +613,7 @@ int BalHttpConnection::_OnContentBody(http_parser* parser, const char* buffer, s
         }
     }
     requestBodySize_ += len;
+    requestBuffer_.AppendBuffer(buffer, len);
     return 0;
 }
 
@@ -468,18 +625,42 @@ int BalHttpConnection::_OnHttpComplete(http_parser* parser)
         if (callback && callback->IsCallable())
         {
             BalHandle<BalHttpConnection> conn(this, shareUserCount_);
-            callback->OnHttpComplete(conn);
+            callback->OnHttpComplete(conn, requestBuffer_.RawBuffer(),
+                (uint32_t)(requestBuffer_.GetSize()));
         }
     }
+
+    requestBuffer_.Clear();
+    requestBodySize_ = 0;
+    currentChunkedSize_ = 0;
+    requestKeepAlive_ = false;
+    respondKeepAlive_ = false;
+    respondChunked_ = false;
     return 0;
 }
 
 int BalHttpConnection::_OnChunkHeader(http_parser* parser)
 {
+    if (parser)
+    {
+        currentChunkedSize_ = (uint32_t)(parser->content_length);
+    }
+    requestBuffer_.Clear();
     return 0;
 }
 
 int BalHttpConnection::_OnChunkComplete(http_parser* parser)
 {
+    if (httpServer_)
+    {
+        BalHandle<IBalHttpCallback> callback = httpServer_->GetCallback();
+        if (callback && callback->IsCallable())
+        {
+            BalHandle<BalHttpConnection> conn(this, shareUserCount_);
+            callback->OnHttpChunkBuffer(conn, requestBuffer_.RawBuffer(),
+                (uint32_t)(requestBuffer_.GetSize()));
+        }
+    }
+    requestBuffer_.Clear();
     return 0;
 }

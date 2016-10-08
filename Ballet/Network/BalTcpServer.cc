@@ -113,23 +113,25 @@ BalEventCallbackEnum BalTcpServer::ShoudAccept(int id, BalHandle<BalEventLoop> e
         return EventRetComplete;
     }
 
-    try
+    if (accpetId > 0)
     {
-        BalHandle<BalTcpServer> server(this, shareUserCount_);
-        BalHandle<BalTcpConnection> conn(new BalTcpConnection(accpetId, server));
-        if (conn)
+        try
         {
-            mapConnPool_[accpetId] = conn;
-            conn->SetNoDelay(true); conn->SetReuseAddr(true);
-            if (tcpCallback_ && tcpCallback_->IsCallable())
+            BalHandle<BalTcpServer> server(this, shareUserCount_);
+            BalHandle<BalTcpConnection> conn(new BalTcpConnection(accpetId, server));
+            if (conn)
             {
-                tcpCallback_->OnConnect(conn, true);
+                mapConnPool_[accpetId] = conn;
+                conn->SetNoDelay(true); conn->SetReuseAddr(true);
+                if (tcpCallback_ && tcpCallback_->IsCallable())
+                {
+                    tcpCallback_->OnConnect(conn, true);
+                }
             }
         }
+        catch (std::exception&)
+        {
+        }
     }
-    catch (std::exception&)
-    {
-    }
-
     return EventRetContinue;
 }

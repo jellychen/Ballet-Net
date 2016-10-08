@@ -62,6 +62,7 @@ bool BalEventLoop::SetEventListener(
         BalEventData* eventData = eventDataManager_.GetOne();
         if (eventData)
         {
+            eventData->fd_ = fd;
             ev.data.ptr = eventData;
             handle.eventData_ = eventData;
             eventData->callback_ = callback;
@@ -82,6 +83,7 @@ bool BalEventLoop::SetEventListener(
         BalEventData* eventData = handle.eventData_;
         if (eventData)
         {
+            eventData->fd_ = fd;
             ev.data.ptr = eventData;
             eventData->callback_ = callback;
         }
@@ -153,37 +155,46 @@ bool BalEventLoop::RemoveTimer(int id, BalTimerCallback callback)
 
 bool BalEventLoop::DoEventSelect(int time)
 {
-    releaseList_.clear();
-    BalHandle<BalEventLoop> eventLoop(this, shareUserCount_);
-    DoReadyPool(eventLoop);
     if (efd_ <= 0) return false;
-    struct epoll_event events[MAX_READFD_SIZE];
-    int nfds = ::epoll_wait(efd_, events, MAX_READFD_SIZE, time);
+    releaseList_.clear();
+
+    struct epoll_event events[10240];
+    int nfds = ::epoll_wait(efd_, events, 10240, time);
     timer_->Tick();
 
-    for (int i = 0; i < nfds; ++i)
+    if (-1 == nfds && errno == EINTR)
     {
-        BalEventData* eventData = (BalEventData*)(events[i].data.ptr);
-        if (eventData && eventData->callback_)
+        errno = 0;
+    }
+    else
+    {
+        for (int i = 0; i < nfds; ++i)
         {
-            BalEventEnum eventStatus = EventNone;
-            if (events[i].events &EPOLLIN)
+            BalEventData* eventData = (BalEventData*)(events[i].data.ptr);
+            if (eventData && eventData->callback_)
             {
-                eventStatus = (BalEventEnum)(eventStatus |EventRead);
-            }
+                BalEventEnum eventStatus = EventNone;
+                if (events[i].events &EPOLLIN)
+                {
+                    eventStatus = (BalEventEnum)(eventStatus |EventRead);
+                }
 
-            if (events[i].events &EPOLLOUT)
-            {
-                eventStatus = (BalEventEnum)(eventStatus |EventWrite);
-            }
+                if (events[i].events &EPOLLOUT)
+                {
+                    eventStatus = (BalEventEnum)(eventStatus |EventWrite);
+                }
 
-            if (EventNone != eventStatus)
-            {
-                eventData->index_ = AddReadyItem(eventData->index_,
-                    events[i].data.fd, eventStatus, eventData->callback_, eventData);
+                if (EventNone != eventStatus)
+                {
+                    eventData->index_ = AddReadyItem(eventData->index_,
+                        eventData->fd_, eventStatus, eventData->callback_, eventData);
+                }
             }
         }
     }
+
+    BalHandle<BalEventLoop> eventLoop(this, shareUserCount_);
+    DoReadyPool(eventLoop);
     return true;
 }
 

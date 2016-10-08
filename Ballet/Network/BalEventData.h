@@ -11,6 +11,7 @@ namespace Ballet
     {
         struct BalEventData
         {
+            int fd_;
             int index_;
             BalEventCallback callback_;
         };

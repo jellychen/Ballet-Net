@@ -36,6 +36,10 @@ Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalTcpConnection.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalTcpServer.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalTcpSocket.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Protocol/Arp/BalArpBroadcast.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Protocol/Http/BalHttpCallback.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Protocol/Http/BalHttpConnection.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Protocol/Http/BalHttpServer.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Protocol/Http/http_parser.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ServiceWorker/BalService.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ServiceWorker/BalServiceCallback.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ServiceWorker/BalServiceManage.h
@@ -46,6 +50,7 @@ Test/CMakeFiles/Test.dir/Test.o: ../Test/t_ArpTest.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Callback.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Handle.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_HandleCast.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/t_HttpServer.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Service.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_ShareThis.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Singleton.h

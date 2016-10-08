@@ -48,11 +48,12 @@ namespace Ballet
             void RespondContentType(const char*);
             void RespondContentLength(int);
             void RespondHeader(const char*, const char*);
-            void RespondHeaderComplete();
+            void RespondHeaderComplete(bool);
             void RespondBody(const char*, int);
             void RespondChunk(const char*, int);
             void RespondChunkComplete();
-            void RespondComplete();
+            void RespondComplete(bool);
+            void RespondData(const char*, int, bool, bool);
 
         protected:
             bool WriteRawBuffer(const char* buffer, uint32_t size);
@@ -92,13 +93,16 @@ namespace Ballet
             std::string requestUrl_;
             mapPoolT requestHeaderField_;
             uint32_t requestBodySize_;
+            uint32_t currentChunkedSize_;
             bool requestKeepAlive_;
             std::string requestHeaderFieldKey_;
             std::string requestHeaderFieldValue_;
+            BalBufferStream requestBuffer_;
 
             bool respondKeepAlive_;
             bool respondChunked_;
             std::string respondHttpHeadBuffer_;
+            BalBufferStream respondBuffer_;
         };
     }
 }
