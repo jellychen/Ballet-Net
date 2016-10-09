@@ -16,15 +16,15 @@ namespace Ballet
         class BalEventLoop
             :public BalElement ,public BalShareThis ,public BalNoCoable
         {
-            typedef std::map<int, BalHandle<BalElement> > mapHoldPoolT;
+            typedef std::map<long, BalHandle<BalElement> > mapHoldPoolT;
         public:
             BalEventLoop();
             virtual ~BalEventLoop();
 
         public:
             bool AddDelayReleaseElement(BalHandle<BalElement>&);
-            bool AddHoldSomeElement(int, BalHandle<BalElement>&);
-            bool RemoveHoldElement(int);
+            bool AddHoldSomeElement(long, BalHandle<BalElement>&);
+            bool RemoveHoldElement(long);
             bool SetEventListener(BalEventHandle&, BalEventEnum, BalEventCallback);
             bool DeleteEventListener(BalEventHandle&, BalEventEnum event);
             bool SetTimerOut(int, BalTimerCallback, uint32_t);

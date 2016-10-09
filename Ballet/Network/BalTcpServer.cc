@@ -70,6 +70,11 @@ uint32_t BalTcpServer::GetTimeout() const
     return maxTimeout_;
 }
 
+uint32_t BalTcpServer::GetMaxPackageSize() const
+{
+    return maxPackageSize_;
+}
+
 uint32_t BalTcpServer::GetMaxReadBufferSize() const
 {
     return maxReadBufferSize_;

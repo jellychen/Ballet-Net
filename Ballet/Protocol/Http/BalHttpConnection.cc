@@ -12,7 +12,7 @@ BalHttpConnection::BalHttpConnection(int id, BalHandle<BalHttpServer> server)
     httpServer_ = server;
     status_ = StatusEstablish;
 
-    if (!eventCallbackPtr_ || !httpServer_)
+    if (!eventCallbackPtr_ || !timerCallbackPtr_ || !httpServer_)
     {
         throw std::runtime_error("BalHttpConnection Construct Failed! @1");
         return;
@@ -528,14 +528,15 @@ BalEventCallbackEnum BalHttpConnection::ShouldWrite(int id, BalHandle<BalEventLo
     uint32_t size = (uint32_t)writeBuffer_.GetSize();
     uint32_t writeSize = WriteBuffer(buffer, size);
 
-    if (0 == writeSize)
+    if (0 == writeSize || (-1 == writeSize && EAGAIN != errno))
     {
         DoCloseProcedure(false, true);
         return EventRetClose;
     }
-    else if (size > writeSize)
+    writeBuffer_.ConsumeBuffer((size_t)writeSize);
+
+    if (size > writeSize)
     {
-        writeBuffer_.ConsumeBuffer((size_t)writeSize);
         return EventRetComplete;
     }
     else if (size == writeSize)

@@ -284,7 +284,7 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
         readBuffer_.AppendBuffer(buffer, readSize);
     }
 
-    if (readSize < 10240)
+    if (readSize < MAX_READFD_SIZE)
     {
         ret = EventRetComplete;
     }
@@ -318,7 +318,7 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
                 BalHandle<BalChannel> channel =
                     dynamic_cast_<BalTcpConnection, BalChannel>(conn);
                 bool ret = tcpServer_->GetProtocol()
-                    ->Decode(rawBuffer, (uint32_t)rawBufferSize, channel);
+                    ->Decode(rawBuffer, (uint32_t)protocolWantSize_, channel);
 
                 if (false == ret)
                 {
@@ -330,6 +330,11 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
                     readBuffer_.ConsumeBuffer((size_t)protocolWantSize_);
                     protocolWantSize_ = -1;
                 }
+            }
+            else if (protocolWantSize_ > tcpServer_->GetMaxPackageSize())
+            {
+                DoCloseProcedure(true, true);
+                return EventRetClose;
             }
             else
             {
@@ -346,20 +351,20 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
 
 BalEventCallbackEnum BalTcpConnection::ShouldWrite(int id, BalHandle<BalEventLoop> el)
 {
-    if (StatusEstablish != status_) return EventRetAgain;
     if (0 == writeBuffer_.GetSize()) return EventRetAgain;
     char* buffer = (char*)writeBuffer_.RawBuffer();
     uint32_t size = (uint32_t)writeBuffer_.GetSize();
     uint32_t writeSize = WriteBuffer(buffer, size);
 
-    if (0 == writeSize)
+    if (0 == writeSize || (-1 == writeSize && EAGAIN != errno))
     {
         DoCloseProcedure(false, true);
         return EventRetClose;
     }
-    else if (size > writeSize)
+    writeBuffer_.ConsumeBuffer((size_t)writeSize);
+
+    if (size > writeSize)
     {
-        writeBuffer_.ConsumeBuffer((size_t)writeSize);
         return EventRetComplete;
     }
     else if (size == writeSize)

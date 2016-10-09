@@ -27,7 +27,7 @@ bool BalEventLoop::AddDelayReleaseElement(BalHandle<BalElement>& element)
     return true;
 }
 
-bool BalEventLoop::AddHoldSomeElement(int id, BalHandle<BalElement>& element)
+bool BalEventLoop::AddHoldSomeElement(long id, BalHandle<BalElement>& element)
 {
     if (!element) return false;
     mapHoldPoolT::iterator iter = holdElementPool_.find(id);
@@ -36,7 +36,7 @@ bool BalEventLoop::AddHoldSomeElement(int id, BalHandle<BalElement>& element)
     return true;
 }
 
-bool BalEventLoop::RemoveHoldElement(int id)
+bool BalEventLoop::RemoveHoldElement(long id)
 {
     mapHoldPoolT::iterator iter = holdElementPool_.find(id);
     if (iter == holdElementPool_.end()) return false;
@@ -240,20 +240,7 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
         if (!item.callback_ || !(item.callback_->IsCallable())) continue;
         BalEventCallbackEnum ret = EventRetNone;
 
-        if (0 != item.read_)
-        {
-            ret = item.callback_->ShouldRead(item.fd_, eventLoop);
-            if (EventRetClose == ret)
-            {
-                closed = true;
-            }
-            else if (EventRetAgain == ret || EventRetComplete == ret)
-            {
-                item.read_ = 0;
-            }
-        }
-
-        if (false == closed && 0 != item.write_)
+        if (0 != item.write_)
         {
             ret = item.callback_->ShouldWrite(item.fd_, eventLoop);
             if (EventRetClose == ret)
@@ -263,6 +250,19 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
             else if (EventRetAgain == ret || EventRetComplete == ret)
             {
                 item.write_ = 0;
+            }
+        }
+
+        if (false == closed && 0 != item.read_)
+        {
+            ret = item.callback_->ShouldRead(item.fd_, eventLoop);
+            if (EventRetClose == ret)
+            {
+                closed = true;
+            }
+            else if (EventRetAgain == ret || EventRetComplete == ret)
+            {
+                item.read_ = 0;
             }
         }
 
