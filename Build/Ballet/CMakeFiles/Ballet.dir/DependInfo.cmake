@@ -23,7 +23,6 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/mnt/shared/Ballet-Net-Github/Ballet/Network/BalSignalCallbackPool.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Network/BalSocket.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Network/BalSocket.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Network/BalSyncTcpClient.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Network/BalSyncTcpClient.o"
-  "/mnt/shared/Ballet-Net-Github/Ballet/Network/BalSyncUdpClient.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Network/BalSyncUdpClient.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Network/BalTcpClient.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Network/BalTcpConnection.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Network/BalTcpServer.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o"

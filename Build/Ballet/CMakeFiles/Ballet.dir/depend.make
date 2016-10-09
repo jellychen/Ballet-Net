@@ -206,8 +206,6 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalSocket.o: ../Ballet/Network/BalSocket.h
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalSyncTcpClient.o: ../Ballet/Network/BalSyncTcpClient.cc
 
-Ballet/CMakeFiles/Ballet.dir/Network/BalSyncUdpClient.o: ../Ballet/Network/BalSyncUdpClient.cc
-
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/BootUtil/BalTimeStamp.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/BootUtil/BalTimer.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/BootUtil/BalTimerCallback.h

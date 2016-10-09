@@ -21,10 +21,9 @@ namespace Ballet
             bool SetNoBlock() throw();
             bool ShutdownWrite() throw();
             bool SetNoDelay(bool set) throw();
-            bool SetReuseAddr(bool set) throw();
-            bool SetReusePort(bool set) throw();
             bool SetKeepAlive(bool set) throw();
             bool BindAddress(BalHandle<BalInetAddress> addr) throw();
+            bool Connect(BalHandle<BalInetAddress> addr, bool* connecting) throw();
         };
     }
 }

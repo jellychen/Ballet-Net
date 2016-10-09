@@ -320,21 +320,6 @@ Network/BalSyncTcpClient.s:
 .PHONY : Network/BalSyncTcpClient.s
 
 # target to build an object file
-Network/BalSyncUdpClient.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalSyncUdpClient.o
-.PHONY : Network/BalSyncUdpClient.o
-
-# target to preprocess a source file
-Network/BalSyncUdpClient.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalSyncUdpClient.i
-.PHONY : Network/BalSyncUdpClient.i
-
-# target to generate assembly for a file
-Network/BalSyncUdpClient.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalSyncUdpClient.s
-.PHONY : Network/BalSyncUdpClient.s
-
-# target to build an object file
 Network/BalTcpClient.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o
 .PHONY : Network/BalTcpClient.o
@@ -670,9 +655,6 @@ help:
 	@echo "... Network/BalSyncTcpClient.o"
 	@echo "... Network/BalSyncTcpClient.i"
 	@echo "... Network/BalSyncTcpClient.s"
-	@echo "... Network/BalSyncUdpClient.o"
-	@echo "... Network/BalSyncUdpClient.i"
-	@echo "... Network/BalSyncUdpClient.s"
 	@echo "... Network/BalTcpClient.o"
 	@echo "... Network/BalTcpClient.i"
 	@echo "... Network/BalTcpClient.s"

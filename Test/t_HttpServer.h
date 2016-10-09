@@ -83,9 +83,9 @@ public:
 
     bool OnHttpComplete(BalHttpConnectionPtr conn, const char* buffer, uint32_t)
     {
-        std::string url;
-        conn->GetHttpUrl(&url);
-        printf(">>>  %s\n", url.c_str());
+        //std::string url;
+        //conn->GetHttpUrl(&url);
+        //printf(">>>  %s\n", url.c_str());
 
         conn->RespondBegin();
         conn->RespondVersion(1, 0);

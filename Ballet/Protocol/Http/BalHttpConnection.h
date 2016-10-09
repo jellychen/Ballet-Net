@@ -38,6 +38,12 @@ namespace Ballet
             void GetHttpVersion(int*, int*) const;
             void GetHttpHeaderField(const char*, std::string*) const;
             bool GetKeepAlive() const;
+            bool ParserGetParams() const;
+            bool ParserPostParams() const;
+            bool ParserCookies() const;
+            void GetGetParamsField(const char*, std::string*) const;
+            void GetPostParamsField(const char*, std::string*) const;
+            void GetCookiesField(const char*, std::string*) const;
 
         public:
             void RespondBegin();

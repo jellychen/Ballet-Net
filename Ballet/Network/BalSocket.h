@@ -17,8 +17,8 @@ namespace Ballet
         public:
             int  GetFd() const{return fd_;}
             bool IsV6Socket() const;
-            virtual bool SetReuseAddr(bool set) throw();
-            virtual bool SetReusePort(bool set) throw();
+            bool SetReuseAddr(bool set) throw();
+            bool SetReusePort(bool set) throw();
 
         protected:
             uint32_t ReadBuffer(char* buffer, uint32_t) const;

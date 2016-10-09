@@ -66,24 +66,6 @@ bool BalTcpSocket::SetNoDelay(bool set) throw()
     return 0 == ::setsockopt(fd_, IPPROTO_TCP, TCP_NODELAY, &val, sizeof(int));
 }
 
-bool BalTcpSocket::SetReuseAddr(bool set) throw()
-{
-    if (0 == fd_) return false;
-    int val = set? 1: 0;
-    return 0 == ::setsockopt(fd_, IPPROTO_TCP, SO_REUSEADDR, &val, sizeof(int));
-}
-
-bool BalTcpSocket::SetReusePort(bool set) throw()
-{
-#ifdef SO_REUSEPORT
-    if (0 == fd_) return false;
-    int val = set? 1: 0;
-    return 0 == ::setsockopt(fd_, IPPROTO_TCP, SO_REUSEPORT, &val, sizeof(int));
-#else
-    return false;
-#endif
-}
-
 bool BalTcpSocket::SetKeepAlive(bool set) throw()
 {
     if (0 == fd_) return false;
@@ -97,4 +79,17 @@ bool BalTcpSocket::BindAddress(BalHandle<BalInetAddress> addr) throw()
     if (0 == fd_ || !addr) return false;
     return 0 == ::bind(fd_,\
     addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6)));
+}
+
+bool BalTcpSocket::Connect(BalHandle<BalInetAddress> addr, bool* connecting) throw()
+{
+    if (0 == fd_ || !addr) return false;
+    int ret = ::connect(fd_,\
+    addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6)));
+    if (0 == ret) return true;
+    if (0 > ret && EINPROGRESS == errno && connecting)
+    {
+        *connecting = true;
+    }
+    return false;
 }

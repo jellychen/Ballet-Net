@@ -208,6 +208,36 @@ bool BalHttpConnection::GetKeepAlive() const
     return requestKeepAlive_;
 }
 
+bool BalHttpConnection::ParserGetParams() const
+{
+    return true;
+}
+
+bool BalHttpConnection::ParserPostParams() const
+{
+    return true;
+}
+
+bool BalHttpConnection::ParserCookies() const
+{
+    return true;
+}
+
+void BalHttpConnection::GetGetParamsField(const char*, std::string*) const
+{
+
+}
+
+void BalHttpConnection::GetPostParamsField(const char*, std::string*) const
+{
+
+}
+
+void BalHttpConnection::GetCookiesField(const char*, std::string*) const
+{
+
+}
+
 void BalHttpConnection::RespondBegin()
 {
     respondHttpHeadBuffer_ = "HTTP/";

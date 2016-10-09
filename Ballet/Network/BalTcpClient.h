@@ -3,13 +3,7 @@
 #include "Common/BalInct.h"
 #include "BootUtil/BalTimeStamp.h"
 #include "BalNetworkInct.h"
-#include "BalTcpSocket.h"
-#include "BalTcpCallback.h"
-#include "BalInetAddress.h"
-#include "BalEventLoop.h"
-#include "BalProtocol.h"
-#include "BalChannel.h"
-#include "BalBufferStream.h"
+#include "BalTcpConnection.h"
 
 namespace Ballet
 {
@@ -26,6 +20,7 @@ namespace Ballet
 
         public:
             bool IsV6();
+            bool Connect(BalHandle<BalInetAddress> addr, int timeout);
             bool Close(bool now);
             bool ShutdownWrite();
             bool WriteBuffer(const char* buffer, uint32_t len);
@@ -41,11 +36,19 @@ namespace Ballet
             BalHandle<IBalTcpCallback> GetCallback() const;
 
         protected:
+            virtual BalEventCallbackEnum ShouldRead(int id, BalHandle<BalEventLoop> el);
+            virtual BalEventCallbackEnum ShouldWrite(int id, BalHandle<BalEventLoop> el);
+
+        protected:
+            bool setDelayRelease_;
+            BalConnStatusEnum status_;
+            BalEventHandle eventHandle_;
             BalHandle<IBalProtocol> tcpProtocol_;
             BalWeakHandle<BalEventLoop> eventLoop_;
             BalHandle<IBalTcpCallback> tcpCallback_;
             uint32_t maxPackage_, lastSendBufferTime_;
             uint32_t maxReadBufferSize_, maxWriteBufferSize_;
+            CBalEventCallbackPtr<BalTcpClient> eventCallbackPtr_;
         };
     }
 }

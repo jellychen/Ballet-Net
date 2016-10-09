@@ -18,7 +18,6 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o"
   "CMakeFiles/Ballet.dir/Network/BalSocket.o"
   "CMakeFiles/Ballet.dir/Network/BalSyncTcpClient.o"
-  "CMakeFiles/Ballet.dir/Network/BalSyncUdpClient.o"
   "CMakeFiles/Ballet.dir/Network/BalTcpClient.o"
   "CMakeFiles/Ballet.dir/Network/BalTcpConnection.o"
   "CMakeFiles/Ballet.dir/Network/BalTcpServer.o"
