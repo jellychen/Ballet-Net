@@ -40,6 +40,6 @@ int main(int argc, char const *argv[])
     //t_TcpServer_main();
     //t_Art_main();
     t_HttpService_main();
-    
+
     return 0;
 }

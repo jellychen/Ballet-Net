@@ -353,7 +353,6 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o
  ../Ballet/Common/BalUseCount.h
  ../Ballet/Common/BalVariable.h
  ../Ballet/Common/BalWeakHandle.h
- /mnt/shared/Ballet-Net-Github/Ballet/Network/BalChannel.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalElement.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalEndian.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalEventCallback.h
@@ -363,9 +362,10 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalInetAddress.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalNetDefine.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalNetworkInct.h
- /mnt/shared/Ballet-Net-Github/Ballet/Network/BalProtocol.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalSocket.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpCallback.h
+ /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpChannel.h
+ /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpProtocol.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpServer.cc
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpServer.h
  /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpSocket.h

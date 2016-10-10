@@ -352,7 +352,6 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Common/BalSinglet
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Common/BalUseCount.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Common/BalVariable.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Common/BalWeakHandle.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalChannel.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalElement.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalEndian.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalEventCallback.h
@@ -362,9 +361,10 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalEventL
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalInetAddress.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalNetworkInct.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalProtocol.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalSocket.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpCallback.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpChannel.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpProtocol.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpServer.cc
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpServer.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpSocket.h

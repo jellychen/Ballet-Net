@@ -39,3 +39,19 @@ bool BalUdpSocket::BindAddress(BalHandle<BalInetAddress> addr) throw()
     return 0 == ::bind(fd_,\
         addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6)));
 }
+
+int BalUdpSocket::ReadBufferFrom(char* buffer,
+        uint32_t size, BalHandle<BalInetAddress>& addr) throw()
+{
+    if (0 == fd_ || !addr || !size) return 0;
+    socklen_t len = 0;
+    return (int)::recvfrom(fd_, buffer, size, 0, addr->GetSocketAddr(), &len);
+}
+
+int BalUdpSocket::SendBufferTo(const char* buffer,
+        uint32_t size, BalHandle<BalInetAddress> addr) throw()
+{
+    if (0 == fd_ || !addr || !size) return 0;
+    return (int)::sendto(fd_, buffer, size, 0,\
+         addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6)));
+}

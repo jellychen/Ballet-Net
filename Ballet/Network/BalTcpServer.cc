@@ -12,6 +12,7 @@ BalTcpServer::BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
     protocol_ = protocol;
     eventLoop_ = eventLoop;
     maxTimeout_ = timeout;
+    detachFromEventLoop_ = false;
     maxPackageSize_ = maxPackage;
     maxReadBufferSize_ = maxReadBufferSize;
     maxWriteBufferSize_ = maxWriteBufferSize;
@@ -38,7 +39,7 @@ BalTcpServer::BalTcpServer(bool v6, BalHandle<BalEventLoop> eventLoop,
 
 BalTcpServer::~BalTcpServer()
 {
-    if (eventLoop_)
+    if (eventLoop_ && !detachFromEventLoop_)
     {
         eventLoop_->DeleteEventListener(eventHandle_, EventRead);
     }
@@ -55,6 +56,7 @@ bool BalTcpServer::Close()
     {
         eventLoop_->DeleteEventListener(eventHandle_, EventRead);
     }
+    detachFromEventLoop_ = true;
     return BalTcpSocket::Close();
 }
 

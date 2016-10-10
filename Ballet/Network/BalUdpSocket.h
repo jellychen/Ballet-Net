@@ -18,6 +18,8 @@ namespace Ballet
             bool Close() throw();
             bool SetNoBlock() throw();
             bool BindAddress(BalHandle<BalInetAddress> addr) throw();
+            int  ReadBufferFrom(char*, uint32_t, BalHandle<BalInetAddress>& addr) throw();
+            int  SendBufferTo(const char*, uint32_t, BalHandle<BalInetAddress> addr) throw();
         };
     }
 }
