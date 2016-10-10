@@ -7,6 +7,7 @@
 #include "BalEventData.h"
 #include "BalElement.h"
 #include "BalEventCallback.h"
+#include "BalSignalCallbackPool.h"
 
 namespace Ballet
 {
@@ -27,6 +28,8 @@ namespace Ballet
             bool RemoveHoldElement(long);
             bool SetEventListener(BalEventHandle&, BalEventEnum, BalEventCallback);
             bool DeleteEventListener(BalEventHandle&, BalEventEnum event);
+            bool SetSignalListener(int, BalSignalCallback);
+            bool DeleteSignalListener(int);
             bool SetTimerOut(int, BalTimerCallback, uint32_t);
             bool SetTimerLoop(int, BalTimerCallback, uint32_t);
             bool RemoveTimer(int, BalTimerCallback);
@@ -46,8 +49,10 @@ namespace Ballet
             vecReleaseListT releaseList_;
             mapHoldPoolT holdElementPool_;
             bool doReadyPoolProtected_;
-            int efd_; bool shouldExit_;
+            int efd_, sfd_; bool shouldExit_;
+            bool sfdMaybeHaveData_;
             BalEventDataManager eventDataManager_;
+            BalSignalCallbackPool signalCallbackPool_;
         };
     }
 }

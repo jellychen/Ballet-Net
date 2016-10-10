@@ -9,8 +9,7 @@ namespace Ballet
     {
         class BalSignalCallbackPool
         {
-            typedef std::map<long, BalHandle<IBalSignalCallback> > mapCallbackT;
-            typedef std::map<int, mapCallbackT> mapSignalCallbackPoolT;
+            typedef std::map<int, BalHandle<IBalSignalCallback> > mapSignalCallbackPoolT;
         public:
             BalSignalCallbackPool();
             virtual ~BalSignalCallbackPool();
@@ -18,7 +17,7 @@ namespace Ballet
         public:
             void ReceiveSignal(int signal, BalHandle<BalEventLoop>);
             bool AddSignalCallback(int, BalHandle<IBalSignalCallback>);
-            bool RemoveSignalCallback(int, BalHandle<IBalSignalCallback>);
+            bool RemoveSignalCallback(int);
 
         private:
             mapSignalCallbackPoolT callbackPool_;

@@ -260,21 +260,6 @@ Network/BalInetAddress.s:
 .PHONY : Network/BalInetAddress.s
 
 # target to build an object file
-Network/BalSignal.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalSignal.o
-.PHONY : Network/BalSignal.o
-
-# target to preprocess a source file
-Network/BalSignal.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalSignal.i
-.PHONY : Network/BalSignal.i
-
-# target to generate assembly for a file
-Network/BalSignal.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalSignal.s
-.PHONY : Network/BalSignal.s
-
-# target to build an object file
 Network/BalSignalCallbackPool.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o
 .PHONY : Network/BalSignalCallbackPool.o
@@ -643,9 +628,6 @@ help:
 	@echo "... Network/BalInetAddress.o"
 	@echo "... Network/BalInetAddress.i"
 	@echo "... Network/BalInetAddress.s"
-	@echo "... Network/BalSignal.o"
-	@echo "... Network/BalSignal.i"
-	@echo "... Network/BalSignal.s"
 	@echo "... Network/BalSignalCallbackPool.o"
 	@echo "... Network/BalSignalCallbackPool.i"
 	@echo "... Network/BalSignalCallbackPool.s"

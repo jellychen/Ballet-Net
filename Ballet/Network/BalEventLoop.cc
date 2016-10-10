@@ -11,6 +11,11 @@ BalEventLoop::BalEventLoop()
     {
         throw std::runtime_error("BalEventLoop Construct Failed! @1");
     }
+
+    sfdMaybeHaveData_ = true;
+    sigset_t signalMask; ::sigfillset(&signalMask);
+    ::sigprocmask(SIG_BLOCK, &signalMask, 0);
+    sfd_ = ::signalfd(-1, &signalMask, 0);
 }
 
 BalEventLoop::~BalEventLoop()
@@ -18,6 +23,11 @@ BalEventLoop::~BalEventLoop()
     if (0 != efd_)
     {
         ::close(efd_);
+    }
+
+    if (0 != sfd_)
+    {
+        ::close(sfd_);
     }
 }
 
@@ -138,6 +148,16 @@ bool BalEventLoop::DeleteEventListener(BalEventHandle& handle, BalEventEnum even
     return true;
 }
 
+bool BalEventLoop::SetSignalListener(int id, BalSignalCallback callback)
+{
+    return signalCallbackPool_.AddSignalCallback(id, callback);
+}
+
+bool BalEventLoop::DeleteSignalListener(int id)
+{
+    return signalCallbackPool_.RemoveSignalCallback(id);
+}
+
 bool BalEventLoop::SetTimerOut(int id, BalTimerCallback callback, uint32_t time)
 {
     return timer_->SetTimerOut(id, callback, time);
@@ -171,7 +191,11 @@ bool BalEventLoop::DoEventSelect(int time)
         for (int i = 0; i < nfds; ++i)
         {
             BalEventData* eventData = (BalEventData*)(events[i].data.ptr);
-            if (eventData && eventData->callback_)
+            if (sfd_ == eventData->fd_)
+            {
+                sfdMaybeHaveData_ = true;
+            }
+            else if (eventData && eventData->callback_)
             {
                 BalEventEnum eventStatus = EventNone;
                 if (events[i].events &EPOLLIN)
@@ -194,6 +218,19 @@ bool BalEventLoop::DoEventSelect(int time)
     }
 
     BalHandle<BalEventLoop> eventLoop(this, shareUserCount_);
+    if (true == sfdMaybeHaveData_)
+    {
+        struct signalfd_siginfo fdsi;
+        ssize_t len = read(sfd_, &fdsi, sizeof(struct signalfd_siginfo));
+        if (len != sizeof(struct signalfd_siginfo))
+        {
+            sfdMaybeHaveData_ = false;
+        }
+        else
+        {
+            signalCallbackPool_.ReceiveSignal(fdsi.ssi_signo, eventLoop);
+        }
+    }
     DoReadyPool(eventLoop);
     return true;
 }
@@ -203,7 +240,7 @@ bool BalEventLoop::DoEventLoop()
     shouldExit_ = false;
     while (true)
     {
-        if (readyPool_.size() > 0)
+        if (readyPool_.size() > 0 || !sfdMaybeHaveData_)
         {
             DoEventSelect(0);
         }

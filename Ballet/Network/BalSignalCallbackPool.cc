@@ -17,60 +17,28 @@ void BalSignalCallbackPool::ReceiveSignal(int signal, BalHandle<BalEventLoop> el
     mapSignalCallbackPoolT::iterator iter = callbackPool_.find(signal);
     if (iter != callbackPool_.end())
     {
-        mapCallbackT::iterator insideIter = iter->second.begin();
-        for (; insideIter != iter->second.end();)
+        BalHandle<IBalSignalCallback> callback = iter->second;
+        if (callback && callback->IsCallable())
         {
-            BalHandle<IBalSignalCallback> callback = insideIter->second;
-            if (callback && callback->IsCallable())
-            {
-                ++insideIter;
-                callback->OnReceiveSignal(signal, el);
-            }
-            else
-            {
-                iter->second.erase(insideIter++);
-            }
-        }
-
-        if (0 == iter->second.size())
-        {
-            callbackPool_.erase(iter);
+            callback->OnReceiveSignal(signal, el);
         }
     }
 }
 
 bool BalSignalCallbackPool::AddSignalCallback(int signal, BalHandle<IBalSignalCallback> callback)
 {
-    if (!callback || !callback->IsCallable()) return false;
-    long hashCode = callback.HashCode();
-    mapSignalCallbackPoolT::iterator iter = callbackPool_.find(signal);
-    if (iter != callbackPool_.end())
+    if (!callback || !callback->IsCallable())
     {
-        iter->second[hashCode] = callback;
+        return false;
     }
-    else
-    {
-        mapCallbackT callbackInsidePool;
-        callbackInsidePool[hashCode] = callback;
-        callbackPool_[signal] = callbackInsidePool;
-    }
+    callbackPool_[signal] = callback;
     return true;
 }
 
-bool BalSignalCallbackPool::RemoveSignalCallback(int signal, BalHandle<IBalSignalCallback> callback)
+bool BalSignalCallbackPool::RemoveSignalCallback(int signal)
 {
-    if (!callback || !callback->IsCallable()) return false;
     mapSignalCallbackPoolT::iterator iter = callbackPool_.find(signal);
     if (callbackPool_.end() == iter) return false;
-    long hashCode = callback.HashCode();
-    mapCallbackT::iterator insideIter = iter->second.find(hashCode);
-    if (iter->second.end() != insideIter)
-    {
-        iter->second.erase(insideIter);
-        if (0 == iter->second.size())
-        {
-            callbackPool_.erase(iter);
-        }
-    }
+    callbackPool_.erase(iter);
     return true;
 }

@@ -30,6 +30,8 @@ Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalInetAddress.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalNetDefine.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalNetworkInct.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalProtocol.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalSignalCallback.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalSignalCallbackPool.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalSocket.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalTcpCallback.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/Network/BalTcpConnection.h

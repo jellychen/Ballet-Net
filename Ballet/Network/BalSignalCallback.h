@@ -16,6 +16,8 @@ namespace Ballet
         BalCallbackSink(void, OnReceiveSignal, (int id, BalHandle<BalEventLoop> el), (id, el))
         BalCallbackSinkComplete()
         BalCallbackSinkPtrDefine(CBalSignalCallback, IBalSignalCallback)
+
+        typedef BalHandle<IBalSignalCallback> BalSignalCallback;
     }
 }
 #endif

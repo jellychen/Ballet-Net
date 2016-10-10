@@ -150,6 +150,8 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventL
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventLoop.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalNetworkInct.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalSignalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalSignalCallbackPool.h
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Common/BalCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Common/BalCoable.h
@@ -167,8 +169,6 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalEndi
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalInetAddress.cc
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalInetAddress.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalNetworkInct.h
-
-Ballet/CMakeFiles/Ballet.dir/Network/BalSignal.o: ../Ballet/Network/BalSignal.cc
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o: ../Ballet/Common/BalCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o: ../Ballet/Common/BalCoable.h
@@ -235,6 +235,8 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalInetAd
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalNetworkInct.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalProtocol.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalSignalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalSignalCallbackPool.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalSocket.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalTcpCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalTcpClient.cc
@@ -271,6 +273,8 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalIn
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalNetworkInct.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalProtocol.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalSignalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalSignalCallbackPool.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalSocket.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalTcpCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalTcpConnection.cc
@@ -307,6 +311,8 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalInetAd
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalNetworkInct.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalProtocol.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalSignalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalSignalCallbackPool.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalSocket.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalTcpCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalTcpConnection.h
@@ -361,6 +367,8 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalEventL
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalInetAddress.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalNetworkInct.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalSignalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalSignalCallbackPool.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalSocket.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpChannel.h
@@ -435,6 +443,8 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Networ
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Network/BalNetworkInct.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Network/BalProtocol.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Network/BalSignalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Network/BalSignalCallbackPool.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Network/BalSocket.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Network/BalTcpCallback.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Network/BalTcpConnection.h
@@ -476,6 +486,8 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Ne
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Network/BalNetworkInct.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Network/BalProtocol.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Network/BalSignalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Network/BalSignalCallbackPool.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Network/BalSocket.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Network/BalTcpCallback.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Network/BalTcpConnection.h
@@ -514,6 +526,8 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/Ba
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/BalNetDefine.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/BalNetworkInct.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/BalProtocol.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/BalSignalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/BalSignalCallbackPool.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/BalSocket.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/BalTcpCallback.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Network/BalTcpConnection.h

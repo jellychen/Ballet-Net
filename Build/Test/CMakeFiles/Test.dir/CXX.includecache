@@ -187,6 +187,8 @@ BalElement.h
 ../Test/../Ballet/Network/BalElement.h
 BalEventCallback.h
 ../Test/../Ballet/Network/BalEventCallback.h
+BalSignalCallbackPool.h
+../Test/../Ballet/Network/BalSignalCallbackPool.h
 
 ../Test/../Ballet/Network/BalInetAddress.h
 Common/BalInct.h
@@ -233,6 +235,8 @@ sys/time.h
 -
 sys/eventfd.h
 -
+sys/signalfd.h
+-
 netinet/in.h
 -
 netinet/tcp.h
@@ -261,6 +265,16 @@ Common/BalInct.h
 ../Test/../Ballet/Network/Common/BalInct.h
 BalChannel.h
 ../Test/../Ballet/Network/BalChannel.h
+
+../Test/../Ballet/Network/BalSignalCallback.h
+Common/BalInct.h
+../Test/../Ballet/Network/Common/BalInct.h
+
+../Test/../Ballet/Network/BalSignalCallbackPool.h
+Common/BalInct.h
+../Test/../Ballet/Network/Common/BalInct.h
+BalSignalCallback.h
+../Test/../Ballet/Network/BalSignalCallback.h
 
 ../Test/../Ballet/Network/BalSocket.h
 Common/BalInct.h
