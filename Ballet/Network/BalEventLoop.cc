@@ -12,10 +12,30 @@ BalEventLoop::BalEventLoop()
         throw std::runtime_error("BalEventLoop Construct Failed! @1");
     }
 
-    sfdMaybeHaveData_ = true;
-    sigset_t signalMask; ::sigfillset(&signalMask);
-    ::sigprocmask(SIG_BLOCK, &signalMask, 0);
-    sfd_ = ::signalfd(-1, &signalMask, 0);
+    bool success = false;
+    do
+    {
+        sigset_t signalMask;
+        if (0 > ::sigfillset(&signalMask)) break;
+        if (0 > ::sigprocmask(SIG_BLOCK, &signalMask, 0)) break;
+        sfd_ = ::signalfd(-1, &signalMask, 0);
+        if (0 >= sfd_) break;
+        if (0 != ::fcntl(sfd_, F_SETFL,
+            ::fcntl(sfd_, F_GETFL)|O_NONBLOCK|FD_CLOEXEC)) break;
+
+        struct epoll_event singalev;
+        memset(&singalev, 0, sizeof(epoll_event));
+        BalEventData* eventData = eventDataManager_.GetOne();
+        if (!eventData) break; eventData->fd_ = sfd_;
+        singalev.events = EPOLLIN; singalev.data.ptr = eventData;
+        if (0 != ::epoll_ctl(efd_, EPOLL_CTL_ADD, sfd_, &singalev)) break;
+        success = true;
+    } while(0);
+
+    if (false == success)
+    {
+        throw std::runtime_error("BalEventLoop Construct Failed! @2");
+    }
 }
 
 BalEventLoop::~BalEventLoop()
@@ -65,7 +85,7 @@ bool BalEventLoop::SetEventListener(
     {
         struct epoll_event ev;
         memset(&ev, 0, sizeof(epoll_event));
-        ev.data.fd = fd; ev.events = EPOLLET;
+        ev.events = EPOLLET;
         ev.events |= ((event &EventRead)? EPOLLIN: 0);
         ev.events |= ((event &EventWrite)? EPOLLOUT: 0);
 
@@ -86,7 +106,7 @@ bool BalEventLoop::SetEventListener(
 
         struct epoll_event ev;
         memset(&ev, 0, sizeof(epoll_event));
-        ev.data.fd = fd; ev.events = EPOLLET;
+        ev.events = EPOLLET;
         ev.events |= ((event &EventRead)? EPOLLIN: 0);
         ev.events |= ((event &EventWrite)? EPOLLOUT: 0);
 
@@ -177,9 +197,9 @@ bool BalEventLoop::DoEventSelect(int time)
 {
     if (efd_ <= 0) return false;
     releaseList_.clear();
-
     struct epoll_event events[10240];
     int nfds = ::epoll_wait(efd_, events, 10240, time);
+    BalHandle<BalEventLoop> eventLoop(this, shareUserCount_);
     timer_->Tick();
 
     if (-1 == nfds && errno == EINTR)
@@ -193,7 +213,12 @@ bool BalEventLoop::DoEventSelect(int time)
             BalEventData* eventData = (BalEventData*)(events[i].data.ptr);
             if (sfd_ == eventData->fd_)
             {
-                sfdMaybeHaveData_ = true;
+                struct signalfd_siginfo fdsi;
+                ssize_t len = ::read(sfd_, &fdsi, sizeof(struct signalfd_siginfo));
+                if (len == sizeof(struct signalfd_siginfo))
+                {
+                    signalCallbackPool_.ReceiveSignal(fdsi.ssi_signo, eventLoop);
+                }
             }
             else if (eventData && eventData->callback_)
             {
@@ -216,21 +241,6 @@ bool BalEventLoop::DoEventSelect(int time)
             }
         }
     }
-
-    BalHandle<BalEventLoop> eventLoop(this, shareUserCount_);
-    if (true == sfdMaybeHaveData_)
-    {
-        struct signalfd_siginfo fdsi;
-        ssize_t len = read(sfd_, &fdsi, sizeof(struct signalfd_siginfo));
-        if (len != sizeof(struct signalfd_siginfo))
-        {
-            sfdMaybeHaveData_ = false;
-        }
-        else
-        {
-            signalCallbackPool_.ReceiveSignal(fdsi.ssi_signo, eventLoop);
-        }
-    }
     DoReadyPool(eventLoop);
     return true;
 }
@@ -240,7 +250,7 @@ bool BalEventLoop::DoEventLoop()
     shouldExit_ = false;
     while (true)
     {
-        if (readyPool_.size() > 0 || !sfdMaybeHaveData_)
+        if (readyPool_.size() > 0)
         {
             DoEventSelect(0);
         }

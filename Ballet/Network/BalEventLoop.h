@@ -50,7 +50,6 @@ namespace Ballet
             mapHoldPoolT holdElementPool_;
             bool doReadyPoolProtected_;
             int efd_, sfd_; bool shouldExit_;
-            bool sfdMaybeHaveData_;
             BalEventDataManager eventDataManager_;
             BalSignalCallbackPool signalCallbackPool_;
         };
