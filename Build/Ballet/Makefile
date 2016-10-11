@@ -500,6 +500,21 @@ Protocol/Http/http_parser.s:
 .PHONY : Protocol/Http/http_parser.s
 
 # target to build an object file
+Protocol/Lfv/BalLfvProtocol.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o
+.PHONY : Protocol/Lfv/BalLfvProtocol.o
+
+# target to preprocess a source file
+Protocol/Lfv/BalLfvProtocol.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.i
+.PHONY : Protocol/Lfv/BalLfvProtocol.i
+
+# target to generate assembly for a file
+Protocol/Lfv/BalLfvProtocol.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.s
+.PHONY : Protocol/Lfv/BalLfvProtocol.s
+
+# target to build an object file
 Protocol/Telnet/BalTelnetProtocol.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o
 .PHONY : Protocol/Telnet/BalTelnetProtocol.o
@@ -676,6 +691,9 @@ help:
 	@echo "... Protocol/Http/http_parser.o"
 	@echo "... Protocol/Http/http_parser.i"
 	@echo "... Protocol/Http/http_parser.s"
+	@echo "... Protocol/Lfv/BalLfvProtocol.o"
+	@echo "... Protocol/Lfv/BalLfvProtocol.i"
+	@echo "... Protocol/Lfv/BalLfvProtocol.s"
 	@echo "... Protocol/Telnet/BalTelnetProtocol.o"
 	@echo "... Protocol/Telnet/BalTelnetProtocol.i"
 	@echo "... Protocol/Telnet/BalTelnetProtocol.s"

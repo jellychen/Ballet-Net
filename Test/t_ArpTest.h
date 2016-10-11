@@ -16,9 +16,10 @@ using namespace BootUtil;
 using namespace Network;
 using namespace Protocol;
 
-void t_Art_main()
+void t_Arp_main()
 {
     BalHandle<BalArpBroadcast> arp(new BalArpBroadcast());
-    arp->Broadcast("127.0.0.1", "ac:bc:32:a8:f0:eb");
-    
+    //arp->Broadcast("192.168.56.101", "ac:bc:32:a8:f0:eb", 1);
+    arp->BroadcastHardware("192.168.56.101", "eth1", 5000);
+
 }

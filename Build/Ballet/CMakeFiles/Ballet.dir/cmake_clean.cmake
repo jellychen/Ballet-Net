@@ -31,6 +31,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o"
   "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o"
   "CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o"
+  "CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o"
   "libBallet.pdb"
   "libBallet.so"
 )

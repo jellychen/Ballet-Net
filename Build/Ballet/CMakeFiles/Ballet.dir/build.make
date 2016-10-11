@@ -782,6 +782,29 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o.provides: Ballet/CMakeF
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o.provides.build: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o
 
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: Ballet/CMakeFiles/Ballet.dir/flags.make
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Protocol/Lfv/BalLfvProtocol.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_33)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.cc
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.cc > CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.i
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.cc -o CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.s
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.requires:
+.PHONY : Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.requires
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.provides: Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.requires
+	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.provides.build
+.PHONY : Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.provides
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.provides.build: Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o
+
 # Object files for target Ballet
 Ballet_OBJECTS = \
 "CMakeFiles/Ballet.dir/BootUtil/BalEndian.o" \
@@ -815,7 +838,8 @@ Ballet_OBJECTS = \
 "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o" \
 "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o" \
 "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o" \
-"CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o"
+"CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o" \
+"CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o"
 
 # External object files for target Ballet
 Ballet_EXTERNAL_OBJECTS =
@@ -852,6 +876,7 @@ Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnectio
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o
+Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/build.make
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library libBallet.so"
@@ -893,6 +918,7 @@ Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Htt
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o.requires
+Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.requires
 .PHONY : Ballet/CMakeFiles/Ballet.dir/requires
 
 Ballet/CMakeFiles/Ballet.dir/clean:

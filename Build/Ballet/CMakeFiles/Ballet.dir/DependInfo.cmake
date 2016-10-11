@@ -34,6 +34,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpConnection.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpParserCallback.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpServer.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o"
+  "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Telnet/BalTelnetProtocol.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/ServiceWorker/BalService.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalService.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/ServiceWorker/BalServiceManage.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalServiceManage.o"

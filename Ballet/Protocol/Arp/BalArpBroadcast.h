@@ -14,11 +14,11 @@ namespace Ballet
             virtual ~BalArpBroadcast();
 
         public:
-            bool Broadcast(std::string ip, std::string mac) const;
-            bool BroadcastHardware(std::string ip, std::string ethernet) const;
+            bool Broadcast(std::string ip, std::string mac, int) const;
+            bool BroadcastHardware(std::string ip, std::string ethernet, int) const;
 
         private:
-            bool BroadcastBinary(uint8_t ip[4], uint8_t mac[6]) const;
+            bool BroadcastBinary(uint8_t ip[4], uint8_t mac[6], int) const;
 
         private:
             int fd_;
