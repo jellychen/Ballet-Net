@@ -248,7 +248,7 @@ Common/BalInct.h
 BalSignalCallback.h
 ../Zeus/ZeusMonitor/../../Ballet/Network/BalSignalCallback.h
 
-/mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor/ZeusMain.cc
+/mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor/ZsMain.cc
 Ballet/Common/BalInct.h
 -
 Ballet/Common/BalNull.h

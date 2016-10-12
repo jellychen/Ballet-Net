@@ -110,19 +110,19 @@ ZeusBroker/fast:
 .PHONY : ZeusBroker/fast
 
 # target to build an object file
-ZeusMain.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o
-.PHONY : ZeusMain.o
+ZsMain.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o
+.PHONY : ZsMain.o
 
 # target to preprocess a source file
-ZeusMain.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.i
-.PHONY : ZeusMain.i
+ZsMain.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.i
+.PHONY : ZsMain.i
 
 # target to generate assembly for a file
-ZeusMain.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.s
-.PHONY : ZeusMain.s
+ZsMain.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.s
+.PHONY : ZsMain.s
 
 # Help Target
 help:
@@ -133,9 +133,9 @@ help:
 	@echo "... ZeusBroker"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... ZeusMain.o"
-	@echo "... ZeusMain.i"
-	@echo "... ZeusMain.s"
+	@echo "... ZsMain.o"
+	@echo "... ZsMain.i"
+	@echo "... ZsMain.s"
 .PHONY : help
 
 

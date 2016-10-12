@@ -110,19 +110,19 @@ ZeusCollocation/fast:
 .PHONY : ZeusCollocation/fast
 
 # target to build an object file
-ZeusMain.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o
-.PHONY : ZeusMain.o
+ZsMain.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o
+.PHONY : ZsMain.o
 
 # target to preprocess a source file
-ZeusMain.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.i
-.PHONY : ZeusMain.i
+ZsMain.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.i
+.PHONY : ZsMain.i
 
 # target to generate assembly for a file
-ZeusMain.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.s
-.PHONY : ZeusMain.s
+ZsMain.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.s
+.PHONY : ZsMain.s
 
 # Help Target
 help:
@@ -133,9 +133,9 @@ help:
 	@echo "... ZeusCollocation"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... ZeusMain.o"
-	@echo "... ZeusMain.i"
-	@echo "... ZeusMain.s"
+	@echo "... ZsMain.o"
+	@echo "... ZsMain.i"
+	@echo "... ZsMain.s"
 .PHONY : help
 
 

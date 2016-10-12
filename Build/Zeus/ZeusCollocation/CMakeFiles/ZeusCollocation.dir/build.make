@@ -46,37 +46,37 @@ include Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/progress.make
 # Include the compile flags for this target's objects.
 include Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/flags.make
 
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/flags.make
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o: ../Zeus/ZeusCollocation/ZeusMain.cc
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/flags.make
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o: ../Zeus/ZeusCollocation/ZsMain.cc
 	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusCollocation.dir/ZeusMain.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZeusMain.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusCollocation.dir/ZsMain.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZsMain.cc
 
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZeusCollocation.dir/ZeusMain.i"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZeusMain.cc > CMakeFiles/ZeusCollocation.dir/ZeusMain.i
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZeusCollocation.dir/ZsMain.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZsMain.cc > CMakeFiles/ZeusCollocation.dir/ZsMain.i
 
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZeusCollocation.dir/ZeusMain.s"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZeusMain.cc -o CMakeFiles/ZeusCollocation.dir/ZeusMain.s
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZeusCollocation.dir/ZsMain.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZsMain.cc -o CMakeFiles/ZeusCollocation.dir/ZsMain.s
 
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o.requires:
-.PHONY : Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o.requires
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o.requires:
+.PHONY : Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o.requires
 
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o.provides: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o.requires
-	$(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o.provides.build
-.PHONY : Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o.provides
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o.provides: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o.requires
+	$(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o.provides.build
+.PHONY : Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o.provides
 
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o.provides.build: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o.provides.build: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o
 
 # Object files for target ZeusCollocation
 ZeusCollocation_OBJECTS = \
-"CMakeFiles/ZeusCollocation.dir/ZeusMain.o"
+"CMakeFiles/ZeusCollocation.dir/ZsMain.o"
 
 # External object files for target ZeusCollocation
 ZeusCollocation_EXTERNAL_OBJECTS =
 
-Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o
+Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o
 Zeus/ZeusCollocation/ZeusCollocation: Ballet/libBallet.so
 Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make
 Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/link.txt
@@ -87,7 +87,7 @@ Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusColloc
 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build: Zeus/ZeusCollocation/ZeusCollocation
 .PHONY : Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build
 
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/requires: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZeusMain.o.requires
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/requires: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o.requires
 .PHONY : Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/requires
 
 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/clean:

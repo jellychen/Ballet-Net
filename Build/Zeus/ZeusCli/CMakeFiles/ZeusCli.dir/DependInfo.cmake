@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZsMain.cc" "/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o"
+  "/mnt/shared/Ballet-Net-Github/Zeus/ZeusCli/ZsMain.cc" "/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/ZsMain.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

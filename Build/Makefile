@@ -122,6 +122,19 @@ Ballet/fast:
 .PHONY : Ballet/fast
 
 #=============================================================================
+# Target rules for targets named ZeusCli
+
+# Build rule for target.
+ZeusCli: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ZeusCli
+.PHONY : ZeusCli
+
+# fast build rule for target.
+ZeusCli/fast:
+	$(MAKE) -f Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build.make Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build
+.PHONY : ZeusCli/fast
+
+#=============================================================================
 # Target rules for targets named ZeusBroker
 
 # Build rule for target.
@@ -183,6 +196,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... IniLoader"
 	@echo "... Ballet"
+	@echo "... ZeusCli"
 	@echo "... ZeusBroker"
 	@echo "... ZeusMonitor"
 	@echo "... ZeusCollocation"

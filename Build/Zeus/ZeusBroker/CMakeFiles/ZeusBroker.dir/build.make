@@ -46,37 +46,37 @@ include Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/progress.make
 # Include the compile flags for this target's objects.
 include Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/flags.make
 
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/flags.make
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o: ../Zeus/ZeusBroker/ZeusMain.cc
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/flags.make
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/ZsMain.cc
 	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBroker.dir/ZeusMain.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZeusMain.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBroker.dir/ZsMain.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsMain.cc
 
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZeusBroker.dir/ZeusMain.i"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZeusMain.cc > CMakeFiles/ZeusBroker.dir/ZeusMain.i
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZeusBroker.dir/ZsMain.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsMain.cc > CMakeFiles/ZeusBroker.dir/ZsMain.i
 
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZeusBroker.dir/ZeusMain.s"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZeusMain.cc -o CMakeFiles/ZeusBroker.dir/ZeusMain.s
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZeusBroker.dir/ZsMain.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsMain.cc -o CMakeFiles/ZeusBroker.dir/ZsMain.s
 
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o.requires:
-.PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o.requires
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.requires:
+.PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.requires
 
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o.provides: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o.requires
-	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o.provides.build
-.PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o.provides
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.provides: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.requires
+	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.provides.build
+.PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.provides
 
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o.provides.build: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.provides.build: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o
 
 # Object files for target ZeusBroker
 ZeusBroker_OBJECTS = \
-"CMakeFiles/ZeusBroker.dir/ZeusMain.o"
+"CMakeFiles/ZeusBroker.dir/ZsMain.o"
 
 # External object files for target ZeusBroker
 ZeusBroker_EXTERNAL_OBJECTS =
 
-Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o
+Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o
 Zeus/ZeusBroker/ZeusBroker: Ballet/libBallet.so
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/link.txt
@@ -87,7 +87,7 @@ Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/link.txt
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build: Zeus/ZeusBroker/ZeusBroker
 .PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build
 
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/requires: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZeusMain.o.requires
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/requires: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.requires
 .PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/requires
 
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/clean:

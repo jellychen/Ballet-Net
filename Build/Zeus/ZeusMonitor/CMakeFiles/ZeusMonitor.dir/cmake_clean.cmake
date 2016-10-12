@@ -1,5 +1,5 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/ZeusMonitor.dir/ZeusMain.o"
+  "CMakeFiles/ZeusMonitor.dir/ZsMain.o"
   "ZeusMonitor.pdb"
   "ZeusMonitor"
 )

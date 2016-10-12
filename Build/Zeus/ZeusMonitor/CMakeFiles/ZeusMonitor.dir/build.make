@@ -46,37 +46,37 @@ include Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/progress.make
 # Include the compile flags for this target's objects.
 include Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/flags.make
 
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/flags.make
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o: ../Zeus/ZeusMonitor/ZeusMain.cc
+Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/flags.make
+Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o: ../Zeus/ZeusMonitor/ZsMain.cc
 	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusMonitor.dir/ZeusMain.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor/ZeusMain.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusMonitor.dir/ZsMain.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor/ZsMain.cc
 
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZeusMonitor.dir/ZeusMain.i"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor/ZeusMain.cc > CMakeFiles/ZeusMonitor.dir/ZeusMain.i
+Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZeusMonitor.dir/ZsMain.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor/ZsMain.cc > CMakeFiles/ZeusMonitor.dir/ZsMain.i
 
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZeusMonitor.dir/ZeusMain.s"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor/ZeusMain.cc -o CMakeFiles/ZeusMonitor.dir/ZeusMain.s
+Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZeusMonitor.dir/ZsMain.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor/ZsMain.cc -o CMakeFiles/ZeusMonitor.dir/ZsMain.s
 
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o.requires:
-.PHONY : Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o.requires
+Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o.requires:
+.PHONY : Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o.requires
 
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o.provides: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o.requires
-	$(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o.provides.build
-.PHONY : Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o.provides
+Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o.provides: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o.requires
+	$(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o.provides.build
+.PHONY : Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o.provides
 
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o.provides.build: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o
+Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o.provides.build: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o
 
 # Object files for target ZeusMonitor
 ZeusMonitor_OBJECTS = \
-"CMakeFiles/ZeusMonitor.dir/ZeusMain.o"
+"CMakeFiles/ZeusMonitor.dir/ZsMain.o"
 
 # External object files for target ZeusMonitor
 ZeusMonitor_EXTERNAL_OBJECTS =
 
-Zeus/ZeusMonitor/ZeusMonitor: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o
+Zeus/ZeusMonitor/ZeusMonitor: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o
 Zeus/ZeusMonitor/ZeusMonitor: Ballet/libBallet.so
 Zeus/ZeusMonitor/ZeusMonitor: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make
 Zeus/ZeusMonitor/ZeusMonitor: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/link.txt
@@ -87,7 +87,7 @@ Zeus/ZeusMonitor/ZeusMonitor: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/link.t
 Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build: Zeus/ZeusMonitor/ZeusMonitor
 .PHONY : Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build
 
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/requires: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZeusMain.o.requires
+Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/requires: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o.requires
 .PHONY : Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/requires
 
 Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/clean:

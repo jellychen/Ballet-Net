@@ -16,6 +16,7 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "../Test/CMakeLists.txt"
   "../Zeus/CMakeLists.txt"
   "../Zeus/ZeusBroker/CMakeLists.txt"
+  "../Zeus/ZeusCli/CMakeLists.txt"
   "../Zeus/ZeusCollocation/CMakeLists.txt"
   "../Zeus/ZeusMonitor/CMakeLists.txt"
   "/usr/share/cmake-2.8/Modules/CMakeCInformation.cmake"
@@ -45,6 +46,7 @@ SET(CMAKE_MAKEFILE_PRODUCTS
   "IniLoader/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Ballet/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Zeus/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "Zeus/ZeusCli/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Zeus/ZeusBroker/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Zeus/ZeusMonitor/CMakeFiles/CMakeDirectoryInformation.cmake"
   "Zeus/ZeusCollocation/CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -55,6 +57,7 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 SET(CMAKE_DEPEND_INFO_FILES
   "IniLoader/CMakeFiles/IniLoader.dir/DependInfo.cmake"
   "Ballet/CMakeFiles/Ballet.dir/DependInfo.cmake"
+  "Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/DependInfo.cmake"
   "Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/DependInfo.cmake"
   "Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/DependInfo.cmake"
   "Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/DependInfo.cmake"

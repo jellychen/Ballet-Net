@@ -66,14 +66,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /mnt/shared/Ballet-Net-Github/Build && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor/CMakeFiles/progress.marks
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusMonitor/all
+	cd /mnt/shared/Ballet-Net-Github/Build && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCli/CMakeFiles/progress.marks
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusCli/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusMonitor/clean
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusCli/clean
 .PHONY : clean
 
 # The main clean target
@@ -82,12 +82,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusMonitor/preinstall
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusCli/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusMonitor/preinstall
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusCli/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -96,32 +96,32 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/rule:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/rule
-.PHONY : Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/rule
+Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/rule:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/rule
+.PHONY : Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/rule
 
 # Convenience name for target.
-ZeusMonitor: Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/rule
-.PHONY : ZeusMonitor
+ZeusCli: Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/rule
+.PHONY : ZeusCli
 
 # fast build rule for target.
-ZeusMonitor/fast:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build
-.PHONY : ZeusMonitor/fast
+ZeusCli/fast:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build.make Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build
+.PHONY : ZeusCli/fast
 
 # target to build an object file
 ZsMain.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.o
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build.make Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/ZsMain.o
 .PHONY : ZsMain.o
 
 # target to preprocess a source file
 ZsMain.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.i
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build.make Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/ZsMain.i
 .PHONY : ZsMain.i
 
 # target to generate assembly for a file
 ZsMain.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/ZsMain.s
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build.make Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/ZsMain.s
 .PHONY : ZsMain.s
 
 # Help Target
@@ -130,7 +130,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... ZeusMonitor"
+	@echo "... ZeusCli"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ZsMain.o"
