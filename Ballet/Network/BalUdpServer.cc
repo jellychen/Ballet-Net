@@ -113,7 +113,7 @@ bool BalUdpServer::OnReceiveBuffer(const char* buffer, uint32_t len, BalHandle<B
 
 BalEventCallbackEnum BalUdpServer::ShoudRead(int id, BalHandle<BalEventLoop> el)
 {
-    BalHandle<BalInetAddress> addr;
+    BalHandle<BalInetAddress> addr(new BalInetAddress(nullptr_()));
     char buffer[BALUDP_MAXREAD_SIZE] = {0};
     int readSize = BalUdpSocket::ReadBufferFrom(buffer, BALUDP_MAXREAD_SIZE, addr);
     if (readSize <= (int)(maxPackage_) && readSize > 0 && udpProtocol_)

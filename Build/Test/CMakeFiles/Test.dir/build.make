@@ -78,6 +78,7 @@ Test_EXTERNAL_OBJECTS =
 
 Test/Test: Test/CMakeFiles/Test.dir/Test.o
 Test/Test: Ballet/libBallet.so
+Test/Test: IniLoader/libIniLoader.a
 Test/Test: Test/CMakeFiles/Test.dir/build.make
 Test/Test: Test/CMakeFiles/Test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable Test"

@@ -44,8 +44,10 @@ int BalUdpSocket::ReadBufferFrom(char* buffer,
         uint32_t size, BalHandle<BalInetAddress>& addr) throw()
 {
     if (0 == fd_ || !addr || !size) return 0;
-    socklen_t len = 0;
-    return (int)::recvfrom(fd_, buffer, size, 0, addr->GetSocketAddr(), &len);
+    sockaddr_in6 addrTemp; socklen_t len = sizeof(sockaddr_in6);
+    int ret = (int)::recvfrom(fd_, buffer, size, 0, (sockaddr*)&addrTemp, &len);
+    addr->SetAddr((sockaddr*)&addrTemp);
+    return ret;
 }
 
 int BalUdpSocket::SendBufferTo(const char* buffer,

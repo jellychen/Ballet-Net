@@ -96,6 +96,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named IniLoader
+
+# Build rule for target.
+IniLoader: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 IniLoader
+.PHONY : IniLoader
+
+# fast build rule for target.
+IniLoader/fast:
+	$(MAKE) -f IniLoader/CMakeFiles/IniLoader.dir/build.make IniLoader/CMakeFiles/IniLoader.dir/build
+.PHONY : IniLoader/fast
+
+#=============================================================================
 # Target rules for targets named Ballet
 
 # Build rule for target.
@@ -107,6 +120,45 @@ Ballet: cmake_check_build_system
 Ballet/fast:
 	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/build
 .PHONY : Ballet/fast
+
+#=============================================================================
+# Target rules for targets named ZeusBroker
+
+# Build rule for target.
+ZeusBroker: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ZeusBroker
+.PHONY : ZeusBroker
+
+# fast build rule for target.
+ZeusBroker/fast:
+	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build
+.PHONY : ZeusBroker/fast
+
+#=============================================================================
+# Target rules for targets named ZeusMonitor
+
+# Build rule for target.
+ZeusMonitor: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ZeusMonitor
+.PHONY : ZeusMonitor
+
+# fast build rule for target.
+ZeusMonitor/fast:
+	$(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build
+.PHONY : ZeusMonitor/fast
+
+#=============================================================================
+# Target rules for targets named ZeusCollocation
+
+# Build rule for target.
+ZeusCollocation: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ZeusCollocation
+.PHONY : ZeusCollocation
+
+# fast build rule for target.
+ZeusCollocation/fast:
+	$(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build
+.PHONY : ZeusCollocation/fast
 
 #=============================================================================
 # Target rules for targets named Test
@@ -129,7 +181,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... IniLoader"
 	@echo "... Ballet"
+	@echo "... ZeusBroker"
+	@echo "... ZeusMonitor"
+	@echo "... ZeusCollocation"
 	@echo "... Test"
 .PHONY : help
 

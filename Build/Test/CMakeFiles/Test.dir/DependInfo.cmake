@@ -11,4 +11,5 @@ SET(CMAKE_CXX_COMPILER_ID "GNU")
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/DependInfo.cmake"
+  "/mnt/shared/Ballet-Net-Github/Build/IniLoader/CMakeFiles/IniLoader.dir/DependInfo.cmake"
   )

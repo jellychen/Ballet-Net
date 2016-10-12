@@ -173,6 +173,15 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 //Single output directory for building all executables.
 EXECUTABLE_OUTPUT_PATH:PATH=
 
+//Value Computed by CMake
+IniLoader_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/IniLoader
+
+//Dependencies for target
+IniLoader_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+IniLoader_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Libs/IniLoader
+
 //Single output directory for building all libraries.
 LIBRARY_OUTPUT_PATH:PATH=
 
@@ -181,6 +190,30 @@ Test_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Test
 
 //Value Computed by CMake
 Test_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Test
+
+//Value Computed by CMake
+ZeusBroker_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker
+
+//Value Computed by CMake
+ZeusBroker_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker
+
+//Value Computed by CMake
+ZeusCollocation_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation
+
+//Value Computed by CMake
+ZeusCollocation_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation
+
+//Value Computed by CMake
+ZeusMonitor_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor
+
+//Value Computed by CMake
+ZeusMonitor_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor
+
+//Value Computed by CMake
+Zeus_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus
+
+//Value Computed by CMake
+Zeus_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Zeus
 
 
 ########################
@@ -277,7 +310,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=3
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=8
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -1,3 +1,5 @@
 PROJECT(Ballet_Build)
+ADD_SUBDIRECTORY(Libs/IniLoader IniLoader)
 ADD_SUBDIRECTORY(Ballet Ballet)
+ADD_SUBDIRECTORY(Zeus Zeus)
 ADD_SUBDIRECTORY(Test Test)

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libIniLoader.a  CMakeFiles/IniLoader.dir/IniConfigLoader.o
+/usr/bin/ranlib libIniLoader.a

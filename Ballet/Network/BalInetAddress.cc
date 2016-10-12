@@ -1,6 +1,11 @@
 #include "BalInetAddress.h"
 using namespace Ballet::Network;
 
+BalInetAddress::BalInetAddress(struct sockaddr* addr)
+{
+    SetAddr(addr);
+}
+
 BalInetAddress::BalInetAddress(struct sockaddr_in& addr):addr_(addr)
 {
     v6_ = false; addr_ = addr;
@@ -81,6 +86,20 @@ uint16_t BalInetAddress::GetPort() const
     {
         return NetworkToHost16(addr_.sin_port);
     }
+}
+
+bool BalInetAddress::SetAddr(struct sockaddr* addr)
+{
+    if (!addr) return false;
+    if (AF_INET6 == addr->sa_family)
+    {
+        v6_ = true; addrV6_ = *((sockaddr_in6*)addr);
+    }
+    else
+    {
+        v6_ = false; addr_ = *((sockaddr_in*)addr);
+    }
+    return true;
 }
 
 struct sockaddr* BalInetAddress::GetSocketAddr() const

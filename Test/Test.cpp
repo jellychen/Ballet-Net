@@ -12,12 +12,14 @@ using namespace std;
 #include "t_Service.h"
 #include "t_TcpServer.h"
 #include "t_HttpServer.h"
+#include "t_UdpServer.h"
 
 #include "t_ArpTest.h"
 #include "Ballet/Network/BalInetAddress.h"
 #include "Ballet/Network/BalEventLoop.h"
 #include "Ballet/Network/BalSocket.h"
 
+#include "t_IniLoader.h"
 
 using namespace Ballet::Network;
 
@@ -38,8 +40,11 @@ int main(int argc, char const *argv[])
     //t_Singleton_main();
     //t_Service_main();
     //t_TcpServer_main();
-    t_Arp_main();
+    //t_Arp_main();
     //t_HttpService_main();
+
+    //t_UdpService_main();
+    t_IniLoaderTest_main();
 
     return 0;
 }

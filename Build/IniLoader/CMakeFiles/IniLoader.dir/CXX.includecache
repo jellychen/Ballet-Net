@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/shared/Ballet-Net-Github/Libs/IniLoader/IniConfigLoader.cc
+sstream
+-
+fstream
+-
+IniConfigLoader.h
+/mnt/shared/Ballet-Net-Github/Libs/IniLoader/IniConfigLoader.h
+
+/mnt/shared/Ballet-Net-Github/Libs/IniLoader/IniConfigLoader.h
+map
+-
+string
+-
+
