@@ -110,6 +110,36 @@ ZeusBroker/fast:
 .PHONY : ZeusBroker/fast
 
 # target to build an object file
+ZsBrokerService.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o
+.PHONY : ZsBrokerService.o
+
+# target to preprocess a source file
+ZsBrokerService.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.i
+.PHONY : ZsBrokerService.i
+
+# target to generate assembly for a file
+ZsBrokerService.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.s
+.PHONY : ZsBrokerService.s
+
+# target to build an object file
+ZsCollocationClient.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o
+.PHONY : ZsCollocationClient.o
+
+# target to preprocess a source file
+ZsCollocationClient.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.i
+.PHONY : ZsCollocationClient.i
+
+# target to generate assembly for a file
+ZsCollocationClient.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.s
+.PHONY : ZsCollocationClient.s
+
+# target to build an object file
 ZsMain.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o
 .PHONY : ZsMain.o
@@ -124,6 +154,51 @@ ZsMain.s:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.s
 .PHONY : ZsMain.s
 
+# target to build an object file
+ZsNode.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.o
+.PHONY : ZsNode.o
+
+# target to preprocess a source file
+ZsNode.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.i
+.PHONY : ZsNode.i
+
+# target to generate assembly for a file
+ZsNode.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.s
+.PHONY : ZsNode.s
+
+# target to build an object file
+ZsNodeTree.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.o
+.PHONY : ZsNodeTree.o
+
+# target to preprocess a source file
+ZsNodeTree.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.i
+.PHONY : ZsNodeTree.i
+
+# target to generate assembly for a file
+ZsNodeTree.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.s
+.PHONY : ZsNodeTree.s
+
+# target to build an object file
+ZsUdpServer.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o
+.PHONY : ZsUdpServer.o
+
+# target to preprocess a source file
+ZsUdpServer.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.i
+.PHONY : ZsUdpServer.i
+
+# target to generate assembly for a file
+ZsUdpServer.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.s
+.PHONY : ZsUdpServer.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -133,9 +208,24 @@ help:
 	@echo "... ZeusBroker"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ZsBrokerService.o"
+	@echo "... ZsBrokerService.i"
+	@echo "... ZsBrokerService.s"
+	@echo "... ZsCollocationClient.o"
+	@echo "... ZsCollocationClient.i"
+	@echo "... ZsCollocationClient.s"
 	@echo "... ZsMain.o"
 	@echo "... ZsMain.i"
 	@echo "... ZsMain.s"
+	@echo "... ZsNode.o"
+	@echo "... ZsNode.i"
+	@echo "... ZsNode.s"
+	@echo "... ZsNodeTree.o"
+	@echo "... ZsNodeTree.i"
+	@echo "... ZsNodeTree.s"
+	@echo "... ZsUdpServer.o"
+	@echo "... ZsUdpServer.i"
+	@echo "... ZsUdpServer.s"
 .PHONY : help
 
 

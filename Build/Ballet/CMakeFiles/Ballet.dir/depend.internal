@@ -554,6 +554,8 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o
  ../Ballet/Common/BalVariable.h
  ../Ballet/Common/BalWeakHandle.h
  ../Ballet/Network/BalChannel.h
+ ../Ballet/Network/BalEndian.h
+ ../Ballet/Network/BalNetworkInct.h
  ../Ballet/Network/BalProtocol.h
  /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.cc
  /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.h

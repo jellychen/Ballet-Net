@@ -553,6 +553,8 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Common/Bal
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Common/BalVariable.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Common/BalWeakHandle.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Network/BalChannel.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Network/BalEndian.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Network/BalNetworkInct.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Network/BalProtocol.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Protocol/Lfv/BalLfvProtocol.cc
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Protocol/Lfv/BalLfvProtocol.h
