@@ -1,0 +1,6 @@
+PROJECT(MessagePack)
+include_directories("${PROJECT_SOURCE_DIR}/..")
+include_directories("${PROJECT_SOURCE_DIR}")
+AUX_SOURCE_DIRECTORY(./src dir_srcs)
+set (CMAKE_CXX_FLAGS "-fpermissive ${CMAKE_CXX_FLAGS}")
+ADD_LIBRARY(MessagePack STATIC ${dir_srcs})

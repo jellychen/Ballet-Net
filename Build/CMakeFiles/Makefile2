@@ -100,6 +100,56 @@ clean: IniLoader/CMakeFiles/IniLoader.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory MessagePack
+
+# Convenience name for "all" pass in the directory.
+MessagePack/all: MessagePack/CMakeFiles/MessagePack.dir/all
+.PHONY : MessagePack/all
+
+# Convenience name for "clean" pass in the directory.
+MessagePack/clean: MessagePack/CMakeFiles/MessagePack.dir/clean
+.PHONY : MessagePack/clean
+
+# Convenience name for "preinstall" pass in the directory.
+MessagePack/preinstall:
+.PHONY : MessagePack/preinstall
+
+#=============================================================================
+# Target rules for target MessagePack/CMakeFiles/MessagePack.dir
+
+# All Build rule for target.
+MessagePack/CMakeFiles/MessagePack.dir/all:
+	$(MAKE) -f MessagePack/CMakeFiles/MessagePack.dir/build.make MessagePack/CMakeFiles/MessagePack.dir/depend
+	$(MAKE) -f MessagePack/CMakeFiles/MessagePack.dir/build.make MessagePack/CMakeFiles/MessagePack.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  35 36 37 38 39
+	@echo "Built target MessagePack"
+.PHONY : MessagePack/CMakeFiles/MessagePack.dir/all
+
+# Include target in all.
+all: MessagePack/CMakeFiles/MessagePack.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+MessagePack/CMakeFiles/MessagePack.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 MessagePack/CMakeFiles/MessagePack.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
+.PHONY : MessagePack/CMakeFiles/MessagePack.dir/rule
+
+# Convenience name for target.
+MessagePack: MessagePack/CMakeFiles/MessagePack.dir/rule
+.PHONY : MessagePack
+
+# clean rule for target.
+MessagePack/CMakeFiles/MessagePack.dir/clean:
+	$(MAKE) -f MessagePack/CMakeFiles/MessagePack.dir/build.make MessagePack/CMakeFiles/MessagePack.dir/clean
+.PHONY : MessagePack/CMakeFiles/MessagePack.dir/clean
+
+# clean rule for target.
+clean: MessagePack/CMakeFiles/MessagePack.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Directory level rules for directory Ballet
 
 # Convenience name for "all" pass in the directory.
@@ -198,7 +248,7 @@ Zeus/ZeusBase/preinstall:
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all:
 	$(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/depend
 	$(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  36 37
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  41 42 43
 	@echo "Built target ZeusBase"
 .PHONY : Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
 
@@ -208,7 +258,7 @@ all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
 
 # Build rule for subdir invocation for target.
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/rule
@@ -248,7 +298,7 @@ Zeus/ZeusCli/preinstall:
 Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/all: Ballet/CMakeFiles/Ballet.dir/all
 	$(MAKE) -f Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build.make Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/depend
 	$(MAKE) -f Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build.make Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  42
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  48
 	@echo "Built target ZeusCli"
 .PHONY : Zeus/ZeusCli/CMakeFiles/ZeusCli.dir/all
 
@@ -300,7 +350,7 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: Zeus/ZeusBase/CMakeFiles/ZeusBase
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: IniLoader/CMakeFiles/IniLoader.dir/all
 	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/depend
 	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  38 39 40 41
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  44 45 46 47
 	@echo "Built target ZeusBroker"
 .PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all
 
@@ -310,7 +360,7 @@ all: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all
 
 # Build rule for subdir invocation for target.
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 40
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 41
 	$(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/rule
@@ -350,7 +400,7 @@ Zeus/ZeusMonitor/preinstall:
 Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/all: Ballet/CMakeFiles/Ballet.dir/all
 	$(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/depend
 	$(MAKE) -f Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build.make Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  47
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  53
 	@echo "Built target ZeusMonitor"
 .PHONY : Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir/all
 
@@ -400,9 +450,10 @@ Zeus/ZeusCollocation/preinstall:
 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: Ballet/CMakeFiles/Ballet.dir/all
 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: IniLoader/CMakeFiles/IniLoader.dir/all
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: MessagePack/CMakeFiles/MessagePack.dir/all
 	$(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/depend
 	$(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  43 44 45 46
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  49 50 51 52
 	@echo "Built target ZeusCollocation"
 .PHONY : Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all
 
@@ -412,7 +463,7 @@ all: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all
 
 # Build rule for subdir invocation for target.
 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 40
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 46
 	$(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
 .PHONY : Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/rule
@@ -453,7 +504,7 @@ Test/CMakeFiles/Test.dir/all: Ballet/CMakeFiles/Ballet.dir/all
 Test/CMakeFiles/Test.dir/all: IniLoader/CMakeFiles/IniLoader.dir/all
 	$(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/depend
 	$(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  35
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  40
 	@echo "Built target Test"
 .PHONY : Test/CMakeFiles/Test.dir/all
 

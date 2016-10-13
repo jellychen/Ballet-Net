@@ -154,6 +154,7 @@ Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusColloc
 Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o
 Zeus/ZeusCollocation/ZeusCollocation: Ballet/libBallet.so
 Zeus/ZeusCollocation/ZeusCollocation: IniLoader/libIniLoader.a
+Zeus/ZeusCollocation/ZeusCollocation: MessagePack/libMessagePack.a
 Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusBase/libZeusBase.a
 Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make
 Zeus/ZeusCollocation/ZeusCollocation: Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/link.txt

@@ -1,5 +1,6 @@
 /mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir
 /mnt/shared/Ballet-Net-Github/Build/IniLoader/CMakeFiles/IniLoader.dir
+/mnt/shared/Ballet-Net-Github/Build/MessagePack/CMakeFiles/MessagePack.dir
 /mnt/shared/Ballet-Net-Github/Build/Test/CMakeFiles/Test.dir
 /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase/CMakeFiles/ZeusBase.dir
 /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir

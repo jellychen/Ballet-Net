@@ -1,4 +1,5 @@
 FILE(REMOVE_RECURSE
+  "CMakeFiles/ZeusBase.dir/ZsClientProtocol.o"
   "CMakeFiles/ZeusBase.dir/ZsNode.o"
   "CMakeFiles/ZeusBase.dir/ZsNodeTree.o"
   "libZeusBase.pdb"

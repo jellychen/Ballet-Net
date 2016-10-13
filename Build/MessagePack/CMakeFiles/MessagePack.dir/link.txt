@@ -1,0 +1,2 @@
+/usr/bin/ar cr libMessagePack.a  CMakeFiles/MessagePack.dir/src/objectc.o CMakeFiles/MessagePack.dir/src/unpack.o CMakeFiles/MessagePack.dir/src/version.o CMakeFiles/MessagePack.dir/src/vrefbuffer.o CMakeFiles/MessagePack.dir/src/zone.o
+/usr/bin/ranlib libMessagePack.a

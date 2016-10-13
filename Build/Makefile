@@ -109,6 +109,19 @@ IniLoader/fast:
 .PHONY : IniLoader/fast
 
 #=============================================================================
+# Target rules for targets named MessagePack
+
+# Build rule for target.
+MessagePack: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 MessagePack
+.PHONY : MessagePack
+
+# fast build rule for target.
+MessagePack/fast:
+	$(MAKE) -f MessagePack/CMakeFiles/MessagePack.dir/build.make MessagePack/CMakeFiles/MessagePack.dir/build
+.PHONY : MessagePack/fast
+
+#=============================================================================
 # Target rules for targets named Ballet
 
 # Build rule for target.
@@ -208,6 +221,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... IniLoader"
+	@echo "... MessagePack"
 	@echo "... Ballet"
 	@echo "... ZeusBase"
 	@echo "... ZeusCli"

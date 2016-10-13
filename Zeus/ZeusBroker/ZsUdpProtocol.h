@@ -7,7 +7,7 @@ using namespace Ballet;
 
 namespace Zeus
 {
-    struct BalUdpProtocol: public IBalUdpProtocol
+    struct ZsUdpProtocol: public IBalUdpProtocol
     {
         bool Encode(const char* buffer, uint32_t len,
             BalHandle<BalUdpChannel> channel, BalHandle<BalInetAddress> addr)

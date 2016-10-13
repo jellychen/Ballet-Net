@@ -4,7 +4,7 @@ using namespace Zeus;
 ZsUdpServer::ZsUdpServer(BalHandle<BalEventLoop> loop):callback_(this)
 {
     callback_->HookOnReceive(&ZsUdpServer::OnReceive);
-    BalHandle<IBalUdpProtocol> protocol(new BalUdpProtocol());
+    BalHandle<IBalUdpProtocol> protocol(new ZsUdpProtocol());
     BalHandle<BalUdpServer> server
     (
         new BalUdpServer(false, loop, protocol, 1024, callback_)

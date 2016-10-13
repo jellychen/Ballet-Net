@@ -186,6 +186,15 @@ IniLoader_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Libs/IniLoader
 LIBRARY_OUTPUT_PATH:PATH=
 
 //Value Computed by CMake
+MessagePack_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/MessagePack
+
+//Dependencies for target
+MessagePack_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+MessagePack_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Libs/MessagePack
+
+//Value Computed by CMake
 Test_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Test
 
 //Value Computed by CMake
@@ -325,7 +334,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=10
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=11
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
