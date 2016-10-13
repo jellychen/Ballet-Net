@@ -8,20 +8,22 @@ for ($i = 0; $i < 100000; ++$i)
 }
 */
 
-for ($i = 0; $i < 1000000000; ++$i)
+for ($i = 0; $i < 40000000; ++$i)
 {
     $socket = socket_create( AF_INET, SOCK_DGRAM, SOL_UDP );
-    $msg = "hello\n";
+    $msg = "echo|asdasdasdasdasdlkajsdlkajskldjaklsdjalksdjlkasjdlkasjdklasjd";
     $len = strlen($msg);
-    socket_sendto($socket, $msg, $len, 0, '127.0.0.1', 8090);
+    socket_sendto($socket, $msg, $len, 0, 'localhost', 8687);
 
     $from = "";
     $port = 0;
-    socket_recvfrom( $socket, $buf,1024, 0, $from, $port );
+    socket_recvfrom( $socket, $buf, 1024, 0, $from, $port );
 
+    //echo $buf."\n";
+
+    //echo $buf;
     if (0 == $i % 10000)
     {
-        echo "$i\n";
+        echo $i ."\n";
     }
-    //echo $buf;
 }

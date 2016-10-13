@@ -63,10 +63,9 @@ void ZsUdpServer::OnReceive(BalHandle<BalUdpServer>,
             std::string data = nodeTree_->RandomSelect(name);
             server_->WriteRawBuffer(data.c_str(), (uint32_t)data.length(), addr);
         }
-        else if ("clear" == op)
+        else if ("echo" == op)
         {
-            nodeTree_->Clear();
-            server_->WriteRawBuffer("true", 4, addr);
+            server_->WriteRawBuffer(name.c_str(), (uint32_t)name.length(), addr);
         }
         else
         {
