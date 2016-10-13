@@ -4,37 +4,13 @@ using namespace Ballet::Network;
 
 BalEventLoop::BalEventLoop()
     :eventDataManager_(MAX_EVENTDATA_CACHE)
-    ,timer_(new BalTimer),doReadyPoolProtected_(false)
+    ,timer_(new BalTimer), doReadyPoolProtected_(false)
+    ,maintenanceSignal_(false)
 {
     efd_ = ::epoll_create1(EPOLL_CLOEXEC);
     if (0 == efd_)
     {
         throw std::runtime_error("BalEventLoop Construct Failed! @1");
-    }
-
-    bool success = false;
-    do
-    {
-        sigset_t signalMask;
-        if (0 > ::sigfillset(&signalMask)) break;
-        if (0 > ::sigprocmask(SIG_BLOCK, &signalMask, 0)) break;
-        sfd_ = ::signalfd(-1, &signalMask, 0);
-        if (0 >= sfd_) break;
-        if (0 != ::fcntl(sfd_, F_SETFL,
-            ::fcntl(sfd_, F_GETFL)|O_NONBLOCK|FD_CLOEXEC)) break;
-
-        struct epoll_event singalev;
-        memset(&singalev, 0, sizeof(epoll_event));
-        BalEventData* eventData = eventDataManager_.GetOne();
-        if (!eventData) break; eventData->fd_ = sfd_;
-        singalev.events = EPOLLIN; singalev.data.ptr = eventData;
-        if (0 != ::epoll_ctl(efd_, EPOLL_CTL_ADD, sfd_, &singalev)) break;
-        success = true;
-    } while(0);
-
-    if (false == success)
-    {
-        throw std::runtime_error("BalEventLoop Construct Failed! @2");
     }
 }
 
@@ -170,6 +146,7 @@ bool BalEventLoop::DeleteEventListener(BalEventHandle& handle, BalEventEnum even
 
 bool BalEventLoop::SetSignalListener(int id, BalSignalCallback callback)
 {
+    if (!SetMaintenanceSignal()) return false;
     return signalCallbackPool_.AddSignalCallback(id, callback);
 }
 
@@ -399,4 +376,35 @@ bool BalEventLoop::RemoveReadyItem(int index, int fd, BalEventEnum ready)
         readyPool_.resize(len);
     }
     return true;
+}
+
+bool BalEventLoop::SetMaintenanceSignal()
+{
+    if (maintenanceSignal_)
+    {
+        return true;
+    }
+
+    bool success = false;
+
+    do
+    {
+        sigset_t signalMask;
+        if (0 > ::sigfillset(&signalMask)) break;
+        if (0 > ::sigprocmask(SIG_BLOCK, &signalMask, 0)) break;
+        sfd_ = ::signalfd(-1, &signalMask, 0);
+        if (0 >= sfd_) break;
+        if (0 != ::fcntl(sfd_, F_SETFL,
+            ::fcntl(sfd_, F_GETFL)|O_NONBLOCK|FD_CLOEXEC)) break;
+
+        struct epoll_event singalev;
+        memset(&singalev, 0, sizeof(epoll_event));
+        BalEventData* eventData = eventDataManager_.GetOne();
+        if (!eventData) break; eventData->fd_ = sfd_;
+        singalev.events = EPOLLIN; singalev.data.ptr = eventData;
+        if (0 != ::epoll_ctl(efd_, EPOLL_CTL_ADD, sfd_, &singalev)) break;
+        success = true;
+    } while(0);
+    maintenanceSignal_ = true;
+    return success;
 }

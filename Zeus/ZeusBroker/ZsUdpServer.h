@@ -8,6 +8,7 @@ using namespace Ballet;
 using namespace Network;
 
 #include "ZsNodeTree.h"
+#include "ZsUdpProtocol.h"
 
 namespace Zeus
 {
@@ -24,6 +25,7 @@ namespace Zeus
 
     private:
         BalHandle<ZsNodeTree> nodeTree_;
+        BalHandle<BalUdpServer> server_;
         CBalUdpCallbackPtr<ZsUdpServer> callback_;
     };
 }

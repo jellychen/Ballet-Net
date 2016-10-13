@@ -203,6 +203,8 @@ Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.o
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.o
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o
 Zeus/ZeusBroker/ZeusBroker: Ballet/libBallet.so
+Zeus/ZeusBroker/ZeusBroker: Ballet/libBallet.so
+Zeus/ZeusBroker/ZeusBroker: IniLoader/libIniLoader.a
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable ZeusBroker"

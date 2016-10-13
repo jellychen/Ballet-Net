@@ -44,11 +44,15 @@ namespace Ballet
             bool RemoveReadyItem(int index, int fd, BalEventEnum ready);
 
         private:
+            bool SetMaintenanceSignal();
+
+        private:
             BalHandle<BalTimer> timer_;
             vecReadyPoolT readyPool_;
             vecReleaseListT releaseList_;
             mapHoldPoolT holdElementPool_;
             bool doReadyPoolProtected_;
+            bool maintenanceSignal_;
             int efd_, sfd_; bool shouldExit_;
             BalEventDataManager eventDataManager_;
             BalSignalCallbackPool signalCallbackPool_;

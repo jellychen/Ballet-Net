@@ -84,7 +84,7 @@ ZsNode* ZsNodeTree::GetPathNode(std::string service, bool create)
         if ('/' != bit) nodeName += bit;
         if ('/' == bit || cur == service.length() -1)
         {
-            if (0 == nodeName.length()) return false;
+            if (0 == nodeName.length()) return node;
             ZsNodeChildrenT::iterator iter = node->children_.find(nodeName);
             if (node->children_.end() == iter)
             {

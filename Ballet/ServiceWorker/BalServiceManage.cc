@@ -105,8 +105,8 @@ bool BalServiceManage::DetachService(BalHandle<BalService> service)
 bool BalServiceManage::Stop()
 {
     exit_ = true;
-    servicePoolT::iterator iter = servicePool_.begin();
-    for (; servicePool_.end() != iter; ++iter)
+    servicePoolT::iterator iter = serviceProcessPool_.begin();
+    for (; serviceProcessPool_.end() != iter; ++iter)
     {
         pid_t id = iter->first;
         ::kill(id, BALSINGLETON_EXIT);
