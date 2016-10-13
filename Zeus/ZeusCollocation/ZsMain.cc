@@ -6,6 +6,5 @@ using namespace Ballet;
 
 int main(int argc, char const *argv[])
 {
-    printf("%s\n", "main");
     return 0;
 }

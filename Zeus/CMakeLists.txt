@@ -1,4 +1,5 @@
 PROJECT(Zeus)
+ADD_SUBDIRECTORY(ZeusBase ZeusBase)
 ADD_SUBDIRECTORY(ZeusCli ZeusCli)
 ADD_SUBDIRECTORY(ZeusBroker ZeusBroker)
 ADD_SUBDIRECTORY(ZeusMonitor ZeusMonitor)

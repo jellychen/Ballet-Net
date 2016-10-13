@@ -1,0 +1,2 @@
+/usr/bin/ar cr libZeusBase.a  CMakeFiles/ZeusBase.dir/ZsNode.o CMakeFiles/ZeusBase.dir/ZsNodeTree.o
+/usr/bin/ranlib libZeusBase.a

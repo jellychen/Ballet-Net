@@ -153,6 +153,7 @@ clean: Ballet/CMakeFiles/Ballet.dir/clean
 # Directory level rules for directory Zeus
 
 # Convenience name for "all" pass in the directory.
+Zeus/all: Zeus/ZeusBase/all
 Zeus/all: Zeus/ZeusCli/all
 Zeus/all: Zeus/ZeusBroker/all
 Zeus/all: Zeus/ZeusMonitor/all
@@ -160,6 +161,7 @@ Zeus/all: Zeus/ZeusCollocation/all
 .PHONY : Zeus/all
 
 # Convenience name for "clean" pass in the directory.
+Zeus/clean: Zeus/ZeusBase/clean
 Zeus/clean: Zeus/ZeusCli/clean
 Zeus/clean: Zeus/ZeusBroker/clean
 Zeus/clean: Zeus/ZeusMonitor/clean
@@ -167,11 +169,62 @@ Zeus/clean: Zeus/ZeusCollocation/clean
 .PHONY : Zeus/clean
 
 # Convenience name for "preinstall" pass in the directory.
+Zeus/preinstall: Zeus/ZeusBase/preinstall
 Zeus/preinstall: Zeus/ZeusCli/preinstall
 Zeus/preinstall: Zeus/ZeusBroker/preinstall
 Zeus/preinstall: Zeus/ZeusMonitor/preinstall
 Zeus/preinstall: Zeus/ZeusCollocation/preinstall
 .PHONY : Zeus/preinstall
+
+#=============================================================================
+# Directory level rules for directory Zeus/ZeusBase
+
+# Convenience name for "all" pass in the directory.
+Zeus/ZeusBase/all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
+.PHONY : Zeus/ZeusBase/all
+
+# Convenience name for "clean" pass in the directory.
+Zeus/ZeusBase/clean: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/clean
+.PHONY : Zeus/ZeusBase/clean
+
+# Convenience name for "preinstall" pass in the directory.
+Zeus/ZeusBase/preinstall:
+.PHONY : Zeus/ZeusBase/preinstall
+
+#=============================================================================
+# Target rules for target Zeus/ZeusBase/CMakeFiles/ZeusBase.dir
+
+# All Build rule for target.
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all:
+	$(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/depend
+	$(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  36 37
+	@echo "Built target ZeusBase"
+.PHONY : Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
+
+# Include target in all.
+all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/shared/Ballet-Net-Github/Build/CMakeFiles 0
+.PHONY : Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/rule
+
+# Convenience name for target.
+ZeusBase: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/rule
+.PHONY : ZeusBase
+
+# clean rule for target.
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/clean:
+	$(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/clean
+.PHONY : Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/clean
+
+# clean rule for target.
+clean: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/clean
+.PHONY : clean
 
 #=============================================================================
 # Directory level rules for directory Zeus/ZeusCli
@@ -244,9 +297,10 @@ Zeus/ZeusBroker/preinstall:
 # All Build rule for target.
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: IniLoader/CMakeFiles/IniLoader.dir/all
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: Ballet/CMakeFiles/Ballet.dir/all
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
 	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/depend
 	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  36 37 38 39 40 41
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  38 39 40 41
 	@echo "Built target ZeusBroker"
 .PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all
 

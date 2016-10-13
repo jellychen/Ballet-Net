@@ -2,8 +2,6 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/ZeusBroker.dir/ZsBrokerService.o"
   "CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o"
   "CMakeFiles/ZeusBroker.dir/ZsMain.o"
-  "CMakeFiles/ZeusBroker.dir/ZsNode.o"
-  "CMakeFiles/ZeusBroker.dir/ZsNodeTree.o"
   "CMakeFiles/ZeusBroker.dir/ZsUdpServer.o"
   "ZeusBroker.pdb"
   "ZeusBroker"

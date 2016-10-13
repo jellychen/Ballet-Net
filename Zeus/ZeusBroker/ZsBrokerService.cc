@@ -21,9 +21,9 @@ void ZsBrokerService::OnServiceMain(BalHandle<BalService>)
     IniConfigLoader loader;
     loader.LoadFile(configFile_.c_str());
     std::string brokerPort = "";
-    loader.GetItem("port", &brokerPort, "8687");
+    loader.GetItem(zsBrokerPortItemKey, &brokerPort, zsDefaultBrokerPort);
     std::string collocationAddr = "";
-    loader.GetItem("collocation", &collocationAddr, "");
+    loader.GetItem(zsDefaultCollocationItemKey, &collocationAddr, "");
     BalHandle<ZsNodeTree> nodeTree(new ZsNodeTree());
 
     if (eventLoop_)

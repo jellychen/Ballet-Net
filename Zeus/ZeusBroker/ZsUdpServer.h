@@ -4,10 +4,10 @@
 #include <Ballet/Network/BalInetAddress.h>
 #include <Ballet/Network/BalEventLoop.h>
 #include <Ballet/Network/BalUdpServer.h>
+#include <Zeus/ZeusBase/ZsNodeTree.h>
 using namespace Ballet;
 using namespace Network;
 
-#include "ZsNodeTree.h"
 #include "ZsUdpProtocol.h"
 
 namespace Zeus

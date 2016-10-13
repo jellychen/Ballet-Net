@@ -41,11 +41,11 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o
  ../Zeus/ZeusBroker/../../Ballet/ServiceWorker/BalServiceManage.h
  ../Zeus/ZeusBroker/../../Ballet/ServiceWorker/BalServiceSingleton.h
  ../Zeus/ZeusBroker/../../Libs/IniLoader/IniConfigLoader.h
- ../Zeus/ZeusBroker/../../Zeus/ZeusInclude/ZsDefine.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsDefine.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNode.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNodeTree.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsBrokerService.cc
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsBrokerService.h
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNode.h
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNodeTree.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsUdpProtocol.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsUdpServer.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o
@@ -85,10 +85,10 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o
  ../Zeus/ZeusBroker/../../Ballet/Network/BalTcpClient.h
  ../Zeus/ZeusBroker/../../Ballet/Network/BalTcpConnection.h
  ../Zeus/ZeusBroker/../../Ballet/Network/BalTcpSocket.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNode.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNodeTree.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsCollocationClient.cc
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsCollocationClient.h
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNode.h
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNodeTree.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o
  ../Zeus/ZeusBroker/../../Ballet/BootUtil/BalTimeStamp.h
  ../Zeus/ZeusBroker/../../Ballet/BootUtil/BalTimer.h
@@ -129,20 +129,13 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o
  ../Zeus/ZeusBroker/../../Ballet/ServiceWorker/BalServiceManage.h
  ../Zeus/ZeusBroker/../../Ballet/ServiceWorker/BalServiceSingleton.h
  ../Zeus/ZeusBroker/../../Libs/IniLoader/IniConfigLoader.h
- ../Zeus/ZeusBroker/../../Zeus/ZeusInclude/ZsDefine.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsDefine.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNode.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNodeTree.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsBrokerService.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsMain.cc
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNode.h
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNodeTree.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsUdpProtocol.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsUdpServer.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.o
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNode.cc
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNode.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.o
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNode.h
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNodeTree.cc
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNodeTree.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o
  ../Zeus/ZeusBroker/../../Ballet/BootUtil/BalTimeStamp.h
  ../Zeus/ZeusBroker/../../Ballet/BootUtil/BalTimer.h
@@ -178,8 +171,8 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o
  ../Zeus/ZeusBroker/../../Ballet/Network/BalUdpProtocol.h
  ../Zeus/ZeusBroker/../../Ballet/Network/BalUdpServer.h
  ../Zeus/ZeusBroker/../../Ballet/Network/BalUdpSocket.h
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNode.h
- /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsNodeTree.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNode.h
+ ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNodeTree.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsUdpProtocol.h
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsUdpServer.cc
  /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsUdpServer.h

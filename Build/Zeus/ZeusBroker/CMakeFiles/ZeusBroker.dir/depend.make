@@ -40,11 +40,11 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/../../Ballet/ServiceWorker/BalServiceManage.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/../../Ballet/ServiceWorker/BalServiceSingleton.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/../../Libs/IniLoader/IniConfigLoader.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/../../Zeus/ZeusInclude/ZsDefine.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsDefine.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNode.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNodeTree.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/ZsBrokerService.cc
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/ZsBrokerService.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/ZsNode.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/ZsNodeTree.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/ZsUdpProtocol.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o: ../Zeus/ZeusBroker/ZsUdpServer.h
 
@@ -84,10 +84,10 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBro
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/../../Ballet/Network/BalTcpClient.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/../../Ballet/Network/BalTcpConnection.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/../../Ballet/Network/BalTcpSocket.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNode.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNodeTree.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/ZsCollocationClient.cc
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/ZsCollocationClient.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/ZsNode.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/ZsNodeTree.h
 
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Ballet/BootUtil/BalTimeStamp.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Ballet/BootUtil/BalTimer.h
@@ -128,20 +128,13 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Bal
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Ballet/ServiceWorker/BalServiceManage.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Ballet/ServiceWorker/BalServiceSingleton.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Libs/IniLoader/IniConfigLoader.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Zeus/ZeusInclude/ZsDefine.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsDefine.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNode.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNodeTree.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/ZsBrokerService.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/ZsMain.cc
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/ZsNode.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/ZsNodeTree.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/ZsUdpProtocol.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/ZsUdpServer.h
-
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.o: ../Zeus/ZeusBroker/ZsNode.cc
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.o: ../Zeus/ZeusBroker/ZsNode.h
-
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.o: ../Zeus/ZeusBroker/ZsNode.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.o: ../Zeus/ZeusBroker/ZsNodeTree.cc
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.o: ../Zeus/ZeusBroker/ZsNodeTree.h
 
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/../../Ballet/BootUtil/BalTimeStamp.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/../../Ballet/BootUtil/BalTimer.h
@@ -177,8 +170,8 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/../.
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/../../Ballet/Network/BalUdpProtocol.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/../../Ballet/Network/BalUdpServer.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/../../Ballet/Network/BalUdpSocket.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/ZsNode.h
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/ZsNodeTree.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNode.h
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/../../Zeus/ZeusBase/ZsNodeTree.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/ZsUdpProtocol.h
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/ZsUdpServer.cc
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/ZsUdpServer.h

@@ -7,11 +7,11 @@ using namespace Ballet;
 using namespace Network;
 using namespace ServiceWorker;
 
-#include <Zeus/ZeusInclude/ZsDefine.h>
+#include <Zeus/ZeusBase/ZsDefine.h>
+#include <Zeus/ZeusBase/ZsNodeTree.h>
 #include <Libs/IniLoader/IniConfigLoader.h>
 using namespace Libs;
 
-#include "ZsNodeTree.h"
 #include "ZsUdpServer.h"
 
 namespace Zeus

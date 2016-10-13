@@ -155,36 +155,6 @@ ZsMain.s:
 .PHONY : ZsMain.s
 
 # target to build an object file
-ZsNode.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.o
-.PHONY : ZsNode.o
-
-# target to preprocess a source file
-ZsNode.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.i
-.PHONY : ZsNode.i
-
-# target to generate assembly for a file
-ZsNode.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNode.s
-.PHONY : ZsNode.s
-
-# target to build an object file
-ZsNodeTree.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.o
-.PHONY : ZsNodeTree.o
-
-# target to preprocess a source file
-ZsNodeTree.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.i
-.PHONY : ZsNodeTree.i
-
-# target to generate assembly for a file
-ZsNodeTree.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsNodeTree.s
-.PHONY : ZsNodeTree.s
-
-# target to build an object file
 ZsUdpServer.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o
 .PHONY : ZsUdpServer.o
@@ -217,12 +187,6 @@ help:
 	@echo "... ZsMain.o"
 	@echo "... ZsMain.i"
 	@echo "... ZsMain.s"
-	@echo "... ZsNode.o"
-	@echo "... ZsNode.i"
-	@echo "... ZsNode.s"
-	@echo "... ZsNodeTree.o"
-	@echo "... ZsNodeTree.i"
-	@echo "... ZsNodeTree.s"
 	@echo "... ZsUdpServer.o"
 	@echo "... ZsUdpServer.i"
 	@echo "... ZsUdpServer.s"

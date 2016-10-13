@@ -192,6 +192,15 @@ Test_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Test
 Test_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Test
 
 //Value Computed by CMake
+ZeusBase_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase
+
+//Dependencies for target
+ZeusBase_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+ZeusBase_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Zeus/ZeusBase
+
+//Value Computed by CMake
 ZeusBroker_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker
 
 //Value Computed by CMake
@@ -316,7 +325,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=9
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=10
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

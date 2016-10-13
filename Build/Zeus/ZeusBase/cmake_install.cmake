@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/shared/Ballet-Net-Github/Zeus
+# Install script for directory: /mnt/shared/Ballet-Net-Github/Zeus/ZeusBase
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -31,14 +31,4 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT)
 IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   SET(CMAKE_INSTALL_SO_NO_EXE "1")
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-
-IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase/cmake_install.cmake")
-  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCli/cmake_install.cmake")
-  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker/cmake_install.cmake")
-  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor/cmake_install.cmake")
-  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation/cmake_install.cmake")
-
-ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
