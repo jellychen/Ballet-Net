@@ -38,6 +38,7 @@ namespace Ballet
             bool ShutdownWrite();
             bool WriteBuffer(const char* buffer, uint32_t len);
             bool WriteRawBuffer(const char* buffer, uint32_t len);
+            bool BroadcastRawBuffer(const char* buffer, uint32_t len);
             uint32_t TimeoutTime() const;
             uint32_t MaxReadBufferSize() const;
             uint32_t MaxWriteBufferSize() const;

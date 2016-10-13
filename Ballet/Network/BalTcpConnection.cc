@@ -139,6 +139,12 @@ bool BalTcpConnection::WriteRawBuffer(const char* buffer, uint32_t len)
     return true;
 }
 
+bool BalTcpConnection::BroadcastRawBuffer(const char* buffer, uint32_t len)
+{
+    if (!buffer || 0 == len || !tcpServer_) return false;
+    return tcpServer_->BroadcastRawBuffer(buffer, len);
+}
+
 uint32_t BalTcpConnection::TimeoutTime() const
 {
     if (!tcpServer_) return 0;

@@ -248,6 +248,12 @@ Common/BalInct.h
 BalSignalCallback.h
 ../Zeus/ZeusCollocation/../../Ballet/Network/BalSignalCallback.h
 
+/mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZsClientServer.cc
+
+/mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZsCollocationService.cc
+
+/mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZsConsumerServer.cc
+
 /mnt/shared/Ballet-Net-Github/Zeus/ZeusCollocation/ZsMain.cc
 Ballet/Common/BalInct.h
 -

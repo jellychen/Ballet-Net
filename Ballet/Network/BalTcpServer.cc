@@ -102,6 +102,20 @@ BalHandle<IBalTcpCallback> BalTcpServer::GetCallback() const
     return tcpCallback_;
 }
 
+bool BalTcpServer::BroadcastRawBuffer(const char* buffer, uint32_t len)
+{
+    if (!buffer || 0 == len) return false;
+    mapConnPoolT::iterator iter = mapConnPool_.begin();
+    for (; iter != mapConnPool_.end(); ++iter)
+    {
+        if (iter->second)
+        {
+            iter->second->WriteRawBuffer(buffer, len);
+        }
+    }
+    return true;
+}
+
 bool BalTcpServer::EraseTcpConnection(int id)
 {
     mapConnPoolT::iterator iter = mapConnPool_.find(id);

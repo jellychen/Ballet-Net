@@ -110,6 +110,51 @@ ZeusCollocation/fast:
 .PHONY : ZeusCollocation/fast
 
 # target to build an object file
+ZsClientServer.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsClientServer.o
+.PHONY : ZsClientServer.o
+
+# target to preprocess a source file
+ZsClientServer.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsClientServer.i
+.PHONY : ZsClientServer.i
+
+# target to generate assembly for a file
+ZsClientServer.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsClientServer.s
+.PHONY : ZsClientServer.s
+
+# target to build an object file
+ZsCollocationService.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsCollocationService.o
+.PHONY : ZsCollocationService.o
+
+# target to preprocess a source file
+ZsCollocationService.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsCollocationService.i
+.PHONY : ZsCollocationService.i
+
+# target to generate assembly for a file
+ZsCollocationService.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsCollocationService.s
+.PHONY : ZsCollocationService.s
+
+# target to build an object file
+ZsConsumerServer.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsConsumerServer.o
+.PHONY : ZsConsumerServer.o
+
+# target to preprocess a source file
+ZsConsumerServer.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsConsumerServer.i
+.PHONY : ZsConsumerServer.i
+
+# target to generate assembly for a file
+ZsConsumerServer.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsConsumerServer.s
+.PHONY : ZsConsumerServer.s
+
+# target to build an object file
 ZsMain.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/ZsMain.o
 .PHONY : ZsMain.o
@@ -133,6 +178,15 @@ help:
 	@echo "... ZeusCollocation"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ZsClientServer.o"
+	@echo "... ZsClientServer.i"
+	@echo "... ZsClientServer.s"
+	@echo "... ZsCollocationService.o"
+	@echo "... ZsCollocationService.i"
+	@echo "... ZsCollocationService.s"
+	@echo "... ZsConsumerServer.o"
+	@echo "... ZsConsumerServer.i"
+	@echo "... ZsConsumerServer.s"
 	@echo "... ZsMain.o"
 	@echo "... ZsMain.i"
 	@echo "... ZsMain.s"

@@ -35,6 +35,7 @@ namespace Ballet
             BalHandle<BalEventLoop> GetEventLoop() const;
             BalHandle<IBalProtocol> GetProtocol() const;
             BalHandle<IBalTcpCallback> GetCallback() const;
+            bool BroadcastRawBuffer(const char* buffer, uint32_t len);
 
         public:
             virtual BalEventCallbackEnum ShoudAccept(int id, BalHandle<BalEventLoop> el);
