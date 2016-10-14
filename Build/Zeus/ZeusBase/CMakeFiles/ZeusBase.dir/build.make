@@ -46,9 +46,32 @@ include Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/progress.make
 # Include the compile flags for this target's objects.
 include Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/flags.make
 
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/flags.make
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o: ../Zeus/ZeusBase/ZsClientData.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBase.dir/ZsClientData.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBase/ZsClientData.cc
+
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZeusBase.dir/ZsClientData.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Zeus/ZeusBase/ZsClientData.cc > CMakeFiles/ZeusBase.dir/ZsClientData.i
+
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZeusBase.dir/ZsClientData.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Zeus/ZeusBase/ZsClientData.cc -o CMakeFiles/ZeusBase.dir/ZsClientData.s
+
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o.requires:
+.PHONY : Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o.requires
+
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o.provides: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o.requires
+	$(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o.provides.build
+.PHONY : Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o.provides
+
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o.provides.build: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o
+
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientProtocol.o: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/flags.make
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientProtocol.o: ../Zeus/ZeusBase/ZsClientProtocol.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientProtocol.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBase.dir/ZsClientProtocol.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBase/ZsClientProtocol.cc
 
@@ -71,7 +94,7 @@ Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientProtocol.o.provides.build: Zeus/Ze
 
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNode.o: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/flags.make
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNode.o: ../Zeus/ZeusBase/ZsNode.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNode.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBase.dir/ZsNode.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBase/ZsNode.cc
 
@@ -94,7 +117,7 @@ Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNode.o.provides.build: Zeus/ZeusBase/CMa
 
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNodeTree.o: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/flags.make
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNodeTree.o: ../Zeus/ZeusBase/ZsNodeTree.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNodeTree.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBase && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBase.dir/ZsNodeTree.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBase/ZsNodeTree.cc
 
@@ -117,6 +140,7 @@ Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNodeTree.o.provides.build: Zeus/ZeusBase
 
 # Object files for target ZeusBase
 ZeusBase_OBJECTS = \
+"CMakeFiles/ZeusBase.dir/ZsClientData.o" \
 "CMakeFiles/ZeusBase.dir/ZsClientProtocol.o" \
 "CMakeFiles/ZeusBase.dir/ZsNode.o" \
 "CMakeFiles/ZeusBase.dir/ZsNodeTree.o"
@@ -124,6 +148,7 @@ ZeusBase_OBJECTS = \
 # External object files for target ZeusBase
 ZeusBase_EXTERNAL_OBJECTS =
 
+Zeus/ZeusBase/libZeusBase.a: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o
 Zeus/ZeusBase/libZeusBase.a: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientProtocol.o
 Zeus/ZeusBase/libZeusBase.a: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNode.o
 Zeus/ZeusBase/libZeusBase.a: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNodeTree.o
@@ -137,6 +162,7 @@ Zeus/ZeusBase/libZeusBase.a: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/link.txt
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build: Zeus/ZeusBase/libZeusBase.a
 .PHONY : Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build
 
+Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/requires: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o.requires
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/requires: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientProtocol.o.requires
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/requires: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNode.o.requires
 Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/requires: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsNodeTree.o.requires

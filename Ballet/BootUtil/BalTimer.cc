@@ -1,5 +1,6 @@
 #include "BalTimer.h"
-using namespace Ballet::BootUtil;
+using namespace Ballet;
+using namespace BootUtil;
 
 bool BalTimer::Tick()
 {

@@ -1,5 +1,4 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/Ballet.dir/BootUtil/BalEndian.o"
   "CMakeFiles/Ballet.dir/BootUtil/BalLogger.o"
   "CMakeFiles/Ballet.dir/BootUtil/BalTimer.o"
   "CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o"

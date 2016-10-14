@@ -2,6 +2,7 @@
 #include <Ballet/Common/BalNull.h>
 #include <Ballet/Common/BalHandle.h>
 #include <Ballet/Network/BalEventLoop.h>
+#include <Zeus/ZeusBase/ZsClientData.h>
 using namespace Ballet;
 
 #include "ZsCollocationService.h"

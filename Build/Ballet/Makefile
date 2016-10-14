@@ -110,21 +110,6 @@ Ballet/fast:
 .PHONY : Ballet/fast
 
 # target to build an object file
-BootUtil/BalEndian.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o
-.PHONY : BootUtil/BalEndian.o
-
-# target to preprocess a source file
-BootUtil/BalEndian.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.i
-.PHONY : BootUtil/BalEndian.i
-
-# target to generate assembly for a file
-BootUtil/BalEndian.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.s
-.PHONY : BootUtil/BalEndian.s
-
-# target to build an object file
 BootUtil/BalLogger.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o
 .PHONY : BootUtil/BalLogger.o
@@ -613,9 +598,6 @@ help:
 	@echo "... Ballet"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... BootUtil/BalEndian.o"
-	@echo "... BootUtil/BalEndian.i"
-	@echo "... BootUtil/BalEndian.s"
 	@echo "... BootUtil/BalLogger.o"
 	@echo "... BootUtil/BalLogger.i"
 	@echo "... BootUtil/BalLogger.s"

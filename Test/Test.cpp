@@ -13,6 +13,7 @@ using namespace std;
 #include "t_TcpServer.h"
 #include "t_HttpServer.h"
 #include "t_UdpServer.h"
+#include "t_SerializeTest.h"
 
 #include "t_ArpTest.h"
 #include "Ballet/Network/BalInetAddress.h"
@@ -44,7 +45,8 @@ int main(int argc, char const *argv[])
     //t_HttpService_main();
 
     //t_UdpService_main();
-    t_IniLoaderTest_main();
-
+    //t_IniLoaderTest_main();
+    t_SerializeTest_main();
+    
     return 0;
 }

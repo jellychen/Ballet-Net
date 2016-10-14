@@ -4,21 +4,6 @@
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o: ../Ballet/Protocol/Http/http_parser.c
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o: ../Ballet/Protocol/Http/http_parser.h
 
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalCallback.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalCoable.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalHandle.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalHandleBase.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalHandleInct.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalInct.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalNull.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalShareThis.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalSingleton.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalUseCount.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalVariable.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/Common/BalWeakHandle.h
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/BootUtil/BalEndian.cc
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalEndian.o: ../Ballet/BootUtil/BalEndian.h
-
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o: ../Ballet/BootUtil/BalLogger.cc
 
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o: ../Ballet/Common/BalCallback.h

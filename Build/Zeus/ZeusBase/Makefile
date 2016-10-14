@@ -110,6 +110,21 @@ ZeusBase/fast:
 .PHONY : ZeusBase/fast
 
 # target to build an object file
+ZsClientData.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.o
+.PHONY : ZsClientData.o
+
+# target to preprocess a source file
+ZsClientData.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.i
+.PHONY : ZsClientData.i
+
+# target to generate assembly for a file
+ZsClientData.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientData.s
+.PHONY : ZsClientData.s
+
+# target to build an object file
 ZsClientProtocol.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientProtocol.o
 .PHONY : ZsClientProtocol.o
@@ -163,6 +178,9 @@ help:
 	@echo "... ZeusBase"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ZsClientData.o"
+	@echo "... ZsClientData.i"
+	@echo "... ZsClientData.s"
 	@echo "... ZsClientProtocol.o"
 	@echo "... ZsClientProtocol.i"
 	@echo "... ZsClientProtocol.s"
