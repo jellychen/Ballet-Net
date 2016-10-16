@@ -48,8 +48,7 @@ namespace Ballet
                 {
                     int innerSize = at(i).Serialize(curBuffer, capacity, endian);
                     if (-1 == innerSize) return -1;
-                    curBuffer += innerSize; rawSize += innerSize;
-                    capacity -= (uint32_t)innerSize;
+                    curBuffer += innerSize; rawSize += innerSize; capacity -= innerSize;
                 }
                 return rawSize;
             }
@@ -61,14 +60,13 @@ namespace Ballet
                 if (endian) { dataSize = ntohi(dataSize);}
                 capacity -= sizeof(uint32_t);
 
-                int rawSize = sizeof(uint32_t);
-                resize(dataSize); char* curBuffer = buffer +sizeof(uint32_t);
+                int rawSize = sizeof(uint32_t); resize(dataSize);
+                char* curBuffer = buffer + sizeof(uint32_t);
                 for (uint32_t i = 0; i < dataSize; ++i)
                 {
                     int innerSize = at(i).UnSerialize(curBuffer, capacity, endian);
                     if (-1 == innerSize) return -1;
-                    curBuffer += innerSize; rawSize += innerSize;
-                    capacity -= (uint32_t)innerSize;
+                    curBuffer += innerSize; rawSize += innerSize; capacity -= innerSize;
                 }
                 return rawSize;
             }

@@ -25,6 +25,7 @@ namespace Ballet
             bool ShutdownWrite();
             bool WriteBuffer(const char* buffer, uint32_t len);
             bool WriteRawBuffer(const char* buffer, uint32_t len);
+            bool BroadcastRawBuffer(const char* buffer, uint32_t len);
             bool BindAddress(BalHandle<BalInetAddress> addr) throw();
             bool Connect(BalHandle<BalInetAddress> addr, int timeout);
             uint32_t GetMaxPackageSize() const;

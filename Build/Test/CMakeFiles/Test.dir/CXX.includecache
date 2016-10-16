@@ -127,6 +127,8 @@ sys/types.h
 -
 sys/wait.h
 -
+sys/time.h
+-
 pthread.h
 -
 stdexcept

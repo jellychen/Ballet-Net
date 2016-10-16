@@ -2,9 +2,22 @@
 using namespace Ballet;
 using namespace Network;
 
-BalTcpSocket::BalTcpSocket(int fd):BalSocket(fd)
+BalTcpSocket::BalTcpSocket(int fd)
+    :BalSocket(fd), shutdownWriteWhenClose_(false)
 {
 
+}
+
+BalTcpSocket::~BalTcpSocket()
+{
+    if (0 != fd_)
+    {
+        if (shutdownWriteWhenClose_)
+        {
+            ShutdownWrite();
+        }
+        ::close(fd_); fd_ = 0;
+    }
 }
 
 BalTcpSocket::BalTcpSocket(bool v6):BalSocket(0)
@@ -22,6 +35,10 @@ BalTcpSocket::BalTcpSocket(bool v6):BalSocket(0)
 bool BalTcpSocket::Close() throw()
 {
     if (0 == fd_) return false;
+    if (shutdownWriteWhenClose_)
+    {
+        ShutdownWrite();
+    }
     ::close(fd_); fd_ = 0;
     return true;
 }
@@ -56,6 +73,7 @@ bool BalTcpSocket::SetNoBlock() throw()
 bool BalTcpSocket::ShutdownWrite() throw()
 {
     if (0 == fd_) return false;
+    shutdownWriteWhenClose_ = false;
     return ::shutdown(fd_, SHUT_WR) == 0;
 }
 
@@ -74,6 +92,12 @@ bool BalTcpSocket::SetKeepAlive(bool set) throw()
     SOL_SOCKET, SO_KEEPALIVE, &val, (socklen_t)(sizeof(int)));
 }
 
+bool BalTcpSocket::SetShutdownWriteWhenClose(bool set) throw()
+{
+    shutdownWriteWhenClose_ = set;
+    return true;
+}
+
 bool BalTcpSocket::BindAddress(BalHandle<BalInetAddress> addr) throw()
 {
     if (0 == fd_ || !addr) return false;
@@ -87,9 +111,18 @@ bool BalTcpSocket::Connect(BalHandle<BalInetAddress> addr, bool* connecting) thr
     int ret = ::connect(fd_,\
     addr->GetSocketAddr(), (socklen_t)(sizeof(sockaddr_in6)));
     if (0 == ret) return true;
-    if (0 > ret && EINPROGRESS == errno && connecting)
+
+    if (connecting)
     {
-        *connecting = true;
+        if (0 > ret && EINPROGRESS != errno)
+        {
+            *connecting = false;
+        }
+        else
+        {
+            *connecting = true;
+        }
     }
+
     return false;
 }

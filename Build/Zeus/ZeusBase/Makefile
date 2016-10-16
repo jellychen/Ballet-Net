@@ -125,6 +125,36 @@ ZsClientData.s:
 .PHONY : ZsClientData.s
 
 # target to build an object file
+ZsClientDataAddr.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientDataAddr.o
+.PHONY : ZsClientDataAddr.o
+
+# target to preprocess a source file
+ZsClientDataAddr.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientDataAddr.i
+.PHONY : ZsClientDataAddr.i
+
+# target to generate assembly for a file
+ZsClientDataAddr.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientDataAddr.s
+.PHONY : ZsClientDataAddr.s
+
+# target to build an object file
+ZsClientHeartbeat.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientHeartbeat.o
+.PHONY : ZsClientHeartbeat.o
+
+# target to preprocess a source file
+ZsClientHeartbeat.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientHeartbeat.i
+.PHONY : ZsClientHeartbeat.i
+
+# target to generate assembly for a file
+ZsClientHeartbeat.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientHeartbeat.s
+.PHONY : ZsClientHeartbeat.s
+
+# target to build an object file
 ZsClientProtocol.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/build.make Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/ZsClientProtocol.o
 .PHONY : ZsClientProtocol.o
@@ -181,6 +211,12 @@ help:
 	@echo "... ZsClientData.o"
 	@echo "... ZsClientData.i"
 	@echo "... ZsClientData.s"
+	@echo "... ZsClientDataAddr.o"
+	@echo "... ZsClientDataAddr.i"
+	@echo "... ZsClientDataAddr.s"
+	@echo "... ZsClientHeartbeat.o"
+	@echo "... ZsClientHeartbeat.i"
+	@echo "... ZsClientHeartbeat.s"
 	@echo "... ZsClientProtocol.o"
 	@echo "... ZsClientProtocol.i"
 	@echo "... ZsClientProtocol.s"

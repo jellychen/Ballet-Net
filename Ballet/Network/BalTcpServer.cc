@@ -62,8 +62,17 @@ bool BalTcpServer::Close()
 
 bool BalTcpServer::Start(BalHandle<BalInetAddress> addr)
 {
-    if (false == BindAddress(addr)) return false;
-    if (false == Listen()) return false;
+    if (false == BindAddress(addr))
+    {
+        throw std::runtime_error("BalTcpServer BindAddress Failed");
+        return false;
+    }
+
+    if (false == Listen())
+    {
+        throw std::runtime_error("BalTcpServer Listen Failed");
+        return false;
+    }
     return true;
 }
 

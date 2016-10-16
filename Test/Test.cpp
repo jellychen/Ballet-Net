@@ -42,11 +42,11 @@ int main(int argc, char const *argv[])
     //t_Service_main();
     //t_TcpServer_main();
     //t_Arp_main();
-    //t_HttpService_main();
+    t_HttpService_main();
 
     //t_UdpService_main();
     //t_IniLoaderTest_main();
     t_SerializeTest_main();
-    
+
     return 0;
 }

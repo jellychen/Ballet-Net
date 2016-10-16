@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/ZeusCollocation.dir/ZsClientServer.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsCollocationNodeData.o"
   "CMakeFiles/ZeusCollocation.dir/ZsCollocationService.o"
   "CMakeFiles/ZeusCollocation.dir/ZsConsumerServer.o"
   "CMakeFiles/ZeusCollocation.dir/ZsMain.o"

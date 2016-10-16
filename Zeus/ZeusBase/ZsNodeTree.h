@@ -16,9 +16,11 @@ namespace Zeus
         bool AddServiceAddr(std::string service, std::string addr);
         bool DeleteServiceAddr(std::string service, std::string addr);
         bool IsServerAddExist(std::string service, std::string addr);
+        bool GetHeadNode(std::string& tag, ZsNode** node);
 
     private:
         ZsNode* GetPathNode(std::string service, bool create);
+
     };
 }
 #endif

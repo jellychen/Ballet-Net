@@ -11,10 +11,10 @@ BalProtocolStatus ZsClientProtocol::CalSize(const char* buffer, uint32_t len, ui
     return StatusSuccess;
 }
 
-bool ZsClientProtocol::ZsClientProtocol::Encode(const char* buffer, uint32_t len, BalHandle<BalChannel> channel)
+bool ZsClientProtocol::Encode(const char* buffer, uint32_t len, BalHandle<BalChannel> channel)
 {
     if (!buffer || !channel) return false;
-    uint32_t dataSize = HostToNetwork32(len);
+    uint32_t dataSize = HostToNetwork32(len + sizeof(uint32_t));
     return (channel->WriteRawBuffer((const char*)(&dataSize), sizeof(uint32_t)))
         && (channel->WriteRawBuffer(buffer, len));
 }

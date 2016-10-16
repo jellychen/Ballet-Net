@@ -14,6 +14,7 @@
 #include <arpa/inet.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/time.h>
 #include <pthread.h>
 #include <stdexcept>
 #include <vector>

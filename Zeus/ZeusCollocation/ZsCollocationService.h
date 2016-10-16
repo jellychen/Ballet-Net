@@ -13,6 +13,7 @@ using namespace ServiceWorker;
 using namespace Libs;
 
 #include "ZsClientServer.h"
+#include "ZsCollocationNodeData.h"
 
 namespace Zeus
 {

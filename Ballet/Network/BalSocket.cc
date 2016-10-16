@@ -9,7 +9,7 @@ BalSocket::~BalSocket()
 {
     if (0 != fd_)
     {
-        ::close(fd_);
+        ::close(fd_); fd_ = 0;
     }
 }
 
@@ -42,20 +42,32 @@ bool BalSocket::SetReusePort(bool set) throw()
 #endif
 }
 
-uint32_t BalSocket::ReadBuffer(char* buffer, uint32_t size) const
+uint32_t BalSocket::ReadBuffer(char* buffer, uint32_t size, bool* close) const
 {
     if (0 == fd_ || nullptr_() == buffer || 0 == size)
     {
-        return 0;
+        if (close) *close = false; return 0;
     }
-    return (uint32_t)::read(fd_, buffer, size);
+
+    int readSize = ::read(fd_, buffer, size);
+    if (0 == readSize || (-1 == readSize && errno != EAGAIN))
+    {
+        if (close) *close = true; return 0;
+    }
+    if (close) *close = false; return (uint32_t)readSize;
 }
 
-uint32_t BalSocket::WriteBuffer(const char* buffer, uint32_t size) const
+uint32_t BalSocket::WriteBuffer(const char* buffer, uint32_t size, bool* close) const
 {
     if (0 == fd_ || nullptr_() == buffer || 0 == size)
     {
-        return 0;
+        if (close) *close = false; return 0;
     }
-    return (uint32_t)::write(fd_, buffer, size);
+
+    int writeSize = ::write(fd_, buffer, size);
+    if (0 == writeSize || (-1 == writeSize && errno != EAGAIN))
+    {
+        if (close) *close = true; return 0;
+    }
+    if (close) *close = false; return (uint32_t)writeSize;
 }

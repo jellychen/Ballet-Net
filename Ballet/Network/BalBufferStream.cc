@@ -43,15 +43,18 @@ size_t BalBufferStream::Capacity() const
 bool BalBufferStream::AppendBuffer(const char* buffer, size_t len)
 {
     if (nullptr_() == buffer || 0 >= len) return false;
-    if (capacity_ - end_ > len)
+    if (capacity_ - end_ >= len)
     {
         memcpy(buffer_ + end_, buffer, len);
         end_ += len;
     }
-    else if (start_ + capacity_ - end_ > len)
+    else if (start_ + capacity_ - end_ >= len)
     {
         size_t dataLen = end_ - start_;
-        memcpy(buffer_, buffer_ + start_, dataLen);
+        if (0 != start_)
+        {
+            memcpy(buffer_, buffer_ + start_, dataLen);
+        }
         start_ = 0; end_ = dataLen;
         memcpy(buffer_ + dataLen, buffer, len);
         end_ += len;
@@ -69,7 +72,7 @@ bool BalBufferStream::AppendBuffer(const char* buffer, size_t len)
         char* newBuffer = (char*)malloc(mallocSize);
         if (nullptr_() == newBuffer) return false;
         memcpy(newBuffer, buffer_+start_, dataLen);
-        memcpy(newBuffer, buffer, len); free(buffer_);
+        memcpy(newBuffer + dataLen, buffer, len); free(buffer_);
         buffer_ = newBuffer; start_ = 0; end_ = needSize; capacity_ = mallocSize;
     }
     return true;

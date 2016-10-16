@@ -9,10 +9,9 @@ BalHttpConnection::BalHttpConnection(int id, BalHandle<BalHttpServer> server)
     :BalTcpSocket(id), eventCallbackPtr_(this)
     ,timerCallbackPtr_(this), eventHandle_(GetFd())
 {
-    httpServer_ = server;
-    status_ = StatusEstablish;
+    httpServer_ = server; status_ = StatusEstablish;
 
-    if (!eventCallbackPtr_ || !timerCallbackPtr_ || !httpServer_)
+    if (!eventCallbackPtr_ || !timerCallbackPtr_ || !httpServer_ || !SetNoBlock())
     {
         throw std::runtime_error("BalHttpConnection Construct Failed! @1");
         return;
@@ -362,22 +361,17 @@ bool BalHttpConnection::WriteRawBuffer(const char* buffer, uint32_t size)
 
     if (respondBuffer_.GetSize() <= 0)
     {
-        uint32_t writeSize = BalTcpSocket::WriteBuffer(buffer, size);
-        if (0 == writeSize || (writeSize == -1 && errno != EAGAIN))
+        bool closed = false;
+        uint32_t writeSize = BalTcpSocket::WriteBuffer(buffer, size, &closed);
+
+        if (closed)
         {
             DoCloseProcedure(false, true);
             return false;
         }
         else
         {
-            if (-1 == writeSize)
-            {
-                respondBuffer_.AppendBuffer(buffer, (size_t)(size));
-            }
-            else if (writeSize < size)
-            {
-                respondBuffer_.AppendBuffer(buffer + writeSize, (size_t)(size - writeSize));
-            }
+            respondBuffer_.AppendBuffer(buffer + writeSize, (size_t)(size - writeSize));
         }
     }
     else
@@ -475,10 +469,12 @@ BalEventCallbackEnum BalHttpConnection::ShouldRead(int id, BalHandle<BalEventLoo
     BalHandle<IBalHttpCallback> callback = httpServer_->GetCallback();
     bool callbackAble = callback && callback->IsCallable();
 
+    bool closed = false;
     char buffer[MAX_READFD_SIZE] = {0};
     BalEventCallbackEnum ret = EventRetContinue;
-    uint32_t readSize = ReadBuffer(buffer, MAX_READFD_SIZE);
-    if (0 == readSize || (-1 == readSize && EAGAIN != errno))
+    uint32_t readSize = ReadBuffer(buffer, MAX_READFD_SIZE, &closed);
+
+    if (closed)
     {
         DoHttpParser(nullptr_(), 0);
         DoCloseProcedure(false, true);
@@ -510,7 +506,7 @@ BalEventCallbackEnum BalHttpConnection::ShouldRead(int id, BalHandle<BalEventLoo
         }
     }
 
-    if (readSize < MAX_READFD_SIZE)
+    if (readSize < MAX_READFD_SIZE || 0 == readSize)
     {
         return EventRetComplete;
     }
@@ -524,11 +520,13 @@ BalEventCallbackEnum BalHttpConnection::ShouldWrite(int id, BalHandle<BalEventLo
 {
     if (StatusEstablish != status_) return EventRetAgain;
     if (0 == writeBuffer_.GetSize()) return EventRetComplete;
+
+    bool closed = false;
     char* buffer = (char*)writeBuffer_.RawBuffer();
     uint32_t size = (uint32_t)writeBuffer_.GetSize();
-    uint32_t writeSize = WriteBuffer(buffer, size);
+    uint32_t writeSize = WriteBuffer(buffer, size, &closed);
 
-    if (0 == writeSize || (-1 == writeSize && EAGAIN != errno))
+    if (closed)
     {
         DoCloseProcedure(false, true);
         return EventRetClose;

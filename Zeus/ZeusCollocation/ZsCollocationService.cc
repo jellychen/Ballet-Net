@@ -20,7 +20,20 @@ void ZsCollocationService::OnServiceMain(BalHandle<BalService>)
 {
     IniConfigLoader loader;
     loader.LoadFile(configFile_.c_str());
-    BalHandle<ZsNodeTree> nodeTree(new ZsNodeTree());
+    BalHandle<ZsCollocationNodeData> nodeTree(new ZsCollocationNodeData());
+
+
+    for (int i = 0; i < 400; ++i)
+    {
+        std::string str = "/asdasdasdasdasdasdasdasdasd";
+        str += '0' + i;
+        for (int j = 0; j < 20; ++j)
+        {
+            std::string addr = "sdadasdasd";
+            addr += '0' + j;
+            nodeTree->AddServiceAddr(str.c_str(), addr.c_str());
+        }
+    }
 
     // read config
     std::string clientPort = "";
@@ -30,13 +43,13 @@ void ZsCollocationService::OnServiceMain(BalHandle<BalService>)
 
     std::string maxPackage = "";
     loader.GetItem(zsCollocationClientMaxPackageItemKey,
-         &clientPort, zsDefaultCollocationClientMaxPackage);
+         &maxPackage, zsDefaultCollocationClientMaxPackage);
     uint32_t maxPackageNum = (uint32_t)atoi(maxPackage.c_str());
 
     std::string timeout = "";
     loader.GetItem(zsCollocationClientTimeoutItemKey,
          &timeout, zsDefaultCollocationClientTimeout);
-    uint32_t timeouNum = (uint32_t)atoi(timeout.c_str());
+    uint32_t timeoutNum = (uint32_t)atoi(timeout.c_str());
 
     std::string maxReadBuffer = "";
     loader.GetItem(zsCollocationClientMaxReadBufferItemKey,
@@ -50,14 +63,14 @@ void ZsCollocationService::OnServiceMain(BalHandle<BalService>)
 
     BalHandle<ZsClientServer> clientServer(
         new ZsClientServer(eventLoop_, maxPackageNum,
-                timeouNum, maxReadBufferNum, maxWriteBufferNum)
+                timeoutNum, maxReadBufferNum, maxWriteBufferNum)
     );
 
     if (clientServer)
     {
-        BalHandle<BalInetAddress> udpAddress(
+        BalHandle<BalInetAddress> clientServerAddress(
             new BalInetAddress(clientPortNum, false, false));
-        clientServer->Start(nodeTree, udpAddress);
+        clientServer->Start(nodeTree, clientServerAddress);
     }
 
     if (eventLoop_)

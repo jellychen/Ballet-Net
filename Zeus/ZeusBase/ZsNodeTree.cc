@@ -74,6 +74,17 @@ bool ZsNodeTree::IsServerAddExist(std::string service, std::string addr)
     return false;
 }
 
+bool ZsNodeTree::GetHeadNode(std::string& tag, ZsNode** node)
+{
+    if (node)
+    {
+        *node = (ZsNode*)(this);
+    }
+    
+    tag = "/";
+    return true;
+}
+
 ZsNode* ZsNodeTree::GetPathNode(std::string service, bool create)
 {
     if (0 == service.length() || '/' != service[0]) return 0;

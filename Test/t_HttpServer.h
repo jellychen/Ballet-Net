@@ -17,11 +17,11 @@ using namespace std;
 
 class t_HttpServer_class
 {
-    char data[102400];
+    char data[1024];
 public:
     t_HttpServer_class():callback(this)
     {
-        for (int i = 0; i < 102400; ++i)
+        for (int i = 0; i < 1024; ++i)
         {
             data[i] = 'd';
         }
@@ -90,11 +90,11 @@ public:
         conn->RespondBegin();
         conn->RespondVersion(1, 0);
         conn->RespondStatus(200, "ok");
-        conn->RespondContentLength(102400);
+        conn->RespondContentLength(1024);
         conn->RespondKeepAlive();
         conn->RespondHeader("Server", "Ballet");
         conn->RespondHeaderComplete(false);
-        conn->RespondBody(data, 102400);
+        conn->RespondBody(data, 1024);
         conn->RespondComplete(false);
         return true;
     }

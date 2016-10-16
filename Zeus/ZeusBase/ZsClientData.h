@@ -11,19 +11,21 @@ namespace Zeus
 {
     enum ZsClientDataType
     {
-        ZsClientDataAdd     = 0,
-        ZsClientDataRemove  = 1,
-        ZsClientDataReload  = 2,
+        ZsClientDataHeartbeat   = 0,
+        ZsClientDataAdd         = 1,
+        ZsClientDataRemove      = 2,
+        ZsClientDataCreate      = 3,
     };
 
     class ZsClientData: public BalSerializeComponent
     {
     public:
-        ZsClientData();
-
-    public:
         BalPackUInt8 type_;
         BalPackArray<ZsClientDataAddr> array_;
+
+    public:
+        bool DumpOut() const;
+        bool SetDataType(uint8_t type);
 
     public:
         int Size();

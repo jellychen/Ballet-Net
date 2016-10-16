@@ -11,7 +11,7 @@ BalTcpConnection::BalTcpConnection(int fd, BalHandle<BalTcpServer> server)
     tcpServer_ = server;
     status_ = StatusEstablish;
 
-    if (!eventCallbackPtr_ || !tcpServer_)
+    if (!eventCallbackPtr_ || !tcpServer_ || !SetNoBlock())
     {
         throw std::runtime_error("BalTcpConnection Construct Failed! @1");
         return;
@@ -95,22 +95,17 @@ bool BalTcpConnection::WriteRawBuffer(const char* buffer, uint32_t len)
 
     if (writeBuffer_.GetSize() <= 0)
     {
-        uint32_t writeSize = BalTcpSocket::WriteBuffer(buffer, len);
-        if (0 == writeSize || (writeSize == -1 && errno != EAGAIN))
+        bool closed = false;
+        uint32_t writeSize = BalTcpSocket::WriteBuffer(buffer, len, &closed);
+
+        if (closed)
         {
             DoCloseProcedure(false, true);
             return false;
         }
         else
         {
-            if (-1 == writeSize)
-            {
-                writeBuffer_.AppendBuffer(buffer, (size_t)(len));
-            }
-            else if (writeSize < len)
-            {
-                writeBuffer_.AppendBuffer(buffer + writeSize, (size_t)(len - writeSize));
-            }
+            writeBuffer_.AppendBuffer(buffer + writeSize, (size_t)(len - writeSize));
         }
     }
     else
@@ -275,10 +270,12 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
          return EventRetClose;
     }
 
+    bool closed = false;
     char buffer[MAX_READFD_SIZE] = {0};
     BalEventCallbackEnum ret = EventRetContinue;
-    uint32_t readSize = ReadBuffer(buffer, MAX_READFD_SIZE);
-    if (0 == readSize || (-1 == readSize && EAGAIN != errno))
+    uint32_t readSize = ReadBuffer(buffer, MAX_READFD_SIZE, &closed);
+
+    if (closed)
     {
         DoCloseProcedure(false, true);
         return EventRetClose;
@@ -290,7 +287,7 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
         readBuffer_.AppendBuffer(buffer, readSize);
     }
 
-    if (readSize < MAX_READFD_SIZE)
+    if (readSize < MAX_READFD_SIZE || 0 == readSize)
     {
         ret = EventRetComplete;
     }
@@ -299,6 +296,7 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
     {
         char* rawBuffer = readBuffer_.RawBuffer();
         size_t rawBufferSize = readBuffer_.GetSize();
+
         if (-1 == protocolWantSize_)
         {
             uint32_t wantSize = -1;

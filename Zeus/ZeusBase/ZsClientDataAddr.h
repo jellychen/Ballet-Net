@@ -10,14 +10,8 @@ namespace Zeus
     class ZsClientDataAddr: public BalSerializeComponent
     {
     public:
-        ZsClientDataAddr();
-
-    public:
         BalPackString name_;
-        BalPackString address_;
-
-    public:
-        bool AssignData(const char*, const char*);
+        BalPackArray<BalPackString> address_;
 
     public:
         int Size();

@@ -36,6 +36,7 @@ namespace Ballet
                 uint32_t dataSize = *((uint32_t*)(buffer));
                 if (endian) { dataSize = ntohi(dataSize);}
                 if (capacity < dataSize + sizeof(uint32_t)) return -1;
+                
                 append(buffer + sizeof(uint32_t), dataSize);
                 return dataSize + sizeof(uint32_t);
             }
