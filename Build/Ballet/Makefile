@@ -545,6 +545,21 @@ ServiceWorker/BalServiceManage.s:
 .PHONY : ServiceWorker/BalServiceManage.s
 
 # target to build an object file
+ThreadTask/BalTaskEventLoop.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o
+.PHONY : ThreadTask/BalTaskEventLoop.o
+
+# target to preprocess a source file
+ThreadTask/BalTaskEventLoop.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.i
+.PHONY : ThreadTask/BalTaskEventLoop.i
+
+# target to generate assembly for a file
+ThreadTask/BalTaskEventLoop.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.s
+.PHONY : ThreadTask/BalTaskEventLoop.s
+
+# target to build an object file
 ThreadTask/BalTaskThreadPool.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o
 .PHONY : ThreadTask/BalTaskThreadPool.o
@@ -558,21 +573,6 @@ ThreadTask/BalTaskThreadPool.i:
 ThreadTask/BalTaskThreadPool.s:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.s
 .PHONY : ThreadTask/BalTaskThreadPool.s
-
-# target to build an object file
-ThreadTask/BalThreadPoolEventLoop.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalThreadPoolEventLoop.o
-.PHONY : ThreadTask/BalThreadPoolEventLoop.o
-
-# target to preprocess a source file
-ThreadTask/BalThreadPoolEventLoop.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalThreadPoolEventLoop.i
-.PHONY : ThreadTask/BalThreadPoolEventLoop.i
-
-# target to generate assembly for a file
-ThreadTask/BalThreadPoolEventLoop.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalThreadPoolEventLoop.s
-.PHONY : ThreadTask/BalThreadPoolEventLoop.s
 
 # Help Target
 help:
@@ -670,12 +670,12 @@ help:
 	@echo "... ServiceWorker/BalServiceManage.o"
 	@echo "... ServiceWorker/BalServiceManage.i"
 	@echo "... ServiceWorker/BalServiceManage.s"
+	@echo "... ThreadTask/BalTaskEventLoop.o"
+	@echo "... ThreadTask/BalTaskEventLoop.i"
+	@echo "... ThreadTask/BalTaskEventLoop.s"
 	@echo "... ThreadTask/BalTaskThreadPool.o"
 	@echo "... ThreadTask/BalTaskThreadPool.i"
 	@echo "... ThreadTask/BalTaskThreadPool.s"
-	@echo "... ThreadTask/BalThreadPoolEventLoop.o"
-	@echo "... ThreadTask/BalThreadPoolEventLoop.i"
-	@echo "... ThreadTask/BalThreadPoolEventLoop.s"
 .PHONY : help
 
 

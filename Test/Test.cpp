@@ -16,6 +16,7 @@ using namespace std;
 #include "t_SerializeTest.h"
 
 #include "t_ThreadTest.h"
+#include "t_ThreadPool.h"
 
 #include "t_ArpTest.h"
 #include "Ballet/Network/BalInetAddress.h"
@@ -48,8 +49,9 @@ int main(int argc, char const *argv[])
     //t_UdpService_main();
     //t_IniLoaderTest_main();
     //t_SerializeTest_main();
+    //t_ThreadTest_main();
 
-    t_ThreadTest_main();
+    t_ThreadPool_main();
 
     return 0;
 }

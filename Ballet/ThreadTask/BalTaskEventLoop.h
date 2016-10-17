@@ -1,5 +1,5 @@
-#ifndef Ballet_ThreadTask_BalThreadPoolEventLoop_H
-#define Ballet_ThreadTask_BalThreadPoolEventLoop_H
+#ifndef Ballet_ThreadTask_BalTaskEventLoop_H
+#define Ballet_ThreadTask_BalTaskEventLoop_H
 #include "Common/BalInct.h"
 #include "Network/BalEventLoop.h"
 #include "BalTaskCommit.h"
@@ -10,13 +10,13 @@ namespace Ballet
 
     namespace Thread
     {
-        class BalThreadPoolEventLoop
+        class BalTaskEventLoop
             :public BalTaskCommit, public BalEventLoop
         {
             typedef std::queue<BalThreadTask*> taskQueueT;
         public:
-            BalThreadPoolEventLoop(uint32_t);
-            virtual ~BalThreadPoolEventLoop();
+            BalTaskEventLoop();
+            virtual ~BalTaskEventLoop();
 
         public:
             void DoTaskInThreadPool(BalThreadTask* task);
@@ -34,7 +34,7 @@ namespace Ballet
             BalEventHandle event_;
             pthread_mutex_t queuelocker_;
             taskQueueT *inQueue_, *outQueue_;
-            CBalEventCallbackPtr<BalThreadPoolEventLoop> callback_;
+            CBalEventCallbackPtr<BalTaskEventLoop> callback_;
         };
     }
 }

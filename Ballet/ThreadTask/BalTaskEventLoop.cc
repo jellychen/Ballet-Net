@@ -1,9 +1,9 @@
-#include "BalThreadPoolEventLoop.h"
+#include "BalTaskEventLoop.h"
 using namespace Ballet;
 using namespace Thread;
 using namespace Network;
 
-BalThreadPoolEventLoop::BalThreadPoolEventLoop(uint32_t num)
+BalTaskEventLoop::BalTaskEventLoop()
     :eventFd_(::eventfd(0, EFD_NONBLOCK |FD_CLOEXEC)), event_(eventFd_)
     ,callback_(this)
 {
@@ -14,11 +14,11 @@ BalThreadPoolEventLoop::BalThreadPoolEventLoop(uint32_t num)
 
     inQueue_ = queue_; outQueue_ = queue_ + 1;
     ::pthread_mutex_init(&queuelocker_, nullptr_());
-    callback_->HookShouldRead(&BalThreadPoolEventLoop::OnTask);
+    callback_->HookShouldRead(&BalTaskEventLoop::OnTask);
     SetEventListener(event_, EventRead, callback_);
 }
 
-BalThreadPoolEventLoop::~BalThreadPoolEventLoop()
+BalTaskEventLoop::~BalTaskEventLoop()
 {
     if (eventFd_ > 0)
     {
@@ -27,12 +27,12 @@ BalThreadPoolEventLoop::~BalThreadPoolEventLoop()
     ::pthread_mutex_destroy(&queuelocker_);
 }
 
-void BalThreadPoolEventLoop::DoTaskInThreadPool(BalThreadTask* task)
+void BalTaskEventLoop::DoTaskInThreadPool(BalThreadTask* task)
 {
     Commit(task);
 }
 
-void BalThreadPoolEventLoop::Commit(BalThreadTask* task)
+void BalTaskEventLoop::Commit(BalThreadTask* task)
 {
     if (!task) return;
     ::pthread_mutex_lock(&queuelocker_);
@@ -43,7 +43,7 @@ void BalThreadPoolEventLoop::Commit(BalThreadTask* task)
     ::pthread_mutex_unlock(&queuelocker_);
 }
 
-void BalThreadPoolEventLoop::ExecuteTaskInCurrentThread()
+void BalTaskEventLoop::ExecuteTaskInCurrentThread()
 {
     taskQueueT* readQueue = nullptr_();
     ::pthread_mutex_lock(&queuelocker_);
@@ -63,7 +63,7 @@ void BalThreadPoolEventLoop::ExecuteTaskInCurrentThread()
     }
 }
 
-BalEventCallbackEnum BalThreadPoolEventLoop::OnTask(int id, BalHandle<BalEventLoop> el)
+BalEventCallbackEnum BalTaskEventLoop::OnTask(int id, BalHandle<BalEventLoop> el)
 {
     uint64_t _u;
     ssize_t ret = ::read(eventFd_, &_u, sizeof(uint64_t)); if (ret) {}

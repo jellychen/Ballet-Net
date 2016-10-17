@@ -345,9 +345,9 @@ Zeus/ZeusBroker/preinstall:
 # Target rules for target Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir
 
 # All Build rule for target.
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: IniLoader/CMakeFiles/IniLoader.dir/all
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: Ballet/CMakeFiles/Ballet.dir/all
+Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
 	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/depend
 	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  45 46 47 48
@@ -447,10 +447,10 @@ Zeus/ZeusCollocation/preinstall:
 # Target rules for target Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir
 
 # All Build rule for target.
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: MessagePack/CMakeFiles/MessagePack.dir/all
 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: IniLoader/CMakeFiles/IniLoader.dir/all
 Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: Ballet/CMakeFiles/Ballet.dir/all
-Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: MessagePack/CMakeFiles/MessagePack.dir/all
+Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/all: Zeus/ZeusBase/CMakeFiles/ZeusBase.dir/all
 	$(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/depend
 	$(MAKE) -f Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build.make Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles  50 51 52 53 54
