@@ -9,5 +9,5 @@ LINK_DIRECTORIES (
 	"${PROJECT_SOURCE_DIR}/../../Zeus/ZeusBase"
 )
 AUX_SOURCE_DIRECTORY(. dir_srcs)
-set (CMAKE_CXX_FLAGS "-fpermissive ${CMAKE_CXX_FLAGS}")
+set (CMAKE_CXX_FLAGS "-fpermissive -O2 ${CMAKE_CXX_FLAGS}")
 ADD_LIBRARY(ZeusBase STATIC ${dir_srcs})

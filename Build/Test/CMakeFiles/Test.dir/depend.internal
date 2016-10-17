@@ -58,6 +58,8 @@ Test/CMakeFiles/Test.dir/Test.o
  ../Test/../Ballet/ServiceWorker/BalServiceCallback.h
  ../Test/../Ballet/ServiceWorker/BalServiceManage.h
  ../Test/../Ballet/ServiceWorker/BalServiceSingleton.h
+ ../Test/../Ballet/ThreadTask/BalTask.h
+ ../Test/../Ballet/ThreadTask/BalTaskBind.h
  ../Test/../Libs/IniLoader/IniConfigLoader.h
  /mnt/shared/Ballet-Net-Github/Test/Test.cpp
  /mnt/shared/Ballet-Net-Github/Test/shared_ptr.hpp
@@ -72,5 +74,6 @@ Test/CMakeFiles/Test.dir/Test.o
  /mnt/shared/Ballet-Net-Github/Test/t_ShareThis.h
  /mnt/shared/Ballet-Net-Github/Test/t_Singleton.h
  /mnt/shared/Ballet-Net-Github/Test/t_TcpServer.h
+ /mnt/shared/Ballet-Net-Github/Test/t_ThreadTest.h
  /mnt/shared/Ballet-Net-Github/Test/t_Timer.h
  /mnt/shared/Ballet-Net-Github/Test/t_UdpServer.h

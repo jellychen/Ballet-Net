@@ -10,7 +10,7 @@ LINK_DIRECTORIES (
 	"${PROJECT_SOURCE_DIR}/../../Zeus/ZeusBase"
 )
 ADD_EXECUTABLE(ZeusCollocation ${srcs})
-set (CMAKE_CXX_FLAGS "-fpermissive -Wpragmas ${CMAKE_CXX_FLAGS}")
+set (CMAKE_CXX_FLAGS "-fpermissive -O2 -Wpragmas ${CMAKE_CXX_FLAGS}")
 TARGET_LINK_LIBRARIES(ZeusCollocation Ballet)
 TARGET_LINK_LIBRARIES(ZeusCollocation IniLoader)
 TARGET_LINK_LIBRARIES(ZeusCollocation MessagePack)

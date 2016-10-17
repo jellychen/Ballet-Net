@@ -9,5 +9,5 @@ LINK_DIRECTORIES (
 	"${PROJECT_SOURCE_DIR}/../../Build/Ballet/Network"
 )
 ADD_EXECUTABLE(ZeusCli ${srcs})
-set (CMAKE_CXX_FLAGS "-fpermissive ${CMAKE_CXX_FLAGS}")
+set (CMAKE_CXX_FLAGS "-fpermissive -O2 ${CMAKE_CXX_FLAGS}")
 TARGET_LINK_LIBRARIES(ZeusCli Ballet)

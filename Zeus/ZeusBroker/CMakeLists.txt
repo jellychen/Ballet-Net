@@ -9,7 +9,7 @@ LINK_DIRECTORIES (
 	"${PROJECT_SOURCE_DIR}/../../Zeus/ZeusBase"
 )
 ADD_EXECUTABLE(ZeusBroker ${srcs})
-set (CMAKE_CXX_FLAGS "-fpermissive ${CMAKE_CXX_FLAGS}")
+set (CMAKE_CXX_FLAGS "-fpermissive -O2 ${CMAKE_CXX_FLAGS}")
 TARGET_LINK_LIBRARIES(ZeusBroker Ballet)
 TARGET_LINK_LIBRARIES(ZeusBroker IniLoader)
 TARGET_LINK_LIBRARIES(ZeusBroker ZeusBase)

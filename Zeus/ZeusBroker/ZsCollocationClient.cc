@@ -72,6 +72,7 @@ void ZsCollocationClient::OnConnect(BalHandle<BalTcpClient> client, bool success
 
 void ZsCollocationClient::OnReceive(BalHandle<BalTcpClient> client, const char* buffer, uint32_t len)
 {
+    printf("%s\n", "asdads");
     long stime = BalCurrentTime();
 
     ZsClientData receData;

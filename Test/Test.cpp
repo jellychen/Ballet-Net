@@ -15,6 +15,8 @@ using namespace std;
 #include "t_UdpServer.h"
 #include "t_SerializeTest.h"
 
+#include "t_ThreadTest.h"
+
 #include "t_ArpTest.h"
 #include "Ballet/Network/BalInetAddress.h"
 #include "Ballet/Network/BalEventLoop.h"
@@ -26,7 +28,6 @@ using namespace Ballet::Network;
 
 int main(int argc, char const *argv[])
 {
-    ::signal(SIGPIPE, SIG_IGN);
 
     //t_Handle_main();
     //t_Callback_main();
@@ -42,11 +43,13 @@ int main(int argc, char const *argv[])
     //t_Service_main();
     //t_TcpServer_main();
     //t_Arp_main();
-    t_HttpService_main();
+    //t_HttpService_main();
 
     //t_UdpService_main();
     //t_IniLoaderTest_main();
-    t_SerializeTest_main();
+    //t_SerializeTest_main();
+
+    t_ThreadTest_main();
 
     return 0;
 }

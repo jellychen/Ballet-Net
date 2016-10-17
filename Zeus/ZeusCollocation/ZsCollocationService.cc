@@ -23,7 +23,7 @@ void ZsCollocationService::OnServiceMain(BalHandle<BalService>)
     BalHandle<ZsCollocationNodeData> nodeTree(new ZsCollocationNodeData());
 
 
-    for (int i = 0; i < 400; ++i)
+    for (int i = 0; i < 500; ++i)
     {
         std::string str = "/asdasdasdasdasdasdasdasdasd";
         str += '0' + i;
@@ -34,6 +34,10 @@ void ZsCollocationService::OnServiceMain(BalHandle<BalService>)
             nodeTree->AddServiceAddr(str.c_str(), addr.c_str());
         }
     }
+    printf("%s\n", "1");
+
+    std::string data = nodeTree->DumpNodeTreeData();
+    printf("%d\n", data.size());
 
     // read config
     std::string clientPort = "";

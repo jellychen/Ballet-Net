@@ -545,49 +545,34 @@ ServiceWorker/BalServiceManage.s:
 .PHONY : ServiceWorker/BalServiceManage.s
 
 # target to build an object file
-ServiceWorker/BalTaskQueue.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalTaskQueue.o
-.PHONY : ServiceWorker/BalTaskQueue.o
+ThreadTask/BalTaskThreadPool.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o
+.PHONY : ThreadTask/BalTaskThreadPool.o
 
 # target to preprocess a source file
-ServiceWorker/BalTaskQueue.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalTaskQueue.i
-.PHONY : ServiceWorker/BalTaskQueue.i
+ThreadTask/BalTaskThreadPool.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.i
+.PHONY : ThreadTask/BalTaskThreadPool.i
 
 # target to generate assembly for a file
-ServiceWorker/BalTaskQueue.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalTaskQueue.s
-.PHONY : ServiceWorker/BalTaskQueue.s
+ThreadTask/BalTaskThreadPool.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.s
+.PHONY : ThreadTask/BalTaskThreadPool.s
 
 # target to build an object file
-ServiceWorker/BalThread.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalThread.o
-.PHONY : ServiceWorker/BalThread.o
+ThreadTask/BalThreadPoolEventLoop.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalThreadPoolEventLoop.o
+.PHONY : ThreadTask/BalThreadPoolEventLoop.o
 
 # target to preprocess a source file
-ServiceWorker/BalThread.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalThread.i
-.PHONY : ServiceWorker/BalThread.i
+ThreadTask/BalThreadPoolEventLoop.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalThreadPoolEventLoop.i
+.PHONY : ThreadTask/BalThreadPoolEventLoop.i
 
 # target to generate assembly for a file
-ServiceWorker/BalThread.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalThread.s
-.PHONY : ServiceWorker/BalThread.s
-
-# target to build an object file
-ServiceWorker/BalThreadPool.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalThreadPool.o
-.PHONY : ServiceWorker/BalThreadPool.o
-
-# target to preprocess a source file
-ServiceWorker/BalThreadPool.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalThreadPool.i
-.PHONY : ServiceWorker/BalThreadPool.i
-
-# target to generate assembly for a file
-ServiceWorker/BalThreadPool.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalThreadPool.s
-.PHONY : ServiceWorker/BalThreadPool.s
+ThreadTask/BalThreadPoolEventLoop.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalThreadPoolEventLoop.s
+.PHONY : ThreadTask/BalThreadPoolEventLoop.s
 
 # Help Target
 help:
@@ -685,15 +670,12 @@ help:
 	@echo "... ServiceWorker/BalServiceManage.o"
 	@echo "... ServiceWorker/BalServiceManage.i"
 	@echo "... ServiceWorker/BalServiceManage.s"
-	@echo "... ServiceWorker/BalTaskQueue.o"
-	@echo "... ServiceWorker/BalTaskQueue.i"
-	@echo "... ServiceWorker/BalTaskQueue.s"
-	@echo "... ServiceWorker/BalThread.o"
-	@echo "... ServiceWorker/BalThread.i"
-	@echo "... ServiceWorker/BalThread.s"
-	@echo "... ServiceWorker/BalThreadPool.o"
-	@echo "... ServiceWorker/BalThreadPool.i"
-	@echo "... ServiceWorker/BalThreadPool.s"
+	@echo "... ThreadTask/BalTaskThreadPool.o"
+	@echo "... ThreadTask/BalTaskThreadPool.i"
+	@echo "... ThreadTask/BalTaskThreadPool.s"
+	@echo "... ThreadTask/BalThreadPoolEventLoop.o"
+	@echo "... ThreadTask/BalThreadPoolEventLoop.i"
+	@echo "... ThreadTask/BalThreadPoolEventLoop.s"
 .PHONY : help
 
 

@@ -97,6 +97,10 @@ map
 -
 list
 -
+queue
+-
+algorithm
+-
 BalNull.h
 ../Zeus/ZeusMonitor/../../Ballet/Common/BalNull.h
 BalCoable.h

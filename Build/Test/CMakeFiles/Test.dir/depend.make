@@ -57,6 +57,8 @@ Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ServiceWorker/BalService.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ServiceWorker/BalServiceCallback.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ServiceWorker/BalServiceManage.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ServiceWorker/BalServiceSingleton.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ThreadTask/BalTask.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/../Ballet/ThreadTask/BalTaskBind.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/../Libs/IniLoader/IniConfigLoader.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/Test.cpp
 Test/CMakeFiles/Test.dir/Test.o: ../Test/shared_ptr.hpp
@@ -71,6 +73,7 @@ Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Service.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_ShareThis.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Singleton.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_TcpServer.h
+Test/CMakeFiles/Test.dir/Test.o: ../Test/t_ThreadTest.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_Timer.h
 Test/CMakeFiles/Test.dir/Test.o: ../Test/t_UdpServer.h
 

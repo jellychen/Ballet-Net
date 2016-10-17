@@ -20,6 +20,8 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <queue>
+#include <algorithm> 
 
 #include "BalNull.h"
 #include "BalCoable.h"

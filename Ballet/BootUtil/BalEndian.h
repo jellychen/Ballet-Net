@@ -82,12 +82,12 @@ namespace Ballet
 
         inline uint16_t htoni(uint16_t iData)
         {
-            return ::htons(iData);
+            return htons(iData);
         }
 
         inline uint32_t htoni(uint32_t iData)
         {
-            return ::htonl(iData);
+            return htonl(iData);
         }
 
         inline uint64_t htoni(uint64_t iData)
@@ -107,12 +107,12 @@ namespace Ballet
 
         inline uint16_t ntohi(uint16_t iData)
         {
-            return ::ntohs(iData);
+            return ntohs(iData);
         }
 
         inline uint32_t ntohi(uint32_t iData)
         {
-            return ::ntohl(iData);
+            return ntohl(iData);
         }
 
         inline uint64_t ntohi(uint64_t iData)
