@@ -2,7 +2,17 @@
 using namespace Ballet;
 using namespace Network;
 
+BalEventHandle::BalEventHandle()
+{
+    BalEventHandle::Reset(0);
+}
+
 BalEventHandle::BalEventHandle(int fd)
+{
+    BalEventHandle::Reset(fd);
+}
+
+void BalEventHandle::Reset(int fd)
 {
     fd_ = fd;
     eventData_ = nullptr_();

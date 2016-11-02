@@ -69,32 +69,9 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o.provides: Zeus/ZeusB
 
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o.provides.build: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o
 
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/flags.make
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o: ../Zeus/ZeusBroker/ZsCollocationClient.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsCollocationClient.cc
-
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ZeusBroker.dir/ZsCollocationClient.i"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsCollocationClient.cc > CMakeFiles/ZeusBroker.dir/ZsCollocationClient.i
-
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ZeusBroker.dir/ZsCollocationClient.s"
-	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsCollocationClient.cc -o CMakeFiles/ZeusBroker.dir/ZsCollocationClient.s
-
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o.requires:
-.PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o.requires
-
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o.provides: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o.requires
-	$(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o.provides.build
-.PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o.provides
-
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o.provides.build: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o
-
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/flags.make
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o: ../Zeus/ZeusBroker/ZsMain.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBroker.dir/ZsMain.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsMain.cc
 
@@ -117,7 +94,7 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.provides.build: Zeus/ZeusBrok
 
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/flags.make
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o: ../Zeus/ZeusBroker/ZsUdpServer.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/ZeusBroker.dir/ZsUdpServer.o -c /mnt/shared/Ballet-Net-Github/Zeus/ZeusBroker/ZsUdpServer.cc
 
@@ -141,7 +118,6 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o.provides.build: Zeus/Zeu
 # Object files for target ZeusBroker
 ZeusBroker_OBJECTS = \
 "CMakeFiles/ZeusBroker.dir/ZsBrokerService.o" \
-"CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o" \
 "CMakeFiles/ZeusBroker.dir/ZsMain.o" \
 "CMakeFiles/ZeusBroker.dir/ZsUdpServer.o"
 
@@ -149,7 +125,6 @@ ZeusBroker_OBJECTS = \
 ZeusBroker_EXTERNAL_OBJECTS =
 
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o
-Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o
 Zeus/ZeusBroker/ZeusBroker: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o
 Zeus/ZeusBroker/ZeusBroker: Ballet/libBallet.so
@@ -165,7 +140,6 @@ Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build: Zeus/ZeusBroker/ZeusBroker
 .PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build
 
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/requires: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsBrokerService.o.requires
-Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/requires: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o.requires
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/requires: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o.requires
 Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/requires: Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsUdpServer.o.requires
 .PHONY : Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/requires

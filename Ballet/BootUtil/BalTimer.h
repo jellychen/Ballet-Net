@@ -14,7 +14,7 @@ namespace Ballet
             bool SetTimerOut(int, BalTimerCallback, uint32_t);
             bool SetTimerLoop(int, BalTimerCallback, uint32_t);
             bool RemoveTimer(int, BalTimerCallback);
-            int LastestTimeout() const;
+            int  LastestTimeout() const;
 
         private:
             BalTimeHeap timerImplement_;

@@ -9,27 +9,18 @@ namespace Ballet
 {
     namespace Network
     {
-        struct BalEventData
+        class BalEventData
         {
+        public:
+            BalEventData()
+            {
+                fd_ = 0; index_ = -1;
+            }
+
+        public:
             int fd_;
             int index_;
             BalEventCallback callback_;
-        };
-
-        class BalEventDataManager
-        {
-        public:
-            BalEventDataManager(uint32_t size);
-            virtual ~BalEventDataManager();
-
-        public:
-            BalEventData* GetOne();
-            void RevertBack(BalEventData* data);
-
-        private:
-            uint32_t maxSize_;
-            typedef std::list<BalEventData*> listPoolT;
-            listPoolT listPool_;
         };
     }
 }

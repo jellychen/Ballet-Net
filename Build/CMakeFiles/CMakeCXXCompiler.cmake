@@ -47,4 +47,4 @@ SET(CMAKE_CXX_HAS_ISYSROOT "")
 
 
 SET(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;c")
-SET(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/x86_64-linux-gnu/4.6;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib")
+SET(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/x86_64-linux-gnu/4.8;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib")

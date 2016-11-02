@@ -96,6 +96,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named LoTrace
+
+# Build rule for target.
+LoTrace: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 LoTrace
+.PHONY : LoTrace
+
+# fast build rule for target.
+LoTrace/fast:
+	$(MAKE) -f LoTrace/CMakeFiles/LoTrace.dir/build.make LoTrace/CMakeFiles/LoTrace.dir/build
+.PHONY : LoTrace/fast
+
+#=============================================================================
 # Target rules for targets named IniLoader
 
 # Build rule for target.
@@ -212,6 +225,32 @@ Test/fast:
 	$(MAKE) -f Test/CMakeFiles/Test.dir/build.make Test/CMakeFiles/Test.dir/build
 .PHONY : Test/fast
 
+#=============================================================================
+# Target rules for targets named TestClient
+
+# Build rule for target.
+TestClient: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TestClient
+.PHONY : TestClient
+
+# fast build rule for target.
+TestClient/fast:
+	$(MAKE) -f TestClient/CMakeFiles/TestClient.dir/build.make TestClient/CMakeFiles/TestClient.dir/build
+.PHONY : TestClient/fast
+
+#=============================================================================
+# Target rules for targets named TestServer
+
+# Build rule for target.
+TestServer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TestServer
+.PHONY : TestServer
+
+# fast build rule for target.
+TestServer/fast:
+	$(MAKE) -f TestServer/CMakeFiles/TestServer.dir/build.make TestServer/CMakeFiles/TestServer.dir/build
+.PHONY : TestServer/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -220,6 +259,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... LoTrace"
 	@echo "... IniLoader"
 	@echo "... MessagePack"
 	@echo "... Ballet"
@@ -229,6 +269,8 @@ help:
 	@echo "... ZeusMonitor"
 	@echo "... ZeusCollocation"
 	@echo "... Test"
+	@echo "... TestClient"
+	@echo "... TestServer"
 .PHONY : help
 
 

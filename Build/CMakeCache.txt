@@ -186,6 +186,15 @@ IniLoader_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Libs/IniLoader
 LIBRARY_OUTPUT_PATH:PATH=
 
 //Value Computed by CMake
+LoTrace_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/LoTrace
+
+//Dependencies for the target
+LoTrace_LIB_DEPENDS:STATIC=general;pthread;
+
+//Value Computed by CMake
+LoTrace_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Libs/LoTrace
+
+//Value Computed by CMake
 MessagePack_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/MessagePack
 
 //Dependencies for target
@@ -193,6 +202,18 @@ MessagePack_LIB_DEPENDS:STATIC=
 
 //Value Computed by CMake
 MessagePack_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Libs/MessagePack
+
+//Value Computed by CMake
+TestClient_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/TestClient
+
+//Value Computed by CMake
+TestClient_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/TestClient
+
+//Value Computed by CMake
+TestServer_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/TestServer
+
+//Value Computed by CMake
+TestServer_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/TestServer
 
 //Value Computed by CMake
 Test_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Test
@@ -334,7 +355,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=11
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=14
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

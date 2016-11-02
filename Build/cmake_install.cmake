@@ -34,11 +34,14 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/LoTrace/cmake_install.cmake")
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/IniLoader/cmake_install.cmake")
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/MessagePack/cmake_install.cmake")
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Ballet/cmake_install.cmake")
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/cmake_install.cmake")
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Test/cmake_install.cmake")
+  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/TestClient/cmake_install.cmake")
+  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/TestServer/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/shared/Ballet-Net-Github/Libs/LoTrace/LoTrace.cc
+fstream
+-
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+stdint.h
+-
+string.h
+-
+sys/time.h
+-
+pthread.h
+-
+unistd.h
+-
+queue
+-
+stdarg.h
+-
+signal.h
+-
+LoTrace.h
+/mnt/shared/Ballet-Net-Github/Libs/LoTrace/LoTrace.h
+
+/mnt/shared/Ballet-Net-Github/Libs/LoTrace/LoTrace.h
+

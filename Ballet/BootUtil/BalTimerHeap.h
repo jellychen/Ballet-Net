@@ -29,11 +29,9 @@ namespace Ballet
             bool ReleaseInformation(BalTimerInformation* info);
 
         private:
-            size_t cacheInfo_;
             BalTimeStamp timestamp_;
             mapTimerPoolT indexPool_;
             vecTimerNodePoolT heapArray_;
-            listTimerInfoPoolT infoPool_;
         };
     }
 }

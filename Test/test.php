@@ -8,12 +8,12 @@ for ($i = 0; $i < 100000; ++$i)
 }
 */
 
-for ($i = 0; $i < 40000000; ++$i)
+for ($i = 0; $i < 400000000; ++$i)
 {
     $socket = socket_create( AF_INET, SOCK_DGRAM, SOL_UDP );
     $msg = "echo|asdasdasdasdasdlkajsdlkajskldjaklsdjalksdjlkasjdlkasjdklasjd";
     $len = strlen($msg);
-    socket_sendto($socket, $msg, $len, 0, 'localhost', 8687);
+    socket_sendto($socket, $msg, $len, 0, 'localhost', 6001);
 
     $from = "";
     $port = 0;

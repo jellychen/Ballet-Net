@@ -46,32 +46,78 @@ include Ballet/CMakeFiles/Ballet.dir/progress.make
 # Include the compile flags for this target's objects.
 include Ballet/CMakeFiles/Ballet.dir/flags.make
 
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o: Ballet/CMakeFiles/Ballet.dir/flags.make
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o: ../Ballet/BootUtil/BalLogger.cc
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: Ballet/CMakeFiles/Ballet.dir/flags.make
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/BootUtil/BalCurrentThread.cc
 	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o"
-	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/BootUtil/BalLogger.o -c /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalLogger.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o -c /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalCurrentThread.cc
 
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ballet.dir/BootUtil/BalLogger.i"
-	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalLogger.cc > CMakeFiles/Ballet.dir/BootUtil/BalLogger.i
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalCurrentThread.cc > CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.i
 
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ballet.dir/BootUtil/BalLogger.s"
-	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalLogger.cc -o CMakeFiles/Ballet.dir/BootUtil/BalLogger.s
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalCurrentThread.cc -o CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.s
 
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o.requires:
-.PHONY : Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o.requires
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o.requires:
+.PHONY : Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o.requires
 
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o.provides: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o.requires
-	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o.provides.build
-.PHONY : Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o.provides
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o.provides: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o.requires
+	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o.provides.build
+.PHONY : Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o.provides
 
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o.provides.build: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o.provides.build: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: Ballet/CMakeFiles/Ballet.dir/flags.make
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/BootUtil/BalDirUtil.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o -c /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalDirUtil.cc
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalDirUtil.cc > CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.i
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalDirUtil.cc -o CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.s
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o.requires:
+.PHONY : Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o.requires
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o.provides: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o.requires
+	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o.provides.build
+.PHONY : Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o.provides
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o.provides.build: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: Ballet/CMakeFiles/Ballet.dir/flags.make
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/BootUtil/BalMutex.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/BootUtil/BalMutex.o -c /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalMutex.cc
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ballet.dir/BootUtil/BalMutex.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalMutex.cc > CMakeFiles/Ballet.dir/BootUtil/BalMutex.i
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ballet.dir/BootUtil/BalMutex.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalMutex.cc -o CMakeFiles/Ballet.dir/BootUtil/BalMutex.s
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o.requires:
+.PHONY : Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o.requires
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o.provides: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o.requires
+	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o.provides.build
+.PHONY : Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o.provides
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o.provides.build: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o
 
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o: ../Ballet/BootUtil/BalTimer.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/BootUtil/BalTimer.o -c /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalTimer.cc
 
@@ -94,7 +140,7 @@ Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o.provides.build: Ballet/CMakeFil
 
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o: ../Ballet/BootUtil/BalTimerHeap.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o -c /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalTimerHeap.cc
 
@@ -117,7 +163,7 @@ Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o.provides.build: Ballet/CMak
 
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o: ../Ballet/BootUtil/BalTimeStamp.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o -c /mnt/shared/Ballet-Net-Github/Ballet/BootUtil/BalTimeStamp.cc
 
@@ -140,7 +186,7 @@ Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o.provides.build: Ballet/CMak
 
 Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalService.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalService.o: ../Ballet/ServiceWorker/BalService.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalService.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/ServiceWorker/BalService.o -c /mnt/shared/Ballet-Net-Github/Ballet/ServiceWorker/BalService.cc
 
@@ -163,7 +209,7 @@ Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalService.o.provides.build: Ballet/C
 
 Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalServiceManage.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalServiceManage.o: ../Ballet/ServiceWorker/BalServiceManage.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalServiceManage.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/ServiceWorker/BalServiceManage.o -c /mnt/shared/Ballet-Net-Github/Ballet/ServiceWorker/BalServiceManage.cc
 
@@ -186,7 +232,7 @@ Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalServiceManage.o.provides.build: Ba
 
 Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o: ../Ballet/ThreadTask/BalTaskEventLoop.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o -c /mnt/shared/Ballet-Net-Github/Ballet/ThreadTask/BalTaskEventLoop.cc
 
@@ -209,7 +255,7 @@ Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o.provides.build: Balle
 
 Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o: ../Ballet/ThreadTask/BalTaskThreadPool.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o -c /mnt/shared/Ballet-Net-Github/Ballet/ThreadTask/BalTaskThreadPool.cc
 
@@ -232,7 +278,7 @@ Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o.provides.build: Ball
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o: ../Ballet/Network/BalBufferStream.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalBufferStream.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalBufferStream.cc
 
@@ -253,32 +299,9 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o.provides: Ballet/CMakeFil
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o.provides.build: Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o
 
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: Ballet/CMakeFiles/Ballet.dir/flags.make
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Network/BalEventData.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_10)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o"
-	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalEventData.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalEventData.cc
-
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ballet.dir/Network/BalEventData.i"
-	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Ballet/Network/BalEventData.cc > CMakeFiles/Ballet.dir/Network/BalEventData.i
-
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ballet.dir/Network/BalEventData.s"
-	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Ballet/Network/BalEventData.cc -o CMakeFiles/Ballet.dir/Network/BalEventData.s
-
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o.requires:
-.PHONY : Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o.requires
-
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o.provides: Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o.requires
-	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o.provides.build
-.PHONY : Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o.provides
-
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o.provides.build: Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o
-
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventHandle.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventHandle.o: ../Ballet/Network/BalEventHandle.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalEventHandle.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalEventHandle.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalEventHandle.cc
 
@@ -301,7 +324,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalEventHandle.o.provides.build: Ballet/CMa
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o: ../Ballet/Network/BalEventLoop.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalEventLoop.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalEventLoop.cc
 
@@ -324,7 +347,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o.provides.build: Ballet/CMake
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o: ../Ballet/Network/BalInetAddress.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalInetAddress.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalInetAddress.cc
 
@@ -347,7 +370,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o.provides.build: Ballet/CMa
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o: ../Ballet/Network/BalSignalCallbackPool.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalSignalCallbackPool.cc
 
@@ -370,7 +393,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalSignalCallbackPool.o.provides.build: Bal
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalSocket.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalSocket.o: ../Ballet/Network/BalSocket.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalSocket.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalSocket.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalSocket.cc
 
@@ -393,7 +416,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalSocket.o.provides.build: Ballet/CMakeFil
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalSyncTcpClient.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalSyncTcpClient.o: ../Ballet/Network/BalSyncTcpClient.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalSyncTcpClient.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalSyncTcpClient.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalSyncTcpClient.cc
 
@@ -416,7 +439,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalSyncTcpClient.o.provides.build: Ballet/C
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o: ../Ballet/Network/BalTcpClient.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalTcpClient.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalTcpClient.cc
 
@@ -439,7 +462,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalTcpClient.o.provides.build: Ballet/CMake
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o: ../Ballet/Network/BalTcpConnection.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalTcpConnection.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalTcpConnection.cc
 
@@ -462,7 +485,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalTcpConnection.o.provides.build: Ballet/C
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o: ../Ballet/Network/BalTcpServer.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalTcpServer.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalTcpServer.cc
 
@@ -485,7 +508,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalTcpServer.o.provides.build: Ballet/CMake
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpSocket.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalTcpSocket.o: ../Ballet/Network/BalTcpSocket.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalTcpSocket.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalTcpSocket.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalTcpSocket.cc
 
@@ -508,7 +531,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalTcpSocket.o.provides.build: Ballet/CMake
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpClient.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpClient.o: ../Ballet/Network/BalUdpClient.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalUdpClient.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalUdpClient.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpClient.cc
 
@@ -531,7 +554,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalUdpClient.o.provides.build: Ballet/CMake
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o: ../Ballet/Network/BalUdpServer.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_22)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_23)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalUdpServer.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpServer.cc
 
@@ -554,7 +577,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalUdpServer.o.provides.build: Ballet/CMake
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpSocket.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Network/BalUdpSocket.o: ../Ballet/Network/BalUdpSocket.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_24)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Network/BalUdpSocket.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Network/BalUdpSocket.o -c /mnt/shared/Ballet-Net-Github/Ballet/Network/BalUdpSocket.cc
 
@@ -577,7 +600,7 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalUdpSocket.o.provides.build: Ballet/CMake
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpBroadcast.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpBroadcast.o: ../Ballet/Protocol/Arp/BalArpBroadcast.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_24)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_25)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpBroadcast.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Arp/BalArpBroadcast.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Arp/BalArpBroadcast.cc
 
@@ -600,7 +623,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpBroadcast.o.provides.build: Ball
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o: ../Ballet/Protocol/Arp/BalArpRespondServer.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_25)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_26)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Arp/BalArpRespondServer.cc
 
@@ -623,7 +646,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o.provides.build: 
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o: ../Ballet/Protocol/Telnet/BalTelnetProtocol.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_26)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_27)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Telnet/BalTelnetProtocol.cc
 
@@ -646,7 +669,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o.provides.build:
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Protocol/Http/BalHttpConnection.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_27)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_28)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpConnection.cc
 
@@ -669,7 +692,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o.provides.build: B
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Protocol/Http/BalHttpParserCallback.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_28)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_29)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpParserCallback.cc
 
@@ -692,7 +715,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o.provides.buil
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Protocol/Http/BalHttpServer.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_29)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_30)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpServer.cc
 
@@ -715,7 +738,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o.provides.build: Balle
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o: ../Ballet/Protocol/Http/http_parser.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_30)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_31)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o   -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/http_parser.c
 
@@ -738,7 +761,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o.provides.build: Ballet/
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Protocol/Lfv/BalLfvProtocol.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_31)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_32)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.cc
 
@@ -761,7 +784,9 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o.provides.build: Balle
 
 # Object files for target Ballet
 Ballet_OBJECTS = \
-"CMakeFiles/Ballet.dir/BootUtil/BalLogger.o" \
+"CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o" \
+"CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o" \
+"CMakeFiles/Ballet.dir/BootUtil/BalMutex.o" \
 "CMakeFiles/Ballet.dir/BootUtil/BalTimer.o" \
 "CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o" \
 "CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o" \
@@ -770,7 +795,6 @@ Ballet_OBJECTS = \
 "CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o" \
 "CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o" \
 "CMakeFiles/Ballet.dir/Network/BalBufferStream.o" \
-"CMakeFiles/Ballet.dir/Network/BalEventData.o" \
 "CMakeFiles/Ballet.dir/Network/BalEventHandle.o" \
 "CMakeFiles/Ballet.dir/Network/BalEventLoop.o" \
 "CMakeFiles/Ballet.dir/Network/BalInetAddress.o" \
@@ -796,7 +820,9 @@ Ballet_OBJECTS = \
 # External object files for target Ballet
 Ballet_EXTERNAL_OBJECTS =
 
-Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o
+Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o
+Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o
+Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o
@@ -805,7 +831,6 @@ Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/ServiceWorker/BalServiceManage
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o
-Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Network/BalEventHandle.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o
@@ -836,7 +861,9 @@ Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/link.txt
 Ballet/CMakeFiles/Ballet.dir/build: Ballet/libBallet.so
 .PHONY : Ballet/CMakeFiles/Ballet.dir/build
 
-Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o.requires
+Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o.requires
+Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o.requires
+Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimer.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o.requires
@@ -845,7 +872,6 @@ Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/ServiceWorke
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o.requires
-Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Network/BalEventHandle.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Network/BalEventLoop.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Network/BalInetAddress.o.requires

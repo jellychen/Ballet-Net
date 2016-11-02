@@ -3,19 +3,12 @@ using namespace Ballet::BootUtil;
 
 BalTimeHeap::BalTimeHeap()
 {
-    cacheInfo_ = 10000;
     BalTimerNode node = {nullptr_(), 0, 0};
     heapArray_.push_back(node);
 }
 
 BalTimeHeap::~BalTimeHeap()
 {
-    while (infoPool_.size() > 0)
-    {
-        delete(infoPool_.front());
-        infoPool_.pop_front();
-    }
-
     for (size_t i = 1; i < heapArray_.size(); ++i)
     {
         delete heapArray_[i].info_;
@@ -171,7 +164,7 @@ bool BalTimeHeap::RemoveTimerNode(uint32_t index)
     return true;
 }
 
-bool BalTimeHeap::SetTimerNode(int id, BalTimerCallback& callback, uint32_t time, bool loop)
+bool BalTimeHeap::SetTimerNode(int id, BalTimerCallback& callback, uint32_t timeout, bool loop)
 {
     if (!callback || !callback->IsCallable()) return false;
     long hashCode = callback.HashCode();
@@ -181,32 +174,21 @@ bool BalTimeHeap::SetTimerNode(int id, BalTimerCallback& callback, uint32_t time
     if (indexPool_.end() != iter) return false;
 
     BalTimerInformation* info = nullptr_();
-    if (infoPool_.size() <= 0)
-    {
-        info = new(std::nothrow)BalTimerInformation();
-    }
-    else
-    {
-        info = infoPool_.front(); infoPool_.pop_front();
-    }
+    info = new(std::nothrow)BalTimerInformation();
     if (nullptr_() == info) return false;
-
-    info->timeSpec_ = time; info->callback_ = callback;
+    info->timeSpec_ = timeout; info->callback_ = callback;
     info->id_ = id; info->index_ = -1; info->loop_ = loop;
     indexPool_[timerIndex] = info;
-    BalTimerNode node = {info, timestamp_.Current() +time, 0};
+    BalTimerNode node = {info, timestamp_.Current() +timeout, 0};
     return AddTimerNode(node);
 }
 
 bool BalTimeHeap::ReleaseInformation(BalTimerInformation* info)
 {
-    if (!info) return false;
-    if (cacheInfo_ <= infoPool_.size())
+    if (!info)
     {
-        delete(info);
+        return false;
     }
-    else
-    {
-        infoPool_.push_back(info);
-    }
+
+    delete(info);
 }

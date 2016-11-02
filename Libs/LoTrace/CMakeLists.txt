@@ -1,0 +1,6 @@
+PROJECT(LoTrace)
+include_directories("${PROJECT_SOURCE_DIR}")
+AUX_SOURCE_DIRECTORY(. dir_srcs)
+set (CMAKE_CXX_FLAGS "-fpermissive -O2 ${CMAKE_CXX_FLAGS}")
+ADD_LIBRARY(LoTrace STATIC ${dir_srcs})
+TARGET_LINK_LIBRARIES(LoTrace pthread)

@@ -57,12 +57,23 @@ BalInetAddress::BalInetAddress(const char* ip, uint16_t port, bool v6)
     }
 }
 
+BalInetAddress::BalInetAddress(const char* address, bool v6)
+{
+    if (!address)
+    {
+        int port = 0;
+        char buffer[512] = {0};
+        sscanf(address, "%s:%d", buffer, &port);
+        BalInetAddress(buffer, (uint16_t)port, v6);
+    }
+}
+
 bool BalInetAddress::IsV6() const
 {
     return v6_;
 }
 
-std::string BalInetAddress::GetIp() const
+void BalInetAddress::GetIp(std::string& str) const
 {
     char buffer[64] = {0};
     if (true == v6_)
@@ -73,7 +84,31 @@ std::string BalInetAddress::GetIp() const
     {
         ::inet_ntop(AF_INET, &addr_.sin_addr, buffer, 64);
     }
-    return std::string(buffer);
+    str = buffer;
+}
+
+void BalInetAddress::GetAddressStr(std::string& str) const
+{
+    char buffer[64] = {0};
+    if (true == v6_)
+    {
+        ::inet_ntop(AF_INET6, &addrV6_.sin6_addr, buffer, 64);
+    }
+    else
+    {
+        ::inet_ntop(AF_INET, &addr_.sin_addr, buffer, 64);
+    }
+
+    str = buffer; memset(buffer, 0, 64); int port = 0;
+    if (true == v6_)
+    {
+        port = (int)NetworkToHost16(addrV6_.sin6_port);
+    }
+    else
+    {
+        port = (int)NetworkToHost16(addr_.sin_port);
+    }
+    sprintf(buffer, ":%d", port); str += buffer;
 }
 
 uint16_t BalInetAddress::GetPort() const

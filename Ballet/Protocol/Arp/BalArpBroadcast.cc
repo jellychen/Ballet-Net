@@ -3,9 +3,16 @@
 using namespace Ballet;
 using namespace Protocol;
 
+#define HARD_TYPE_ETHER     0x01    //硬件类型
+#define PROTOCOL_IP         0x01    //IP协议类型
+#define MAC_ADDR_LEN        0x06    //硬件地址长度
+#define IP_ADDR_LEN         0x04    //IP地址长度
+#define ARP_OP_REQUEST      0x01    //ARP请求操作
+#define ARP_OP_RESPONSE     0x02    //ARP响应操作
+
 BalArpBroadcast::BalArpBroadcast()
 {
-    fd_ = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
+    fd_ = socket(AF_PACKET, SOCK_DGRAM, 0);
     if (fd_ <= 0)
     {
         throw std::runtime_error("BalArpAccord Construct Failed! @1");
@@ -20,9 +27,9 @@ BalArpBroadcast::~BalArpBroadcast()
     }
 }
 
-bool BalArpBroadcast::Broadcast(std::string ip, std::string mac, int time) const
+bool BalArpBroadcast::Broadcast(std::string ip, std::string mac, int times) const
 {
-    if (time <= 0) return false;
+    if (times <= 0) return false;
     int macTemp[6] = {0};
     int len = sscanf(mac.c_str(), "%02x:%02x:%02x:%02x:%02x:%02x",
         &macTemp[0], &macTemp[1], &macTemp[2], &macTemp[3], &macTemp[4], &macTemp[5]);
@@ -36,51 +43,62 @@ bool BalArpBroadcast::Broadcast(std::string ip, std::string mac, int time) const
     if (4 != len) return false;
     uint8_t ipBinary[4] = {0};
     for (int i = 0; i < 4; ++i) ipBinary[i] = (uint8_t)ipTemp[i];
-    return BroadcastBinary(ipBinary, macBinary, time);
+    return BroadcastBinary(ipBinary, macBinary, times);
 }
 
-bool BalArpBroadcast::BroadcastHardware(std::string ip, std::string ethernet, int time) const
+bool BalArpBroadcast::BroadcastHardware(std::string ip, std::string ethernet, int times) const
 {
-    if (time <= 0) return false;
+    if (times <= 0) return false;
     int ipTemp[4] = {0};
     int len = sscanf(ip.c_str(), "%d.%d.%d.%d",
         &ipTemp[0], &ipTemp[1], &ipTemp[2], &ipTemp[3]);
+    printf("%s\n", "1");
     if (4 != len) return false;
     uint8_t ipBinary[4] = {0};
     for (int i = 0; i < 4; ++i) ipBinary[i] = (uint8_t)ipTemp[i];
-
+    printf("%s\n", "1");
     struct ifreq ifrequest;
     strcpy(ifrequest.ifr_name, ethernet.c_str());
     if (0 != ::ioctl(fd_, SIOCGIFHWADDR, &ifrequest)) return false;
-    uint8_t macBinary[6] = {0};
-    memcpy(macBinary, ifrequest.ifr_hwaddr.sa_data, 6 *sizeof(uint8_t));
-    return BroadcastBinary(ipBinary, macBinary, time);
+    printf("%s\n", "1");
+    return BroadcastBinary(ipBinary, (uint8_t*)ifrequest.ifr_hwaddr.sa_data, times);
 }
 
-bool BalArpBroadcast::BroadcastBinary(uint8_t ip[4], uint8_t mac[6], int time) const
+bool BalArpBroadcast::BroadcastBinary(uint8_t ip[4], uint8_t mac[6], int times) const
 {
-    if (time <= 0) return false;
+    printf("%d\n", times);
+    if (times <= 0) return false;
     if (!ip || !mac || 0 > fd_) return false;
-    arp_packet packet; memset(&packet, 0, sizeof(arp_packet));
-    const uint8_t destIp[4] = {0xff, 0xff, 0xff, 0xff};
-    const uint8_t destMac[6] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
-    memcpy(packet.eth.dest_mac, destMac, 6 *sizeof(uint8_t));
-    memcpy(packet.eth.source_mac, mac, 6 *sizeof(uint8_t));
-    packet.eth.ethernet_type = htons(0x0806);
-    packet.arp.hardware_type = htons(0x1);
-    packet.arp.protocol_type = htons(0x0800);
-    packet.arp.addr_len = 6; packet.arp.protocol_len = 4;
-    packet.arp.option_code = htons(0x2);
-    memcpy(packet.arp.source_mac, mac, 6 *sizeof(uint8_t));
-    memcpy(packet.arp.source_ip, ip, 4 *sizeof(uint8_t));
-    memset(packet.arp.dest_mac, 0, 6 *sizeof(uint8_t));
-    memset(packet.arp.dest_ip, 0, 4 *sizeof(uint8_t));
+    unsigned char bufBroadcastMac[6] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 
-    struct sockaddr_ll sl; memset(&sl, 0, sizeof(sl));
-    sl.sll_family = AF_PACKET; sl.sll_ifindex = IFF_BROADCAST;
-    for (int i = 0; i < time; ++i)
+    struct sockaddr_ll sendSockaddr;
+    memset(&sendSockaddr, 0, sizeof(struct sockaddr_ll));
+    sendSockaddr.sll_halen = htons(0x6);
+    sendSockaddr.sll_ifindex = IFF_BROADCAST;
+    sendSockaddr.sll_family = htons(AF_PACKET);
+    sendSockaddr.sll_protocol = htons(ETH_P_ARP);
+    memcpy(sendSockaddr.sll_addr, mac, 6);
+
+    ArpPackDataDef arpData;
+    memset(&arpData, 0, sizeof(ArpPackDataDef));
+    memcpy(arpData.aSendIP, ip, 4);
+    memcpy(arpData.aSendMac, mac, 6);
+    memcpy(arpData.aDstIP, ip, 4);
+    memcpy(arpData.aDstMac, bufBroadcastMac, 6);
+    arpData.sOpType = htons(ARP_OP_REQUEST);
+    arpData.cIpAddrLen = IP_ADDR_LEN;
+    arpData.sProtocolType = htons(ETH_P_IP);
+    arpData.sHardType = htons(HARD_TYPE_ETHER);
+    arpData.cHardAddrLen = MAC_ADDR_LEN;
+
+    printf("%d\n", times);
+
+    for (int i = 0; i < times; ++i)
     {
-        ::sendto(fd_, &packet, sizeof(packet), 0, (struct sockaddr*)&sl, sizeof(sl));
+
+        int ret = ::sendto(fd_, (void*)(&arpData), \
+            sizeof(ArpPackDataDef), 0, (struct sockaddr*)(&sendSockaddr), sizeof(sockaddr_ll));
+        if (-1 == ret) printf("%s\n", "sendto error");
     }
     return true;
 }

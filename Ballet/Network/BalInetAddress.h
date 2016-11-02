@@ -16,10 +16,12 @@ namespace Ballet
             BalInetAddress(struct sockaddr_in6& addrV6);
             explicit BalInetAddress(uint16_t port, bool lookback, bool v6);
             explicit BalInetAddress(const char* ip, uint16_t port, bool v6);
+            explicit BalInetAddress(const char* address, bool v6);
 
         public:
             bool IsV6() const;
-            std::string GetIp() const;
+            void GetIp(std::string&) const;
+            void GetAddressStr(std::string&) const;
             uint16_t GetPort() const;
             bool SetAddr(struct sockaddr* addr);
             struct sockaddr* GetSocketAddr() const;

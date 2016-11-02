@@ -54,7 +54,17 @@ uint32_t BalSocket::ReadBuffer(char* buffer, uint32_t size, bool* close) const
     {
         if (close) *close = true; return 0;
     }
-    if (close) *close = false; return (uint32_t)readSize;
+
+    if (readSize < 0)
+    {
+        readSize = 0;
+    }
+
+    if (close)
+    {
+        *close = false;
+    }
+    return (uint32_t)readSize;
 }
 
 uint32_t BalSocket::WriteBuffer(const char* buffer, uint32_t size, bool* close) const
@@ -69,5 +79,15 @@ uint32_t BalSocket::WriteBuffer(const char* buffer, uint32_t size, bool* close) 
     {
         if (close) *close = true; return 0;
     }
-    if (close) *close = false; return (uint32_t)writeSize;
+
+    if (writeSize < 0)
+    {
+        writeSize = 0;
+    }
+
+    if (close)
+    {
+        *close = false;
+    }
+    return (uint32_t)writeSize;
 }

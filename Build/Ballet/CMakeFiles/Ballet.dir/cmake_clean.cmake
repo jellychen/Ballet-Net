@@ -1,5 +1,7 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/Ballet.dir/BootUtil/BalLogger.o"
+  "CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o"
+  "CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o"
+  "CMakeFiles/Ballet.dir/BootUtil/BalMutex.o"
   "CMakeFiles/Ballet.dir/BootUtil/BalTimer.o"
   "CMakeFiles/Ballet.dir/BootUtil/BalTimerHeap.o"
   "CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o"
@@ -8,7 +10,6 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Ballet.dir/ThreadTask/BalTaskEventLoop.o"
   "CMakeFiles/Ballet.dir/ThreadTask/BalTaskThreadPool.o"
   "CMakeFiles/Ballet.dir/Network/BalBufferStream.o"
-  "CMakeFiles/Ballet.dir/Network/BalEventData.o"
   "CMakeFiles/Ballet.dir/Network/BalEventHandle.o"
   "CMakeFiles/Ballet.dir/Network/BalEventLoop.o"
   "CMakeFiles/Ballet.dir/Network/BalInetAddress.o"

@@ -18,6 +18,7 @@ using namespace std;
 
 void t_SerializeTest_main()
 {
+    /*
     std::string str = "";
     BalPackInt8 data;
     data = 10;
@@ -27,4 +28,5 @@ void t_SerializeTest_main()
     BalPackInt8 data_;
     data_.UnSerialize((char*)str.c_str(), str.size(), false);
     printf("%d\n", data.rawData_);
+    */
 }

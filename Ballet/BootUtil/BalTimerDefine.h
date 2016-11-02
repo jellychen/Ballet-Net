@@ -34,7 +34,6 @@ namespace Ballet
         }
 
         typedef std::vector<BalTimerNode> vecTimerNodePoolT;
-        typedef std::list<BalTimerInformation*> listTimerInfoPoolT;
         typedef std::map<BalTimerIndex, BalTimerInformation*> mapTimerPoolT;
     }
 }

@@ -110,19 +110,49 @@ Ballet/fast:
 .PHONY : Ballet/fast
 
 # target to build an object file
-BootUtil/BalLogger.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o
-.PHONY : BootUtil/BalLogger.o
+BootUtil/BalCurrentThread.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o
+.PHONY : BootUtil/BalCurrentThread.o
 
 # target to preprocess a source file
-BootUtil/BalLogger.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.i
-.PHONY : BootUtil/BalLogger.i
+BootUtil/BalCurrentThread.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.i
+.PHONY : BootUtil/BalCurrentThread.i
 
 # target to generate assembly for a file
-BootUtil/BalLogger.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.s
-.PHONY : BootUtil/BalLogger.s
+BootUtil/BalCurrentThread.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.s
+.PHONY : BootUtil/BalCurrentThread.s
+
+# target to build an object file
+BootUtil/BalDirUtil.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o
+.PHONY : BootUtil/BalDirUtil.o
+
+# target to preprocess a source file
+BootUtil/BalDirUtil.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.i
+.PHONY : BootUtil/BalDirUtil.i
+
+# target to generate assembly for a file
+BootUtil/BalDirUtil.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.s
+.PHONY : BootUtil/BalDirUtil.s
+
+# target to build an object file
+BootUtil/BalMutex.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o
+.PHONY : BootUtil/BalMutex.o
+
+# target to preprocess a source file
+BootUtil/BalMutex.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.i
+.PHONY : BootUtil/BalMutex.i
+
+# target to generate assembly for a file
+BootUtil/BalMutex.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.s
+.PHONY : BootUtil/BalMutex.s
 
 # target to build an object file
 BootUtil/BalTimeStamp.o:
@@ -183,21 +213,6 @@ Network/BalBufferStream.i:
 Network/BalBufferStream.s:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.s
 .PHONY : Network/BalBufferStream.s
-
-# target to build an object file
-Network/BalEventData.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o
-.PHONY : Network/BalEventData.o
-
-# target to preprocess a source file
-Network/BalEventData.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.i
-.PHONY : Network/BalEventData.i
-
-# target to generate assembly for a file
-Network/BalEventData.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.s
-.PHONY : Network/BalEventData.s
 
 # target to build an object file
 Network/BalEventHandle.o:
@@ -583,9 +598,15 @@ help:
 	@echo "... Ballet"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... BootUtil/BalLogger.o"
-	@echo "... BootUtil/BalLogger.i"
-	@echo "... BootUtil/BalLogger.s"
+	@echo "... BootUtil/BalCurrentThread.o"
+	@echo "... BootUtil/BalCurrentThread.i"
+	@echo "... BootUtil/BalCurrentThread.s"
+	@echo "... BootUtil/BalDirUtil.o"
+	@echo "... BootUtil/BalDirUtil.i"
+	@echo "... BootUtil/BalDirUtil.s"
+	@echo "... BootUtil/BalMutex.o"
+	@echo "... BootUtil/BalMutex.i"
+	@echo "... BootUtil/BalMutex.s"
 	@echo "... BootUtil/BalTimeStamp.o"
 	@echo "... BootUtil/BalTimeStamp.i"
 	@echo "... BootUtil/BalTimeStamp.s"
@@ -598,9 +619,6 @@ help:
 	@echo "... Network/BalBufferStream.o"
 	@echo "... Network/BalBufferStream.i"
 	@echo "... Network/BalBufferStream.s"
-	@echo "... Network/BalEventData.o"
-	@echo "... Network/BalEventData.i"
-	@echo "... Network/BalEventData.s"
 	@echo "... Network/BalEventHandle.o"
 	@echo "... Network/BalEventHandle.i"
 	@echo "... Network/BalEventHandle.s"

@@ -1,3 +1,5 @@
+#ifndef Libs_IniLoader_IniConfigLoader_H
+#define Libs_IniLoader_IniConfigLoader_H
 #include <map>
 #include <string>
 
@@ -14,3 +16,4 @@ namespace Libs
         mapPoolT configItemPool_;
     };
 }
+#endif

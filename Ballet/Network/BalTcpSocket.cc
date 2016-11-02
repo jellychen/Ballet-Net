@@ -123,6 +123,15 @@ bool BalTcpSocket::Connect(BalHandle<BalInetAddress> addr, bool* connecting) thr
             *connecting = true;
         }
     }
-
     return false;
+}
+
+bool BalTcpSocket::Swap(BalTcpSocket& swapSocket)
+{
+    int fd = fd_;
+    bool sw = shutdownWriteWhenClose_;
+    fd_ = swapSocket.fd_; swapSocket.fd_ = fd;
+    swapSocket.shutdownWriteWhenClose_ = sw;
+    shutdownWriteWhenClose_ = swapSocket.shutdownWriteWhenClose_;
+    return true;
 }

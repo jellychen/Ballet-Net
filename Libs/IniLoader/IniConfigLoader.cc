@@ -45,8 +45,6 @@ bool IniConfigLoader::LoadFile(const char* file) const
             value += bit;
         }
         if (0 == value.length()) break;
-
-        printf("%s:%s\n", key.c_str(), value.c_str());
     }
     fin.clear(); fin.close();
     return true;
@@ -62,6 +60,6 @@ bool IniConfigLoader::GetItem(const char* key, std::string* value, const char* d
     {
         valueItem = iter->second;
     }
-    *value = valueItem;
+    value->append(valueItem.c_str(), valueItem.size());
     return true;
 }

@@ -470,9 +470,10 @@ BalEventCallbackEnum BalHttpConnection::ShouldRead(int id, BalHandle<BalEventLoo
     bool callbackAble = callback && callback->IsCallable();
 
     bool closed = false;
-    char buffer[MAX_READFD_SIZE] = {0};
+    const int maxReadSize = 10240;
+    char buffer[maxReadSize] = {0};
     BalEventCallbackEnum ret = EventRetContinue;
-    uint32_t readSize = ReadBuffer(buffer, MAX_READFD_SIZE, &closed);
+    uint32_t readSize = ReadBuffer(buffer, maxReadSize, &closed);
 
     if (closed)
     {
@@ -506,7 +507,7 @@ BalEventCallbackEnum BalHttpConnection::ShouldRead(int id, BalHandle<BalEventLoo
         }
     }
 
-    if (readSize < MAX_READFD_SIZE || 0 == readSize)
+    if (0 == readSize)
     {
         return EventRetComplete;
     }

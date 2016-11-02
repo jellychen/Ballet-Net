@@ -17,10 +17,12 @@ namespace Ballet
         {
             friend class BalEventLoop;
         public:
+            BalEventHandle();
             explicit BalEventHandle(int fd);
 
         public:
-            int GetFd() const;
+            void Reset(int fd);
+            int  GetFd() const;
             bool IsWaitEvent() const;
             void SetEventWaitStatus(BalEventEnum event);
             BalEventEnum GetEventWaitStatus() const;

@@ -4,7 +4,50 @@
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o: ../Ballet/Protocol/Http/http_parser.c
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o: ../Ballet/Protocol/Http/http_parser.h
 
-Ballet/CMakeFiles/Ballet.dir/BootUtil/BalLogger.o: ../Ballet/BootUtil/BalLogger.cc
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalCallback.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalCoable.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalHandle.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalHandleBase.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalHandleInct.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalInct.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalNull.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalShareThis.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalSingleton.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalUseCount.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalVariable.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/Common/BalWeakHandle.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/BootUtil/BalCurrentThread.cc
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalCurrentThread.o: ../Ballet/BootUtil/BalCurrentThread.h
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalCallback.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalCoable.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalHandle.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalHandleBase.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalHandleInct.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalInct.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalNull.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalShareThis.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalSingleton.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalUseCount.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalVariable.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/Common/BalWeakHandle.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/BootUtil/BalDirUtil.cc
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalDirUtil.o: ../Ballet/BootUtil/BalDirUtil.h
+
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalCallback.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalCoable.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalHandle.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalHandleBase.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalHandleInct.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalInct.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalNull.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalShareThis.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalSingleton.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalUseCount.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalVariable.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/Common/BalWeakHandle.h
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/BootUtil/BalMutex.cc
+Ballet/CMakeFiles/Ballet.dir/BootUtil/BalMutex.o: ../Ballet/BootUtil/BalMutex.h
 
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o: ../Ballet/Common/BalCallback.h
 Ballet/CMakeFiles/Ballet.dir/BootUtil/BalTimeStamp.o: ../Ballet/Common/BalCoable.h
@@ -72,24 +115,6 @@ Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o: ../Ballet/Common/BalVari
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o: ../Ballet/Common/BalWeakHandle.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o: ../Ballet/Network/BalBufferStream.cc
 Ballet/CMakeFiles/Ballet.dir/Network/BalBufferStream.o: ../Ballet/Network/BalBufferStream.h
-
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalCallback.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalCoable.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalHandle.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalHandleBase.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalHandleInct.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalInct.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalNull.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalShareThis.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalSingleton.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalUseCount.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalVariable.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Common/BalWeakHandle.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Network/BalElement.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Network/BalEventCallback.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Network/BalEventData.cc
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Network/BalEventData.h
-Ballet/CMakeFiles/Ballet.dir/Network/BalEventData.o: ../Ballet/Network/BalNetDefine.h
 
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventHandle.o: ../Ballet/Common/BalCallback.h
 Ballet/CMakeFiles/Ballet.dir/Network/BalEventHandle.o: ../Ballet/Common/BalCoable.h

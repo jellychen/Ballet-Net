@@ -12,13 +12,11 @@ BalTaskThreadPool::BalTaskThreadPool(uint32_t num)
     for (uint32_t i = 0; i < num; ++i)
     {
         pthread_t _t;
-        pthread_attr_t _attr;
-        ::pthread_attr_init(&_attr);
-        ::pthread_attr_setdetachstate(&_attr, PTHREAD_CREATE_DETACHED);
+        pthread_attr_t _attr; ::pthread_attr_init(&_attr);
         int ret = ::pthread_create(&_t, &_attr,\
             BalTaskThreadPool::thread_function, (void*)(&taskThreadInfo_));
         ::pthread_attr_destroy(&_attr);
-        if (0 != ret)
+        if (0 == ret)
         {
             threadObjects_.push_back(_t);
         }

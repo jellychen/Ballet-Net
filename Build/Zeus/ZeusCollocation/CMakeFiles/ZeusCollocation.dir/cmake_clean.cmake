@@ -1,9 +1,13 @@
 FILE(REMOVE_RECURSE
-  "CMakeFiles/ZeusCollocation.dir/ZsClientServer.o"
-  "CMakeFiles/ZeusCollocation.dir/ZsCollocationNodeData.o"
-  "CMakeFiles/ZeusCollocation.dir/ZsCollocationService.o"
-  "CMakeFiles/ZeusCollocation.dir/ZsConsumerServer.o"
   "CMakeFiles/ZeusCollocation.dir/ZsMain.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsDataStore/ZsDataStoreOptions.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsDataStore/ZsStoreCenter.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsNodeServer/ZsNodeContext.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsNodeServer/ZsNodeInfoData.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsNodeServer/ZsNodeMember.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsNodeServer/ZsNodeServer.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsWorkboard/ZsWorkboard.o"
+  "CMakeFiles/ZeusCollocation.dir/ZsWorkboard/ZsWorkboardOptions.o"
   "ZeusCollocation.pdb"
   "ZeusCollocation"
 )

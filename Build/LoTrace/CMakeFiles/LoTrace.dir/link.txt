@@ -1,0 +1,2 @@
+/usr/bin/ar cr libLoTrace.a  CMakeFiles/LoTrace.dir/LoTrace.o
+/usr/bin/ranlib libLoTrace.a

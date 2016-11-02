@@ -125,21 +125,6 @@ ZsBrokerService.s:
 .PHONY : ZsBrokerService.s
 
 # target to build an object file
-ZsCollocationClient.o:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.o
-.PHONY : ZsCollocationClient.o
-
-# target to preprocess a source file
-ZsCollocationClient.i:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.i
-.PHONY : ZsCollocationClient.i
-
-# target to generate assembly for a file
-ZsCollocationClient.s:
-	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsCollocationClient.s
-.PHONY : ZsCollocationClient.s
-
-# target to build an object file
 ZsMain.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/build.make Zeus/ZeusBroker/CMakeFiles/ZeusBroker.dir/ZsMain.o
 .PHONY : ZsMain.o
@@ -181,9 +166,6 @@ help:
 	@echo "... ZsBrokerService.o"
 	@echo "... ZsBrokerService.i"
 	@echo "... ZsBrokerService.s"
-	@echo "... ZsCollocationClient.o"
-	@echo "... ZsCollocationClient.i"
-	@echo "... ZsCollocationClient.s"
 	@echo "... ZsMain.o"
 	@echo "... ZsMain.i"
 	@echo "... ZsMain.s"

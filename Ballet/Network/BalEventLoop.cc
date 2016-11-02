@@ -3,8 +3,7 @@ using namespace Ballet::BootUtil;
 using namespace Ballet::Network;
 
 BalEventLoop::BalEventLoop()
-    :eventDataManager_(MAX_EVENTDATA_CACHE)
-    ,timer_(new BalTimer), doReadyPoolProtected_(false)
+    :timer_(new BalTimer), doReadyPoolProtected_(false)
     ,maintenanceSignal_(false)
 {
     efd_ = ::epoll_create1(EPOLL_CLOEXEC);
@@ -65,20 +64,24 @@ bool BalEventLoop::SetEventListener(
         ev.events |= ((event &EventRead)? EPOLLIN: 0);
         ev.events |= ((event &EventWrite)? EPOLLOUT: 0);
 
-        BalEventData* eventData = eventDataManager_.GetOne();
-        if (eventData)
+        BalEventData* eventData = new(std::nothrow)BalEventData();
+
+        if (nullptr_() != eventData)
         {
             eventData->fd_ = fd;
+            eventData->callback_ = callback;
+
             ev.data.ptr = eventData;
             handle.eventData_ = eventData;
-            eventData->callback_ = callback;
+            handle.eventStatus_ = event;
         }
         ::epoll_ctl(efd_, EPOLL_CTL_ADD, fd, &ev);
     }
     else
     {
         BalEventEnum eventStatus = handle.GetEventWaitStatus();
-        eventStatus = (BalEventEnum)(eventStatus | event);
+        BalEventEnum eventNewStatus = (BalEventEnum)(eventStatus | event);
+        if (eventStatus == eventNewStatus) return true;
 
         struct epoll_event ev;
         memset(&ev, 0, sizeof(epoll_event));
@@ -86,12 +89,14 @@ bool BalEventLoop::SetEventListener(
         ev.events |= ((event &EventRead)? EPOLLIN: 0);
         ev.events |= ((event &EventWrite)? EPOLLOUT: 0);
 
+        handle.eventStatus_ = eventNewStatus;
         BalEventData* eventData = handle.eventData_;
+
         if (eventData)
         {
             eventData->fd_ = fd;
-            ev.data.ptr = eventData;
             eventData->callback_ = callback;
+            ev.data.ptr = eventData;
         }
         ::epoll_ctl(efd_, EPOLL_CTL_MOD, fd, &ev);
     }
@@ -128,16 +133,18 @@ bool BalEventLoop::DeleteEventListener(BalEventHandle& handle, BalEventEnum even
         struct epoll_event ev;
         memset(&ev, 0, sizeof(epoll_event));
         ev.data.fd = fd; ev.events = EPOLLET;
+        handle.eventStatus_ = eventStatus;
+
         if (EventNone == eventStatus)
         {
             ::epoll_ctl(efd_, EPOLL_CTL_DEL, fd, &ev);
-            eventDataManager_.RevertBack(handle.eventData_);
+            delete(handle.eventData_);
             handle.eventData_ = nullptr_();
         }
         else
         {
-            ev.events |= ((event &EventRead)? EPOLLIN: 0);
-            ev.events |= ((event &EventWrite)? EPOLLOUT: 0);
+            ev.events |= ((eventStatus &EventRead)? EPOLLIN: 0);
+            ev.events |= ((eventStatus &EventWrite)? EPOLLOUT: 0);
             ::epoll_ctl(efd_, EPOLL_CTL_MOD, fd, &ev);
         }
     }
@@ -170,13 +177,14 @@ bool BalEventLoop::RemoveTimer(int id, BalTimerCallback callback)
     return timer_->RemoveTimer(id, callback);
 }
 
-bool BalEventLoop::DoEventSelect(int time)
+bool BalEventLoop::DoEventSelect(int timeout)
 {
     if (efd_ <= 0) return false;
     releaseList_.clear();
     struct epoll_event events[10240];
-    int nfds = ::epoll_wait(efd_, events, 10240, time);
+    int nfds = ::epoll_wait(efd_, events, 10240, timeout);
     BalHandle<BalEventLoop> eventLoop(this, shareUserCount_);
+
     timer_->Tick();
 
     if (-1 == nfds && errno == EINTR)
@@ -296,14 +304,15 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
             if (i < lastItemIndex)
             {
                 readyPool_[i].eventData_->index_ = -1;
-                readyPool_[i].eventData_->index_ = i;
                 readyPool_[i] = readyPool_[lastItemIndex];
+                readyPool_[lastItemIndex].callback_.Clear();
+                readyPool_[i].eventData_->index_ = i;
             }
             else
             {
+                readyPool_[i].callback_.Clear();
                 readyPool_[i].eventData_->index_ = -1;
             }
-            readyPool_[lastItemIndex].callback_.Clear();
             --len; resize = true;
         }
         else
@@ -328,7 +337,7 @@ int BalEventLoop::AddReadyItem(int index, int fd,
         return false;
     }
 
-    if (index < 0 || fd != readyPool_[index].fd_)
+    if (index < 0)
     {
         BalEventReadyItem item = {fd, 0, 0, data, callback};
         item.read_ = (ready &EventRead)? 1: 0;
@@ -338,8 +347,12 @@ int BalEventLoop::AddReadyItem(int index, int fd,
     }
     else
     {
+        if (index >= (int)readyPool_.size() || fd != readyPool_[index].fd_)
+        {
+            throw std::runtime_error("AddReadyItem Error!");
+        }
+
         BalEventReadyItem& item = readyPool_[index];
-        item.eventData_ = data;
         item.callback_ = callback;
         item.read_ = (ready &EventRead)? 1: 0;
         item.write_ = (ready &EventWrite)? 1: 0;
@@ -354,25 +367,32 @@ bool BalEventLoop::RemoveReadyItem(int index, int fd, BalEventEnum ready)
         return false;
     }
 
+    if (doReadyPoolProtected_) return false;
+
     BalEventReadyItem& item = readyPool_[index];
-    if (item.fd_ != fd) return false;
+    if (item.fd_ != fd)
+    {
+        throw std::runtime_error("RemoveReadyItem Error!");
+    }
     item.read_ = (ready &EventRead)? 0: 1;
     item.write_ = (ready &EventWrite)? 0: 1;
 
-    if (0 == item.read_ && 0 == item.write_ && !doReadyPoolProtected_)
+    if (0 == item.read_ && 0 == item.write_)
     {
         size_t len = readyPool_.size() -1;
         if (index < len)
         {
             readyPool_[index].eventData_->index_ = -1;
-            readyPool_[len].eventData_->index_ = index;
             readyPool_[index] = readyPool_[len];
+            readyPool_[index].eventData_->index_ = index;
+            readyPool_[len].callback_.Clear();
         }
         else
         {
             readyPool_[len].eventData_->index_ = -1;
+            readyPool_[len].callback_.Clear();
         }
-        readyPool_[len].callback_.Clear();
+
         readyPool_.resize(len);
     }
     return true;
@@ -399,7 +419,7 @@ bool BalEventLoop::SetMaintenanceSignal()
 
         struct epoll_event singalev;
         memset(&singalev, 0, sizeof(epoll_event));
-        BalEventData* eventData = eventDataManager_.GetOne();
+        BalEventData* eventData = new(std::nothrow)BalEventData();
         if (!eventData) break; eventData->fd_ = sfd_;
         singalev.events = EPOLLIN; singalev.data.ptr = eventData;
         if (0 != ::epoll_ctl(efd_, EPOLL_CTL_ADD, sfd_, &singalev)) break;

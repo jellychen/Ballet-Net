@@ -27,6 +27,9 @@ namespace Ballet
             bool BindAddress(BalHandle<BalInetAddress> addr) throw();
             bool Connect(BalHandle<BalInetAddress> addr, bool* connecting) throw();
 
+        public:
+            bool Swap(BalTcpSocket& socket);
+            
         private:
             bool shutdownWriteWhenClose_;
         };

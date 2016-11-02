@@ -20,7 +20,7 @@ namespace Ballet
             bool SetReuseAddr(bool set) throw();
             bool SetReusePort(bool set) throw();
 
-        protected:
+        public:
             uint32_t ReadBuffer(char* buffer, uint32_t, bool* close) const;
             uint32_t WriteBuffer(const char* buffer, uint32_t, bool* close) const;
 

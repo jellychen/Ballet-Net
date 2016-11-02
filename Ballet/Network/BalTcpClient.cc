@@ -1,16 +1,14 @@
 #include "BalTcpClient.h"
 using namespace Ballet;
-using namespace Ballet::Network;
+using namespace Network;
 #define BALTCP_CONNECT_TIMEOUT          0
 #define BALTCP_INTERACTIVE_TIMEOUT      1
 
-BalTcpClient::BalTcpClient(bool v6,
-    BalHandle<BalEventLoop> eventLoop,
+BalTcpClient::BalTcpClient(BalHandle<BalEventLoop> eventLoop,
     BalHandle<IBalProtocol> protocol, uint32_t maxPackage,
     BalHandle<IBalTcpClientCallback> callback, uint32_t timeout,
     uint32_t maxReadBufferSize, uint32_t maxWriteBufferSize)
-    :BalTcpSocket(v6), eventCallbackPtr_(this)
-    ,eventHandle_(GetFd()), timerCallbackPtr_(this), protocolWantSize_(-1)
+    :socket_(0), eventCallbackPtr_(this), timerCallbackPtr_(this), protocolWantSize_(-1)
 {
     if (!eventLoop || !protocol || !callback || !callback->IsCallable())
     {
@@ -23,12 +21,11 @@ BalTcpClient::BalTcpClient(bool v6,
     tcpCallback_ = callback;
     maxPackage_ = maxPackage;
     maxTimeout_ = timeout;
-    setMaintainUtilBufferDrain_ = false;
     maxReadBufferSize_ = maxReadBufferSize;
     maxWriteBufferSize_ = maxWriteBufferSize;
     lastReadTime_ = BootUtil::BalTimeStamp::GetCurrent();
 
-    if (!eventCallbackPtr_ || !timerCallbackPtr_ || !SetNoBlock())
+    if (!eventCallbackPtr_ || !timerCallbackPtr_)
     {
         throw std::runtime_error("BalTcpClient Construct Failed!@2");
     }
@@ -37,13 +34,22 @@ BalTcpClient::BalTcpClient(bool v6,
         timerCallbackPtr_->HookOnTime(&BalTcpClient::OnTime);
         eventCallbackPtr_->HookShouldRead(&BalTcpClient::ShouldRead);
         eventCallbackPtr_->HookShouldWrite(&BalTcpClient::ShouldWrite);
-        eventLoop_->SetEventListener(eventHandle_, EventReadWrite, eventCallbackPtr_);
+    }
+}
+
+BalTcpClient::~BalTcpClient()
+{
+    if (eventLoop_)
+    {
+        eventLoop_->DeleteEventListener(eventHandle_, EventReadWrite);
+        eventLoop_->RemoveTimer(BALTCP_CONNECT_TIMEOUT, timerCallbackPtr_);
+        eventLoop_->RemoveTimer(BALTCP_INTERACTIVE_TIMEOUT, timerCallbackPtr_);
     }
 }
 
 bool BalTcpClient::IsV6()
 {
-    return BalTcpSocket::IsV6Socket();
+    return socket_.IsV6Socket();
 }
 
 bool BalTcpClient::Close(bool now)
@@ -64,29 +70,19 @@ bool BalTcpClient::Close(bool now)
     return true;
 }
 
-bool BalTcpClient::CloseMaintainUtilBufferDrain()
-{
-    if (StatusConnecting != status_ && StatusEstablish != status_)
-    {
-        return false;
-    }
-
-    if (setMaintainUtilBufferDrain_)
-    {
-        return true;
-    }
-
-    status_ = StatusClosing;
-    setMaintainUtilBufferDrain_ = true;
-    BalHandle<BalTcpClient> client(this, shareUserCount_);
-    BalHandle<BalElement> element =
-        dynamic_cast_<BalTcpClient, BalElement>(client);
-    eventLoop_->AddHoldSomeElement((long)((void*)(this)), element);
-}
-
 bool BalTcpClient::ShutdownWrite()
 {
-    return BalTcpSocket::ShutdownWrite();
+    return socket_.ShutdownWrite();
+}
+
+bool BalTcpClient::SetNoDelay(bool set)
+{
+    return socket_.SetNoDelay(set);
+}
+
+bool BalTcpClient::SetReuseAddr(bool set)
+{
+    return socket_.SetReuseAddr(set);
 }
 
 bool BalTcpClient::WriteBuffer(const char* buffer, uint32_t len)
@@ -106,7 +102,7 @@ bool BalTcpClient::WriteRawBuffer(const char* buffer, uint32_t len)
     if (writeBuffer_.GetSize() <= 0)
     {
         bool closed = false;
-        uint32_t writeSize = BalTcpSocket::WriteBuffer(buffer, len, &closed);
+        uint32_t writeSize = socket_.WriteBuffer(buffer, len, &closed);
 
         if (closed)
         {
@@ -149,9 +145,24 @@ bool BalTcpClient::BroadcastRawBuffer(const char* buffer, uint32_t len)
 
 bool BalTcpClient::Connect(BalHandle<BalInetAddress> addr, int timeout)
 {
-    if (StatusNone != status_) return false;
+    BalHandle<BalInetAddress> noneAddr;
+    return Connect(addr, noneAddr, timeout);
+}
+
+bool BalTcpClient::Connect(BalHandle<BalInetAddress> addr,
+                BalHandle<BalInetAddress> bindAddr, int timeout)
+{
+    if (!addr || timeout < 0) return false;
+    if (StatusNone != status_ && StatusClosed != status_) return false;
+
+    BalTcpSocket connectSocket(addr->IsV6());
+    connectSocket.BindAddress(addr);
+    connectSocket.SetNoBlock();
+    connectSocket.Swap(socket_);
+    readBuffer_.Clear(); writeBuffer_.Clear();
+
     bool connecting = false;
-    bool ret = BalTcpSocket::Connect(addr, &connecting);
+    bool ret = socket_.Connect(addr, &connecting);
     do
     {
         if (true == ret)
@@ -173,12 +184,13 @@ bool BalTcpClient::Connect(BalHandle<BalInetAddress> addr, int timeout)
         }
         return false;
     } while (0);
-    return true;
-}
 
-bool BalTcpClient::BindAddress(BalHandle<BalInetAddress> addr) throw()
-{
-    return BalTcpSocket::BindAddress(addr);
+    if (eventLoop_)
+    {
+        eventHandle_.Reset(socket_.GetFd());
+        eventLoop_->SetEventListener(eventHandle_, EventReadWrite, eventCallbackPtr_);
+    }
+    return true;
 }
 
 uint32_t BalTcpClient::GetMaxPackageSize() const
@@ -188,17 +200,12 @@ uint32_t BalTcpClient::GetMaxPackageSize() const
 
 uint32_t BalTcpClient::GetMaxReadBufferSize() const
 {
-    return maxPackage_;
+    return maxReadBufferSize_;
 }
 
 uint32_t BalTcpClient::GetMaxWriteBufferSize() const
 {
-    return maxPackage_;
-}
-
-uint32_t BalTcpClient::GetLastSendBufferTime() const
-{
-    return maxPackage_;
+    return maxWriteBufferSize_;
 }
 
 BalHandle<BalEventLoop> BalTcpClient::GetEventLoop() const
@@ -223,22 +230,15 @@ bool BalTcpClient::DoCloseProcedure(bool accord, bool delEvent)
     {
         eventLoop_->DeleteEventListener(eventHandle_, EventReadWrite);
     }
+    eventLoop_->RemoveTimer(BALTCP_CONNECT_TIMEOUT, timerCallbackPtr_);
     eventLoop_->RemoveTimer(BALTCP_INTERACTIVE_TIMEOUT, timerCallbackPtr_);
 
-    BalTcpSocket::Close(); status_ = StatusClosed;
+    socket_.Close(); status_ = StatusClosed;
     if (tcpCallback_ && tcpCallback_->IsCallable())
     {
         tcpCallback_->OnClose(client, accord);
     }
 
-    // note: close do clear
-    if (setMaintainUtilBufferDrain_)
-    {
-        eventLoop_->RemoveHoldElement((long)((void*)(this)));
-        BalHandle<BalElement> element
-            = dynamic_cast_<BalTcpClient, BalElement>(client);
-        eventLoop_->AddDelayReleaseElement(element);
-    }
     return true;
 }
 
@@ -286,10 +286,11 @@ BalEventCallbackEnum BalTcpClient::ShouldRead(int id, BalHandle<BalEventLoop> el
     }
 
     bool closed = false;
-    char buffer[MAX_READFD_SIZE] = {0};
+    const int maxReadSize = 10240;
+    char buffer[maxReadSize] = {0};
     BalEventCallbackEnum ret = EventRetContinue;
-    uint32_t readSize = ReadBuffer(buffer, MAX_READFD_SIZE, &closed);
-    if (closed)
+    uint32_t readSize = socket_.ReadBuffer(buffer, maxReadSize, &closed);
+    if (true == closed)
     {
         DoCloseProcedure(false, true);
         return EventRetClose;
@@ -299,8 +300,7 @@ BalEventCallbackEnum BalTcpClient::ShouldRead(int id, BalHandle<BalEventLoop> el
     {
         readBuffer_.AppendBuffer(buffer, readSize);
     }
-
-    if (readSize < MAX_READFD_SIZE || 0 == readSize)
+    else if (0 == readSize)
     {
         ret = EventRetComplete;
     }
@@ -392,8 +392,7 @@ BalEventCallbackEnum BalTcpClient::ShouldWrite(int id, BalHandle<BalEventLoop> e
     bool closed = false;
     char* buffer = (char*)writeBuffer_.RawBuffer();
     uint32_t size = (uint32_t)writeBuffer_.GetSize();
-    uint32_t writeSize = BalTcpSocket::WriteBuffer(buffer, size, &closed);
-
+    uint32_t writeSize = socket_.WriteBuffer(buffer, size, &closed);
     if (closed)
     {
         DoCloseProcedure(false, true);

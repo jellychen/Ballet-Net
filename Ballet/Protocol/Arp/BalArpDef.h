@@ -7,34 +7,19 @@ namespace Ballet
     namespace Protocol
     {
         #pragma pack(1)
-
-        struct ethernet_head
+        struct ArpPackDataDef
         {
-            uint8_t dest_mac[6];            // 接收方MAC地址
-            uint8_t source_mac[6];          // 发送方MAC地址
-            uint16_t ethernet_type;         // ethernet_type
-        };
+            unsigned short sHardType;      //硬件类型
+            unsigned short sProtocolType;  //协议类型
+            unsigned char cHardAddrLen;    //硬件地址长度
+            unsigned char cIpAddrLen;      //映射的协议地址长度
+            unsigned short sOpType;        //操作类型
 
-        struct arp_head
-        {
-            uint16_t hardware_type;         // 硬件类型
-            uint16_t protocol_type;         // 上层协议类型
-            uint8_t addr_len;               // MAC地址长度
-            uint8_t protocol_len;           // IP地址长度
-            uint16_t option_code;           // 操作码
-            uint8_t source_mac[6];          // 发送方MAC
-            uint8_t source_ip[4];           // 发送方IP
-            uint8_t dest_mac[6];            // 接收方MAC
-            uint8_t dest_ip[4];             // 接收方IP
-            uint8_t padding[18];            // 填充数据
+            unsigned char aSendMac[6];     //发送者MAC地址
+            unsigned char aSendIP[4];      //发送者IP地址
+            unsigned char aDstMac[6];      //目的地MAC地址
+            unsigned char aDstIP[4];       //目的地IP地址
         };
-
-        struct arp_packet
-        {
-            ethernet_head eth;
-            arp_head arp;
-        };
-
         #pragma pack()
     }
 }

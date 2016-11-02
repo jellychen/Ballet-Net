@@ -13,12 +13,15 @@ using namespace std;
 #include "t_TcpServer.h"
 #include "t_HttpServer.h"
 #include "t_UdpServer.h"
-#include "t_SerializeTest.h"
+//#include "t_SerializeTest.h"
 
 #include "t_ThreadTest.h"
 #include "t_ThreadPool.h"
 
 #include "t_ArpTest.h"
+#include "t_TableouTest.h"
+#include "t_DirUtilTest.h"
+#include "t_LoggerTest.h"
 #include "Ballet/Network/BalInetAddress.h"
 #include "Ballet/Network/BalEventLoop.h"
 #include "Ballet/Network/BalSocket.h"
@@ -26,6 +29,7 @@ using namespace std;
 #include "t_IniLoader.h"
 
 using namespace Ballet::Network;
+
 
 int main(int argc, char const *argv[])
 {
@@ -51,7 +55,12 @@ int main(int argc, char const *argv[])
     //t_SerializeTest_main();
     //t_ThreadTest_main();
 
-    t_ThreadPool_main();
+    //t_Arp_main();
+
+	//t_Logger_main();
+	//t_DirUtil_main();
+
+	t_TableouTest_main();
 
     return 0;
 }

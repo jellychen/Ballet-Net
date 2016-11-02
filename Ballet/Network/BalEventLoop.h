@@ -54,7 +54,6 @@ namespace Ballet
             bool doReadyPoolProtected_;
             bool maintenanceSignal_;
             int efd_, sfd_; bool shouldExit_;
-            BalEventDataManager eventDataManager_;
             BalSignalCallbackPool signalCallbackPool_;
         };
     }

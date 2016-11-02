@@ -8,8 +8,7 @@ BalTcpConnection::BalTcpConnection(int fd, BalHandle<BalTcpServer> server)
     :BalTcpSocket(fd), eventCallbackPtr_(this)
     ,timerCallbackPtr_(this), protocolWantSize_(-1) ,eventHandle_(fd)
 {
-    tcpServer_ = server;
-    status_ = StatusEstablish;
+    tcpServer_ = server; status_ = StatusEstablish;
 
     if (!eventCallbackPtr_ || !tcpServer_ || !SetNoBlock())
     {
@@ -44,7 +43,6 @@ BalTcpConnection::BalTcpConnection(int fd, BalHandle<BalTcpServer> server)
 
 BalTcpConnection::~BalTcpConnection()
 {
-
 }
 
 bool BalTcpConnection::IsV6()
@@ -59,7 +57,7 @@ bool BalTcpConnection::Close(bool now)
         return false;
     }
 
-    if (false == now || 0 == writeBuffer_.GetSize())
+    if (now || 0 == writeBuffer_.GetSize())
     {
         DoCloseProcedure(true, true);
     }
@@ -223,9 +221,9 @@ bool BalTcpConnection::DoCloseProcedure(bool accord, bool delEvent)
         }
         tcpServer_->EraseTcpConnection(GetFd());
     }
-
     BalTcpSocket::Close(); status_ = StatusClosed;
     BalHandle<IBalTcpCallback> callback = tcpServer_->GetCallback();
+
     if (callback && callback->IsCallable())
     {
         callback->OnClose(conn, accord);
@@ -271,9 +269,10 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
     }
 
     bool closed = false;
-    char buffer[MAX_READFD_SIZE] = {0};
+    const int maxReadSize = 10240;
+    char buffer[maxReadSize] = {0};
     BalEventCallbackEnum ret = EventRetContinue;
-    uint32_t readSize = ReadBuffer(buffer, MAX_READFD_SIZE, &closed);
+    uint32_t readSize = ReadBuffer(buffer, maxReadSize, &closed);
 
     if (closed)
     {
@@ -286,8 +285,7 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
     {
         readBuffer_.AppendBuffer(buffer, readSize);
     }
-
-    if (readSize < MAX_READFD_SIZE || 0 == readSize)
+    else if (0 == readSize)
     {
         ret = EventRetComplete;
     }
@@ -329,11 +327,13 @@ BalEventCallbackEnum BalTcpConnection::ShouldRead(int id, BalHandle<BalEventLoop
                     DoCloseProcedure(true, true);
                     return EventRetClose;
                 }
-                else
+                else if (StatusClosed == status_)
                 {
-                    readBuffer_.ConsumeBuffer((size_t)protocolWantSize_);
-                    protocolWantSize_ = -1;
+                    return EventRetClose;
                 }
+
+                readBuffer_.ConsumeBuffer((size_t)protocolWantSize_);
+                protocolWantSize_ = -1;
             }
             else if (protocolWantSize_ > tcpServer_->GetMaxPackageSize())
             {

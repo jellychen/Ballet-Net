@@ -9,29 +9,32 @@ namespace Ballet
 {
     namespace Network
     {
-        class BalTcpClient :public BalElement,
-            public BalTcpSocket, public BalChannel, public BalShareThis
+        class BalTcpClient :public BalElement, public BalChannel, public BalShareThis
         {
+            friend class BalSocket;
+            friend class BalTcpSocket;
         public:
-            BalTcpClient(bool v6, BalHandle<BalEventLoop> eventLoop,
+            BalTcpClient(BalHandle<BalEventLoop> eventLoop,
                 BalHandle<IBalProtocol> protocol, uint32_t maxPackage,
                 BalHandle<IBalTcpClientCallback> callback, uint32_t timeout,
                 uint32_t maxReadBufferSize, uint32_t maxWriteBufferSize);
-
+            virtual ~BalTcpClient();
+            
         public:
             bool IsV6();
             bool Close(bool now);
-            bool CloseMaintainUtilBufferDrain();
             bool ShutdownWrite();
+            bool SetNoDelay(bool set);
+            bool SetReuseAddr(bool set);
             bool WriteBuffer(const char* buffer, uint32_t len);
             bool WriteRawBuffer(const char* buffer, uint32_t len);
             bool BroadcastRawBuffer(const char* buffer, uint32_t len);
-            bool BindAddress(BalHandle<BalInetAddress> addr) throw();
             bool Connect(BalHandle<BalInetAddress> addr, int timeout);
+            bool Connect(BalHandle<BalInetAddress> addr,
+                BalHandle<BalInetAddress> bindAddr, int timeout);
             uint32_t GetMaxPackageSize() const;
             uint32_t GetMaxReadBufferSize() const;
             uint32_t GetMaxWriteBufferSize() const;
-            uint32_t GetLastSendBufferTime() const;
             BalHandle<BalEventLoop> GetEventLoop() const;
             BalHandle<IBalProtocol> GetProtocol() const;
             BalHandle<IBalTcpClientCallback> GetCallback() const;
@@ -46,7 +49,7 @@ namespace Ballet
             virtual BalEventCallbackEnum ShouldWrite(int id, BalHandle<BalEventLoop> el);
 
         protected:
-            bool setMaintainUtilBufferDrain_;
+            BalTcpSocket socket_;
             BalConnStatusEnum status_;
             BalEventHandle eventHandle_;
             BalHandle<IBalProtocol> tcpProtocol_;
@@ -58,6 +61,7 @@ namespace Ballet
             BalBufferStream readBuffer_, writeBuffer_;
             CBalTimerCallbackPtr<BalTcpClient> timerCallbackPtr_;
             CBalEventCallbackPtr<BalTcpClient> eventCallbackPtr_;
+
         };
     }
 }
