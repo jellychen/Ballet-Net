@@ -48,7 +48,7 @@ int main(int argc, char const *argv[])
     //t_Service_main();
     //t_TcpServer_main();
     //t_Arp_main();
-    //t_HttpService_main();
+    t_HttpService_main();
 
     //t_UdpService_main();
     //t_IniLoaderTest_main();
@@ -60,7 +60,7 @@ int main(int argc, char const *argv[])
 	//t_Logger_main();
 	//t_DirUtil_main();
 
-	t_TableouTest_main();
+	//t_TableouTest_main();
 
     return 0;
 }

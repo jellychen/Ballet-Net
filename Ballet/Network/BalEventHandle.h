@@ -19,6 +19,7 @@ namespace Ballet
         public:
             BalEventHandle();
             explicit BalEventHandle(int fd);
+            virtual ~BalEventHandle();
 
         public:
             void Reset(int fd);
@@ -28,10 +29,10 @@ namespace Ballet
             BalEventEnum GetEventWaitStatus() const;
 
         private:
-            BalEventData* eventData_;
+            BalEventData eventData_;
 
         private:
-            int fd_; BalEventEnum eventStatus_;
+            BalEventEnum eventStatus_;
         };
     }
 }

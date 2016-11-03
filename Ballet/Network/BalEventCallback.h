@@ -52,6 +52,7 @@ namespace Ballet
             BalEventCallback callback_;
         };
         typedef std::vector<BalEventReadyItem> vecReadyPoolT;
+
     }
 }
 #endif

@@ -52,10 +52,10 @@ bool BalEventLoop::RemoveHoldElement(long id)
 bool BalEventLoop::SetEventListener(
     BalEventHandle& handle, BalEventEnum event, BalEventCallback callback)
 {
-    if (!callback) return false;
     if (!(event & (EventRead | EventWrite))) return false;
     int fd = handle.GetFd(); if (0 >= fd) return false;
-
+    if (!callback || !(callback->IsCallable())) return false;
+    
     if (!handle.IsWaitEvent())
     {
         struct epoll_event ev;
@@ -64,17 +64,13 @@ bool BalEventLoop::SetEventListener(
         ev.events |= ((event &EventRead)? EPOLLIN: 0);
         ev.events |= ((event &EventWrite)? EPOLLOUT: 0);
 
-        BalEventData* eventData = new(std::nothrow)BalEventData();
+        BalEventData* eventData = &(handle.eventData_);
+        eventData->fd_ = fd;
+        eventData->callback_ = callback;
+        ev.data.ptr = eventData;
+        handle.eventStatus_ = event;
+        handle.eventData_.needDelEvent_ = true;
 
-        if (nullptr_() != eventData)
-        {
-            eventData->fd_ = fd;
-            eventData->callback_ = callback;
-
-            ev.data.ptr = eventData;
-            handle.eventData_ = eventData;
-            handle.eventStatus_ = event;
-        }
         ::epoll_ctl(efd_, EPOLL_CTL_ADD, fd, &ev);
     }
     else
@@ -89,15 +85,13 @@ bool BalEventLoop::SetEventListener(
         ev.events |= ((event &EventRead)? EPOLLIN: 0);
         ev.events |= ((event &EventWrite)? EPOLLOUT: 0);
 
+        BalEventData* eventData = &(handle.eventData_);
+        eventData->fd_ = fd;
+        eventData->callback_ = callback;
+        ev.data.ptr = eventData;
         handle.eventStatus_ = eventNewStatus;
-        BalEventData* eventData = handle.eventData_;
+        handle.eventData_.needDelEvent_ = true;
 
-        if (eventData)
-        {
-            eventData->fd_ = fd;
-            eventData->callback_ = callback;
-            ev.data.ptr = eventData;
-        }
         ::epoll_ctl(efd_, EPOLL_CTL_MOD, fd, &ev);
     }
     return true;
@@ -125,10 +119,7 @@ bool BalEventLoop::DeleteEventListener(BalEventHandle& handle, BalEventEnum even
 
     if (EventNone != statusChange)
     {
-        if (handle.eventData_)
-        {
-            RemoveReadyItem(handle.eventData_->index_, fd, statusChange);
-        }
+        RemoveReadyItem(handle.eventData_.index_, fd, statusChange);
 
         struct epoll_event ev;
         memset(&ev, 0, sizeof(epoll_event));
@@ -137,9 +128,8 @@ bool BalEventLoop::DeleteEventListener(BalEventHandle& handle, BalEventEnum even
 
         if (EventNone == eventStatus)
         {
+            handle.eventData_.needDelEvent_ = false;
             ::epoll_ctl(efd_, EPOLL_CTL_DEL, fd, &ev);
-            delete(handle.eventData_);
-            handle.eventData_ = nullptr_();
         }
         else
         {
@@ -226,8 +216,8 @@ bool BalEventLoop::DoEventSelect(int timeout)
             }
         }
     }
-    DoReadyPool(eventLoop);
-    return true;
+
+    return DoReadyPool(eventLoop);
 }
 
 bool BalEventLoop::DoEventLoop()
@@ -267,17 +257,20 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
     int32_t len = (uint32_t)readyPool_.size();
     for (int32_t i = 0; i < len;)
     {
-        bool closed = false;
+        bool needRemove = false;
         BalEventReadyItem& item = readyPool_[i];
-        if (!item.callback_ || !(item.callback_->IsCallable())) continue;
+        if (!item.callback_ || !(item.callback_->IsCallable()))
+        {
+            needRemove = true;
+        }
         BalEventCallbackEnum ret = EventRetNone;
 
-        if (0 != item.write_)
+        if (false == needRemove && 0 != item.write_)
         {
             ret = item.callback_->ShouldWrite(item.fd_, eventLoop);
             if (EventRetClose == ret)
             {
-                closed = true;
+                needRemove = true;
             }
             else if (EventRetAgain == ret || EventRetComplete == ret)
             {
@@ -285,12 +278,12 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
             }
         }
 
-        if (false == closed && 0 != item.read_)
+        if (false == needRemove && 0 != item.read_)
         {
             ret = item.callback_->ShouldRead(item.fd_, eventLoop);
             if (EventRetClose == ret)
             {
-                closed = true;
+                needRemove = true;
             }
             else if (EventRetAgain == ret || EventRetComplete == ret)
             {
@@ -298,7 +291,7 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
             }
         }
 
-        if (closed || (0 == item.write_ && 0 == item.read_))
+        if (needRemove || (0 == item.write_ && 0 == item.read_))
         {
             int lastItemIndex = len -1;
             if (i < lastItemIndex)
@@ -306,12 +299,14 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
                 readyPool_[i].eventData_->index_ = -1;
                 readyPool_[i] = readyPool_[lastItemIndex];
                 readyPool_[lastItemIndex].callback_.Clear();
+                readyPool_[lastItemIndex].eventData_ = nullptr_();
                 readyPool_[i].eventData_->index_ = i;
             }
             else
             {
                 readyPool_[i].callback_.Clear();
                 readyPool_[i].eventData_->index_ = -1;
+                readyPool_[i].eventData_ = nullptr_();
             }
             --len; resize = true;
         }
@@ -326,6 +321,7 @@ bool BalEventLoop::DoReadyPool(BalHandle<BalEventLoop> eventLoop)
         readyPool_.resize(len);
     }
     doReadyPoolProtected_ = false;
+
     return true;
 }
 
@@ -366,7 +362,6 @@ bool BalEventLoop::RemoveReadyItem(int index, int fd, BalEventEnum ready)
     {
         return false;
     }
-
     if (doReadyPoolProtected_) return false;
 
     BalEventReadyItem& item = readyPool_[index];
@@ -383,13 +378,16 @@ bool BalEventLoop::RemoveReadyItem(int index, int fd, BalEventEnum ready)
         if (index < len)
         {
             readyPool_[index].eventData_->index_ = -1;
+            readyPool_[index].eventData_ = nullptr_();
             readyPool_[index] = readyPool_[len];
             readyPool_[index].eventData_->index_ = index;
             readyPool_[len].callback_.Clear();
+            readyPool_[len].eventData_ = nullptr_();
         }
         else
         {
             readyPool_[len].eventData_->index_ = -1;
+            readyPool_[len].eventData_ = nullptr_();
             readyPool_[len].callback_.Clear();
         }
 

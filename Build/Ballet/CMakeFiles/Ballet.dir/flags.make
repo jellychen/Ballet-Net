@@ -7,7 +7,7 @@ C_FLAGS = -fPIC -I/mnt/shared/Ballet-Net-Github/Ballet/.. -I/mnt/shared/Ballet-N
 
 C_DEFINES = -DBallet_EXPORTS
 
-CXX_FLAGS = -fpermissive -O2  -fPIC -I/mnt/shared/Ballet-Net-Github/Ballet/.. -I/mnt/shared/Ballet-Net-Github/Ballet   
+CXX_FLAGS = -fpermissive   -fPIC -I/mnt/shared/Ballet-Net-Github/Ballet/.. -I/mnt/shared/Ballet-Net-Github/Ballet   
 
 CXX_DEFINES = -DBallet_EXPORTS
 

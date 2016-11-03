@@ -64,7 +64,6 @@ BalHttpConnection::BalHttpConnection(int id, BalHandle<BalHttpServer> server)
 
 BalHttpConnection::~BalHttpConnection()
 {
-
 }
 
 bool BalHttpConnection::IsV6()
@@ -291,7 +290,7 @@ void BalHttpConnection::RespondHeader(const char* field, const char* value)
     if (field && value)
     {
         respondHttpHeadBuffer_ += field;
-        respondHttpHeadBuffer_ += ":";
+        respondHttpHeadBuffer_ += ": ";
         respondHttpHeadBuffer_ += value;
         respondHttpHeadBuffer_ += "\r\n";
     }
@@ -333,11 +332,11 @@ void BalHttpConnection::RespondComplete(bool close)
 {
     if (false == requestKeepAlive_)
     {
-        Close(false);
+        BalHttpConnection::Close(false);
     }
     else if (true == close)
     {
-        Close(false);
+        BalHttpConnection::Close(false);
     }
 }
 
@@ -507,7 +506,11 @@ BalEventCallbackEnum BalHttpConnection::ShouldRead(int id, BalHandle<BalEventLoo
         }
     }
 
-    if (0 == readSize)
+    if (StatusClosed == status_)
+    {
+        return EventRetClose;
+    }
+    else if (0 == readSize)
     {
         return EventRetComplete;
     }

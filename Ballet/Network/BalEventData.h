@@ -9,17 +9,39 @@ namespace Ballet
 {
     namespace Network
     {
-        class BalEventData
+        class BalEventLoop;
+        class BalEventData: public BalNoCoable
         {
         public:
             BalEventData()
             {
                 fd_ = 0; index_ = -1;
+                needDelEvent_ = false;
+            }
+
+            virtual ~BalEventData()
+            {
+                if (needDelEvent_)
+                {
+                    throw std::runtime_error("BalEventData NeedDelEvent_ Panic!!");
+                    abort();
+                }
             }
 
         public:
-            int fd_;
-            int index_;
+            void Reset()
+            {
+                if (needDelEvent_)
+                {
+                    throw std::runtime_error("BalEventData Reset Panic!!");
+                    abort();
+                }
+                callback_.Clear(); fd_ = 0; index_ = -1;
+            }
+
+        public:
+            int fd_, index_;
+            bool needDelEvent_;
             BalEventCallback callback_;
         };
     }

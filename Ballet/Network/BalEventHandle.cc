@@ -10,23 +10,28 @@ BalEventHandle::BalEventHandle()
 BalEventHandle::BalEventHandle(int fd)
 {
     BalEventHandle::Reset(fd);
+
+}
+
+BalEventHandle::~BalEventHandle()
+{
 }
 
 void BalEventHandle::Reset(int fd)
 {
-    fd_ = fd;
-    eventData_ = nullptr_();
+    eventData_.Reset();
+    eventData_.fd_ = fd;
     eventStatus_ = EventNone;
 }
 
 int BalEventHandle::GetFd() const
 {
-    return fd_;
+    return eventData_.fd_;
 }
 
 bool BalEventHandle::IsWaitEvent() const
 {
-    return 0 != fd_ && EventNone != eventStatus_;
+    return 0 != eventData_.fd_ && EventNone != eventStatus_;
 }
 
 void BalEventHandle::SetEventWaitStatus(BalEventEnum event)
