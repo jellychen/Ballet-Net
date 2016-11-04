@@ -573,7 +573,7 @@ int BalHttpConnection::_OnHttpBegin(http_parser* parser)
             callback->OnHttpBegin(conn);
         }
     }
-    
+
     requestUrl_.clear();
     requestBuffer_.Clear();
     requestHeaderField_.clear();
