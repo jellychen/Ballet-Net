@@ -255,6 +255,12 @@ ZeusMonitor_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonit
 ZeusMonitor_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Zeus/ZeusMonitor
 
 //Value Computed by CMake
+ZeusWisdom_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusWisdom
+
+//Value Computed by CMake
+ZeusWisdom_SOURCE_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Zeus/ZeusWisdom
+
+//Value Computed by CMake
 Zeus_BINARY_DIR:STATIC=/mnt/shared/Ballet-Net-Github/Build/Zeus
 
 //Value Computed by CMake
@@ -355,7 +361,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=14
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=15
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

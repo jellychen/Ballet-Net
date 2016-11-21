@@ -33,3 +33,16 @@ bool BalDirUtil::IsPathExist(const char* path)
     if (!path) return false;
     return 0 == ::access(path, F_OK);
 }
+
+std::string BalDirUtil::AbsolutePath(const char* path)
+{
+    char resolvedPath[1024] = {0};
+    ::realpath(path, resolvedPath);
+    return std::string(resolvedPath);
+}
+
+std::string BalDirUtil::CombinePath(const char* a, const char* b)
+{
+    std::string path(a); path += b;
+    return BalDirUtil::AbsolutePath(path.c_str());
+}

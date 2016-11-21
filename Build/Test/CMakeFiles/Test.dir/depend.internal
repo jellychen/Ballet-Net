@@ -3,6 +3,7 @@
 
 Test/CMakeFiles/Test.dir/Test.o
  ../Test/../Ballet/BootUtil/BalDirUtil.h
+ ../Test/../Ballet/BootUtil/BalGuid.h
  ../Test/../Ballet/BootUtil/BalTableOut.h
  ../Test/../Ballet/BootUtil/BalTimeStamp.h
  ../Test/../Ballet/BootUtil/BalTimer.h

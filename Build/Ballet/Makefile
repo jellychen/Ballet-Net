@@ -455,6 +455,21 @@ Protocol/Http/BalHttpConnection.s:
 .PHONY : Protocol/Http/BalHttpConnection.s
 
 # target to build an object file
+Protocol/Http/BalHttpMime.o:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o
+.PHONY : Protocol/Http/BalHttpMime.o
+
+# target to preprocess a source file
+Protocol/Http/BalHttpMime.i:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.i
+.PHONY : Protocol/Http/BalHttpMime.i
+
+# target to generate assembly for a file
+Protocol/Http/BalHttpMime.s:
+	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.s
+.PHONY : Protocol/Http/BalHttpMime.s
+
+# target to build an object file
 Protocol/Http/BalHttpParserCallback.o:
 	cd /mnt/shared/Ballet-Net-Github/Build && $(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o
 .PHONY : Protocol/Http/BalHttpParserCallback.o
@@ -667,6 +682,9 @@ help:
 	@echo "... Protocol/Http/BalHttpConnection.o"
 	@echo "... Protocol/Http/BalHttpConnection.i"
 	@echo "... Protocol/Http/BalHttpConnection.s"
+	@echo "... Protocol/Http/BalHttpMime.o"
+	@echo "... Protocol/Http/BalHttpMime.i"
+	@echo "... Protocol/Http/BalHttpMime.s"
 	@echo "... Protocol/Http/BalHttpParserCallback.o"
 	@echo "... Protocol/Http/BalHttpParserCallback.i"
 	@echo "... Protocol/Http/BalHttpParserCallback.s"

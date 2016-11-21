@@ -690,9 +690,32 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o.provides: Ballet/
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o.provides.build: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o
 
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: Ballet/CMakeFiles/Ballet.dir/flags.make
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Protocol/Http/BalHttpMime.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_29)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpMime.cc
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.i"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpMime.cc > CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.i
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.s"
+	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpMime.cc -o CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.s
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o.requires:
+.PHONY : Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o.requires
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o.provides: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o.requires
+	$(MAKE) -f Ballet/CMakeFiles/Ballet.dir/build.make Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o.provides.build
+.PHONY : Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o.provides
+
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o.provides.build: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o
+
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/Protocol/Http/BalHttpParserCallback.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_29)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_30)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpParserCallback.cc
 
@@ -715,7 +738,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o.provides.buil
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o: ../Ballet/Protocol/Http/BalHttpServer.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_30)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_31)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpServer.cc
 
@@ -738,7 +761,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o.provides.build: Balle
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o: ../Ballet/Protocol/Http/http_parser.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_31)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_32)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/gcc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o   -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/http_parser.c
 
@@ -761,7 +784,7 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o.provides.build: Ballet/
 
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: Ballet/CMakeFiles/Ballet.dir/flags.make
 Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o: ../Ballet/Protocol/Lfv/BalLfvProtocol.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_32)
+	$(CMAKE_COMMAND) -E cmake_progress_report /mnt/shared/Ballet-Net-Github/Build/CMakeFiles $(CMAKE_PROGRESS_33)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o"
 	cd /mnt/shared/Ballet-Net-Github/Build/Ballet && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o -c /mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.cc
 
@@ -812,6 +835,7 @@ Ballet_OBJECTS = \
 "CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o" \
 "CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o" \
 "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o" \
+"CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o" \
 "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o" \
 "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o" \
 "CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o" \
@@ -848,6 +872,7 @@ Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpBroadcast.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o
+Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o
 Ballet/libBallet.so: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o
@@ -889,6 +914,7 @@ Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Arp
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o.requires
+Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o.requires
 Ballet/CMakeFiles/Ballet.dir/requires: Ballet/CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o.requires

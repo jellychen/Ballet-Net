@@ -146,7 +146,7 @@ bool BalTcpClient::BroadcastRawBuffer(const char* buffer, uint32_t len)
 bool BalTcpClient::Connect(BalHandle<BalInetAddress> addr, int timeout)
 {
     BalHandle<BalInetAddress> noneAddr;
-    return Connect(addr, noneAddr, timeout);
+    return BalTcpClient::Connect(addr, noneAddr, timeout);
 }
 
 bool BalTcpClient::Connect(BalHandle<BalInetAddress> addr,
@@ -154,6 +154,15 @@ bool BalTcpClient::Connect(BalHandle<BalInetAddress> addr,
 {
     if (!addr || timeout < 0) return false;
     if (StatusNone != status_ && StatusClosed != status_) return false;
+
+    if (eventHandle_.IsWaitEvent() && eventLoop_)
+    {
+        eventLoop_->DeleteEventListener(eventHandle_, EventReadWrite);
+        eventLoop_->RemoveTimer(BALTCP_CONNECT_TIMEOUT, timerCallbackPtr_);
+        eventLoop_->RemoveTimer(BALTCP_INTERACTIVE_TIMEOUT, timerCallbackPtr_);
+    }
+
+    connectAddr_ = addr;
 
     BalTcpSocket connectSocket(addr->IsV6());
     connectSocket.BindAddress(addr);
@@ -191,6 +200,11 @@ bool BalTcpClient::Connect(BalHandle<BalInetAddress> addr,
         eventLoop_->SetEventListener(eventHandle_, EventReadWrite, eventCallbackPtr_);
     }
     return true;
+}
+
+bool BalTcpClient::IsConnected() const
+{
+    return StatusEstablish == status_;
 }
 
 uint32_t BalTcpClient::GetMaxPackageSize() const
@@ -379,12 +393,25 @@ BalEventCallbackEnum BalTcpClient::ShouldWrite(int id, BalHandle<BalEventLoop> e
             status_ = StatusNone;
         }
 
+        /*
+        bool connecting = false;
+        if (socket_.Connect(connectAddr_, &connecting))
+        {
+            status_ = StatusEstablish;
+        }
+        else
+        {
+            status_ = StatusNone;
+        }
+        */
+
         BalHandle<BalTcpClient> conn(this, shareUserCount_);
         if (tcpCallback_ && tcpCallback_->IsCallable())
         {
             tcpCallback_->OnConnect(conn, StatusEstablish == status_);
         }
         eventLoop_->RemoveTimer(BALTCP_CONNECT_TIMEOUT, timerCallbackPtr_);
+        eventLoop_->SetTimerOut(BALTCP_INTERACTIVE_TIMEOUT, timerCallbackPtr_, maxTimeout_);
     }
 
     if (0 == writeBuffer_.GetSize()) return EventRetAgain;

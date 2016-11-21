@@ -38,6 +38,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCli/cmake_install.cmake")
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusBroker/cmake_install.cmake")
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor/cmake_install.cmake")
+  INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusWisdom/cmake_install.cmake")
   INCLUDE("/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)

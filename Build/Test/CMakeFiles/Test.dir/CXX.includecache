@@ -10,6 +10,10 @@
 Common/BalInct.h
 ../Test/../Ballet/BootUtil/Common/BalInct.h
 
+../Test/../Ballet/BootUtil/BalGuid.h
+Common/BalInct.h
+../Test/../Ballet/BootUtil/Common/BalInct.h
+
 ../Test/../Ballet/BootUtil/BalTableOut.h
 Common/BalInct.h
 ../Test/../Ballet/BootUtil/Common/BalInct.h
@@ -545,6 +549,8 @@ Ballet/Network/BalEventLoop.h
 /mnt/shared/Ballet-Net-Github/Test/Ballet/Network/BalEventLoop.h
 Ballet/Network/BalSocket.h
 /mnt/shared/Ballet-Net-Github/Test/Ballet/Network/BalSocket.h
+Ballet/BootUtil/BalGuid.h
+/mnt/shared/Ballet-Net-Github/Test/Ballet/BootUtil/BalGuid.h
 t_IniLoader.h
 /mnt/shared/Ballet-Net-Github/Test/t_IniLoader.h
 

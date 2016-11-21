@@ -32,6 +32,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Arp/BalArpBroadcast.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpBroadcast.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Arp/BalArpRespondServer.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpConnection.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o"
+  "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpMime.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpParserCallback.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Http/BalHttpServer.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o"
   "/mnt/shared/Ballet-Net-Github/Ballet/Protocol/Lfv/BalLfvProtocol.cc" "/mnt/shared/Ballet-Net-Github/Build/Ballet/CMakeFiles/Ballet.dir/Protocol/Lfv/BalLfvProtocol.o"

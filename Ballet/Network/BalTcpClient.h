@@ -19,7 +19,7 @@ namespace Ballet
                 BalHandle<IBalTcpClientCallback> callback, uint32_t timeout,
                 uint32_t maxReadBufferSize, uint32_t maxWriteBufferSize);
             virtual ~BalTcpClient();
-            
+
         public:
             bool IsV6();
             bool Close(bool now);
@@ -32,6 +32,7 @@ namespace Ballet
             bool Connect(BalHandle<BalInetAddress> addr, int timeout);
             bool Connect(BalHandle<BalInetAddress> addr,
                 BalHandle<BalInetAddress> bindAddr, int timeout);
+            bool IsConnected() const;
             uint32_t GetMaxPackageSize() const;
             uint32_t GetMaxReadBufferSize() const;
             uint32_t GetMaxWriteBufferSize() const;
@@ -54,6 +55,7 @@ namespace Ballet
             BalEventHandle eventHandle_;
             BalHandle<IBalProtocol> tcpProtocol_;
             BalWeakHandle<BalEventLoop> eventLoop_;
+            BalHandle<BalInetAddress> connectAddr_;
             BalHandle<IBalTcpClientCallback> tcpCallback_;
             int32_t protocolWantSize_;
             uint32_t maxPackage_, lastReadTime_, maxTimeout_;

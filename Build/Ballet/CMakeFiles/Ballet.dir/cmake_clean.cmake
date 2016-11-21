@@ -27,6 +27,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Ballet.dir/Protocol/Arp/BalArpRespondServer.o"
   "CMakeFiles/Ballet.dir/Protocol/Telnet/BalTelnetProtocol.o"
   "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o"
+  "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o"
   "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o"
   "CMakeFiles/Ballet.dir/Protocol/Http/BalHttpServer.o"
   "CMakeFiles/Ballet.dir/Protocol/Http/http_parser.o"

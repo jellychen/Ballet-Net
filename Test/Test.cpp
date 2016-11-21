@@ -25,7 +25,7 @@ using namespace std;
 #include "Ballet/Network/BalInetAddress.h"
 #include "Ballet/Network/BalEventLoop.h"
 #include "Ballet/Network/BalSocket.h"
-
+#include "Ballet/BootUtil/BalGuid.h"
 #include "t_IniLoader.h"
 
 using namespace Ballet::Network;

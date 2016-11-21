@@ -12,6 +12,10 @@ namespace Ballet
             static bool CreateDir(const char* path);
 
             static bool IsPathExist(const char* path);
+
+            static std::string AbsolutePath(const char* path);
+
+            static std::string CombinePath(const char* a, const char* b);
         };
     }
 }

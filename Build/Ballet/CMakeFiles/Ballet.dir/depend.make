@@ -468,6 +468,21 @@ Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Protoc
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Protocol/Http/BalHttpServer.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpConnection.o: ../Ballet/Protocol/Http/http_parser.h
 
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalCallback.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalCoable.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalHandle.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalHandleBase.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalHandleInct.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalInct.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalNull.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalShareThis.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalSingleton.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalUseCount.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalVariable.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Common/BalWeakHandle.h
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Protocol/Http/BalHttpMime.cc
+Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpMime.o: ../Ballet/Protocol/Http/BalHttpMime.h
+
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/BootUtil/BalTimeStamp.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/BootUtil/BalTimer.h
 Ballet/CMakeFiles/Ballet.dir/Protocol/Http/BalHttpParserCallback.o: ../Ballet/BootUtil/BalTimerCallback.h

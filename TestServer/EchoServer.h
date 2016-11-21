@@ -71,6 +71,8 @@ public:
 
     void OnConnect(BalHandle<BalTcpConnection> conn, bool success)
     {
+        printf("%s\n", "OnConnect");
+        conn->Close(false);
         conn->SetNoDelay(true);
         conn->SetReuseAddr(true);
 

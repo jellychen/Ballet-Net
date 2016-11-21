@@ -200,6 +200,19 @@ ZeusMonitor/fast:
 .PHONY : ZeusMonitor/fast
 
 #=============================================================================
+# Target rules for targets named ZeusWisdom
+
+# Build rule for target.
+ZeusWisdom: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ZeusWisdom
+.PHONY : ZeusWisdom
+
+# fast build rule for target.
+ZeusWisdom/fast:
+	$(MAKE) -f Zeus/ZeusWisdom/CMakeFiles/ZeusWisdom.dir/build.make Zeus/ZeusWisdom/CMakeFiles/ZeusWisdom.dir/build
+.PHONY : ZeusWisdom/fast
+
+#=============================================================================
 # Target rules for targets named ZeusCollocation
 
 # Build rule for target.
@@ -267,6 +280,7 @@ help:
 	@echo "... ZeusCli"
 	@echo "... ZeusBroker"
 	@echo "... ZeusMonitor"
+	@echo "... ZeusWisdom"
 	@echo "... ZeusCollocation"
 	@echo "... Test"
 	@echo "... TestClient"

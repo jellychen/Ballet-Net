@@ -10,3 +10,4 @@
 /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCli/CMakeFiles/ZeusCli.dir
 /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusCollocation/CMakeFiles/ZeusCollocation.dir
 /mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusMonitor/CMakeFiles/ZeusMonitor.dir
+/mnt/shared/Ballet-Net-Github/Build/Zeus/ZeusWisdom/CMakeFiles/ZeusWisdom.dir
